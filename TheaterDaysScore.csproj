@@ -11,6 +11,7 @@
     <AvaloniaResource Include="res\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="res\songlist.json" />
     <None Remove="res\tap.png" />
   </ItemGroup>
 </Project>

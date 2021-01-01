@@ -1,0 +1,23 @@
+[
+	{
+		"name": "Blue Symphony",
+		"measures": 3,
+		"notes": [
+			{
+				"beat": 0,
+				"lane": 2,
+				"size": 2
+			},
+			{
+				"beat": 0,
+				"lane": 5,
+				"size": 2
+			},
+			{
+				"beat": 2,
+				"lane": 6,
+				"size": 1
+			}
+		]
+	}
+]

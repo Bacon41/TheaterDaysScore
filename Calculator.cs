@@ -6,47 +6,13 @@ using System.Text.Json;
 
 namespace TheaterDaysScore {
 
-    enum Types {
+    public enum Types {
         Princess,
         Fairy,
         Angel,
         All,
         EX,
     };
-
-    class Song {
-        public string name;
-        public Types type;
-        public int bpm;
-        public float totalMeasures;
-        public int level;
-        public int notes;
-        public int bigNotes;
-        public int appealNotes;
-        public float holdBeats;
-
-        public float songLength; // sec
-        public int noteWeight;
-        public float holdLength; // sec
-
-        public Song(string n, Types t, int bp, float m, int l, int c, int b, int a, float h) {
-            name = n;
-            type = t;
-            bpm = bp;
-            totalMeasures = m;
-            level = l;
-            notes = c;
-            bigNotes = b;
-            appealNotes = a;
-            holdBeats = h;
-
-            songLength = totalMeasures * 4 / bpm * 60;
-            noteWeight = notes + bigNotes + appealNotes * 9;
-            holdLength = holdBeats / bpm * 60;
-
-            // https://api.megmeg.work/mltd/v1/songDesc/
-        }
-    }
 
     class Card {
         public int id;
@@ -81,7 +47,7 @@ namespace TheaterDaysScore {
         }
 
         public int GetScore() {
-            Song song = new Song("Blue Symphony", Types.Fairy, 140, 66f, 16, 555, 21, 1, 77.25f);
+            Song song = new Song("Blue Symphony", Types.Fairy, 140, 66, 16, 555, 21, 1, 77.25f);
 
             //Card guest = new Card(256, Types.Fairy);
             Card center = new Card(286, Types.Princess, Card.SkillTypes.comboBonus);
@@ -96,7 +62,7 @@ namespace TheaterDaysScore {
             float notesAndHolds = song.noteWeight + 2 * song.holdLength;
 
             float scoreScale = 0.7f * baseScore / notesAndHolds;
-            float comboScale = 0.3f * baseScore / (2 * song.notes - 66);
+            float comboScale = 0.3f * baseScore / (2 * song.noteCount - 66);
 
             return (int)comboScale;
         }
