@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Avalonia;
+using Avalonia.Platform;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -47,7 +49,10 @@ namespace TheaterDaysScore {
         }
 
         public int GetScore() {
-            Song song = new Song("Blue Symphony", Types.Fairy, 140, 66, 16, 555, 21, 1, 77.25f);
+            var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
+            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
+            List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
+            Song song = songs[0];
 
             //Card guest = new Card(256, Types.Fairy);
             Card center = new Card(286, Types.Princess, Card.SkillTypes.comboBonus);

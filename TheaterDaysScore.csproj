@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.12" />
@@ -11,7 +11,10 @@
     <AvaloniaResource Include="res\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="res\left.png" />
+    <None Remove="res\right.png" />
     <None Remove="res\songlist.json" />
     <None Remove="res\tap.png" />
+    <None Remove="res\up.png" />
   </ItemGroup>
 </Project>

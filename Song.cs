@@ -1,57 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore {
     public class Song {
         public string name { get; set; }
-        public Types type;
-        public int bpm;
-        public int measures { get; set; }
-        public int level;
+        public Types type { get; set; }
+        public int bpm { get; set; }
+        public int level { get; set; }
+        public List<Note> notes { get; set; }
+
         public int noteCount;
         public int bigNotes;
         public int appealNotes;
-        public float holdBeats;
-
-        public List<Note> notes { get; set; }
+        public int measures;
+        public int holdQuarterBeats;
 
         public float songLength; // sec
         public int noteWeight;
         public float holdLength; // sec
 
         public class Note {
-            public int beat { get; set; }
+            public enum NoteType {
+                tap,
+                leftFlick,
+                rightFlick,
+                upFlick
+            }
+
+            public int measure { get; set; }
+            [JsonPropertyName("quarterBeat")]
+            public int quarterBeat { get; set; }
             public int lane { get; set; }
             public int size { get; set; }
+            public NoteType type { get; set; }
+            public List<Note> waypoints { get; set; }
 
-            public Note() { }
+            public int holdQuarterBeats;
 
-            public Note(int b, int c, int s) {
-                beat = b;
-                lane = c;
-                size = s;
+
+            [JsonConstructor]
+            public Note(int measure, int quarterBeat, int lane, int size, NoteType type, List<Note> waypoints) {
+                this.measure = measure;
+                this.quarterBeat = quarterBeat;
+                this.lane = lane;
+                this.size = size;
+                this.type = type;
+                this.waypoints = waypoints;
+
+                if (this.waypoints != null) {
+                    holdQuarterBeats = this.waypoints.Last().quarterBeat - this.quarterBeat;
+                }
             }
         }
 
-        public Song() {
-            notes = new List<Note>();
-        }
+        public Song(string name, Types type, int bpm, int level, List<Note> notes) {
+            this.name = name;
+            this.type = type;
+            this.bpm = bpm;
+            this.level = level;
+            this.notes = notes;
+            noteCount = this.notes.Count;
+            bigNotes = this.notes.Where(note => note.size == 2).Count();
+            appealNotes = this.notes.Where(note => note.size == 10).Count();
+            Note lastNote = this.notes.Last();
+            int lastQuarterBeat = lastNote.measure * 16 + lastNote.quarterBeat;
+            measures = lastNote.measure + 2;
+            holdQuarterBeats = this.notes.Sum(note => note.holdQuarterBeats);
 
-        public Song(string n, Types t, int bp, int m, int l, int c, int b, int a, float h) {
-            name = n;
-            type = t;
-            bpm = bp;
-            measures = m;
-            level = l;
-            noteCount = c;
-            bigNotes = b;
-            appealNotes = a;
-            holdBeats = h;
-
-            songLength = (float)measures * 4 / bpm * 60;
+            songLength = (float)lastQuarterBeat / 4 / this.bpm * 60;
             noteWeight = noteCount + bigNotes + appealNotes * 9;
-            holdLength = holdBeats / bpm * 60;
+            holdLength = (float)holdQuarterBeats / 4 / this.bpm * 60;
+
+            Debug.Print("notes: " + noteCount);
 
             // https://api.megmeg.work/mltd/v1/songDesc/
         }
