@@ -36,7 +36,7 @@ namespace TheaterDaysScore {
 
             List<Card> cards = new List<Card>() {
                 new Card(286, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
-                new Card(250, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6))
+                new Card(250, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
             };
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));

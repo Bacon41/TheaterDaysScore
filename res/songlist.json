@@ -772,7 +772,7 @@
 				"measure": 9,
 				"quarterBeat": 12,
 				"lane": 2,
-				"size": 1,
+				"size": 2,
 				"type": 0
 			},
 			{
@@ -2375,7 +2375,7 @@
 				"measure": 32,
 				"quarterBeat": 6,
 				"lane": 5,
-				"size": 1,
+				"size": 2,
 				"type": 0
 			},
 			{
@@ -2417,7 +2417,7 @@
 				"measure": 33,
 				"quarterBeat": 0,
 				"lane": 2,
-				"size": 1,
+				"size": 2,
 				"type": 0
 			},
 			{

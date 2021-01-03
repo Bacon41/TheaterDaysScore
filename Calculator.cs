@@ -57,9 +57,9 @@ namespace TheaterDaysScore {
                 this.level = level;
 
                 if (this.level <= 10) {
-                    leveledProbability = this.probability + this.level * 2;
+                    leveledProbability = this.probability + this.level;
                 } else {
-                    leveledProbability = this.probability + 20 + (this.level - 10) * 5;
+                    leveledProbability = this.probability + 10 + (this.level - 10) * 5;
                 }
             }
 
@@ -100,6 +100,9 @@ namespace TheaterDaysScore {
 
         public List<int> GetActivations(double songLen) {
             List<int> activations = new List<int>();
+            if (this.skill == null) {
+                return activations;
+            }
             int start = this.skill.interval;
             while (start < songLen) {
                 activations.Add(start);
@@ -133,19 +136,19 @@ namespace TheaterDaysScore {
         }
 
         public double ScoreBoostAt(double time) {
-            return 1.0 + (double)scoreUp[(int)Math.Floor(time)] / 100;
+            return (100.0 + scoreUp[(int)Math.Floor(time)]) / 100;
         }
 
         public double ComboBoostAt(double time) {
-            return 1.0 + 3.0 * comboUp[(int)Math.Floor(time)] / 100;
+            return (100.0 + 3 * comboUp[(int)Math.Floor(time)]) / 100;
         }
 
-        public double HoldOver(double time, double length) {
-            int startScore = (int)Math.Floor(time);
-            int endScore = (int)Math.Floor(time + length);
+        public double HoldOver(double startTime, double length) {
+            int startScore = (int)Math.Floor(startTime);
+            int endScore = (int)Math.Ceiling(startTime + length);
             double holdScore = 0;
-            for (int x = startScore; x <= endScore; x++) {
-                holdScore += (1.0 + (double)scoreUp[x] / 100) * (Math.Min(time + length, x + 1) - Math.Max(time, x));
+            for (int x = startScore; x < endScore; x++) {
+                holdScore += this.ScoreBoostAt(x) * (Math.Min(startTime + length, x + 1) - Math.Max(startTime, x));
             }
             return holdScore;
         }
@@ -165,51 +168,66 @@ namespace TheaterDaysScore {
 
             //Card guest = new Card(256, Types.Fairy);
             Card center = new Card(286, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5));
-            ai.AddIntervals(center.GetActivations(song.songLength), center.skill);
+            //Card center = new Card(464, Types.Princess, new Card.Skill(Card.Skill.Type.scoreUp, 4, 7, 30, new int[] { 30 }, 5));
+            //ai.AddIntervals(center.GetActivations(song.songLength), center.skill);
 
             Card mem1 = new Card(250, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6));
-            ai.AddIntervals(mem1.GetActivations(song.songLength), mem1.skill);
+            //ai.AddIntervals(mem1.GetActivations(song.songLength), mem1.skill);
 
             Card mem2 = new Card(391, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 7));
-            ai.AddIntervals(mem2.GetActivations(song.songLength), mem2.skill);
+            //ai.AddIntervals(mem2.GetActivations(song.songLength), mem2.skill);
 
             Card mem3 = new Card(269, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 8));
-            ai.AddIntervals(mem3.GetActivations(song.songLength), mem3.skill);
+            //ai.AddIntervals(mem3.GetActivations(song.songLength), mem3.skill);
 
             Card mem4 = new Card(178, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 9));
-            ai.AddIntervals(mem4.GetActivations(song.songLength), mem4.skill);
+            //ai.AddIntervals(mem4.GetActivations(song.songLength), mem4.skill);
 
-            int totalAppeal = 320000;
+            List<Card> cards = new List<Card>() {
+                new Card(409, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(368, Types.Fairy, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
+                new Card(868, Types.Fairy, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(159, Types.Fairy, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
+                new Card(432, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))
+            };
+            foreach (Card c in cards) {
+                ai.AddIntervals(c.GetActivations(song.songLength), c.skill);
+            }
 
-            float baseScore = totalAppeal * (33f + song.level) / 20;
-            float notesAndHolds = song.noteWeight + 2 * song.holdLength;
+            //int totalAppeal = 320000;
+            int totalAppeal = 377515;
 
-            float scoreScale = 0.7f * baseScore / notesAndHolds;
-            float comboScale = 0.3f * baseScore / (2 * song.noteCount - 66);
+            double baseScore = totalAppeal * (33f + song.level) / 20;
+            double notesAndHolds = song.noteWeight + 2 * song.holdLength;
+
+            double scoreScale = 0.7 * baseScore / notesAndHolds;
+            double comboScale = 0.3 * baseScore / (2 * song.noteCount - 66);
 
             double score = 0;
-            for (int x= 0; x < song.notes.Count; x++) {
-                Song.Note note = song.notes[x];
+            int combo = 0;
+            foreach (Song.Note note in song.notes) {
+                combo++;
                 double noteTime = (double)(note.measure * 16 + note.quarterBeat) / 4 / song.bpm * 60;
                 double comboState = 0;
-                if (x >= 100) {
+                if (combo >= 100) {
                     comboState = 2;
-                } else if (x >= 70) {
+                } else if (combo >= 70) {
                     comboState = 1.8;
-                } else if (x >= 50) {
+                } else if (combo >= 50) {
                     comboState = 1.6;
-                } else if (x >= 30) {
+                } else if (combo >= 30) {
                     comboState = 1.3;
-                } else if (x >= 10) {
+                } else if (combo >= 10) {
                     comboState = 1;
                 }
-                score += scoreScale * note.size * 1.0 * ai.ScoreBoostAt(noteTime) + comboScale * comboState * ai.ComboBoostAt(noteTime);
+                double accuracy = 1.0;
+                score += scoreScale * note.size * accuracy * ai.ScoreBoostAt(noteTime) + comboScale * comboState * ai.ComboBoostAt(noteTime);
                 if (note.holdQuarterBeats != 0) {
                     double holdTime = (double)note.holdQuarterBeats / 4 / song.bpm * 60;
                     score += 2 * scoreScale * ai.HoldOver(noteTime, holdTime);
                 }
             }
-
+            
             return (int)score;
         }
     }

@@ -19,9 +19,9 @@ namespace TheaterDaysScore {
         public int measures;
         public int holdQuarterBeats;
 
-        public float songLength; // sec
+        public double songLength; // sec
         public int noteWeight;
-        public float holdLength; // sec
+        public double holdLength; // sec
 
         public class Note {
             public enum NoteType {
@@ -72,9 +72,9 @@ namespace TheaterDaysScore {
             measures = lastNote.measure + 2;
             holdQuarterBeats = this.notes.Sum(note => note.holdQuarterBeats);
 
-            songLength = (float)lastQuarterBeat / 4 / this.bpm * 60;
-            noteWeight = noteCount + bigNotes + appealNotes * 9;
-            holdLength = (float)holdQuarterBeats / 4 / this.bpm * 60;
+            songLength = (double)lastQuarterBeat / 4 / this.bpm * 60;
+            noteWeight = this.notes.Sum(note => note.size);
+            holdLength = (double)holdQuarterBeats / 4 / this.bpm * 60;
 
             // https://api.megmeg.work/mltd/v1/songDesc/
         }
