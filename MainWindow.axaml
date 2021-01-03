@@ -10,8 +10,11 @@
   <StackPanel HorizontalAlignment="Center">
     <TextBlock Name="scoreDisplay" FontSize="24">NaN</TextBlock>
     <Button Click="Calculate_Click">Calculate</Button>
-    <ScrollViewer Width="800" Height="600">
-      <local:DrawCanvas Background="LightGray"/>
+    <ScrollViewer Width="400" Height="600">
+      <StackPanel Orientation="Horizontal">
+        <local:DrawCanvas Background="LightGray"/>
+        <local:DrawIntervals/>
+      </StackPanel>
     </ScrollViewer>
   </StackPanel>
 </Window>

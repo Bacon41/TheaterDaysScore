@@ -52,7 +52,8 @@ namespace TheaterDaysScore {
                 this.waypoints = waypoints;
 
                 if (this.waypoints != null) {
-                    holdQuarterBeats = this.waypoints.Last().quarterBeat - this.quarterBeat;
+                    Note lastWaypoint = this.waypoints.Last();
+                    holdQuarterBeats = (lastWaypoint.measure - this.measure) * 16 + lastWaypoint.quarterBeat - this.quarterBeat;
                 }
             }
         }
@@ -74,8 +75,6 @@ namespace TheaterDaysScore {
             songLength = (float)lastQuarterBeat / 4 / this.bpm * 60;
             noteWeight = noteCount + bigNotes + appealNotes * 9;
             holdLength = (float)holdQuarterBeats / 4 / this.bpm * 60;
-
-            Debug.Print("notes: " + noteCount);
 
             // https://api.megmeg.work/mltd/v1/songDesc/
         }

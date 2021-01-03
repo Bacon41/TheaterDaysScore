@@ -52,7 +52,7 @@ namespace TheaterDaysScore {
             rightImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/right.png")));
             upImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/up.png")));
 
-            score = new RenderTargetBitmap(new PixelSize(measureWidth, songs[songNum].measures * measureHeight));
+            score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
                 for (int x = 0; x < songs[songNum].measures; x++) {
                     RenderMeasure(ctx, x);
