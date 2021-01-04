@@ -16,12 +16,15 @@ namespace TheaterDaysScore {
         public int noteCount;
         public int bigNotes;
         public int appealNotes;
-        public int measures;
+        public int displayMeasures;
         public int holdQuarterBeats;
 
         public double songLength; // sec
         public int noteWeight;
         public double holdLength; // sec
+
+        private int firstQuarterBeat;
+        private double quarterBeatsToSeconds;
 
         public class Note {
             public enum NoteType {
@@ -39,6 +42,7 @@ namespace TheaterDaysScore {
             public NoteType type { get; set; }
             public List<Note> waypoints { get; set; }
 
+            public int totalQuarterBeats;
             public int holdQuarterBeats;
 
 
@@ -50,6 +54,8 @@ namespace TheaterDaysScore {
                 this.size = size;
                 this.type = type;
                 this.waypoints = waypoints;
+
+                totalQuarterBeats = this.measure * 16 + this.quarterBeat;
 
                 if (this.waypoints != null) {
                     Note lastWaypoint = this.waypoints.Last();
@@ -69,14 +75,25 @@ namespace TheaterDaysScore {
             appealNotes = this.notes.Where(note => note.size == 10).Count();
             Note lastNote = this.notes.Last();
             int lastQuarterBeat = lastNote.measure * 16 + lastNote.quarterBeat;
-            measures = lastNote.measure + 2;
+            firstQuarterBeat = this.notes[0].measure * 16 + this.notes[0].quarterBeat;
+            displayMeasures = lastNote.measure + 2;
             holdQuarterBeats = this.notes.Sum(note => note.holdQuarterBeats);
 
-            songLength = (double)lastQuarterBeat / 4 / this.bpm * 60;
+            quarterBeatsToSeconds = 60.0 / (4 * this.bpm);
+
+            songLength = (lastQuarterBeat - firstQuarterBeat) * quarterBeatsToSeconds;
             noteWeight = this.notes.Sum(note => note.size);
-            holdLength = (double)holdQuarterBeats / 4 / this.bpm * 60;
+            holdLength = holdQuarterBeats * quarterBeatsToSeconds;
 
             // https://api.megmeg.work/mltd/v1/songDesc/
+        }
+
+        public double SecondsSinceFirst(Note note) {
+            return (note.totalQuarterBeats - firstQuarterBeat) * quarterBeatsToSeconds;
+        }
+
+        public double QuarterBeatsToSeconds(int quarterBeats) {
+            return quarterBeats * quarterBeatsToSeconds;
         }
     }
 }

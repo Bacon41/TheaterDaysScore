@@ -39,11 +39,11 @@ namespace TheaterDaysScore {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            int songNum = 0;
+            int songNum = 2;
 
             // Rendering
             drawWidth = measureWidth;
-            drawHeight = songs[songNum].measures * measureHeight;
+            drawHeight = songs[songNum].displayMeasures * measureHeight;
             laneWidth = (double)measureWidth / 7;
             quarterBeatHeight = (double)measureHeight / 16;
 
@@ -54,7 +54,7 @@ namespace TheaterDaysScore {
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
-                for (int x = 0; x < songs[songNum].measures; x++) {
+                for (int x = 0; x < songs[songNum].displayMeasures; x++) {
                     RenderMeasure(ctx, x);
                 }
                 foreach (Song.Note note in songs[songNum].notes) {

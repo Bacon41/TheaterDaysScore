@@ -28,7 +28,7 @@ namespace TheaterDaysScore {
         }
 
         public void Calculate_Click(object sender, RoutedEventArgs e) {
-            disp.Text = calc.GetScore().ToString();
+            disp.Text = "50th Percentile: " + calc.GetScore().ToString();
         }
     }
 }

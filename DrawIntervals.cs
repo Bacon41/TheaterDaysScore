@@ -28,15 +28,15 @@ namespace TheaterDaysScore {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            int songNum = 0;
+            int songNum = 2;
 
             // Rendering
             drawWidth = 15;
-            drawHeight = songs[songNum].measures * measureHeight;
+            drawHeight = songs[songNum].displayMeasures * measureHeight;
 
             List<Card> cards = new List<Card>() {
-                new Card(286, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
-                new Card(250, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
+                new Card(286, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
+                new Card(250, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
             };
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
@@ -52,7 +52,7 @@ namespace TheaterDaysScore {
         private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset) {
             // Timing
             double pixelsPerSecond = measureHeight * (double)song.bpm / 60 / 4;
-            double startPos = measureHeight * (song.measures - 1) - card.skill.interval * pixelsPerSecond;
+            double startPos = measureHeight * (song.displayMeasures - 1) - card.skill.interval * pixelsPerSecond;
             Pen writePen = kotohaPen;
             if (offset != 0) {
                 writePen = serikaPen;

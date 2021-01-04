@@ -4265,5 +4265,13054 @@
 				"type": 0
 			}
 		]
+	},
+	{
+		"name": "Harmonics",
+		"type": 1,
+		"bpm": 177,
+		"level": 17,
+		"notes": [
+			{
+				"measure": 0,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 0,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 1
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 2
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 4,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 4,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 4,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 4,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 5,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 5,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 5,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 6,
+						"quarterBeat": 8,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 9,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 8,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 8,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 10,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 13,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 13,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 14,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 16,
+						"quarterBeat": 4,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 16,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 17,
+						"quarterBeat": 8,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 4,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 19,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 21,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 22,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 23,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 26,
+						"quarterBeat": 0,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 11,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 26,
+						"quarterBeat": 14,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 27,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 28,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 28,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 29,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 29,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 10,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 31,
+						"quarterBeat": 4,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 12,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 31,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 2,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 34,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 33,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 34,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 34,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 34,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 36,
+						"quarterBeat": 6,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 36,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 36,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 7,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 41,
+						"quarterBeat": 7,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 41,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 7,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 7,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 4,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 7,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 0,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 7,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 7,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 49,
+						"quarterBeat": 0,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 49,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 49,
+						"quarterBeat": 7,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 7,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 8,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 7,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 51,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 52,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 4,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 8,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 6,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 12,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 56,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 56,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 57,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 57,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 57,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 58,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 58,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 59,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 59,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 59,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 60,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 60,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 60,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 61,
+						"quarterBeat": 6,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 61,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 61,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 62,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 62,
+						"quarterBeat": 12,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 64,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 64,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 65,
+						"quarterBeat": 8,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 66,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 3,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 67,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 66,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 67,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 67,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 67,
+						"quarterBeat": 10,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 67,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 68,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 68,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 71,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 69,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 69,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 69,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 69,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 70,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 70,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 70,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 70,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 71,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 71,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 71,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 71,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 71,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 73,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 72,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 74,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 73,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 75,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 74,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 75,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 75,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 75,
+				"quarterBeat": 15,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 76,
+						"quarterBeat": 4,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 76,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 76,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 77,
+						"quarterBeat": 2,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 76,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 77,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 77,
+						"quarterBeat": 7,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 77,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 78,
+						"quarterBeat": 0,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 77,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 78,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 78,
+						"quarterBeat": 7,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 7,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 78,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 78,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 78,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 79,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 79,
+						"quarterBeat": 7,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 7,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 79,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 80,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 80,
+						"quarterBeat": 8,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 80,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 80,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 81,
+						"quarterBeat": 4,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 81,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 81,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 81,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 3,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 5,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 82,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 82,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 4,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 8,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 83,
+						"quarterBeat": 14,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 84,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 83,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 84,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 84,
+						"quarterBeat": 6,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 84,
+						"quarterBeat": 12,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 84,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 85,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 86,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 86,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 87,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 86,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 87,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 87,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 87,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 89,
+				"quarterBeat": 0,
+				"lane": 0,
+				"size": 10,
+				"type": 0
+			}
+		]
+	},
+	{
+		"name": "Music",
+		"type": 3,
+		"bpm": 138,
+		"level": 18,
+		"notes": [
+			{
+				"measure": 0,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 0,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 0,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 2
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 1
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 0,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 1,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 1,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 2
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 1
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 1,
+						"quarterBeat": 10,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 1,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 2
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 1,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 1
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 2,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 2
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 1
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 2,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 2,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 3,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 3,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 11,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 13,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 4,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 5,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 5,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 11,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 5,
+						"quarterBeat": 15,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 5,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 6,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 6,
+						"quarterBeat": 7,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 6,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 7,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 5,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 7,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 7,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 7,
+						"quarterBeat": 14,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 7,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 8,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 3,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 3,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 5,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 9,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 9,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 10,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 10,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 11,
+						"quarterBeat": 2,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 11,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 3,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 11,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 5,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 13,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 11,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 5,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 11,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 12,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 13,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 11,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 13,
+						"quarterBeat": 15,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 14,
+						"quarterBeat": 0,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 13,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 14,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 14,
+						"quarterBeat": 7,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 14,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 2,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 5,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 12,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 15,
+						"quarterBeat": 14,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 15,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 5,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 16,
+				"quarterBeat": 15,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 17,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 5,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 17,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 17,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 17,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 18,
+						"quarterBeat": 14,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 18,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 19,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 20,
+						"quarterBeat": 3,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 3,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 20,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 20,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 21,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 21,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 21,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 22,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 22,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 22,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 22,
+						"quarterBeat": 14,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 22,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 23,
+						"quarterBeat": 4,
+						"lane": 1
+					},
+					{
+						"measure": 23,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 23,
+						"quarterBeat": 4,
+						"lane": 4
+					},
+					{
+						"measure": 23,
+						"quarterBeat": 8,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 23,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 3,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 3,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 24,
+						"quarterBeat": 14,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 24,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 0,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 4,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 8,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 25,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 25,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 26,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 26,
+						"quarterBeat": 8,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 26,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 26,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 27,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 27,
+						"quarterBeat": 6,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 4,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 27,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 27,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 27,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 28,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 28,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 28,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 29,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 29,
+						"quarterBeat": 10,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 29,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 6,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 30,
+						"quarterBeat": 14,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 30,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 31,
+						"quarterBeat": 4,
+						"lane": 1
+					},
+					{
+						"measure": 31,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 31,
+						"quarterBeat": 4,
+						"lane": 4
+					},
+					{
+						"measure": 31,
+						"quarterBeat": 8,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 31,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 3,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 11,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 32,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 32,
+				"quarterBeat": 15,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 33,
+						"quarterBeat": 2,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 3,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 33,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 33,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 34,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 10,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 35,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 35,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 37,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 37,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 37,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 0,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 8,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 38,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 38,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 39,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 39,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 0,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 9,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 14,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 40,
+						"quarterBeat": 15,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 40,
+				"quarterBeat": 15,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 41,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 11,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 41,
+				"quarterBeat": 15,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 42,
+						"quarterBeat": 8,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 11,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 43,
+						"quarterBeat": 0,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 42,
+				"quarterBeat": 15,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 3,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 43,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 7,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 11,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 0,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 43,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 0,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 4,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 8,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 8,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 9,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 44,
+						"quarterBeat": 15,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 44,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 7,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 45,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 45,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 0,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 0,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 8,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 12,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 46,
+						"quarterBeat": 12,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 46,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 3,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 3,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 47,
+						"quarterBeat": 12,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 47,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 0,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 0,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 1,
+				"type": 2
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 48,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 1
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 48,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 49,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 3,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 6,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 49,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 49,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 3,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 8,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 50,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 12,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 50,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 0,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 2,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 12,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 14,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 51,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 52,
+						"quarterBeat": 2,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 52,
+						"quarterBeat": 6,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 10,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 10,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 52,
+						"quarterBeat": 12,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 52,
+						"quarterBeat": 14,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 52,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 2,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 4,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 53,
+						"quarterBeat": 8,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 0,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 53,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 0,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 6,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 12,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 6,
+				"lane": 4,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 54,
+						"quarterBeat": 8,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 8,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 55,
+						"quarterBeat": 0,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 54,
+				"quarterBeat": 14,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 55,
+						"quarterBeat": 8,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 2,
+				"lane": 1,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 55,
+						"quarterBeat": 4,
+						"lane": 1
+					}
+				]
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 4,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 55,
+						"quarterBeat": 8,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 8,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 8,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 55,
+				"quarterBeat": 14,
+				"lane": 5,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 56,
+						"quarterBeat": 2,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 56,
+						"quarterBeat": 6,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 2,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 56,
+						"quarterBeat": 10,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 10,
+				"lane": 1,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 10,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 12,
+				"lane": 1,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 56,
+				"quarterBeat": 12,
+				"lane": 6,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 57,
+				"quarterBeat": 0,
+				"lane": 0,
+				"size": 10,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 0,
+				"lane": 6,
+				"size": 2,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 4,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 5,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 6,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 61,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 8,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 61,
+						"quarterBeat": 14,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 61,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 2,
+				"lane": 3,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 62,
+						"quarterBeat": 6,
+						"lane": 3
+					}
+				]
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 2,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 62,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 6,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 7,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 8,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 9,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 10,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 11,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 14,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 62,
+				"quarterBeat": 15,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 3,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 3,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 4,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 4,
+				"lane": 6,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 6,
+						"lane": 6
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 6,
+				"lane": 6,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 7,
+				"lane": 3,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 8,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 10,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 10,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 12,
+				"lane": 4,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 63,
+						"quarterBeat": 14,
+						"lane": 4
+					}
+				]
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 14,
+				"lane": 4,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 63,
+				"quarterBeat": 15,
+				"lane": 1,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 2,
+				"lane": 2,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 64,
+						"quarterBeat": 11,
+						"lane": 2
+					}
+				]
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 2,
+				"lane": 5,
+				"size": 1,
+				"type": 0,
+				"waypoints": [
+					{
+						"measure": 64,
+						"quarterBeat": 4,
+						"lane": 5
+					}
+				]
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 4,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 5,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 7,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 9,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 11,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 11,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 12,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 13,
+				"lane": 5,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 14,
+				"lane": 2,
+				"size": 1,
+				"type": 0
+			},
+			{
+				"measure": 64,
+				"quarterBeat": 15,
+				"lane": 5,
+				"size": 1,
+				"type": 3
+			},
+			{
+				"measure": 65,
+				"quarterBeat": 0,
+				"lane": 2,
+				"size": 1,
+				"type": 2
+			}
+		]
 	}
 ]

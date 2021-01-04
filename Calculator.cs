@@ -20,9 +20,10 @@ namespace TheaterDaysScore {
     class Card {
         public int id;
         public Types type;
+        public CenterEffect centerEffect;
         public Skill skill;
-        
 
+        private Random random;
 
         public class Skill {
             public Type type;
@@ -90,22 +91,64 @@ namespace TheaterDaysScore {
             }
         }
 
-        public Card(int id, Types type, Skill skill) {
+        public class CenterEffect {
+            public Type type;
+            public Types idolType;
+            public Types songType;
+            public int value;
+
+            public enum Type {
+                filler,
+                vocalUp,
+                danceUp,
+                visualUp,
+                allUp,
+                lifeUp,
+                skillBoost,
+            };
+
+            public CenterEffect(Type type, Types idolType, Types songType, int value) {
+                this.type = type;
+                this.idolType = idolType;
+                this.songType = songType;
+                this.value = value;
+            }
+        }
+
+        public Card(int id, Types type, CenterEffect centerEffect, Skill skill) {
             this.id = id;
             this.type = type;
+            this.centerEffect = centerEffect;
             this.skill = skill;
-            
+
+            random = new Random();
+
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png
         }
 
-        public List<int> GetActivations(double songLen) {
+        public List<int> GetActivations(double songLen, CenterEffect guestEffect, CenterEffect centerEffect) {
             List<int> activations = new List<int>();
             if (this.skill == null) {
                 return activations;
             }
+
             int start = this.skill.interval;
+            double activationThreshold = this.skill.leveledProbability;
+            if (guestEffect != null && guestEffect.type == CenterEffect.Type.skillBoost) {
+                if (guestEffect.idolType == this.type) {
+                    activationThreshold += this.skill.leveledProbability * (double)guestEffect.value / 100;
+                }
+            }
+            if (centerEffect != null && centerEffect.type == CenterEffect.Type.skillBoost) {
+                if (centerEffect.idolType == this.type) {
+                    activationThreshold += this.skill.leveledProbability * (double)centerEffect.value / 100;
+                }
+            }
+
             while (start < songLen) {
-                activations.Add(start);
+                if (random.NextDouble() * 100 < activationThreshold) {
+                    activations.Add(start);
+                }
                 start += this.skill.interval;
             }
             return activations;
@@ -116,31 +159,47 @@ namespace TheaterDaysScore {
 
         int[] scoreUp;
         int[] comboUp;
+        int[] doubleScore;
+        int[] doubleCombo;
 
         public ActivationInstance(double songLen) {
-            scoreUp = new int[(int)Math.Ceiling(songLen)];
-            comboUp = new int[(int)Math.Ceiling(songLen)];
+            int numSeconds = (int)Math.Ceiling(songLen);
+            scoreUp = new int[numSeconds];
+            comboUp = new int[numSeconds];
+            doubleScore = new int[numSeconds];
+            doubleCombo = new int[numSeconds];
         }
 
         public void AddIntervals(List<int> starts, Card.Skill skill) {
             foreach (int start in starts) {
                 for (int x = start; x < scoreUp.Length && x < start + skill.duration; x++) {
-                    if (skill.ScoreBonus() > scoreUp[x]) {
-                        scoreUp[x] = skill.ScoreBonus();
-                    }
-                    if (skill.ComboBonus() > comboUp[x]) {
-                        comboUp[x] = skill.ComboBonus();
+                    if (skill.type == Card.Skill.Type.doubleBoost) {
+                        if (skill.ScoreBonus() > doubleScore[x]) {
+                            doubleScore[x] = skill.ScoreBonus();
+                        }
+                        if (skill.ComboBonus() > doubleCombo[x]) {
+                            doubleCombo[x] = skill.ComboBonus();
+                        }
+                    } else {
+                        if (skill.ScoreBonus() > scoreUp[x]) {
+                            scoreUp[x] = skill.ScoreBonus();
+                        }
+                        if (skill.ComboBonus() > comboUp[x]) {
+                            comboUp[x] = skill.ComboBonus();
+                        }
                     }
                 }
             }
         }
 
         public double ScoreBoostAt(double time) {
-            return (100.0 + scoreUp[(int)Math.Floor(time)]) / 100;
+            int currentSecond = (int)Math.Floor(time);
+            return (100.0 + scoreUp[currentSecond] + doubleScore[currentSecond]) / 100;
         }
 
         public double ComboBoostAt(double time) {
-            return (100.0 + 3 * comboUp[(int)Math.Floor(time)]) / 100;
+            int currentSecond = (int)Math.Floor(time);
+            return (100.0 + 3 * (comboUp[currentSecond] + doubleCombo[currentSecond])) / 100;
         }
 
         public double HoldOver(double startTime, double length) {
@@ -162,40 +221,37 @@ namespace TheaterDaysScore {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            Song song = songs[0];
+            Song song = songs[1];
 
-            ActivationInstance ai = new ActivationInstance(song.songLength);
-
-            //Card guest = new Card(256, Types.Fairy);
-            Card center = new Card(286, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5));
-            //Card center = new Card(464, Types.Princess, new Card.Skill(Card.Skill.Type.scoreUp, 4, 7, 30, new int[] { 30 }, 5));
-            //ai.AddIntervals(center.GetActivations(song.songLength), center.skill);
-
-            Card mem1 = new Card(250, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6));
-            //ai.AddIntervals(mem1.GetActivations(song.songLength), mem1.skill);
-
-            Card mem2 = new Card(391, Types.Princess, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 7));
-            //ai.AddIntervals(mem2.GetActivations(song.songLength), mem2.skill);
-
-            Card mem3 = new Card(269, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 8));
-            //ai.AddIntervals(mem3.GetActivations(song.songLength), mem3.skill);
-
-            Card mem4 = new Card(178, Types.Angel, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 9));
-            //ai.AddIntervals(mem4.GetActivations(song.songLength), mem4.skill);
+            Card guest = new Card(256, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), null);
+            //Card guest = new Card(868, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.danceUp, Types.Fairy, Types.Fairy, 90), new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10));
 
             List<Card> cards = new List<Card>() {
-                new Card(409, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
-                new Card(368, Types.Fairy, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
-                new Card(868, Types.Fairy, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
-                new Card(159, Types.Fairy, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
-                new Card(432, Types.Fairy, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))
-            };
-            foreach (Card c in cards) {
-                ai.AddIntervals(c.GetActivations(song.songLength), c.skill);
-            }
+                //new Card(286, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
+                new Card(250, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
+                new Card(391, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 7)),
 
-            //int totalAppeal = 320000;
-            int totalAppeal = 377515;
+                new Card(256, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), new Card.Skill(Card.Skill.Type.judgementBoost, 3, 9, 25, new int[] { }, 5)),
+
+                new Card(269, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 8)),
+                new Card(178, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 9))
+
+                /*new Card(409, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(368, Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
+                new Card(868, Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(159, Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
+                new Card(432, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))*/
+
+                /*new Card(432, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12)),
+                new Card(868, Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(572, Types.Princess, null, new Card.Skill(Card.Skill.Type.doubleBoost, 4, 7, 30, new int[] { 10, 5 }, 10)),
+                new Card(409, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(732, Types.Angel, null, new Card.Skill(Card.Skill.Type.overClock, 5, 9, 30, new int[] { 32, 14 }, 5))*/
+            };
+
+            int totalAppeal = 320000;
+            //int totalAppeal = 377515;
+            //int totalAppeal = 386402;
 
             double baseScore = totalAppeal * (33f + song.level) / 20;
             double notesAndHolds = song.noteWeight + 2 * song.holdLength;
@@ -203,32 +259,44 @@ namespace TheaterDaysScore {
             double scoreScale = 0.7 * baseScore / notesAndHolds;
             double comboScale = 0.3 * baseScore / (2 * song.noteCount - 66);
 
-            double score = 0;
-            int combo = 0;
-            foreach (Song.Note note in song.notes) {
-                combo++;
-                double noteTime = (double)(note.measure * 16 + note.quarterBeat) / 4 / song.bpm * 60;
-                double comboState = 0;
-                if (combo >= 100) {
-                    comboState = 2;
-                } else if (combo >= 70) {
-                    comboState = 1.8;
-                } else if (combo >= 50) {
-                    comboState = 1.6;
-                } else if (combo >= 30) {
-                    comboState = 1.3;
-                } else if (combo >= 10) {
-                    comboState = 1;
+            List<double> scores = new List<double>();
+
+            for (int x = 0; x < 10000; x++) {
+                ActivationInstance ai = new ActivationInstance(song.songLength);
+                foreach (Card c in cards) {
+                    ai.AddIntervals(c.GetActivations(song.songLength, guest.centerEffect, cards[2].centerEffect), c.skill);
                 }
-                double accuracy = 1.0;
-                score += scoreScale * note.size * accuracy * ai.ScoreBoostAt(noteTime) + comboScale * comboState * ai.ComboBoostAt(noteTime);
-                if (note.holdQuarterBeats != 0) {
-                    double holdTime = (double)note.holdQuarterBeats / 4 / song.bpm * 60;
-                    score += 2 * scoreScale * ai.HoldOver(noteTime, holdTime);
+
+                double score = 0;
+                int combo = 0;
+                foreach (Song.Note note in song.notes) {
+                    combo++;
+                    double noteTime = song.SecondsSinceFirst(note);
+                    double comboState = 0;
+                    if (combo >= 100) {
+                        comboState = 2;
+                    } else if (combo >= 70) {
+                        comboState = 1.8;
+                    } else if (combo >= 50) {
+                        comboState = 1.6;
+                    } else if (combo >= 30) {
+                        comboState = 1.3;
+                    } else if (combo >= 10) {
+                        comboState = 1;
+                    }
+                    double accuracy = 1.0;
+                    score += scoreScale * note.size * accuracy * ai.ScoreBoostAt(noteTime) + comboScale * comboState * ai.ComboBoostAt(noteTime);
+                    if (note.holdQuarterBeats != 0) {
+                        double holdTime = song.QuarterBeatsToSeconds(note.holdQuarterBeats);
+                        score += 2 * scoreScale * ai.HoldOver(noteTime, holdTime);
+                    }
                 }
+                scores.Add(score);
             }
-            
-            return (int)score;
+
+            // 50th percentile
+            scores.Sort();
+            return (int)scores[scores.Count / 2];
         }
     }
 }
