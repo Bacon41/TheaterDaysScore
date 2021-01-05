@@ -39,7 +39,7 @@ namespace TheaterDaysScore {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            int songNum = 2;
+            int songNum = 1;
 
             // Rendering
             drawWidth = measureWidth;

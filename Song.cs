@@ -76,12 +76,13 @@ namespace TheaterDaysScore {
             Note lastNote = this.notes.Last();
             int lastQuarterBeat = lastNote.measure * 16 + lastNote.quarterBeat;
             firstQuarterBeat = this.notes[0].measure * 16 + this.notes[0].quarterBeat;
+            firstQuarterBeat = 0;
             displayMeasures = lastNote.measure + 2;
             holdQuarterBeats = this.notes.Sum(note => note.holdQuarterBeats);
 
             quarterBeatsToSeconds = 60.0 / (4 * this.bpm);
 
-            songLength = (lastQuarterBeat - firstQuarterBeat) * quarterBeatsToSeconds;
+            songLength = (lastQuarterBeat - firstQuarterBeat + 10) * quarterBeatsToSeconds;
             noteWeight = this.notes.Sum(note => note.size);
             holdLength = holdQuarterBeats * quarterBeatsToSeconds;
 
@@ -89,7 +90,7 @@ namespace TheaterDaysScore {
         }
 
         public double SecondsSinceFirst(Note note) {
-            return (note.totalQuarterBeats - firstQuarterBeat) * quarterBeatsToSeconds;
+            return (note.totalQuarterBeats - firstQuarterBeat + 10) * quarterBeatsToSeconds;
         }
 
         public double QuarterBeatsToSeconds(int quarterBeats) {

@@ -19,6 +19,7 @@ namespace TheaterDaysScore {
 
     class Card {
         public int id;
+        public string colour;
         public Types type;
         public CenterEffect centerEffect;
         public Skill skill;
@@ -115,8 +116,9 @@ namespace TheaterDaysScore {
             }
         }
 
-        public Card(int id, Types type, CenterEffect centerEffect, Skill skill) {
+        public Card(int id, string colour, Types type, CenterEffect centerEffect, Skill skill) {
             this.id = id;
+            this.colour = colour;
             this.type = type;
             this.centerEffect = centerEffect;
             this.skill = skill;
@@ -146,7 +148,7 @@ namespace TheaterDaysScore {
             }
 
             while (start < songLen) {
-                if (random.NextDouble() * 100 < activationThreshold) {
+                if (random.NextDouble() * 100 < activationThreshold + 100) {
                     activations.Add(start);
                 }
                 start += this.skill.interval;
@@ -223,34 +225,34 @@ namespace TheaterDaysScore {
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
             Song song = songs[1];
 
-            Card guest = new Card(256, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), null);
-            //Card guest = new Card(868, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.danceUp, Types.Fairy, Types.Fairy, 90), new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10));
+            //Card guest = new Card(256, "#454341", Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), null);
+            Card guest = new Card(868, "#bee3e3", Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.danceUp, Types.Fairy, Types.Fairy, 90), new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10));
 
             List<Card> cards = new List<Card>() {
-                //new Card(286, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
-                new Card(250, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
-                new Card(391, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 7)),
+                //new Card(286, "#92cfbb", Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
+                /*new Card(250, "#ed90ba", Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
+                new Card(391, "#5abfb7", Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 7)),
 
-                new Card(256, Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), new Card.Skill(Card.Skill.Type.judgementBoost, 3, 9, 25, new int[] { }, 5)),
+                new Card(256, "#454341", Types.Fairy, new Card.CenterEffect(Card.CenterEffect.Type.skillBoost, Types.Fairy, Types.All, 20), new Card.Skill(Card.Skill.Type.judgementBoost, 3, 9, 25, new int[] { }, 5)),
 
-                new Card(269, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 8)),
-                new Card(178, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 9))
+                new Card(269, "#f19591", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 8)),
+                new Card(178, "#7e6ca8", Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 7, 13, 30, new int[] { 26 }, 9))*/
 
-                /*new Card(409, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
-                new Card(368, Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
-                new Card(868, Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
-                new Card(159, Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
-                new Card(432, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))*/
+                new Card(409, "#fd99e1", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(368, "#454341", Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
+                new Card(868, "#bee3e3", Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(159, "#f19557", Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
+                new Card(432, "#01a860", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))
 
-                /*new Card(432, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12)),
-                new Card(868, Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
-                new Card(572, Types.Princess, null, new Card.Skill(Card.Skill.Type.doubleBoost, 4, 7, 30, new int[] { 10, 5 }, 10)),
-                new Card(409, Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
-                new Card(732, Types.Angel, null, new Card.Skill(Card.Skill.Type.overClock, 5, 9, 30, new int[] { 32, 14 }, 5))*/
+                /*new Card(432, "#01a860", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12)),
+                new Card(868, "#bee3e3", Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(572, "#92cfbb", Types.Princess, null, new Card.Skill(Card.Skill.Type.doubleBoost, 4, 7, 30, new int[] { 10, 5 }, 10)),
+                new Card(409, "#fd99e1", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(732, "#6bb6b0", Types.Angel, null, new Card.Skill(Card.Skill.Type.overClock, 5, 9, 30, new int[] { 32, 14 }, 5))*/
             };
 
-            int totalAppeal = 320000;
-            //int totalAppeal = 377515;
+            //int totalAppeal = 320000;
+            int totalAppeal = 377515;
             //int totalAppeal = 386402;
 
             double baseScore = totalAppeal * (33f + song.level) / 20;
@@ -261,7 +263,7 @@ namespace TheaterDaysScore {
 
             List<double> scores = new List<double>();
 
-            for (int x = 0; x < 10000; x++) {
+            for (int x = 0; x < 1; x++) {
                 ActivationInstance ai = new ActivationInstance(song.songLength);
                 foreach (Card c in cards) {
                     ai.AddIntervals(c.GetActivations(song.songLength, guest.centerEffect, cards[2].centerEffect), c.skill);

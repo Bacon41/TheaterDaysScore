@@ -16,27 +16,25 @@ namespace TheaterDaysScore {
         private int drawWidth;
         private int drawHeight;
 
-        private Pen kotohaPen;
-        private Pen serikaPen;
         private RenderTargetBitmap score;
 
         public DrawIntervals() {
-            kotohaPen = new Pen(Color.Parse("#92cfbb").ToUint32(), 10);
-            serikaPen = new Pen(Color.Parse("#ed90ba").ToUint32(), 5);
-
             // Song info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            int songNum = 2;
+            int songNum = 1;
 
             // Rendering
-            drawWidth = 15;
+            drawWidth = 10 * 5;
             drawHeight = songs[songNum].displayMeasures * measureHeight;
 
             List<Card> cards = new List<Card>() {
-                new Card(286, Types.Princess, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 13, 35, new int[] { 26 }, 5)),
-                new Card(250, Types.Angel, null, new Card.Skill(Card.Skill.Type.comboBonus, 4, 7, 30, new int[] { 28 }, 6)),
+                new Card(409, "#fd99e1", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 6, 11, 30, new int[] { 28 }, 10)),
+                new Card(368, "#454341", Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 5, 10, 30, new int[] { 30 }, 12)),
+                new Card(868, "#bee3e3", Types.Fairy, null, new Card.Skill(Card.Skill.Type.multiUp, 6, 11, 30, new int[] { 32 }, 10)),
+                new Card(159, "#f19557", Types.Fairy, null, new Card.Skill(Card.Skill.Type.scoreUp, 7, 13, 30, new int[] { 30 }, 12)),
+                new Card(432, "#01a860", Types.Fairy, null, new Card.Skill(Card.Skill.Type.comboBonus, 5, 9, 30, new int[] { 26 }, 12))
             };
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
@@ -46,17 +44,24 @@ namespace TheaterDaysScore {
                     RenderCard(ctx, card, songs[songNum], offset);
                     offset += 10;
                 }
+                for (int x = 0; x < songs[songNum].songLength; x++) {
+                    Pen writePen = new Pen(Colors.Black.ToUint32(), 3);
+                    double pixelsPerSecond = measureHeight * (double)songs[songNum].bpm / 60 / 4;
+                    double height = measureHeight * (songs[songNum].displayMeasures - .625) - x * pixelsPerSecond;
+                    ctx.DrawLine(writePen, new Point(0, height), new Point(45, height));
+                }
             }
         }
 
         private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset) {
             // Timing
             double pixelsPerSecond = measureHeight * (double)song.bpm / 60 / 4;
-            double startPos = measureHeight * (song.displayMeasures - 1) - card.skill.interval * pixelsPerSecond;
-            Pen writePen = kotohaPen;
-            if (offset != 0) {
-                writePen = serikaPen;
+            double startPos = measureHeight * (song.displayMeasures - .625) - card.skill.interval * pixelsPerSecond;
+            int weight = 5;
+            if (offset == 0) {
+                weight *= 2;
             }
+            Pen writePen = new Pen(Color.Parse(card.colour).ToUint32(), weight);
             while (startPos > measureHeight) {
                 ctx.DrawLine(writePen, new Point(offset, startPos), new Point(offset, Math.Max(measureHeight, startPos - card.skill.duration * pixelsPerSecond)));
                 startPos -= card.skill.interval * pixelsPerSecond;
