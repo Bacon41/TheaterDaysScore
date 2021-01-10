@@ -19,6 +19,8 @@ namespace TheaterDaysScore {
         private int drawWidth;
         private int drawHeight;
 
+        private List<Song> songs;
+
         private Pen borderPen;
         private Pen beatPen;
         private Pen halfBeatPen;
@@ -38,19 +40,20 @@ namespace TheaterDaysScore {
             // Song info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
-            List<Song> songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-            int songNum = 1;
-
-            // Rendering
-            drawWidth = measureWidth;
-            drawHeight = songs[songNum].displayMeasures * measureHeight;
-            laneWidth = (double)measureWidth / 7;
-            quarterBeatHeight = (double)measureHeight / 16;
+            songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
 
             tapImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/tap.png")));
             leftImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/left.png")));
             rightImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/right.png")));
             upImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/up.png")));
+        }
+
+        public void Draw(int songNum) {
+            // Rendering
+            drawWidth = measureWidth;
+            drawHeight = songs[songNum].displayMeasures * measureHeight;
+            laneWidth = (double)measureWidth / 7;
+            quarterBeatHeight = (double)measureHeight / 16;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
@@ -58,7 +61,7 @@ namespace TheaterDaysScore {
                     RenderMeasure(ctx, x);
                 }
                 foreach (Song.Note note in songs[songNum].notes) {
-                    RenderNote(ctx, note);
+                    RenderNote(ctx, note, songs[songNum].measuresForSkillStart);
                 }
             }
         }
@@ -83,22 +86,22 @@ namespace TheaterDaysScore {
             ctx.DrawLine(halfBeatPen, new Point(laneWidth * 6, num * measureHeight), new Point(laneWidth * 6, (num + 1) * measureHeight));
         }
 
-        private Point GetCenter(Song.Note note) {
+        private Point GetCenter(Song.Note note, int startMeasureOffset) {
             double xPos = laneWidth * note.lane;
             if (xPos == 0) {
                 xPos = measureWidth / 2;
             }
-            return new Point(xPos, drawHeight - measureHeight - quarterBeatHeight * (note.measure * 16 + note.quarterBeat));
+            return new Point(xPos, drawHeight - measureHeight * startMeasureOffset - quarterBeatHeight * (note.measure * 16 + note.quarterBeat));
         }
 
-        private void RenderNote(IDrawingContextImpl ctx, Song.Note note) {
-            Point center = GetCenter(note);
+        private void RenderNote(IDrawingContextImpl ctx, Song.Note note, int startMeasureOffset) {
+            Point center = GetCenter(note, startMeasureOffset);
             if (note.waypoints != null) {
                 PathGeometry holdLine = new PathGeometry();
                 StreamGeometryContext holdCtx = holdLine.Open();
                 holdCtx.BeginFigure(new Point(center.X, center.Y), false);
                 foreach (Song.Note point in note.waypoints) {
-                    Point pointCenter = GetCenter(point);
+                    Point pointCenter = GetCenter(point, startMeasureOffset);
                     holdCtx.LineTo(new Point(pointCenter.X, pointCenter.Y));
                 }
                 ctx.DrawGeometry(null, holdPen, holdLine.PlatformImpl);
@@ -135,10 +138,12 @@ namespace TheaterDaysScore {
 
         public override void Render(DrawingContext context) {
             base.Render(context);
-            
-            context.DrawImage(score, 1, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
-            this.Width = score.Size.Width;
-            this.Height = score.Size.Height;
+
+            if (score != null) {
+                context.DrawImage(score, 1, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
+                this.Width = score.Size.Width;
+                this.Height = score.Size.Height;
+            }
         }
     }
 }

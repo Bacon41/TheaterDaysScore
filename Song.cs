@@ -11,6 +11,7 @@ namespace TheaterDaysScore {
         public Types type { get; set; }
         public int bpm { get; set; }
         public int level { get; set; }
+        public double skillStartOffset { get; set; }
         public List<Note> notes { get; set; }
 
         public int noteCount;
@@ -22,6 +23,8 @@ namespace TheaterDaysScore {
         public double songLength; // sec
         public int noteWeight;
         public double holdLength; // sec
+
+        public int measuresForSkillStart;
 
         private int firstQuarterBeat;
         private double quarterBeatsToSeconds;
@@ -64,11 +67,12 @@ namespace TheaterDaysScore {
             }
         }
 
-        public Song(string name, Types type, int bpm, int level, List<Note> notes) {
+        public Song(string name, Types type, int bpm, int level, double skillStartOffset, List<Note> notes) {
             this.name = name;
             this.type = type;
             this.bpm = bpm;
             this.level = level;
+            this.skillStartOffset = skillStartOffset;
             this.notes = notes;
             noteCount = this.notes.Count;
             bigNotes = this.notes.Where(note => note.size == 2).Count();
@@ -76,21 +80,24 @@ namespace TheaterDaysScore {
             Note lastNote = this.notes.Last();
             int lastQuarterBeat = lastNote.measure * 16 + lastNote.quarterBeat;
             firstQuarterBeat = this.notes[0].measure * 16 + this.notes[0].quarterBeat;
-            firstQuarterBeat = 0;
-            displayMeasures = lastNote.measure + 2;
+
+            measuresForSkillStart = (int)Math.Ceiling((this.skillStartOffset - firstQuarterBeat) / 16);
+
+            displayMeasures = lastNote.measure + 1 + measuresForSkillStart;
             holdQuarterBeats = this.notes.Sum(note => note.holdQuarterBeats);
 
             quarterBeatsToSeconds = 60.0 / (4 * this.bpm);
 
-            songLength = (lastQuarterBeat - firstQuarterBeat + 10) * quarterBeatsToSeconds;
+            songLength = (lastQuarterBeat - firstQuarterBeat + this.skillStartOffset) * quarterBeatsToSeconds;
             noteWeight = this.notes.Sum(note => note.size);
             holdLength = holdQuarterBeats * quarterBeatsToSeconds;
 
+            // https://million.hyrorre.com/
             // https://api.megmeg.work/mltd/v1/songDesc/
         }
 
         public double SecondsSinceFirst(Note note) {
-            return (note.totalQuarterBeats - firstQuarterBeat + 10) * quarterBeatsToSeconds;
+            return (note.totalQuarterBeats - firstQuarterBeat + this.skillStartOffset) * quarterBeatsToSeconds;
         }
 
         public double QuarterBeatsToSeconds(int quarterBeats) {
