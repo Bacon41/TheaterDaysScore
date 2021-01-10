@@ -2,19 +2,12 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore {
     class Card {
-        public int id { get; set; }
-        public int idolId { get; set; }
-        public string colour { get; set; }
-        public Types idolType { get; set; }
-        public CenterEffect centerEffect { get; set; }
-        public List<Skill> skill { get; set; }
-
-        private Random random;
 
         public class Skill {
             public Type effectId { get; set; }
@@ -92,8 +85,11 @@ namespace TheaterDaysScore {
         public class CenterEffect {
             public Type attribute { get; set; }
             public Types idolType { get; set; }
+            public Types specificIdolType { get; set; }
             public Types songType { get; set; }
             public int value { get; set; }
+            public Type attribute2 { get; set; }
+            public int value2 { get; set; }
 
             public enum Type {
                 vocalUp = 1,
@@ -104,24 +100,79 @@ namespace TheaterDaysScore {
                 skillBoost,
             };
 
-            public CenterEffect(Type attribute, Types idolType, Types songType, int value) {
+            public CenterEffect(Type attribute, Types idolType, Types specificIdolType, Types songType, int value, Type attribute2, int value2) {
                 this.attribute = attribute;
                 this.idolType = idolType;
+                this.specificIdolType = specificIdolType;
                 this.songType = songType;
                 this.value = value;
+                this.attribute2 = attribute2;
+                this.value2 = value2;
             }
         }
 
-        public Card(int id, int idolId, Types idolType, CenterEffect centerEffect, List<Skill> skill) {
+        public int id { get; set; }
+        public int idolId { get; set; }
+        public string colour { get; set; }
+        public Types idolType { get; set; }
+
+        public int vocalMaxAwakened { get; set; }
+        public int vocalMasterBonus { get; set; }
+        public int danceMaxAwakened { get; set; }
+        public int danceMasterBonus { get; set; }
+        public int visualMaxAwakened { get; set; }
+        public int visualMasterBonus { get; set; }
+
+
+        public CenterEffect centerEffect { get; set; }
+        public List<Skill> skill { get; set; }
+
+        private Random random;
+
+        public Card(int id, int idolId, Types idolType,
+            int vocalMaxAwakened, int vocalMasterBonus, int danceMaxAwakened, int danceMasterBonus, int visualMaxAwakened, int visualMasterBonus,
+            CenterEffect centerEffect, List<Skill> skill) {
+
             this.id = id;
             this.idolId = idolId;
             this.idolType = idolType;
+
+            this.vocalMaxAwakened = vocalMaxAwakened;
+            this.vocalMasterBonus = vocalMasterBonus;
+            this.danceMaxAwakened = danceMaxAwakened;
+            this.danceMasterBonus = danceMasterBonus;
+            this.visualMaxAwakened = visualMaxAwakened;
+            this.visualMasterBonus = visualMasterBonus;
+
             this.centerEffect = centerEffect;
             this.skill = skill;
 
             random = new Random();
 
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png
+        }
+
+        public Vector3 GetStats(int level) {
+            return new Vector3(this.vocalMaxAwakened + this.vocalMasterBonus * level,
+                    this.danceMaxAwakened + this.danceMasterBonus * level,
+                    this.visualMaxAwakened + this.visualMasterBonus * level);
+        }
+
+        public Vector3 GetCenter() {
+            if (this.centerEffect == null) {
+                return new Vector3(0);
+            }
+            switch (this.centerEffect.attribute) {
+                case Card.CenterEffect.Type.vocalUp:
+                    return new Vector3((float)this.centerEffect.value / 100, 0, 0);
+                case Card.CenterEffect.Type.danceUp:
+                    return new Vector3(0, (float)(this.centerEffect.value + this.centerEffect.value2) / 100, 0);
+                case Card.CenterEffect.Type.visualUp:
+                    return new Vector3(0, 0, (float)this.centerEffect.value / 100);
+                case Card.CenterEffect.Type.allUp:
+                    return new Vector3((float)this.centerEffect.value / 100);
+            }
+            return new Vector3(0);
         }
 
         public void SetLevel(int level) {

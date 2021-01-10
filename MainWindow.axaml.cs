@@ -44,6 +44,8 @@ namespace TheaterDaysScore {
             scoreCanvas.Draw(songNum);
             intervalCanvas.Draw(songNum, cardIds);
             calc = new Calculator();
+
+            calc.GetAppeal();
         }
 
         private void InitializeComponent() {
