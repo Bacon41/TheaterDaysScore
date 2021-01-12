@@ -1,9 +1,10 @@
-[
+﻿[
 	{
 		"name": "Blue Symphony",
 		"type": 2,
 		"bpm": 140,
 		"level": 16,
+		"skillStartOffset": 24.5,
 		"notes": [
 			{
 				"measure": 0,
@@ -11014,7 +11015,7 @@
 		"type": 3,
 		"bpm": 132,
 		"level": 17,
-		"skillStartOffset": 18,
+		"skillStartOffset": 18.5,
 		"notes": [
 			{
 				"measure": 0,
@@ -16927,10 +16928,11 @@
 		]
 	},
 	{
-		"name": "Music",
+		"name": "MUSIC♪",
 		"type": 4,
 		"bpm": 138,
 		"level": 18,
+		"skillStartOffset": 19.75,
 		"notes": [
 			{
 				"measure": 0,

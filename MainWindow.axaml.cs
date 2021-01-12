@@ -46,6 +46,8 @@ namespace TheaterDaysScore {
             calc = new Calculator();
 
             calc.GetAppeal();
+
+            this.FindControl<RadioButton>("song0").IsChecked = true;
         }
 
         private void InitializeComponent() {

@@ -96,6 +96,28 @@ namespace TheaterDaysScore {
             // https://api.megmeg.work/mltd/v1/songDesc/
         }
 
+        public bool IsDuringAppeal(double second) {
+            int i = 0;
+            while (i != -1) {
+                i = this.notes.FindIndex(i, this.notes.Count - i, note => note.size == 10);
+                if (i >= 0) {
+                    double appealStart = SecondsSinceFirst(this.notes[i]);
+                    if (appealStart < second) {
+                        if (i < this.notes.Count - 1) {
+                            double appealEnd = SecondsSinceFirst(this.notes[i + 1]);
+                            if (appealEnd > second) {
+                                return true;
+                            }
+                        } else {
+                            return true;
+                        }
+                    }
+                    i++;
+                }
+            }
+            return false;
+        }
+
         public double SecondsSinceFirst(Note note) {
             return (note.totalQuarterBeats - firstQuarterBeat + this.skillStartOffset) * quarterBeatsToSeconds;
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -150,6 +151,7 @@ namespace TheaterDaysScore {
             random = new Random();
 
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png
+            // https://storage.matsurihi.me/mltd/icon_l/017kth0054_1.png
         }
 
         public Vector3 GetStats(int level) {
@@ -203,11 +205,11 @@ namespace TheaterDaysScore {
 
                 double appealTime = song.SecondsSinceFirst(song.notes.First(note => note.size == 10));
                 while (start < song.songLength) {
-                    //if (start < appealTime || start > appealTime + 6.86) {
-                    if (random.NextDouble() * 100 < activationThreshold + 100) {
-                        activations.Add(start);
+                    if (!song.IsDuringAppeal(start)) {
+                        if (random.NextDouble() * 100 < activationThreshold + 100) {
+                            activations.Add(start);
+                        }
                     }
-                    //}
                     start += skill.interval;
                 }
             }
