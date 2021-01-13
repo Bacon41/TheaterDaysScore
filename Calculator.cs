@@ -285,7 +285,7 @@ namespace TheaterDaysScore {
 
             List<double> scores = new List<double>();
 
-            for (int x = 0; x < 1; x++) {
+            for (int x = 0; x < 1000; x++) {
                 ActivationInstance ai = new ActivationInstance(song.songLength);
                 foreach (Card c in cards) {
                     ai.AddIntervals(c.GetActivations(song, guest.centerEffect, cards[2].centerEffect), c.skill[0]);

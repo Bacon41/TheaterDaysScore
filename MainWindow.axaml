@@ -11,9 +11,10 @@
     <TextBlock Name="scoreDisplay" FontSize="24">NaN</TextBlock>
     <StackPanel Orientation="Horizontal">
       <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song0">Blue Symphony</RadioButton>
-      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song1">Harmonics</RadioButton>
-      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song2">Oshiete last note...</RadioButton>
-      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song3">Music</RadioButton>
+      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song1">Rebellion</RadioButton>
+      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song2">Harmonics</RadioButton>
+      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song3">Oshiete last note...</RadioButton>
+      <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song4">Music</RadioButton>
     </StackPanel>
     <Button Click="Calculate_Click">Calculate</Button>
     <ScrollViewer Width="400" Height="600">

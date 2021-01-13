@@ -206,7 +206,7 @@ namespace TheaterDaysScore {
                 double appealTime = song.SecondsSinceFirst(song.notes.First(note => note.size == 10));
                 while (start < song.songLength) {
                     if (!song.IsDuringAppeal(start)) {
-                        if (random.NextDouble() * 100 < activationThreshold + 100) {
+                        if (random.NextDouble() * 100 < activationThreshold) {
                             activations.Add(start);
                         }
                     }

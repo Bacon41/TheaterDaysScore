@@ -34,7 +34,7 @@ namespace TheaterDaysScore {
             totalAppeal = 320000;*/
             guestId = 868;
             cardIds = new int[5] { 409, 368, 868, 159, 432 };
-            skillLevels = new int[5] { 12, 12, 10, 12, 12 };
+            skillLevels = new int[5] { 10, 12, 10, 12, 12 };
             totalAppeal = 377515;
             /*guestId = 745;
             cardIds = new int[5] { 432, 868, 572, 409, 732 };
@@ -75,6 +75,9 @@ namespace TheaterDaysScore {
                     break;
                 case "song3":
                     songNum = 3;
+                    break;
+                case "song4":
+                    songNum = 4;
                     break;
             }
             scoreCanvas.Draw(songNum);
