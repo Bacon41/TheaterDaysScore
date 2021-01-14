@@ -18,7 +18,7 @@ namespace TheaterDaysScore {
         private int drawHeight;
 
         private List<Song> songs;
-        private List<Card> allCards;
+        private List<CardData> allCards;
         private List<Idol> idols;
 
         private RenderTargetBitmap score;
@@ -30,7 +30,7 @@ namespace TheaterDaysScore {
             songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
 
             StreamReader cardReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/cardlist.json")));
-            allCards = JsonSerializer.Deserialize<List<Card>>(cardReader.ReadToEnd());
+            allCards = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
 
             StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/idollist.json")));
             idols = JsonSerializer.Deserialize<List<Idol>>(idolReader.ReadToEnd());
@@ -42,10 +42,10 @@ namespace TheaterDaysScore {
             drawWidth = 10 * 5;
             drawHeight = song.displayMeasures * measureHeight;
 
-            List<Card> cards = new List<Card>();
+            List<CardData> cards = new List<CardData>();
 
             for (int x = 0; x < 5; x++) {
-                Card nextCard = allCards.Find(card => card.id == cardIds[x]);
+                CardData nextCard = allCards.Find(card => card.id == cardIds[x]);
                 nextCard.colour = idols.Find(idol => idol.id == nextCard.idolId).colour;
                 cards.Add(nextCard);
             }
@@ -53,7 +53,7 @@ namespace TheaterDaysScore {
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
                 int offset = 0;
-                foreach (Card card in cards) {
+                foreach (CardData card in cards) {
                     RenderCard(ctx, card, song, offset);
                     offset += 10;
                 }
@@ -66,7 +66,7 @@ namespace TheaterDaysScore {
             }
         }
 
-        private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset) {
+        private void RenderCard(IDrawingContextImpl ctx, CardData card, Song song, int offset) {
             // Timing
             double pixelsPerSecond = measureHeight * (double)song.bpm / 60 / 4;
             double startPos = measureHeight * (song.displayMeasures - song.measuresForSkillStart + ((song.skillStartOffset - song.notes[0].quarterBeat) / 16)) - card.skill[0].interval * pixelsPerSecond;

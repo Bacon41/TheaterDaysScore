@@ -20,6 +20,7 @@ namespace TheaterDaysScore {
         private int[] cardIds;
         private int[] skillLevels;
         private int totalAppeal;
+        private Unit unit;
 
         public MainWindow() {
             InitializeComponent();
@@ -40,14 +41,17 @@ namespace TheaterDaysScore {
             cardIds = new int[5] { 432, 868, 572, 409, 732 };
             skillLevels = new int[5] { 12, 10, 10, 10, 5 };
             totalAppeal = 386402;*/
+            unit = new Unit("031tom0164", "031tom0164", "007ior0084", "020meg0084", "038chz0034", "009rit0084");
 
             scoreCanvas.Draw(songNum);
             intervalCanvas.Draw(songNum, cardIds);
             calc = new Calculator();
 
-            calc.GetAppeal();
+            calc.GetAppeal(Types.Fairy, Calculator.BoostType.none, unit);
 
             this.FindControl<RadioButton>("song0").IsChecked = true;
+
+            var x = Database.DB.TopAppeal(Types.Fairy, 10, "031tom0164");
         }
 
         private void InitializeComponent() {
@@ -58,7 +62,7 @@ namespace TheaterDaysScore {
         }
 
         public void Calculate_Click(object sender, RoutedEventArgs e) {
-            disp.Text = "50th Percentile: " + calc.GetScore(songNum, totalAppeal, guestId, cardIds, skillLevels).ToString();
+            disp.Text = "50th Percentile: " + calc.GetScore(songNum, totalAppeal, unit).ToString();
         }
 
         public void SongSelect(object sender, RoutedEventArgs e) {

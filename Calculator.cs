@@ -19,69 +19,10 @@ namespace TheaterDaysScore {
         EX,
     };
 
-    class ActivationInstance {
-
-        int[] scoreUp;
-        int[] comboUp;
-        int[] doubleScore;
-        int[] doubleCombo;
-
-        public ActivationInstance(double songLen) {
-            int numSeconds = (int)Math.Ceiling(songLen) + 1;
-            scoreUp = new int[numSeconds];
-            comboUp = new int[numSeconds];
-            doubleScore = new int[numSeconds];
-            doubleCombo = new int[numSeconds];
-        }
-
-        public void AddIntervals(List<int> starts, Card.Skill skill) {
-            foreach (int start in starts) {
-                for (int x = start; x < scoreUp.Length && x < start + skill.duration; x++) {
-                    if (skill.effectId == Card.Skill.Type.doubleBoost) {
-                        if (skill.ScoreBonus() > doubleScore[x]) {
-                            doubleScore[x] = skill.ScoreBonus();
-                        }
-                        if (skill.ComboBonus() > doubleCombo[x]) {
-                            doubleCombo[x] = skill.ComboBonus();
-                        }
-                    } else {
-                        if (skill.ScoreBonus() > scoreUp[x]) {
-                            scoreUp[x] = skill.ScoreBonus();
-                        }
-                        if (skill.ComboBonus() > comboUp[x]) {
-                            comboUp[x] = skill.ComboBonus();
-                        }
-                    }
-                }
-            }
-        }
-
-        public double ScoreBoostAt(double time) {
-            int currentSecond = (int)Math.Floor(time);
-            return (100.0 + scoreUp[currentSecond] + doubleScore[currentSecond]) / 100;
-        }
-
-        public double ComboBoostAt(double time) {
-            int currentSecond = (int)Math.Floor(time);
-            return (100.0 + 3 * (comboUp[currentSecond] + doubleCombo[currentSecond])) / 100;
-        }
-
-        public double HoldOver(double startTime, double length) {
-            int startScore = (int)Math.Floor(startTime);
-            int endScore = (int)Math.Ceiling(startTime + length);
-            double holdScore = 0;
-            for (int x = startScore; x < endScore; x++) {
-                holdScore += this.ScoreBoostAt(x) * (Math.Min(startTime + length, x + 1) - Math.Max(startTime, x));
-            }
-            return holdScore;
-        }
-    }
-
     class Calculator {
         private List<Song> songs;
-        private List<Card> allCards;
 
-        enum BoostType {
+        public enum BoostType {
             none,
             vocal,
             dance,
@@ -92,12 +33,9 @@ namespace TheaterDaysScore {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
             songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-
-            StreamReader cardReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/cardlist.json")));
-            allCards = JsonSerializer.Deserialize<List<Card>>(cardReader.ReadToEnd());
         }
 
-        public int GetAppeal() {
+        public int GetAppeal(Types songType, BoostType eventType, Unit unit) {
             // https://megmeg.work/basic_information/formula/appealvalue/
 
             // Princess song:
@@ -129,14 +67,14 @@ namespace TheaterDaysScore {
             int[] cardLevel = new int[5] { 5, 4, 0, 4, 4 };
             int[] supportIds = new int[10] { 1043, 462, 303, 869, 808, 745, 514, 639, 772, 806 };
             int[] supportLevel = new int[10] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 4 };*/
-            Types songType = Types.Fairy;
+            /*Types songType = Types.Fairy;
             BoostType eventType = BoostType.none;
             int guestId = 868;
             int guestLevel = 4;
             int[] cardIds = new int[5] { 409, 368, 868, 159, 432 };
             int[] cardLevel = new int[5] { 4, 5, 4, 5, 5 };
             int[] supportIds = new int[10] { 1044, 461, 981, 924, 685, 573, 515, 733, 253, 806 };
-            int[] supportLevel = new int[10] { 0, 0, 0, 0, 0, 0, 0, 4, 5, 4 };
+            int[] supportLevel = new int[10] { 0, 0, 0, 0, 0, 0, 0, 4, 5, 4 };*/
             /*Types songType = Types.Angel;
             BoostType eventType = BoostType.none;
             int guestId = 982;
@@ -154,20 +92,21 @@ namespace TheaterDaysScore {
             int[] supportIds = new int[10] { 486, 468, 287, 519, 766, 516, 733, 253, 159, 368 };
             int[] supportLevel = new int[10] { 4, 4, 5, 4, 4, 4, 4, 5, 5, 5 };*/
 
-            Vector3 guestCenterEffect = allCards.Find(card => card.id == guestId).GetCenter();
-            Vector3 centerCenterEffect = allCards.Find(card => card.id == cardIds[2]).GetCenter();
+            Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, unit);
+            Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, unit);
 
             // Support
             Vector3 supportStatus = new Vector3(0);
             Vector3 supportType = new Vector3(0);
             Vector3 supportEvent = new Vector3(0);
-            for (int x = 0; x < 10; x++) {
-                Card nextCard = allCards.Find(card => card.id == supportIds[x]);
-                Vector3 stats = nextCard.GetStats(supportLevel[x]);
+
+            List<Card> supportCards = unit.TopSupport(songType);
+            foreach (Card card in supportCards) {
+                Vector3 stats = card.SplitAppeal();
 
                 supportStatus += stats;
 
-                if (nextCard.idolType == songType || nextCard.idolType == Types.EX || songType == Types.All) {
+                if (card.Type == songType || card.Type == Types.EX || songType == Types.All) {
                     supportType += floor(stats * 0.3f);
                 }
 
@@ -190,12 +129,11 @@ namespace TheaterDaysScore {
             Vector3 guestType = new Vector3(0);
             Vector3 guestCenter = new Vector3(0);
             {
-                Card nextCard = allCards.Find(card => card.id == guestId);
-                Vector3 stats = nextCard.GetStats(guestLevel);
+                Vector3 stats = unit.Guest.SplitAppeal();
 
                 guestStatus = stats;
 
-                if (nextCard.idolType == songType || nextCard.idolType == Types.EX || songType == Types.All) {
+                if (unit.Guest.Type == songType || unit.Guest.Type == Types.EX || songType == Types.All) {
                     guestType += floor(stats * 0.3f);
                 }
                 
@@ -208,11 +146,10 @@ namespace TheaterDaysScore {
             Vector3[] unitType = new Vector3[4] { new Vector3(), new Vector3(), new Vector3(), new Vector3() };
             Vector3[] unitCenter = new Vector3[4] { new Vector3(), new Vector3(), new Vector3(), new Vector3() };
             Vector3[] unitEvent = new Vector3[4] { new Vector3(), new Vector3(), new Vector3(), new Vector3() };
-            for (int x = 0; x < 5; x++) {
-                Card nextCard = allCards.Find(card => card.id == cardIds[x]);
-                Vector3 stats = nextCard.GetStats(cardLevel[x]);
+            foreach (Card card in unit.Members) {
+                Vector3 stats = card.SplitAppeal();
                 int cardType = -1;
-                switch (nextCard.idolType) {
+                switch (card.Type) {
                     case Types.Princess:
                         cardType = 0;
                         break;
@@ -229,7 +166,7 @@ namespace TheaterDaysScore {
 
                 unitStatus[cardType] += stats;
 
-                if (nextCard.idolType == songType || nextCard.idolType == Types.EX || songType == Types.All) {
+                if (card.Type == songType || card.Type == Types.EX || songType == Types.All) {
                     unitType[cardType] += stats * 0.3f;
                 }
 
@@ -263,19 +200,12 @@ namespace TheaterDaysScore {
             return new Vector3((float)Math.Floor(input.X), (float)Math.Floor(input.Y), (float)Math.Floor(input.Z));
         }
 
-        public int GetScore(int songNum, int totalAppeal, int guestId, int[] cardIds, int[] skillLevels) {
+        public int GetScore(int songNum, int totalAppeal, Unit unit) {
             // https://megmeg.work/basic_information/formula/score/
 
             Song song = songs[songNum];
 
-            List<Card> cards = new List<Card>();
-
-            Card guest = allCards.Find(card => card.id == guestId);
-            for (int x = 0; x < 5; x++) {
-                Card nextCard = allCards.Find(card => card.id == cardIds[x]);
-                nextCard.SetLevel(skillLevels[x]);
-                cards.Add(nextCard);
-            }
+            totalAppeal = GetAppeal(song.type, BoostType.none, unit);
 
             double baseScore = totalAppeal * (33f + song.level) / 20;
             double notesAndHolds = song.noteWeight + 2 * song.holdLength;
@@ -284,12 +214,8 @@ namespace TheaterDaysScore {
             double comboScale = 0.3 * baseScore / (2 * song.noteCount - 66);
 
             List<double> scores = new List<double>();
-
-            for (int x = 0; x < 1000; x++) {
-                ActivationInstance ai = new ActivationInstance(song.songLength);
-                foreach (Card c in cards) {
-                    ai.AddIntervals(c.GetActivations(song, guest.centerEffect, cards[2].centerEffect), c.skill[0]);
-                }
+            for (int x = 0; x < 1; x++) {
+                Unit.IActivation activations = unit.GetActivations(song, true);
 
                 double score = 0;
                 int combo = 0;
@@ -309,10 +235,10 @@ namespace TheaterDaysScore {
                         comboState = 1;
                     }
                     double accuracy = 1.0;
-                    score += scoreScale * note.size * accuracy * ai.ScoreBoostAt(noteTime) + comboScale * comboState * ai.ComboBoostAt(noteTime);
+                    score += scoreScale * note.size * accuracy * activations.ScoreBoostAt(noteTime) + comboScale * comboState * activations.ComboBoostAt(noteTime);
                     if (note.holdQuarterBeats != 0) {
                         double holdTime = song.QuarterBeatsToSeconds(note.holdQuarterBeats);
-                        score += 2 * scoreScale * ai.HoldOver(noteTime, holdTime);
+                        score += 2 * scoreScale * activations.HoldOver(noteTime, holdTime);
                     }
                 }
                 scores.Add(score);

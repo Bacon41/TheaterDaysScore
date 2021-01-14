@@ -1,219 +1,181 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Numerics;
 using System.Text;
-using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
 namespace TheaterDaysScore {
     class Card {
+        private CardData data;
+        private int masterRank;
+        private int skillLevel;
+
+        public string ID { get; }
+        public Types Type { get; }
+        public List<Skill> Skills { get; }
+        public CenterEffect Center { get; }
 
         public class Skill {
-            public Type effectId { get; set; }
-            public int duration { get; set; }
-            public int interval { get; set; }
-            public int probability { get; set; }
-            public int[] value { get; set; }
-            public int level { get; set; }
+            private CardData.Skill data;
+            private int level;
 
-            public int leveledProbability;
+            public int Interval { get; }
+            public int Duration { get; }
+            public int Probability { get; }
 
-            public enum Type {
-                scoreUp = 1,
-                comboBonus,
-                lifeRestore,
-                damageGuard,
-                comboProtect,
-                judgementBoost,
-                doubleBoost,
-                multiUp,
-                overClock,
-                overRondo,
-            };
+            public CardData.Skill.Type Effect { get; }
+            public int ScoreBoost { get; }
+            public int ComboBoost { get; }
 
-            public Skill(Type effectId, int duration, int interval, int probability, int[] value, int level) {
-                this.effectId = effectId;
-                this.duration = duration;
-                this.interval = interval;
-                this.probability = probability;
-                this.value = value;
+            public Skill(CardData.Skill data, int level) {
+                this.data = data;
                 this.level = level;
 
-                if (this.level <= 10) {
-                    leveledProbability = this.probability + this.level;
-                } else {
-                    leveledProbability = this.probability + 10 + (this.level - 10) * 5;
+                Interval = this.data.interval;
+                Duration = this.data.duration;
+                Probability = this.data.probability + this.level;
+                if (this.level > 10) {
+                    Probability += (this.level - 10) * 5;
                 }
-            }
 
-            public void SetLevel(int level) {
-                if (level <= 10) {
-                    this.leveledProbability = this.probability + level;
-                } else {
-                    this.leveledProbability = this.probability + 10 + (level - 10) * 5;
+                Effect = this.data.effectId;
+                switch (this.data.effectId) {
+                    case CardData.Skill.Type.scoreUp:
+                        ScoreBoost = this.data.value[0];
+                        break;
+                    case CardData.Skill.Type.multiUp:
+                        ScoreBoost = this.data.value[0];
+                        break;
+                    case CardData.Skill.Type.overClock:
+                        ScoreBoost = this.data.value[0];
+                        break;
+                    case CardData.Skill.Type.doubleBoost:
+                        ScoreBoost = this.data.value[0];
+                        ComboBoost = this.data.value[1];
+                        break;
+                    case CardData.Skill.Type.comboBonus:
+                        ComboBoost = this.data.value[0];
+                        break;
+                    case CardData.Skill.Type.overRondo:
+                        ComboBoost = this.data.value[0];
+                        break;
                 }
-            }
-
-            public int ScoreBonus() {
-                switch (this.effectId) {
-                    case Type.scoreUp:
-                        return this.value[0];
-                    case Type.doubleBoost:
-                        return this.value[0];
-                    case Type.multiUp:
-                        return this.value[0];
-                    case Type.overClock:
-                        return this.value[0];
-                }
-                return 0;
-            }
-
-            public int ComboBonus() {
-                switch (this.effectId) {
-                    case Type.comboBonus:
-                        return this.value[0];
-                    case Type.doubleBoost:
-                        return this.value[1];
-                    case Type.overRondo:
-                        return this.value[0];
-                }
-                return 0;
             }
         }
 
         public class CenterEffect {
-            public Type attribute { get; set; }
-            public Types idolType { get; set; }
-            public Types specificIdolType { get; set; }
-            public Types songType { get; set; }
-            public int value { get; set; }
-            public Type attribute2 { get; set; }
-            public int value2 { get; set; }
+            private CardData.CenterEffect data;
 
-            public enum Type {
-                vocalUp = 1,
-                danceUp,
-                visualUp,
-                allUp,
-                lifeUp,
-                skillBoost,
-            };
+            public CenterEffect(CardData.CenterEffect data) {
+                this.data = data;
+            }
 
-            public CenterEffect(Type attribute, Types idolType, Types specificIdolType, Types songType, int value, Type attribute2, int value2) {
-                this.attribute = attribute;
-                this.idolType = idolType;
-                this.specificIdolType = specificIdolType;
-                this.songType = songType;
-                this.value = value;
-                this.attribute2 = attribute2;
-                this.value2 = value2;
+            public double ActivationBoost(Types cardType) {
+                switch (data.attribute) {
+                    case CardData.CenterEffect.Type.skillBoost:
+                        if (data.idolType == cardType) {
+                            return (double)data.value / 100;
+                        }
+                        break;
+                }
+                return 0;
+            }
+
+            public Vector3 GetBoost(Types songType, Unit unit) {
+                Vector3 boost = new Vector3(0);
+                if (data == null) {
+                    return boost;
+                }
+                switch (data.specificIdolType) {
+                    case Types.Princess:
+                        if (!unit.IsMonocolour(data.specificIdolType)) {
+                            return boost;
+                        }
+                        break;
+                    case Types.Fairy:
+                        if (!unit.IsMonocolour(data.specificIdolType)) {
+                            return boost;
+                        }
+                        break;
+                    case Types.Angel:
+                        if (!unit.IsMonocolour(data.specificIdolType)) {
+                            return boost;
+                        }
+                        break;
+                    case Types.All:
+                        if (!unit.IsTricolour()) {
+                            return boost;
+                        }
+                        break;
+                }
+                switch (data.attribute) {
+                    case CardData.CenterEffect.Type.vocalUp:
+                        boost += new Vector3((float)data.value / 100, 0, 0);
+                        break;
+                    case CardData.CenterEffect.Type.danceUp:
+                        boost += new Vector3(0, (float)data.value / 100, 0);
+                        break;
+                    case CardData.CenterEffect.Type.visualUp:
+                        boost += new Vector3(0, 0, (float)data.value / 100);
+                        break;
+                    case CardData.CenterEffect.Type.allUp:
+                        boost += new Vector3((float)data.value / 100);
+                        break;
+                }
+                if (data.songType == songType || data.songType == Types.All) {
+                    switch (data.attribute2) {
+                        case CardData.CenterEffect.Type.vocalUp:
+                            boost += new Vector3((float)data.value2 / 100, 0, 0);
+                            break;
+                        case CardData.CenterEffect.Type.danceUp:
+                            boost += new Vector3(0, (float)data.value2 / 100, 0);
+                            break;
+                        case CardData.CenterEffect.Type.visualUp:
+                            boost += new Vector3(0, 0, (float)data.value2 / 100);
+                            break;
+                        case CardData.CenterEffect.Type.allUp:
+                            boost += new Vector3((float)data.value2 / 100);
+                            break;
+                    }
+                }
+                return boost;
             }
         }
 
-        public int id { get; set; }
-        public int idolId { get; set; }
-        public string colour { get; set; }
-        public Types idolType { get; set; }
+        public Card(CardData data, int masterRank, int skillLevel) {
+            this.data = data;
+            this.masterRank = masterRank;
+            this.skillLevel = skillLevel;
 
-        public int vocalMaxAwakened { get; set; }
-        public int vocalMasterBonus { get; set; }
-        public int danceMaxAwakened { get; set; }
-        public int danceMasterBonus { get; set; }
-        public int visualMaxAwakened { get; set; }
-        public int visualMasterBonus { get; set; }
-
-
-        public CenterEffect centerEffect { get; set; }
-        public List<Skill> skill { get; set; }
-
-        private Random random;
-
-        public Card(int id, int idolId, Types idolType,
-            int vocalMaxAwakened, int vocalMasterBonus, int danceMaxAwakened, int danceMasterBonus, int visualMaxAwakened, int visualMasterBonus,
-            CenterEffect centerEffect, List<Skill> skill) {
-
-            this.id = id;
-            this.idolId = idolId;
-            this.idolType = idolType;
-
-            this.vocalMaxAwakened = vocalMaxAwakened;
-            this.vocalMasterBonus = vocalMasterBonus;
-            this.danceMaxAwakened = danceMaxAwakened;
-            this.danceMasterBonus = danceMasterBonus;
-            this.visualMaxAwakened = visualMaxAwakened;
-            this.visualMasterBonus = visualMasterBonus;
-
-            this.centerEffect = centerEffect;
-            this.skill = skill;
-
-            random = new Random();
+            ID = data.resourceId;
+            Type = data.idolType;
+            Skills = new List<Skill>();
+            if (this.data.skill != null) {
+                foreach (CardData.Skill skill in this.data.skill) {
+                    Skills.Add(new Skill(skill, skillLevel));
+                }
+            }
+            if (this.data.centerEffect != null) {
+                Center = new CenterEffect(this.data.centerEffect);
+            }
 
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png
             // https://storage.matsurihi.me/mltd/icon_l/017kth0054_1.png
         }
 
-        public Vector3 GetStats(int level) {
-            return new Vector3(this.vocalMaxAwakened + this.vocalMasterBonus * level,
-                    this.danceMaxAwakened + this.danceMasterBonus * level,
-                    this.visualMaxAwakened + this.visualMasterBonus * level);
+        public Vector3 SplitAppeal() {
+            return new Vector3(data.vocalMaxAwakened + data.vocalMasterBonus * masterRank,
+                    data.danceMaxAwakened + data.danceMasterBonus * masterRank,
+                    data.visualMaxAwakened + data.visualMasterBonus * masterRank);
         }
 
-        public Vector3 GetCenter() {
-            if (this.centerEffect == null) {
-                return new Vector3(0);
+        public int TotalAppeal(Types songType) {
+            Vector3 splitAppeal = SplitAppeal();
+            if (Type == songType || Type == Types.EX || songType == Types.All) {
+                splitAppeal *= 1.3f;
             }
-            switch (this.centerEffect.attribute) {
-                case Card.CenterEffect.Type.vocalUp:
-                    return new Vector3((float)this.centerEffect.value / 100, 0, 0);
-                case Card.CenterEffect.Type.danceUp:
-                    return new Vector3(0, (float)(this.centerEffect.value + this.centerEffect.value2) / 100, 0);
-                case Card.CenterEffect.Type.visualUp:
-                    return new Vector3(0, 0, (float)this.centerEffect.value / 100);
-                case Card.CenterEffect.Type.allUp:
-                    return new Vector3((float)this.centerEffect.value / 100);
-            }
-            return new Vector3(0);
-        }
-
-        public void SetLevel(int level) {
-            foreach (Skill skill in this.skill) {
-                skill.SetLevel(level);
-            }
-        }
-
-        public List<int> GetActivations(Song song, CenterEffect guestEffect, CenterEffect centerEffect) {
-            List<int> activations = new List<int>();
-            if (this.skill == null) {
-                return activations;
-            }
-
-            foreach (Skill skill in this.skill) {
-                int start = skill.interval;
-                double activationThreshold = skill.leveledProbability;
-                if (guestEffect != null && guestEffect.attribute == CenterEffect.Type.skillBoost) {
-                    if (guestEffect.idolType == this.idolType) {
-                        activationThreshold += skill.leveledProbability * (double)guestEffect.value / 100;
-                    }
-                }
-                if (centerEffect != null && centerEffect.attribute == CenterEffect.Type.skillBoost) {
-                    if (centerEffect.idolType == this.idolType) {
-                        activationThreshold += skill.leveledProbability * (double)centerEffect.value / 100;
-                    }
-                }
-
-                double appealTime = song.SecondsSinceFirst(song.notes.First(note => note.size == 10));
-                while (start < song.songLength) {
-                    if (!song.IsDuringAppeal(start)) {
-                        if (random.NextDouble() * 100 < activationThreshold) {
-                            activations.Add(start);
-                        }
-                    }
-                    start += skill.interval;
-                }
-            }
-            return activations;
+            return (int)(splitAppeal.X + splitAppeal.Y + splitAppeal.Z);
         }
     }
 }
