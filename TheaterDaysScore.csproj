@@ -6,19 +6,24 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.12" />
     <PackageReference Include="Avalonia.Desktop" Version="0.9.12" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.12" />
     <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.113.7" />
   </ItemGroup>
   <ItemGroup>
-    <AvaloniaResource Include="res\**" />
+    <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="res\cardlist.json" />
-    <None Remove="res\idollist.json" />
-    <None Remove="res\left.png" />
-    <None Remove="res\right.png" />
-    <None Remove="res\songlist.json" />
-    <None Remove="res\tap.png" />
-    <None Remove="res\up.png" />
+    <None Remove="Assets\idollist.json" />
+    <None Remove="Assets\left.png" />
+    <None Remove="Assets\right.png" />
+    <None Remove="Assets\songlist.json" />
+    <None Remove="Assets\tap.png" />
+    <None Remove="Assets\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\CardInfoView.axaml.cs">
+      <DependentUpon>CardInfoView.axaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

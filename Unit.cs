@@ -4,9 +4,11 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using TheaterDaysScore.Models;
+using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
-    class Unit {
+    public class Unit {
         public Card Guest { get; }
         public Card Center { get; }
         public Card[] Members { get; }

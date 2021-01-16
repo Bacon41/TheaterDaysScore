@@ -9,7 +9,7 @@ using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 
 namespace TheaterDaysScore {
-    public class DrawCanvas : Canvas {
+    class DrawCanvas : Canvas {
         private int measureHeight = 200;
         private int measureWidth = 175;
         private double noteSize = 10;
@@ -39,13 +39,13 @@ namespace TheaterDaysScore {
 
             // Song info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
+            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
             songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
 
-            tapImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/tap.png")));
-            leftImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/left.png")));
-            rightImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/right.png")));
-            upImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/res/up.png")));
+            tapImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/tap.png")));
+            leftImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/left.png")));
+            rightImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/right.png")));
+            upImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/up.png")));
         }
 
         public void Draw(int songNum) {

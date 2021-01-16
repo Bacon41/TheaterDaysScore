@@ -1,13 +1,15 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
-        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="450"
-        x:Class="TheaterDaysScore.MainWindow"
-        Title="TheaterDaysScore">
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TheaterDaysScore.Views.SongInfoView">
   
   <StackPanel HorizontalAlignment="Center">
+    <Button Command="{Binding $parent[Window].DataContext.ChooseCards}">
+      Choose Cards
+    </Button>
     <TextBlock Name="scoreDisplay" FontSize="24">NaN</TextBlock>
     <StackPanel Orientation="Horizontal">
       <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song0">Blue Symphony</RadioButton>
@@ -24,4 +26,4 @@
       </StackPanel>
     </ScrollViewer>
   </StackPanel>
-</Window>
+</UserControl>

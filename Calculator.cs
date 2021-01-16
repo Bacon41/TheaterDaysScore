@@ -8,6 +8,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Text.Json;
+using TheaterDaysScore.Models;
 
 namespace TheaterDaysScore {
 
@@ -31,7 +32,7 @@ namespace TheaterDaysScore {
 
         public Calculator() {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/songlist.json")));
+            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
             songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
         }
 
@@ -200,12 +201,12 @@ namespace TheaterDaysScore {
             return new Vector3((float)Math.Floor(input.X), (float)Math.Floor(input.Y), (float)Math.Floor(input.Z));
         }
 
-        public int GetScore(int songNum, int totalAppeal, Unit unit) {
+        public int GetScore(int songNum, Unit unit) {
             // https://megmeg.work/basic_information/formula/score/
 
             Song song = songs[songNum];
 
-            totalAppeal = GetAppeal(song.type, BoostType.none, unit);
+            int totalAppeal = GetAppeal(song.type, BoostType.none, unit);
 
             double baseScore = totalAppeal * (33f + song.level) / 20;
             double notesAndHolds = song.noteWeight + 2 * song.holdLength;

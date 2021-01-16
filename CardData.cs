@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore {
-    class CardData {
+    public class CardData {
         public class Skill {
             public Type effectId { get; set; }
             public int duration { get; set; }

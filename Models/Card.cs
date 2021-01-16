@@ -1,18 +1,21 @@
-﻿using System;
+﻿using Avalonia.Media;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheaterDaysScore {
-    class Card {
+namespace TheaterDaysScore.Models {
+    public class Card {
         private CardData data;
+        private Idol idol;
         private int masterRank;
         private int skillLevel;
 
         public string ID { get; }
         public Types Type { get; }
+        public Color Color { get; }
         public List<Skill> Skills { get; }
         public CenterEffect Center { get; }
 
@@ -143,13 +146,20 @@ namespace TheaterDaysScore {
             }
         }
 
-        public Card(CardData data, int masterRank, int skillLevel) {
+        public Card(CardData data, Idol idol, int masterRank, int skillLevel) {
             this.data = data;
+            this.idol = idol;
+            
             this.masterRank = masterRank;
             this.skillLevel = skillLevel;
 
             ID = data.resourceId;
             Type = data.idolType;
+            if (Type != Types.EX) {
+                Color = Color.Parse("#" + idol.colour);
+            } else {
+                Color = Colors.LimeGreen;
+            }
             Skills = new List<Skill>();
             if (this.data.skill != null) {
                 foreach (CardData.Skill skill in this.data.skill) {

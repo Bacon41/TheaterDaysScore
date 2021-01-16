@@ -9,11 +9,19 @@ using SQLite;
 using Avalonia;
 using Avalonia.Platform;
 using System.Text.Json;
+using System.Net.Http;
+using System.Net;
+using TheaterDaysScore.Models;
 
-namespace TheaterDaysScore {
-    class Database {
+namespace TheaterDaysScore.Services {
+    public class Database {
         private const string appName = "MirishitaScore";
         private const string dbName = "tdData.db";
+        private const string cardDir = "cards";
+        private const string cardFile = "cards.json";
+
+        private const string matsuriAPI = "https://api.matsurihi.me/mltd/v1/cards/";
+        private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
 
         private Dictionary<string, Card> allCards;
         private Dictionary<string, Card> heldCards;
@@ -21,11 +29,46 @@ namespace TheaterDaysScore {
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
 
+        private List<CardData> PopulateCards(string cardsDir) {
+            string cardsFile = Path.Combine(cardsDir, cardFile);
+
+            List<CardData> cards = new List<CardData>();
+            try {
+                using WebClient client = new WebClient();
+                client.Proxy = null;
+                string cardInfo = client.DownloadString(matsuriAPI);
+
+                // Validate format and save
+                cards = JsonSerializer.Deserialize<List<CardData>>(cardInfo);
+                File.WriteAllText(cardsFile, cardInfo);
+            } catch (Exception exception) {
+                Console.WriteLine("Could not get card data: " + exception);
+            }
+
+            foreach (CardData card in cards) {
+                try {
+                    string imageFile = Path.Combine(cardsDir, card.resourceId + ".png");
+                    string imageURL = matsuriStorage + card.resourceId + "_1.png";
+
+                    using WebClient client = new WebClient();
+                    client.Proxy = null;
+                    client.DownloadFileAsync(new Uri(imageURL), imageFile);
+                } catch (Exception exception) {
+                    Console.WriteLine("Could not get card image: " + exception);
+                }
+            }
+
+            return cards;
+        }
+
         private Database() {
             // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
             string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
             Directory.CreateDirectory(appDir);
             string dbLoc = Path.Combine(appDir, dbName);
+            string cardsDir = Path.Combine(appDir, cardDir);
+            Directory.CreateDirectory(cardsDir);
+            string cardsFile = Path.Combine(cardsDir, cardFile);
 
             SQLiteConnection conn;
             if (File.Exists(dbLoc)) {
@@ -36,6 +79,14 @@ namespace TheaterDaysScore {
             }
 
             // https://github.com/praeclarum/sqlite-net/wiki/Synchronous-API
+
+            List<CardData> allCardData = new List<CardData>();
+            if (!File.Exists(cardsFile)) {
+                allCardData = PopulateCards(cardsDir);
+            } else {
+                StreamReader cardReader = new StreamReader(File.OpenRead(cardsFile));
+                allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
+            }
 
             /*conn.Insert(new HeldCard { ID = "031tom0164", MasterRank = 4, SkillLevel = 10 });
             conn.Insert(new HeldCard { ID = "007ior0084", MasterRank = 4, SkillLevel = 10 });
@@ -57,23 +108,24 @@ namespace TheaterDaysScore {
             List<HeldCard> allHeldCards = conn.Table<HeldCard>().ToList();
 
             conn.Close();
-            
-            // https://alialhaddad.medium.com/how-to-fetch-data-in-c-net-core-ea1ab720e3f9
 
+            // Idol info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-            StreamReader cardReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/res/cardlist.json")));
-            List<CardData> allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
+            StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/idollist.json")));
+            List<Idol> idols = JsonSerializer.Deserialize<List<Idol>>(idolReader.ReadToEnd());
 
+            // Storing cards
             allCards = new Dictionary<string, Card>();
             heldCards = new Dictionary<string, Card>();
             foreach (CardData cardData in allCardData) {
                 HeldCard heldCard = allHeldCards.Find(card => card.ID == cardData.resourceId);
+                Idol idolData = idols.Find(idol => idol.id == cardData.idolId);
                 Card card = null;
                 if (heldCard != null) {
-                    card = new Card(cardData, heldCard.MasterRank, heldCard.SkillLevel);
+                    card = new Card(cardData, idolData, heldCard.MasterRank, heldCard.SkillLevel);
                     heldCards.Add(card.ID, card);
                 } else {
-                    card = new Card(cardData, 0, 0);
+                    card = new Card(cardData, idolData, 0, 0);
                 }
                 allCards.Add(card.ID, card);
             }

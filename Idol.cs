@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore {
-    class Idol {
+    public class Idol {
         public int id { get; set; }
         public string colour { get; set; }
 
