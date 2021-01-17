@@ -10,8 +10,12 @@ namespace TheaterDaysScore.Models {
     public class Card {
         private CardData data;
         private Idol idol;
-        private int masterRank;
-        private int skillLevel;
+
+        public int MasterRank { get; set; }
+        public List<int> MasterRanks { get; set; }
+
+        public int SkillLevel { get; set; }
+        public List<int> SkillLevels { get; set; }
 
         public string ID { get; }
         public Types Type { get; }
@@ -150,11 +154,19 @@ namespace TheaterDaysScore.Models {
             this.data = data;
             this.idol = idol;
             
-            this.masterRank = masterRank;
-            this.skillLevel = skillLevel;
+            MasterRank = masterRank;
+            MasterRanks = new List<int>();
+            for (int x = 0; x <= this.data.masterRankMax; x++) {
+                MasterRanks.Add(x);
+            }
+            SkillLevel = skillLevel;
+            SkillLevels = new List<int>();
+            for (int x = 0; x <= this.data.skillLevelMax; x++) {
+                SkillLevels.Add(x);
+            }
 
-            ID = data.resourceId;
-            Type = data.idolType;
+            ID = this.data.resourceId;
+            Type = this.data.idolType;
             if (Type != Types.EX) {
                 Color = Color.Parse("#" + idol.colour);
             } else {
@@ -175,9 +187,9 @@ namespace TheaterDaysScore.Models {
         }
 
         public Vector3 SplitAppeal() {
-            return new Vector3(data.vocalMaxAwakened + data.vocalMasterBonus * masterRank,
-                    data.danceMaxAwakened + data.danceMasterBonus * masterRank,
-                    data.visualMaxAwakened + data.visualMasterBonus * masterRank);
+            return new Vector3(data.vocalMaxAwakened + data.vocalMasterBonus * MasterRank,
+                    data.danceMaxAwakened + data.danceMasterBonus * MasterRank,
+                    data.visualMaxAwakened + data.visualMasterBonus * MasterRank);
         }
 
         public int TotalAppeal(Types songType) {

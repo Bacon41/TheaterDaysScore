@@ -15,7 +15,7 @@ namespace TheaterDaysScore {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
             if (value == null)
                 return null;
-
+            
             if (value is string rawUri && targetType == typeof(IBitmap)) {
                 string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
                 return new Bitmap(appDir);

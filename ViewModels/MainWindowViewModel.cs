@@ -12,8 +12,13 @@ namespace TheaterDaysScore.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
         ViewModelBase content;
 
+        SongInfoViewModel songsView;
+        CardInfoViewModel cardsView;
+
         public MainWindowViewModel() {
-            Content = new SongInfoViewModel();
+            songsView = new SongInfoViewModel();
+            cardsView = new CardInfoViewModel(Database.DB.AllCards());
+            Content = songsView;
         }
 
         public ViewModelBase Content {
@@ -22,13 +27,13 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         public void ChooseCards() {
-            var vm = new CardInfoViewModel(Database.DB.TopAppeal(Types.All, 3));
+            var vm = cardsView;
 
             Observable.Merge(
                 vm.Cancel.Select(_ => (Card)null))
                 .Take(1)
                 .Subscribe(model => {
-                    Content = new SongInfoViewModel();
+                    Content = songsView;
                 });
 
             Content = vm;

@@ -3,21 +3,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
+             xmlns:models="clr-namespace:TheaterDaysScore.Models"
+             xmlns:views="clr-namespace:TheaterDaysScore.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TheaterDaysScore.Views.CardInfoView">
   <UserControl.Resources>
-    <local:ImageConverter x:Key="variableImage"/>
+    <local:ImageConverter x:Key="imageLoader"/>
   </UserControl.Resources>
 
-  <StackPanel>
+  <StackPanel Width="400">
     <Button Command="{Binding Cancel}">Cancel</Button>
-    
-    <ItemsControl Items="{Binding Items}">
-      <ItemsControl.ItemTemplate>
-        <DataTemplate>
-          <Image Width="50" Height="50" Source="{Binding ID, Converter={StaticResource variableImage}}"></Image>
-        </DataTemplate>
-      </ItemsControl.ItemTemplate>
-    </ItemsControl>
+
+    <ScrollViewer Width="400" Height="600">
+      <ItemsRepeater Items="{Binding Items}" Width="380">
+        <ItemsRepeater.Layout>
+          <UniformGridLayout MinColumnSpacing="5" MinRowSpacing="5"/>
+        </ItemsRepeater.Layout>
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate>
+            <StackPanel Width="50">
+              <Image Width="50" Height="50" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+              <ComboBox Items="{Binding MasterRanks}" SelectedIndex="{Binding MasterRank}"></ComboBox>
+              <ComboBox Items="{Binding SkillLevels}" SelectedIndex="{Binding SkillLevel}"></ComboBox>
+            </StackPanel>
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+    </ScrollViewer>
   </StackPanel>
 </UserControl>

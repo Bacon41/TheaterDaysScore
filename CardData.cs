@@ -56,13 +56,15 @@ namespace TheaterDaysScore {
         public string colour { get; set; }
         public Types idolType { get; set; }
 
+        public int masterRankMax { get; set; }
+        public int skillLevelMax { get; set; }
+
         public int vocalMaxAwakened { get; set; }
         public int vocalMasterBonus { get; set; }
         public int danceMaxAwakened { get; set; }
         public int danceMasterBonus { get; set; }
         public int visualMaxAwakened { get; set; }
         public int visualMasterBonus { get; set; }
-
 
         public CenterEffect centerEffect { get; set; }
         public List<Skill> skill { get; set; }
