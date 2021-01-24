@@ -6,7 +6,7 @@
              xmlns:models="clr-namespace:TheaterDaysScore.Models"
              xmlns:views="clr-namespace:TheaterDaysScore.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="TheaterDaysScore.Views.CardInfoView">
+             x:Class="TheaterDaysScore.Views.DeckBuilderView">
   <UserControl.Resources>
     <local:ImageConverter x:Key="imageLoader"/>
   </UserControl.Resources>
@@ -14,7 +14,7 @@
   <StackPanel Width="400">
     <Button Command="{Binding Update}">Update</Button>
     <Button Command="{Binding Save}">Save</Button>
-    <Button Command="{Binding Cancel}">Cancel</Button>
+    <Button Command="{Binding Close}">Close</Button>
     
     <StackPanel Orientation="Horizontal">
       <CheckBox Command="{Binding SSRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySSR">SSR</CheckBox>

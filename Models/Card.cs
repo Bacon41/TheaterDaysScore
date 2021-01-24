@@ -5,11 +5,12 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using TheaterDaysScore.JsonModels;
 
 namespace TheaterDaysScore.Models {
     public class Card {
         private CardData data;
-        private Idol idol;
+        private IdolData idol;
 
         public bool IsHeld { get; set; }
 
@@ -153,7 +154,7 @@ namespace TheaterDaysScore.Models {
             }
         }
 
-        public Card(CardData data, Idol idol, bool isHeld, int masterRank, int skillLevel) {
+        public Card(CardData data, IdolData idol, bool isHeld, int masterRank, int skillLevel) {
             this.data = data;
             this.idol = idol;
             IsHeld = isHeld;

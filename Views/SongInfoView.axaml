@@ -10,6 +10,7 @@
     <Button Command="{Binding $parent[Window].DataContext.ChooseCards}">
       Choose Cards
     </Button>
+    <TextBlock Name="appealDisplay" FontSize="24">NaN</TextBlock>
     <TextBlock Name="scoreDisplay" FontSize="24">NaN</TextBlock>
     <StackPanel Orientation="Horizontal">
       <RadioButton GroupName="songSelection" Checked="SongSelect" Name="song0">Blue Symphony</RadioButton>

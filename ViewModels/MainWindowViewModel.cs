@@ -15,11 +15,11 @@ namespace TheaterDaysScore.ViewModels {
         ViewModelBase content;
 
         SongInfoViewModel songsView;
-        CardInfoViewModel cardsView;
+        DeckBuilderViewModel cardsView;
 
         public MainWindowViewModel() {
             songsView = new SongInfoViewModel();
-            cardsView = new CardInfoViewModel();
+            cardsView = new DeckBuilderViewModel();
             Content = songsView;
         }
 
@@ -31,7 +31,7 @@ namespace TheaterDaysScore.ViewModels {
         public void ChooseCards() {
             var vm = cardsView;
 
-            vm.Cancel.Subscribe(_ => {
+            vm.Close.Subscribe(_ => {
                 Content = songsView;
             });
             vm.Save.Subscribe(_ => {

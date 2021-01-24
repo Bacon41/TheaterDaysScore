@@ -12,6 +12,7 @@ using System.Text.Json;
 using System.Net.Http;
 using System.Net;
 using TheaterDaysScore.Models;
+using TheaterDaysScore.JsonModels;
 
 namespace TheaterDaysScore.Services {
     public class Database {
@@ -20,15 +21,21 @@ namespace TheaterDaysScore.Services {
         private const string cardDir = "cards";
         private const string cardFile = "cards.json";
 
+        private string appDir;
+        private string dbLoc;
+        private string cardsDir;
+        private string cardsFile;
+
         private const string matsuriAPI = "https://api.matsurihi.me/mltd/v1/cards/";
         private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
 
         private Dictionary<string, Card> allCards;
+        private List<Song> allSongs;
 
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
 
-        private List<CardData> PopulateCards(string cardsDir) {
+        private List<CardData> PopulateCards() {
             string cardsFile = Path.Combine(cardsDir, cardFile);
 
             List<CardData> cards = new List<CardData>();
@@ -65,18 +72,18 @@ namespace TheaterDaysScore.Services {
         }
 
         private Database() {
+            // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
+            appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
+            Directory.CreateDirectory(appDir);
+            dbLoc = Path.Combine(appDir, dbName);
+            cardsDir = Path.Combine(appDir, cardDir);
+            Directory.CreateDirectory(cardsDir);
+            cardsFile = Path.Combine(cardsDir, cardFile);
+
             InitData();
         }
 
         private void InitData() {
-            // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
-            string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
-            Directory.CreateDirectory(appDir);
-            string dbLoc = Path.Combine(appDir, dbName);
-            string cardsDir = Path.Combine(appDir, cardDir);
-            Directory.CreateDirectory(cardsDir);
-            string cardsFile = Path.Combine(cardsDir, cardFile);
-
             SQLiteConnection conn;
             if (File.Exists(dbLoc)) {
                 conn = new SQLiteConnection(dbLoc, SQLiteOpenFlags.ReadWrite);
@@ -89,28 +96,11 @@ namespace TheaterDaysScore.Services {
 
             List<CardData> allCardData = new List<CardData>();
             if (!File.Exists(cardsFile)) {
-                allCardData = PopulateCards(cardsDir);
+                allCardData = PopulateCards();
             } else {
                 StreamReader cardReader = new StreamReader(File.OpenRead(cardsFile));
                 allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
             }
-
-            /*conn.Insert(new HeldCard { ID = "031tom0164", MasterRank = 4, SkillLevel = 10 });
-            conn.Insert(new HeldCard { ID = "007ior0084", MasterRank = 4, SkillLevel = 10 });
-            conn.Insert(new HeldCard { ID = "020meg0084", MasterRank = 5, SkillLevel = 12 });
-            conn.Insert(new HeldCard { ID = "038chz0034", MasterRank = 5, SkillLevel = 12 });
-            conn.Insert(new HeldCard { ID = "009rit0084", MasterRank = 5, SkillLevel = 12 });*/
-            /*conn.Insert(new HeldCard { ID = "044miz0224", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "033sih0114", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "046rio0204", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "051tmg0164", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "049mom0144", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "020meg0114", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "008tak0094", MasterRank = 0, SkillLevel = 5 });
-            conn.Insert(new HeldCard { ID = "009rit0124", MasterRank = 4, SkillLevel = 10 });
-            conn.Insert(new HeldCard { ID = "009rit0064", MasterRank = 5, SkillLevel = 12 });
-            conn.Insert(new HeldCard { ID = "202xxx0023", MasterRank = 4, SkillLevel = 10 });*/
-            //conn.Delete<HeldCard>(1);
 
             List<HeldCard> allHeldCards = conn.Table<HeldCard>().ToList();
 
@@ -119,13 +109,13 @@ namespace TheaterDaysScore.Services {
             // Idol info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/idollist.json")));
-            List<Idol> idols = JsonSerializer.Deserialize<List<Idol>>(idolReader.ReadToEnd());
+            List<IdolData> idols = JsonSerializer.Deserialize<List<IdolData>>(idolReader.ReadToEnd());
 
             // Storing cards
             allCards = new Dictionary<string, Card>();
             foreach (CardData cardData in allCardData) {
                 HeldCard heldCard = allHeldCards.Find(card => card.ID == cardData.resourceId);
-                Idol idolData = idols.Find(idol => idol.id == cardData.idolId);
+                IdolData idolData = idols.Find(idol => idol.id == cardData.idolId);
                 Card card = null;
                 if (heldCard != null) {
                     card = new Card(cardData, idolData, true, heldCard.MasterRank, heldCard.SkillLevel);
@@ -134,12 +124,18 @@ namespace TheaterDaysScore.Services {
                 }
                 allCards.Add(card.ID, card);
             }
+
+            // Song info
+            allSongs = new List<Song>();
+            StreamReader songReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
+            List<SongData> readSongs = JsonSerializer.Deserialize<List<SongData>>(songReader.ReadToEnd());
+            foreach (SongData song in readSongs) {
+                allSongs.Add(new Song(song));
+            }
         }
 
         public List<Card> UpdateCards() {
-            string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
-            string cardsDir = Path.Combine(appDir, cardDir);
-            PopulateCards(cardsDir);
+            PopulateCards();
 
             InitData();
 
@@ -147,15 +143,13 @@ namespace TheaterDaysScore.Services {
         }
 
         public void SaveHeld() {
-            string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
-            string dbLoc = Path.Combine(appDir, dbName);
-
             SQLiteConnection conn = new SQLiteConnection(dbLoc, SQLiteOpenFlags.ReadWrite);
 
             conn.DeleteAll<HeldCard>();
 
             List<Card> toSave = allCards.Select(keyVal => keyVal.Value)
-                .Where(card => card.IsHeld).ToList();
+                .Where(card => card.IsHeld)
+                .ToList();
             foreach(Card card in toSave) {
                 conn.Insert(new HeldCard { ID = card.ID, MasterRank = card.MasterRank, SkillLevel = card.SkillLevel });
             }
@@ -178,6 +172,10 @@ namespace TheaterDaysScore.Services {
                 .OrderByDescending(card => card.TotalAppeal(songType))
                 .Take(topCount)
                 .ToList();
+        }
+
+        public Song GetSong(int num) {
+            return allSongs[num];
         }
 
         [Table("held_cards")]

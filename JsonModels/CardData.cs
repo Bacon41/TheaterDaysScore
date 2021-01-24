@@ -7,7 +7,7 @@ using System.Numerics;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace TheaterDaysScore {
+namespace TheaterDaysScore.JsonModels {
     public class CardData {
         public enum Rarities {
             N = 1,

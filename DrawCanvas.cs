@@ -7,6 +7,9 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using TheaterDaysScore.JsonModels;
+using TheaterDaysScore.Models;
+using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class DrawCanvas : Canvas {
@@ -18,8 +21,6 @@ namespace TheaterDaysScore {
 
         private int drawWidth;
         private int drawHeight;
-
-        private List<Song> songs;
 
         private Pen borderPen;
         private Pen beatPen;
@@ -37,11 +38,7 @@ namespace TheaterDaysScore {
             halfBeatPen = new Pen(Colors.Black.ToUint32(), 1);
             holdPen = new Pen(Colors.Red.ToUint32(), Math.Log(5) * noteSize);
 
-            // Song info
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
-            songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
-
             tapImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/tap.png")));
             leftImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/left.png")));
             rightImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/right.png")));
@@ -49,19 +46,21 @@ namespace TheaterDaysScore {
         }
 
         public void Draw(int songNum) {
+            Song song = Database.DB.GetSong(songNum);
+
             // Rendering
             drawWidth = measureWidth;
-            drawHeight = songs[songNum].displayMeasures * measureHeight;
+            drawHeight = song.DisplayMeasures * measureHeight;
             laneWidth = (double)measureWidth / 7;
             quarterBeatHeight = (double)measureHeight / 16;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
-                for (int x = 0; x < songs[songNum].displayMeasures; x++) {
+                for (int x = 0; x < song.DisplayMeasures; x++) {
                     RenderMeasure(ctx, x);
                 }
-                foreach (Song.Note note in songs[songNum].notes) {
-                    RenderNote(ctx, note, songs[songNum].measuresForSkillStart);
+                foreach (Song.Note note in song.Notes) {
+                    RenderNote(ctx, note, song.MeasuresForSkillStart);
                 }
             }
         }
@@ -87,20 +86,20 @@ namespace TheaterDaysScore {
         }
 
         private Point GetCenter(Song.Note note, int startMeasureOffset) {
-            double xPos = laneWidth * note.lane;
+            double xPos = laneWidth * note.Lane;
             if (xPos == 0) {
                 xPos = measureWidth / 2;
             }
-            return new Point(xPos, drawHeight - measureHeight * startMeasureOffset - quarterBeatHeight * (note.measure * 16 + note.quarterBeat));
+            return new Point(xPos, drawHeight - measureHeight * startMeasureOffset - quarterBeatHeight * (note.Measure * 16 + note.QuarterBeat));
         }
 
         private void RenderNote(IDrawingContextImpl ctx, Song.Note note, int startMeasureOffset) {
             Point center = GetCenter(note, startMeasureOffset);
-            if (note.waypoints != null) {
+            if (note.Waypoints != null) {
                 PathGeometry holdLine = new PathGeometry();
                 StreamGeometryContext holdCtx = holdLine.Open();
                 holdCtx.BeginFigure(new Point(center.X, center.Y), false);
-                foreach (Song.Note point in note.waypoints) {
+                foreach (Song.Note point in note.Waypoints) {
                     Point pointCenter = GetCenter(point, startMeasureOffset);
                     holdCtx.LineTo(new Point(pointCenter.X, pointCenter.Y));
                 }
@@ -108,21 +107,21 @@ namespace TheaterDaysScore {
             }
             
             Bitmap noteImg = tapImg;
-            switch (note.type) {
-                case Song.Note.NoteType.tap:
+            switch (note.Type) {
+                case SongData.Note.Type.tap:
                     noteImg = tapImg;
                     break;
-                case Song.Note.NoteType.leftFlick:
+                case SongData.Note.Type.leftFlick:
                     noteImg = leftImg;
                     break;
-                case Song.Note.NoteType.rightFlick:
+                case SongData.Note.Type.rightFlick:
                     noteImg = rightImg;
                     break;
-                case Song.Note.NoteType.upFlick:
+                case SongData.Note.Type.upFlick:
                     noteImg = upImg;
                     break;
             }
-            double noteScale = Math.Log(note.size * 5) * noteSize;
+            double noteScale = Math.Log(note.Size * 5) * noteSize;
             double heightScale;
             double widthScale;
             if (noteImg.Size.Width > noteImg.Size.Height) {

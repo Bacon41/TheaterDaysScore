@@ -23,8 +23,8 @@
     <None Remove="Assets\up.png" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Views\CardInfoView.axaml.cs">
-      <DependentUpon>CardInfoView.axaml</DependentUpon>
+    <Compile Update="Views\DeckBuilderView.axaml.cs">
+      <DependentUpon>DeckBuilderView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

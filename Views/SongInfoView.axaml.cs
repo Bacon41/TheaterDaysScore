@@ -6,7 +6,8 @@ using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.Views {
     public class SongInfoView : UserControl {
-        private TextBlock disp;
+        private TextBlock appealDisp;
+        private TextBlock scoreDisp;
         private Calculator calc;
 
         private DrawCanvas scoreCanvas;
@@ -25,23 +26,20 @@ namespace TheaterDaysScore.Views {
             intervalCanvas.Draw(songNum, unit);
             calc = new Calculator();
 
-            calc.GetAppeal(Types.Fairy, Calculator.BoostType.none, unit);
-
             this.FindControl<RadioButton>("song0").IsChecked = true;
-
-            var x = Database.DB.TopAppeal(Types.Fairy, 10, "031tom0164");
         }
 
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
 
-            disp = this.FindControl<TextBlock>("scoreDisplay");
+            appealDisp = this.FindControl<TextBlock>("appealDisplay");
+            scoreDisp = this.FindControl<TextBlock>("scoreDisplay");
             scoreCanvas = this.FindControl<DrawCanvas>("scoreCanvas");
             intervalCanvas = this.FindControl<DrawIntervals>("intervalCanvas");
         }
 
         public void Calculate_Click(object sender, RoutedEventArgs e) {
-            disp.Text = "50th Percentile: " + calc.GetScore(songNum, unit).ToString();
+            scoreDisp.Text = "50th Percentile: " + calc.GetScore(songNum, unit).ToString();
         }
 
         public void SongSelect(object sender, RoutedEventArgs e) {
@@ -67,6 +65,8 @@ namespace TheaterDaysScore.Views {
             intervalCanvas.Draw(songNum, unit);
             scoreCanvas.InvalidateVisual();
             intervalCanvas.InvalidateVisual();
+            
+            appealDisp.Text = "Appeal: " + calc.GetAppeal(Database.DB.GetSong(songNum).Type, Calculator.BoostType.none, unit);
         }
     }
 }

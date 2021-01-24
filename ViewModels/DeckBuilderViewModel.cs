@@ -7,15 +7,16 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.ViewModels {
-    public class CardInfoViewModel : ViewModelBase {
+    public class DeckBuilderViewModel : ViewModelBase {
         private HashSet<CardData.Rarities> rarities;
         private HashSet<Types> types;
 
-        public CardInfoViewModel() {
+        public DeckBuilderViewModel() {
             Items = new ObservableCollection<Card>();
             rarities = new HashSet<CardData.Rarities>();
             types = new HashSet<Types>();
@@ -89,7 +90,7 @@ namespace TheaterDaysScore.ViewModels {
 
             Update = ReactiveCommand.Create(() => { });
             Save = ReactiveCommand.Create(() => { });
-            Cancel = ReactiveCommand.Create(() => { });
+            Close = ReactiveCommand.Create(() => { });
         }
 
         private void FilterCards() {
@@ -114,6 +115,6 @@ namespace TheaterDaysScore.ViewModels {
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }
-        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Cancel { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Close { get; }
     }
 }

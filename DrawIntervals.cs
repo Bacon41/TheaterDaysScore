@@ -10,6 +10,7 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
 using TheaterDaysScore.Models;
+using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class DrawIntervals : Canvas {
@@ -18,23 +19,17 @@ namespace TheaterDaysScore {
         private int drawWidth;
         private int drawHeight;
 
-        private List<Song> songs;
-
         private RenderTargetBitmap score;
 
         public DrawIntervals() {
-            // Song info
-            var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
-            StreamReader reader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
-            songs = JsonSerializer.Deserialize<List<Song>>(reader.ReadToEnd());
         }
 
         public void Draw(int songNum, Unit unit) {
-            Song song = songs[songNum];
+            Song song = Database.DB.GetSong(songNum);
 
             // Rendering
             drawWidth = 10 * 5;
-            drawHeight = song.displayMeasures * measureHeight;
+            drawHeight = song.DisplayMeasures * measureHeight;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
@@ -43,10 +38,10 @@ namespace TheaterDaysScore {
                     RenderCard(ctx, card, song, offset);
                     offset += 10;
                 }
-                for (int x = 0; x < song.songLength; x++) {
+                for (int x = 0; x < song.Length; x++) {
                     Pen writePen = new Pen(Colors.Black.ToUint32(), 3);
-                    double pixelsPerSecond = measureHeight * (double)songs[songNum].bpm / 60 / 4;
-                    double height = measureHeight * (song.displayMeasures - song.measuresForSkillStart + ((song.skillStartOffset - song.notes[0].quarterBeat) / 16)) - x * pixelsPerSecond;
+                    double pixelsPerSecond = measureHeight * (double)song.BPM / 60 / 4;
+                    double height = measureHeight * (song.DisplayMeasures - song.MeasuresForSkillStart + ((song.SkillStartOffset - song.Notes[0].QuarterBeat) / 16)) - x * pixelsPerSecond;
                     ctx.DrawLine(writePen, new Point(0, height), new Point(45, height));
                 }
             }
@@ -54,16 +49,16 @@ namespace TheaterDaysScore {
 
         private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset) {
             // Timing
-            double pixelsPerSecond = measureHeight * (double)song.bpm / 60 / 4;
+            double pixelsPerSecond = measureHeight * (double)song.BPM / 60 / 4;
             if (card.Skills != null) {
                 foreach (Card.Skill skill in card.Skills) {
-                    double startPos = measureHeight * (song.displayMeasures - song.measuresForSkillStart + ((song.skillStartOffset - song.notes[0].quarterBeat) / 16)) - skill.Interval * pixelsPerSecond;
+                    double startPos = measureHeight * (song.DisplayMeasures - song.MeasuresForSkillStart + ((song.SkillStartOffset - song.Notes[0].QuarterBeat) / 16)) - skill.Interval * pixelsPerSecond;
                     int weight = 5;
                     if (offset == 0) {
                         weight *= 2;
                     }
                     Pen writePen = new Pen(card.Color.ToUint32(), weight);
-                    double lastPos = measureHeight * (double)(16 - song.notes.Last().quarterBeat) / 16;
+                    double lastPos = measureHeight * (double)(16 - song.Notes.Last().QuarterBeat) / 16;
                     while (startPos > lastPos) {
                         ctx.DrawLine(writePen, new Point(offset, startPos), new Point(offset, Math.Max(lastPos, startPos - skill.Duration * pixelsPerSecond)));
                         startPos -= skill.Interval * pixelsPerSecond;

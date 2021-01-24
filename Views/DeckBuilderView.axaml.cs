@@ -8,9 +8,9 @@ using System.Reactive.Disposables;
 using TheaterDaysScore.ViewModels;
 
 namespace TheaterDaysScore.Views {
-    public class CardInfoView : UserControl {
+    public class DeckBuilderView : UserControl {
 
-        public CardInfoView() {
+        public DeckBuilderView() {
             this.InitializeComponent();
         }
 

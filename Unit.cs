@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
@@ -42,7 +43,7 @@ namespace TheaterDaysScore {
         }
 
         public IActivation GetActivations(Song song, bool alwaysActivate = false) {
-            Activation activation = new Activation(song.songLength);
+            Activation activation = new Activation(song.Length);
 
             foreach (Card card in Members) {
                 foreach (Card.Skill skill in card.Skills) {
@@ -52,7 +53,7 @@ namespace TheaterDaysScore {
                     }
 
                     int start = skill.Interval;
-                    while (start < song.songLength) {
+                    while (start < song.Length) {
                         if (!song.IsDuringAppeal(start)) {
                             if (rand.NextDouble() * 100 < activationThreshold) {
                                 activation.AddInterval(start, skill);
