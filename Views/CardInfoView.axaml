@@ -12,7 +12,23 @@
   </UserControl.Resources>
 
   <StackPanel Width="400">
+    <Button Command="{Binding Update}">Update</Button>
+    <Button Command="{Binding Save}">Save</Button>
     <Button Command="{Binding Cancel}">Cancel</Button>
+    
+    <StackPanel Orientation="Horizontal">
+      <CheckBox Command="{Binding SSRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySSR">SSR</CheckBox>
+      <CheckBox Command="{Binding SRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySR">SR</CheckBox>
+      <CheckBox Command="{Binding RFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="rarityR">R</CheckBox>
+      <CheckBox Command="{Binding NFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="rarityN">N</CheckBox>
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal">
+      <CheckBox Command="{Binding PrincessFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typePrincess">Princess</CheckBox>
+      <CheckBox Command="{Binding FairyFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeFairy">Fairy</CheckBox>
+      <CheckBox Command="{Binding AngelFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeAngel">Angel</CheckBox>
+      <CheckBox Command="{Binding EXFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeEX">EX</CheckBox>
+    </StackPanel>
 
     <ScrollViewer Width="400" Height="600">
       <ItemsRepeater Items="{Binding Items}" Width="380">
@@ -23,6 +39,7 @@
           <DataTemplate>
             <StackPanel Width="50">
               <Image Width="50" Height="50" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+              <CheckBox IsChecked="{Binding IsHeld}"></CheckBox>
               <ComboBox Items="{Binding MasterRanks}" SelectedIndex="{Binding MasterRank}"></ComboBox>
               <ComboBox Items="{Binding SkillLevels}" SelectedIndex="{Binding SkillLevel}"></ComboBox>
             </StackPanel>

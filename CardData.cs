@@ -9,6 +9,13 @@ using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore {
     public class CardData {
+        public enum Rarities {
+            N = 1,
+            R,
+            SR,
+            SSR
+        }
+
         public class Skill {
             public Type effectId { get; set; }
             public int duration { get; set; }
@@ -55,6 +62,7 @@ namespace TheaterDaysScore {
         public int idolId { get; set; }
         public string colour { get; set; }
         public Types idolType { get; set; }
+        public Rarities rarity { get; set; }
 
         public int masterRankMax { get; set; }
         public int skillLevelMax { get; set; }

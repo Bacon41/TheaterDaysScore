@@ -68,7 +68,7 @@ namespace TheaterDaysScore {
 
         private void RenderMeasure(IDrawingContextImpl ctx, int num) {
             // Border
-            ctx.DrawRectangle(borderPen, new Rect(0, num * measureHeight, measureWidth, measureHeight));
+            ctx.DrawRectangle(null, borderPen, new Rect(0, num * measureHeight, measureWidth, measureHeight));
             // Horizontal
             ctx.DrawLine(halfBeatPen, new Point(0, num * measureHeight + quarterBeatHeight * 2), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 2));
             ctx.DrawLine(beatPen, new Point(0, num * measureHeight + quarterBeatHeight * 4), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 4));
@@ -132,7 +132,7 @@ namespace TheaterDaysScore {
                 widthScale = noteScale;
                 heightScale = widthScale * noteImg.Size.Height / noteImg.Size.Width;
             }
-            ctx.DrawImage(noteImg.PlatformImpl, 1, new Rect(0, 0, noteImg.Size.Width, noteImg.Size.Height),
+            ctx.DrawBitmap(noteImg.PlatformImpl, 1, new Rect(0, 0, noteImg.Size.Width, noteImg.Size.Height),
                 new Rect(center.X - widthScale / 2, center.Y - heightScale / 2, widthScale, heightScale));
         }
 
@@ -140,9 +140,9 @@ namespace TheaterDaysScore {
             base.Render(context);
 
             if (score != null) {
-                context.DrawImage(score, 1, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
-                this.Width = score.Size.Width;
-                this.Height = score.Size.Height;
+                context.DrawImage(score, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
+                Width = score.Size.Width;
+                Height = score.Size.Height;
             }
         }
     }

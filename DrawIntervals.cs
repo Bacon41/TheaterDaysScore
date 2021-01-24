@@ -76,7 +76,7 @@ namespace TheaterDaysScore {
             base.Render(context);
 
             if (score != null) {
-                context.DrawImage(score, 1, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
+                context.DrawImage(score, new Rect(0, 0, score.Size.Width, score.Size.Height), new Rect(0, 0, drawWidth, drawHeight));
                 this.Width = score.Size.Width;
                 this.Height = score.Size.Height;
             }

@@ -11,6 +11,8 @@ namespace TheaterDaysScore.Models {
         private CardData data;
         private Idol idol;
 
+        public bool IsHeld { get; set; }
+
         public int MasterRank { get; set; }
         public List<int> MasterRanks { get; set; }
 
@@ -19,6 +21,7 @@ namespace TheaterDaysScore.Models {
 
         public string ID { get; }
         public Types Type { get; }
+        public CardData.Rarities Rarity { get; }
         public Color Color { get; }
         public List<Skill> Skills { get; }
         public CenterEffect Center { get; }
@@ -150,9 +153,12 @@ namespace TheaterDaysScore.Models {
             }
         }
 
-        public Card(CardData data, Idol idol, int masterRank, int skillLevel) {
+        public Card(CardData data, Idol idol, bool isHeld, int masterRank, int skillLevel) {
             this.data = data;
             this.idol = idol;
+            IsHeld = isHeld;
+
+            Rarity = data.rarity;
             
             MasterRank = masterRank;
             MasterRanks = new List<int>();
@@ -168,7 +174,7 @@ namespace TheaterDaysScore.Models {
             ID = this.data.resourceId;
             Type = this.data.idolType;
             if (Type != Types.EX) {
-                Color = Color.Parse("#" + idol.colour);
+                Color = Color.Parse("#" + this.idol.colour);
             } else {
                 Color = Colors.LimeGreen;
             }

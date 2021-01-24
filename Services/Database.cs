@@ -24,7 +24,6 @@ namespace TheaterDaysScore.Services {
         private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
 
         private Dictionary<string, Card> allCards;
-        private Dictionary<string, Card> heldCards;
 
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
@@ -34,8 +33,9 @@ namespace TheaterDaysScore.Services {
 
             List<CardData> cards = new List<CardData>();
             try {
-                using WebClient client = new WebClient();
-                client.Proxy = null;
+                using WebClient client = new WebClient {
+                    Proxy = null
+                };
                 string cardInfo = client.DownloadString(matsuriAPI);
 
                 // Validate format and save
@@ -50,9 +50,12 @@ namespace TheaterDaysScore.Services {
                     string imageFile = Path.Combine(cardsDir, card.resourceId + ".png");
                     string imageURL = matsuriStorage + card.resourceId + "_1.png";
 
-                    using WebClient client = new WebClient();
-                    client.Proxy = null;
-                    client.DownloadFileAsync(new Uri(imageURL), imageFile);
+                    if (!File.Exists(imageFile)) {
+                        using WebClient client = new WebClient {
+                            Proxy = null
+                        };
+                        client.DownloadFileAsync(new Uri(imageURL), imageFile);
+                    }
                 } catch (Exception exception) {
                     Console.WriteLine("Could not get card image: " + exception);
                 }
@@ -62,6 +65,10 @@ namespace TheaterDaysScore.Services {
         }
 
         private Database() {
+            InitData();
+        }
+
+        private void InitData() {
             // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
             string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
             Directory.CreateDirectory(appDir);
@@ -116,19 +123,44 @@ namespace TheaterDaysScore.Services {
 
             // Storing cards
             allCards = new Dictionary<string, Card>();
-            heldCards = new Dictionary<string, Card>();
             foreach (CardData cardData in allCardData) {
                 HeldCard heldCard = allHeldCards.Find(card => card.ID == cardData.resourceId);
                 Idol idolData = idols.Find(idol => idol.id == cardData.idolId);
                 Card card = null;
                 if (heldCard != null) {
-                    card = new Card(cardData, idolData, heldCard.MasterRank, heldCard.SkillLevel);
-                    heldCards.Add(card.ID, card);
+                    card = new Card(cardData, idolData, true, heldCard.MasterRank, heldCard.SkillLevel);
                 } else {
-                    card = new Card(cardData, idolData, 0, 0);
+                    card = new Card(cardData, idolData, false, 0, 0);
                 }
                 allCards.Add(card.ID, card);
             }
+        }
+
+        public List<Card> UpdateCards() {
+            string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
+            string cardsDir = Path.Combine(appDir, cardDir);
+            PopulateCards(cardsDir);
+
+            InitData();
+
+            return AllCards();
+        }
+
+        public void SaveHeld() {
+            string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
+            string dbLoc = Path.Combine(appDir, dbName);
+
+            SQLiteConnection conn = new SQLiteConnection(dbLoc, SQLiteOpenFlags.ReadWrite);
+
+            conn.DeleteAll<HeldCard>();
+
+            List<Card> toSave = allCards.Select(keyVal => keyVal.Value)
+                .Where(card => card.IsHeld).ToList();
+            foreach(Card card in toSave) {
+                conn.Insert(new HeldCard { ID = card.ID, MasterRank = card.MasterRank, SkillLevel = card.SkillLevel });
+            }
+
+            conn.Close();
         }
 
         public List<Card> AllCards() {
@@ -140,7 +172,8 @@ namespace TheaterDaysScore.Services {
         }
 
         public List<Card> TopAppeal(Types songType, int topCount, params string[] skipIds) {
-            return heldCards.Select(keyVal => keyVal.Value)
+            return allCards.Select(keyVal => keyVal.Value)
+                .Where(card => card.IsHeld)
                 .Where(card => !skipIds.Contains(card.ID))
                 .OrderByDescending(card => card.TotalAppeal(songType))
                 .Take(topCount)

@@ -1,6 +1,8 @@
-﻿using ReactiveUI;
+﻿using DynamicData;
+using ReactiveUI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Text;
@@ -17,7 +19,7 @@ namespace TheaterDaysScore.ViewModels {
 
         public MainWindowViewModel() {
             songsView = new SongInfoViewModel();
-            cardsView = new CardInfoViewModel(Database.DB.AllCards());
+            cardsView = new CardInfoViewModel();
             Content = songsView;
         }
 
@@ -29,12 +31,16 @@ namespace TheaterDaysScore.ViewModels {
         public void ChooseCards() {
             var vm = cardsView;
 
-            Observable.Merge(
-                vm.Cancel.Select(_ => (Card)null))
-                .Take(1)
-                .Subscribe(model => {
-                    Content = songsView;
-                });
+            vm.Cancel.Subscribe(_ => {
+                Content = songsView;
+            });
+            vm.Save.Subscribe(_ => {
+                Database.DB.SaveHeld();
+            });
+            vm.Update.Subscribe(_ => {
+                cardsView.Items.Clear();
+                cardsView.Items.AddRange(Database.DB.UpdateCards());
+            });
 
             Content = vm;
         }

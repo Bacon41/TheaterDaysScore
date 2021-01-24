@@ -1,4 +1,5 @@
 ﻿using Avalonia.Data.Converters;
+using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace TheaterDaysScore {
             if (value == null)
                 return null;
             
-            if (value is string rawUri && targetType == typeof(IBitmap)) {
+            if (value is string && targetType == typeof(IImage)) {
                 string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
                 return new Bitmap(appDir);
             }
