@@ -17,11 +17,13 @@ using TheaterDaysScore.JsonModels;
 namespace TheaterDaysScore.Services {
     public class Database {
         private const string appName = "MirishitaScore";
+        private const string settingsFile = "appstate.json";
         private const string dbName = "tdData.db";
         private const string cardDir = "cards";
         private const string cardFile = "cards.json";
 
         private string appDir;
+        private string settingsLoc;
         private string dbLoc;
         private string cardsDir;
         private string cardsFile;
@@ -75,6 +77,7 @@ namespace TheaterDaysScore.Services {
             // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
             appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
             Directory.CreateDirectory(appDir);
+            settingsLoc = Path.Combine(appDir, settingsFile);
             dbLoc = Path.Combine(appDir, dbName);
             cardsDir = Path.Combine(appDir, cardDir);
             Directory.CreateDirectory(cardsDir);
@@ -176,6 +179,10 @@ namespace TheaterDaysScore.Services {
 
         public Song GetSong(int num) {
             return allSongs[num];
+        }
+
+        public string SettingsLoc() {
+            return settingsLoc;
         }
 
         [Table("held_cards")]

@@ -33,11 +33,14 @@ namespace TheaterDaysScore {
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
+                // Skill interval
                 int offset = 0;
                 foreach (Card card in unit.Members) {
                     RenderCard(ctx, card, song, offset);
                     offset += 10;
                 }
+
+                // Second bar
                 for (int x = 0; x < song.Length; x++) {
                     Pen writePen = new Pen(Colors.Black.ToUint32(), 3);
                     double pixelsPerSecond = measureHeight * (double)song.BPM / 60 / 4;

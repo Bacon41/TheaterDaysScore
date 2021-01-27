@@ -8,7 +8,7 @@ using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
-namespace TheaterDaysScore {
+namespace TheaterDaysScore.Models {
     public class Unit {
         public Card Guest { get; }
         public Card Center { get; }

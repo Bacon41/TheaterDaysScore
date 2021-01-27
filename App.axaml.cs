@@ -1,6 +1,10 @@
 ﻿using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
+using ReactiveUI;
+using Splat;
+using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 using TheaterDaysScore.Views;
 
@@ -11,12 +15,21 @@ namespace TheaterDaysScore {
         }
 
         public override void OnFrameworkInitializationCompleted() {
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop) {
-                desktop.MainWindow = new MainWindow {
-                    DataContext = new MainWindowViewModel(),
-                };
-            }
+            // Create the AutoSuspendHelper
+            var suspension = new AutoSuspendHelper(ApplicationLifetime);
+            RxApp.SuspensionHost.CreateNewAppState = () => new MainWindowViewModel();
+            RxApp.SuspensionHost.SetupDefaultSuspendResume(new SuspensionDriver(Database.DB.SettingsLoc()));
+            suspension.OnFrameworkInitializationCompleted();
 
+            // Load the saved view model state
+            var state = RxApp.SuspensionHost.GetAppState<MainWindowViewModel>();
+            Locator.CurrentMutable.RegisterConstant<IScreen>(state);
+
+            // Register views.
+            Locator.CurrentMutable.Register<IViewFor<DeckBuilderViewModel>>(() => new DeckBuilderView());
+            Locator.CurrentMutable.Register<IViewFor<SongInfoViewModel>>(() => new SongInfoView());
+
+            new MainWindow { DataContext = state }.Show();
             base.OnFrameworkInitializationCompleted();
         }
     }

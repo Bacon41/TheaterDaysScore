@@ -5,44 +5,41 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.ViewModels {
-    public class MainWindowViewModel : ViewModelBase {
-        ViewModelBase content;
+    [DataContract]
+    public class MainWindowViewModel : ReactiveObject, IScreen {
+        private RoutingState _router = new RoutingState();
 
-        SongInfoViewModel songsView;
-        DeckBuilderViewModel cardsView;
+        private SongInfoViewModel songInfo = new SongInfoViewModel();
+        [DataMember]
+        SongInfoViewModel SongInfo {
+            get => songInfo;
+            set => this.RaiseAndSetIfChanged(ref songInfo, value);
+        }
+
+        private DeckBuilderViewModel deckBuilder = new DeckBuilderViewModel();
+        [DataMember]
+        DeckBuilderViewModel DeckBuilder {
+            get => deckBuilder;
+            set => this.RaiseAndSetIfChanged(ref deckBuilder, value);
+        }
+
+        public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> EditDeck { get; }
 
         public MainWindowViewModel() {
-            songsView = new SongInfoViewModel();
-            cardsView = new DeckBuilderViewModel();
-            Content = songsView;
+            Router.Navigate.Execute(SongInfo);
+            EditDeck = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(DeckBuilder));
         }
 
-        public ViewModelBase Content {
-            get => content;
-            private set => this.RaiseAndSetIfChanged(ref content, value);
-        }
-
-        public void ChooseCards() {
-            var vm = cardsView;
-
-            vm.Close.Subscribe(_ => {
-                Content = songsView;
-            });
-            vm.Save.Subscribe(_ => {
-                Database.DB.SaveHeld();
-            });
-            vm.Update.Subscribe(_ => {
-                cardsView.Items.Clear();
-                cardsView.Items.AddRange(Database.DB.UpdateCards());
-            });
-
-            Content = vm;
+        public RoutingState Router {
+            get => _router;
+            set => this.RaiseAndSetIfChanged(ref _router, value);
         }
     }
 }

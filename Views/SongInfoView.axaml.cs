@@ -2,10 +2,14 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.ReactiveUI;
+using ReactiveUI;
+using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
+using TheaterDaysScore.ViewModels;
 
 namespace TheaterDaysScore.Views {
-    public class SongInfoView : UserControl {
+    public class SongInfoView : ReactiveUserControl<SongInfoViewModel> {
         private TextBlock appealDisp;
         private TextBlock scoreDisp;
         private Calculator calc;
@@ -27,6 +31,8 @@ namespace TheaterDaysScore.Views {
             calc = new Calculator();
 
             this.FindControl<RadioButton>("song0").IsChecked = true;
+
+            this.WhenActivated(disposables => { });
         }
 
         private void InitializeComponent() {

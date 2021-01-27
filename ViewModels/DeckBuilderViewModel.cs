@@ -1,10 +1,12 @@
 ﻿using Avalonia.Controls;
 using DynamicData;
 using ReactiveUI;
+using Splat;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using TheaterDaysScore.JsonModels;
@@ -12,92 +14,116 @@ using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.ViewModels {
-    public class DeckBuilderViewModel : ViewModelBase {
-        private HashSet<CardData.Rarities> rarities;
-        private HashSet<Types> types;
+    [DataContract]
+    public class DeckBuilderViewModel : ReactiveObject, IRoutableViewModel {
 
-        public DeckBuilderViewModel() {
+        private HashSet<CardData.Rarities> rarities = new HashSet<CardData.Rarities>();
+        [DataMember]
+        public HashSet<CardData.Rarities> Rarities {
+            get => rarities;
+            set => this.RaiseAndSetIfChanged(ref rarities, value);
+        }
+
+        [DataMember]
+        private HashSet<Types> types = new HashSet<Types>();
+        [DataMember]
+        public HashSet<Types> Types {
+            get => types;
+            set => this.RaiseAndSetIfChanged(ref types, value);
+        }
+
+        public IScreen HostScreen { get; }
+
+        public string UrlPathSegment => "deckbuilder";
+
+        public DeckBuilderViewModel(IScreen screen = null) {
+            HostScreen = screen ?? Locator.Current.GetService<IScreen>();
+
             Items = new ObservableCollection<Card>();
-            rarities = new HashSet<CardData.Rarities>();
-            types = new HashSet<Types>();
+            Rarities = new HashSet<CardData.Rarities>();
+            Types = new HashSet<Types>();
             FilterCards();
 
             SSRFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    rarities.Add(CardData.Rarities.SSR);
+                    Rarities.Add(CardData.Rarities.SSR);
                 } else {
-                    rarities.Remove(CardData.Rarities.SSR);
+                    Rarities.Remove(CardData.Rarities.SSR);
                 }
                 FilterCards();
             });
             SRFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    rarities.Add(CardData.Rarities.SR);
+                    Rarities.Add(CardData.Rarities.SR);
                 } else {
-                    rarities.Remove(CardData.Rarities.SR);
+                    Rarities.Remove(CardData.Rarities.SR);
                 }
                 FilterCards();
             });
             RFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    rarities.Add(CardData.Rarities.R);
+                    Rarities.Add(CardData.Rarities.R);
                 } else {
-                    rarities.Remove(CardData.Rarities.R);
+                    Rarities.Remove(CardData.Rarities.R);
                 }
                 FilterCards();
             });
             NFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    rarities.Add(CardData.Rarities.N);
+                    Rarities.Add(CardData.Rarities.N);
                 } else {
-                    rarities.Remove(CardData.Rarities.N);
+                    Rarities.Remove(CardData.Rarities.N);
                 }
                 FilterCards();
             });
 
             PrincessFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    types.Add(Types.Princess);
+                    Types.Add(TheaterDaysScore.Types.Princess);
                 } else {
-                    types.Remove(Types.Princess);
+                    Types.Remove(TheaterDaysScore.Types.Princess);
                 }
                 FilterCards();
             });
             FairyFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    types.Add(Types.Fairy);
+                    Types.Add(TheaterDaysScore.Types.Fairy);
                 } else {
-                    types.Remove(Types.Fairy);
+                    Types.Remove(TheaterDaysScore.Types.Fairy);
                 }
                 FilterCards();
             });
             AngelFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    types.Add(Types.Angel);
+                    Types.Add(TheaterDaysScore.Types.Angel);
                 } else {
-                    types.Remove(Types.Angel);
+                    Types.Remove(TheaterDaysScore.Types.Angel);
                 }
                 FilterCards();
             });
             EXFilter = ReactiveCommand.Create((bool isChecked) => {
                 if (isChecked) {
-                    types.Add(Types.EX);
+                    Types.Add(TheaterDaysScore.Types.EX);
                 } else {
-                    types.Remove(Types.EX);
+                    Types.Remove(TheaterDaysScore.Types.EX);
                 }
                 FilterCards();
             });
 
-            Update = ReactiveCommand.Create(() => { });
-            Save = ReactiveCommand.Create(() => { });
-            Close = ReactiveCommand.Create(() => { });
+            Update = ReactiveCommand.Create(() => {
+                Items.Clear();
+                Items.AddRange(Database.DB.UpdateCards());
+            });
+            Save = ReactiveCommand.Create(() => {
+                Database.DB.SaveHeld();
+            });
         }
 
-        private void FilterCards() {
+        public void FilterCards() {
             Items.Clear();
             Items.AddRange(Database.DB.AllCards()
-                .Where(card => rarities.Contains(card.Rarity))
-                .Where(card => types.Contains(card.Type))
+                .Where(card => Rarities.Contains(card.Rarity))
+                .Where(card => Types.Contains(card.Type))
                 );
         }
 
@@ -115,6 +141,5 @@ namespace TheaterDaysScore.ViewModels {
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }
-        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Close { get; }
     }
 }

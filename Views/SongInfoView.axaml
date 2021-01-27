@@ -7,7 +7,7 @@
              x:Class="TheaterDaysScore.Views.SongInfoView">
   
   <StackPanel HorizontalAlignment="Center">
-    <Button Command="{Binding $parent[Window].DataContext.ChooseCards}">
+    <Button Command="{Binding $parent[Window].DataContext.EditDeck}">
       Choose Cards
     </Button>
     <TextBlock Name="appealDisplay" FontSize="24">NaN</TextBlock>

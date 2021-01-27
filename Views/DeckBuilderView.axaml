@@ -14,7 +14,7 @@
   <StackPanel Width="400">
     <Button Command="{Binding Update}">Update</Button>
     <Button Command="{Binding Save}">Save</Button>
-    <Button Command="{Binding Close}">Close</Button>
+    <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
     
     <StackPanel Orientation="Horizontal">
       <CheckBox Command="{Binding SSRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySSR">SSR</CheckBox>
