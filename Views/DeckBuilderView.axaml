@@ -17,17 +17,17 @@
     <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
     
     <StackPanel Orientation="Horizontal">
-      <CheckBox Command="{Binding SSRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySSR">SSR</CheckBox>
-      <CheckBox Command="{Binding SRFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="raritySR">SR</CheckBox>
-      <CheckBox Command="{Binding RFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="rarityR">R</CheckBox>
-      <CheckBox Command="{Binding NFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="rarityN">N</CheckBox>
+      <CheckBox Name="raritySSR">SSR</CheckBox>
+      <CheckBox Name="raritySR">SR</CheckBox>
+      <CheckBox Name="rarityR">R</CheckBox>
+      <CheckBox Name="rarityN">N</CheckBox>
     </StackPanel>
 
     <StackPanel Orientation="Horizontal">
-      <CheckBox Command="{Binding PrincessFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typePrincess">Princess</CheckBox>
-      <CheckBox Command="{Binding FairyFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeFairy">Fairy</CheckBox>
-      <CheckBox Command="{Binding AngelFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeAngel">Angel</CheckBox>
-      <CheckBox Command="{Binding EXFilter}" CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}, Mode=OneWay}" Name="typeEX">EX</CheckBox>
+      <CheckBox Name="typePrincess">Princess</CheckBox>
+      <CheckBox Name="typeFairy">Fairy</CheckBox>
+      <CheckBox Name="typeAngel">Angel</CheckBox>
+      <CheckBox Name="typeEX">EX</CheckBox>
     </StackPanel>
 
     <ScrollViewer Width="400" Height="600">

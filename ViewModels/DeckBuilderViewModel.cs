@@ -42,73 +42,6 @@ namespace TheaterDaysScore.ViewModels {
             Items = new ObservableCollection<Card>();
             Rarities = new HashSet<CardData.Rarities>();
             Types = new HashSet<Types>();
-            FilterCards();
-
-            SSRFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Rarities.Add(CardData.Rarities.SSR);
-                } else {
-                    Rarities.Remove(CardData.Rarities.SSR);
-                }
-                FilterCards();
-            });
-            SRFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Rarities.Add(CardData.Rarities.SR);
-                } else {
-                    Rarities.Remove(CardData.Rarities.SR);
-                }
-                FilterCards();
-            });
-            RFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Rarities.Add(CardData.Rarities.R);
-                } else {
-                    Rarities.Remove(CardData.Rarities.R);
-                }
-                FilterCards();
-            });
-            NFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Rarities.Add(CardData.Rarities.N);
-                } else {
-                    Rarities.Remove(CardData.Rarities.N);
-                }
-                FilterCards();
-            });
-
-            PrincessFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Types.Add(TheaterDaysScore.Types.Princess);
-                } else {
-                    Types.Remove(TheaterDaysScore.Types.Princess);
-                }
-                FilterCards();
-            });
-            FairyFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Types.Add(TheaterDaysScore.Types.Fairy);
-                } else {
-                    Types.Remove(TheaterDaysScore.Types.Fairy);
-                }
-                FilterCards();
-            });
-            AngelFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Types.Add(TheaterDaysScore.Types.Angel);
-                } else {
-                    Types.Remove(TheaterDaysScore.Types.Angel);
-                }
-                FilterCards();
-            });
-            EXFilter = ReactiveCommand.Create((bool isChecked) => {
-                if (isChecked) {
-                    Types.Add(TheaterDaysScore.Types.EX);
-                } else {
-                    Types.Remove(TheaterDaysScore.Types.EX);
-                }
-                FilterCards();
-            });
 
             Update = ReactiveCommand.Create(() => {
                 Items.Clear();
@@ -128,16 +61,6 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         public ObservableCollection<Card> Items { get; }
-
-        public ReactiveCommand<bool, System.Reactive.Unit> SSRFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> SRFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> RFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> NFilter { get; }
-
-        public ReactiveCommand<bool, System.Reactive.Unit> PrincessFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> FairyFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> AngelFilter { get; }
-        public ReactiveCommand<bool, System.Reactive.Unit> EXFilter { get; }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }

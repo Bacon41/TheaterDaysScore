@@ -7,6 +7,7 @@ using ReactiveUI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
+using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 
@@ -27,34 +28,78 @@ namespace TheaterDaysScore.Views {
             this.InitializeComponent();
 
             this.WhenActivated(disposables => {
-                this.OneWayBind(ViewModel, vm => vm.Rarities, v => v.ssrCheck.IsChecked, set => {
-                    return set.Contains(JsonModels.CardData.Rarities.SSR);
+                // Rarity filters
+                this.Bind(ViewModel, vm => vm.Rarities, v => v.ssrCheck.IsChecked, set => {
+                    return set.Contains(CardData.Rarities.SSR);
+                }, isChecked => {
+                    SetRarity(isChecked, CardData.Rarities.SSR);
+                    return ViewModel.Rarities;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Rarities, v => v.srCheck.IsChecked, set => {
-                    return set.Contains(JsonModels.CardData.Rarities.SR);
+                this.Bind(ViewModel, vm => vm.Rarities, v => v.srCheck.IsChecked, set => {
+                    return set.Contains(CardData.Rarities.SR);
+                }, isChecked => {
+                    SetRarity(isChecked, CardData.Rarities.SR);
+                    return ViewModel.Rarities;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Rarities, v => v.rCheck.IsChecked, set => {
-                    return set.Contains(JsonModels.CardData.Rarities.R);
+                this.Bind(ViewModel, vm => vm.Rarities, v => v.rCheck.IsChecked, set => {
+                    return set.Contains(CardData.Rarities.R);
+                }, isChecked => {
+                    SetRarity(isChecked, CardData.Rarities.R);
+                    return ViewModel.Rarities;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Rarities, v => v.nCheck.IsChecked, set => {
-                    return set.Contains(JsonModels.CardData.Rarities.N);
+                this.Bind(ViewModel, vm => vm.Rarities, v => v.nCheck.IsChecked, set => {
+                    return set.Contains(CardData.Rarities.N);
+                }, isChecked => {
+                    SetRarity(isChecked, CardData.Rarities.N);
+                    return ViewModel.Rarities;
                 }).DisposeWith(disposables);
 
-                this.OneWayBind(ViewModel, vm => vm.Types, v => v.princessCheck.IsChecked, set => {
+                // Type filters
+                this.Bind(ViewModel, vm => vm.Types, v => v.princessCheck.IsChecked, set => {
                     return set.Contains(Types.Princess);
+                }, isChecked => {
+                    SetType(isChecked, Types.Princess);
+                    return ViewModel.Types;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Types, v => v.fairyCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.Types, v => v.fairyCheck.IsChecked, set => {
                     return set.Contains(Types.Fairy);
+                }, isChecked => {
+                    SetType(isChecked, Types.Fairy);
+                    return ViewModel.Types;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Types, v => v.angelCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.Types, v => v.angelCheck.IsChecked, set => {
                     return set.Contains(Types.Angel);
+                }, isChecked => {
+                    SetType(isChecked, Types.Angel);
+                    return ViewModel.Types;
                 }).DisposeWith(disposables);
-                this.OneWayBind(ViewModel, vm => vm.Types, v => v.exCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.Types, v => v.exCheck.IsChecked, set => {
                     return set.Contains(Types.EX);
+                }, isChecked => {
+                    SetType(isChecked, Types.EX);
+                    return ViewModel.Types;
                 }).DisposeWith(disposables);
 
                 ViewModel.FilterCards();
             });
+        }
+
+        private void SetRarity(bool? isChecked, CardData.Rarities rarity) {
+            if (isChecked ?? true) {
+                ViewModel.Rarities.Add(rarity);
+            } else {
+                ViewModel.Rarities.Remove(rarity);
+            }
+            ViewModel.FilterCards();
+        }
+
+        private void SetType(bool? isChecked, Types type) {
+            if (isChecked ?? true) {
+                ViewModel.Types.Add(type);
+            } else {
+                ViewModel.Types.Remove(type);
+            }
+            ViewModel.FilterCards();
         }
 
         private void InitializeComponent() {
