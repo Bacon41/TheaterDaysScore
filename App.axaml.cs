@@ -27,6 +27,7 @@ namespace TheaterDaysScore {
 
             // Register views.
             Locator.CurrentMutable.Register<IViewFor<DeckBuilderViewModel>>(() => new DeckBuilderView());
+            Locator.CurrentMutable.Register<IViewFor<UnitBuilderViewModel>>(() => new UnitBuilderView());
             Locator.CurrentMutable.Register<IViewFor<SongInfoViewModel>>(() => new SongInfoView());
 
             new MainWindow { DataContext = state }.Show();

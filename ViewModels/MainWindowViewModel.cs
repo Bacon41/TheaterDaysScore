@@ -30,11 +30,21 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref deckBuilder, value);
         }
 
+        private UnitBuilderViewModel unitBuilder = new UnitBuilderViewModel();
+        [DataMember]
+        UnitBuilderViewModel UnitBuilder {
+            get => unitBuilder;
+            set => this.RaiseAndSetIfChanged(ref unitBuilder, value);
+        }
+
         public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> EditDeck { get; }
+
+        public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> EditUnit { get; }
 
         public MainWindowViewModel() {
             Router.Navigate.Execute(SongInfo);
             EditDeck = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(DeckBuilder));
+            EditUnit = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(UnitBuilder));
         }
 
         public RoutingState Router {

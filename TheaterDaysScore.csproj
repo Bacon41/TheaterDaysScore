@@ -24,6 +24,9 @@
     <None Remove="Assets\up.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\UnitBuilderView.axaml.cs">
+      <DependentUpon>UnitBuilderView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\DeckBuilderView.axaml.cs">
       <DependentUpon>DeckBuilderView.axaml</DependentUpon>
     </Compile>

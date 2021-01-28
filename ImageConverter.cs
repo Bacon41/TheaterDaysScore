@@ -18,8 +18,11 @@ namespace TheaterDaysScore {
                 return null;
             
             if (value is string && targetType == typeof(IImage)) {
-                string appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
-                return new Bitmap(appDir);
+                string cardLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
+                if (File.Exists(cardLoc)) {
+                    return new Bitmap(cardLoc);
+                }
+                return null;
             }
 
             throw new NotSupportedException();

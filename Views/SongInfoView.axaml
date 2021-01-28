@@ -7,9 +7,9 @@
              x:Class="TheaterDaysScore.Views.SongInfoView">
   
   <StackPanel HorizontalAlignment="Center">
-    <Button Command="{Binding $parent[Window].DataContext.EditDeck}">
-      Choose Cards
-    </Button>
+    <Button Command="{Binding $parent[Window].DataContext.EditDeck}">Choose Cards</Button>
+    <Button Command="{Binding $parent[Window].DataContext.EditUnit}">Build Unit</Button>
+    
     <TextBlock Name="appealDisplay" FontSize="24">NaN</TextBlock>
     <TextBlock Name="scoreDisplay" FontSize="24">NaN</TextBlock>
     <StackPanel Orientation="Horizontal">

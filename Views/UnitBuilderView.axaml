@@ -1,0 +1,92 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
+             xmlns:models="clr-namespace:TheaterDaysScore.Models"
+             xmlns:views="clr-namespace:TheaterDaysScore.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TheaterDaysScore.Views.UnitBuilderView">
+  <UserControl.Resources>
+    <local:ImageConverter x:Key="imageLoader"/>
+  </UserControl.Resources>
+
+  <StackPanel Width="400">
+    <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
+
+    <ListBox Name="placementChoice">
+      <ListBox.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ListBox.ItemsPanel>
+      
+      <ListBoxItem Margin="0,0,30,0">
+        <StackPanel>
+          <TextBlock>Guest</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Guest, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+      
+      <ListBoxItem>
+        <StackPanel>
+          <TextBlock>Member</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Member1, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+      <ListBoxItem>
+        <StackPanel>
+          <TextBlock>Member</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Member2, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+      <ListBoxItem>
+        <StackPanel>
+          <TextBlock>Center</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Center, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+      <ListBoxItem>
+        <StackPanel>
+          <TextBlock>Member</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Member3, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+      <ListBoxItem>
+        <StackPanel>
+          <TextBlock>Member</TextBlock>
+          <Image Width="55" Height="55" Source="{Binding Member4, Converter={StaticResource imageLoader}}"></Image>
+        </StackPanel>
+      </ListBoxItem>
+    </ListBox>
+    
+    <StackPanel Orientation="Horizontal">
+      <CheckBox Name="raritySSR">SSR</CheckBox>
+      <CheckBox Name="raritySR">SR</CheckBox>
+      <CheckBox Name="rarityR">R</CheckBox>
+      <CheckBox Name="rarityN">N</CheckBox>
+    </StackPanel>
+
+    <StackPanel Orientation="Horizontal">
+      <CheckBox Name="typePrincess">Princess</CheckBox>
+      <CheckBox Name="typeFairy">Fairy</CheckBox>
+      <CheckBox Name="typeAngel">Angel</CheckBox>
+      <CheckBox Name="typeEX">EX</CheckBox>
+    </StackPanel>
+
+    <ScrollViewer Width="400" Height="600">
+      <ListBox Name="cardChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal" />
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Image Width="55" Height="55" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </ScrollViewer>
+  </StackPanel>
+</UserControl>

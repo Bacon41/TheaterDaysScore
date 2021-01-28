@@ -15,8 +15,9 @@ using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.ViewModels {
     [DataContract]
-    public class DeckBuilderViewModel : ReactiveObject, IRoutableViewModel {
+    public class UnitBuilderViewModel : ReactiveObject, IRoutableViewModel {
 
+        // Filters
         private HashSet<CardData.Rarities> rarities = new HashSet<CardData.Rarities>();
         [DataMember]
         public HashSet<CardData.Rarities> Rarities {
@@ -31,24 +32,59 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref types, value);
         }
 
+        // Unit
+        private string guest = "";
+        [DataMember]
+        public string Guest {
+            get => guest;
+            set => this.RaiseAndSetIfChanged(ref guest, value);
+        }
+
+        private string center = "";
+        [DataMember]
+        public string Center {
+            get => center;
+            set => this.RaiseAndSetIfChanged(ref center, value);
+        }
+
+        private string member1 = "";
+        [DataMember]
+        public string Member1 {
+            get => member1;
+            set => this.RaiseAndSetIfChanged(ref member1, value);
+        }
+
+        private string member2 = "";
+        [DataMember]
+        public string Member2 {
+            get => member2;
+            set => this.RaiseAndSetIfChanged(ref member2, value);
+        }
+
+        private string member3 = "";
+        [DataMember]
+        public string Member3 {
+            get => member3;
+            set => this.RaiseAndSetIfChanged(ref member3, value);
+        }
+
+        private string member4 = "";
+        [DataMember]
+        public string Member4 {
+            get => member4;
+            set => this.RaiseAndSetIfChanged(ref member4, value);
+        }
+
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "deckbuilder";
 
-        public DeckBuilderViewModel(IScreen screen = null) {
+        public UnitBuilderViewModel(IScreen screen = null) {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Items = new ObservableCollection<Card>();
             Rarities = new HashSet<CardData.Rarities>();
             Types = new HashSet<Types>();
-
-            Update = ReactiveCommand.Create(() => {
-                Items.Clear();
-                Items.AddRange(Database.DB.UpdateCards());
-            });
-            Save = ReactiveCommand.Create(() => {
-                Database.DB.SaveHeld();
-            });
         }
 
         public void FilterCards() {
@@ -59,9 +95,10 @@ namespace TheaterDaysScore.ViewModels {
                 );
         }
 
-        public ObservableCollection<Card> Items { get; }
+        public Unit BuildUnit() {
+            return new Unit(Guest, Center, Member1, Member2, Member3, Member4);
+        }
 
-        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
-        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }
+        public ObservableCollection<Card> Items { get; }
     }
 }
