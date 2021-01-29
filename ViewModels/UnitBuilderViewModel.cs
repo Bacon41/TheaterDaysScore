@@ -33,6 +33,8 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         // Unit
+        public int PlacementIndex = -1;
+
         private string guest = "";
         [DataMember]
         public string Guest {
@@ -75,9 +77,15 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref member4, value);
         }
 
+        private Unit unit = null;
+        public Unit Unit {
+            get => unit;
+            set => this.RaiseAndSetIfChanged(ref unit, value);
+        }
+
         public IScreen HostScreen { get; }
 
-        public string UrlPathSegment => "deckbuilder";
+        public string UrlPathSegment => "unitbuilder";
 
         public UnitBuilderViewModel(IScreen screen = null) {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
@@ -90,13 +98,57 @@ namespace TheaterDaysScore.ViewModels {
         public void FilterCards() {
             Items.Clear();
             Items.AddRange(Database.DB.AllCards()
+                .Where(card => card.IsHeld)
                 .Where(card => Rarities.Contains(card.Rarity))
                 .Where(card => Types.Contains(card.Type))
                 );
         }
 
-        public Unit BuildUnit() {
-            return new Unit(Guest, Center, Member1, Member2, Member3, Member4);
+        public void SetCard(Card card) {
+            if (card == null) {
+                return;
+            }
+            string[] usedCards = { Member1, Member2, Center, Member3, Member4 };
+            switch (PlacementIndex) {
+                case 0:
+                    Guest = card.ID;
+                    break;
+                case 1:
+                    if (usedCards.Contains(card.ID)) {
+                        return;
+                    }
+                    Member1 = card.ID;
+                    break;
+                case 2:
+                    if (usedCards.Contains(card.ID)) {
+                        return;
+                    }
+                    Member2 = card.ID;
+                    break;
+                case 3:
+                    if (usedCards.Contains(card.ID)) {
+                        return;
+                    }
+                    Center = card.ID;
+                    break;
+                case 4:
+                    if (usedCards.Contains(card.ID)) {
+                        return;
+                    }
+                    Member3 = card.ID;
+                    break;
+                case 5:
+                    if (usedCards.Contains(card.ID)) {
+                        return;
+                    }
+                    Member4 = card.ID;
+                    break;
+            }
+            SetUnit();
+        }
+
+        public void SetUnit() {
+            Unit = new Unit(Guest, Center, Member1, Member2, Member3, Member4);
         }
 
         public ObservableCollection<Card> Items { get; }

@@ -18,7 +18,7 @@ namespace TheaterDaysScore.Views {
         private DrawIntervals intervalCanvas;
 
         private int songNum;
-        private Unit unit;
+        public Unit unit;
 
         public SongInfoView() {
             this.InitializeComponent();
@@ -42,10 +42,6 @@ namespace TheaterDaysScore.Views {
             scoreDisp = this.FindControl<TextBlock>("scoreDisplay");
             scoreCanvas = this.FindControl<DrawCanvas>("scoreCanvas");
             intervalCanvas = this.FindControl<DrawIntervals>("intervalCanvas");
-        }
-
-        public void Calculate_Click(object sender, RoutedEventArgs e) {
-            scoreDisp.Text = "50th Percentile: " + calc.GetScore(songNum, unit).ToString();
         }
 
         public void SongSelect(object sender, RoutedEventArgs e) {

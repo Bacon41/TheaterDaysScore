@@ -18,21 +18,21 @@ namespace TheaterDaysScore.ViewModels {
 
         private SongInfoViewModel songInfo = new SongInfoViewModel();
         [DataMember]
-        SongInfoViewModel SongInfo {
+        public SongInfoViewModel SongInfo {
             get => songInfo;
             set => this.RaiseAndSetIfChanged(ref songInfo, value);
         }
 
         private DeckBuilderViewModel deckBuilder = new DeckBuilderViewModel();
         [DataMember]
-        DeckBuilderViewModel DeckBuilder {
+        public DeckBuilderViewModel DeckBuilder {
             get => deckBuilder;
             set => this.RaiseAndSetIfChanged(ref deckBuilder, value);
         }
 
         private UnitBuilderViewModel unitBuilder = new UnitBuilderViewModel();
         [DataMember]
-        UnitBuilderViewModel UnitBuilder {
+        public UnitBuilderViewModel UnitBuilder {
             get => unitBuilder;
             set => this.RaiseAndSetIfChanged(ref unitBuilder, value);
         }

@@ -4,11 +4,14 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using DynamicData;
 using ReactiveUI;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using TheaterDaysScore.JsonModels;
+using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 
@@ -84,7 +87,15 @@ namespace TheaterDaysScore.Views {
                     return ViewModel.Types;
                 }).DisposeWith(disposables);
 
+                // Card selection
+                this.Bind(ViewModel, vm => vm.PlacementIndex, v => v.placementChoice.SelectedIndex)
+                    .DisposeWith(disposables);
+                cardChoice.GetObservable(ListBox.SelectedItemProperty)
+                    .Subscribe(x => ViewModel.SetCard(x as Card))
+                    .DisposeWith(disposables);
+
                 ViewModel.FilterCards();
+                ViewModel.SetUnit();
             });
         }
 
