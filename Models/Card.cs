@@ -93,7 +93,7 @@ namespace TheaterDaysScore.Models {
                 return 0;
             }
 
-            public Vector3 GetBoost(Types songType, Unit unit) {
+            public Vector3 GetBoost(Types songType, Types cardType, Unit unit) {
                 Vector3 boost = new Vector3(0);
                 if (data == null) {
                     return boost;
@@ -116,6 +116,23 @@ namespace TheaterDaysScore.Models {
                         break;
                     case Types.All:
                         if (!unit.IsTricolour()) {
+                            return boost;
+                        }
+                        break;
+                }
+                switch (data.idolType) {
+                    case Types.Princess:
+                        if (cardType != Types.Princess) {
+                            return boost;
+                        }
+                        break;
+                    case Types.Fairy:
+                        if (cardType != Types.Fairy) {
+                            return boost;
+                        }
+                        break;
+                    case Types.Angel:
+                        if (cardType != Types.Angel) {
                             return boost;
                         }
                         break;
@@ -202,9 +219,11 @@ namespace TheaterDaysScore.Models {
         public int TotalAppeal(Types songType) {
             Vector3 splitAppeal = SplitAppeal();
             if (Type == songType || Type == Types.EX || songType == Types.All) {
-                splitAppeal *= 1.3f;
+                splitAppeal *= 0.3f;
+            } else {
+                splitAppeal = Vector3.Zero;
             }
-            return (int)(splitAppeal.X + splitAppeal.Y + splitAppeal.Z);
+            return (int)splitAppeal.X + (int)splitAppeal.Y + (int)splitAppeal.Z;
         }
     }
 }

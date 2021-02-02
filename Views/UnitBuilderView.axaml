@@ -14,7 +14,7 @@
   <StackPanel Width="400">
     <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
 
-    <ListBox Name="placementChoice">
+    <ListBox Name="placementChoice" SelectedIndex="{Binding PlacementIndex}">
       <ListBox.ItemsPanel>
         <ItemsPanelTemplate>
           <StackPanel Orientation="Horizontal"/>

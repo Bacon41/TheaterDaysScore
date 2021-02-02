@@ -33,7 +33,11 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         // Unit
-        public int PlacementIndex = -1;
+        private int placementIndex = -1;
+        public int PlacementIndex {
+            get => placementIndex;
+            set => this.RaiseAndSetIfChanged(ref placementIndex, value);
+        }
 
         private string guest = "";
         [DataMember]
@@ -97,11 +101,13 @@ namespace TheaterDaysScore.ViewModels {
 
         public void FilterCards() {
             Items.Clear();
-            Items.AddRange(Database.DB.AllCards()
-                .Where(card => card.IsHeld)
-                .Where(card => Rarities.Contains(card.Rarity))
-                .Where(card => Types.Contains(card.Type))
-                );
+            if (PlacementIndex >= 0) {
+                Items.AddRange(Database.DB.AllCards()
+                    .Where(card => PlacementIndex == 0 || card.IsHeld)
+                    .Where(card => Rarities.Contains(card.Rarity))
+                    .Where(card => Types.Contains(card.Type))
+                    );
+            }
         }
 
         public void SetCard(Card card) {

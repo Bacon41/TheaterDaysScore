@@ -3,17 +3,23 @@ using Splat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using TheaterDaysScore.Models;
+using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore.ViewModels {
     [DataContract]
     public class SongInfoViewModel : ReactiveObject, IRoutableViewModel {
         private Calculator calc;
 
-        public Unit Unit;
+        private Unit unit;
+        public Unit Unit {
+            get => unit;
+            set => this.RaiseAndSetIfChanged(ref unit, value);
+        }
 
         private int songNum = 0;
         [DataMember]
@@ -28,6 +34,9 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref score, value);
         }
 
+        readonly ObservableAsPropertyHelper<string> appeal;
+        public string Appeal => appeal.Value;
+
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "songinfo";
@@ -35,15 +44,23 @@ namespace TheaterDaysScore.ViewModels {
         public SongInfoViewModel(IScreen screen = null) {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            Unit = new Unit("031tom0164", "031tom0164", "007ior0084", "020meg0084", "038chz0034", "009rit0084");
-
             calc = new Calculator();
 
             Calculate = ReactiveCommand.Create(() => {
                 Score = calc.GetScore(SongNum, Unit).ToString();
             });
+
+            appeal = this.WhenAnyValue(x => x.SongNum, x => x.Unit)
+                .Select(x => {
+                    if (Unit == null) {
+                        return "N/A";
+                    }
+                    return "Appeal: " + calc.GetAppeal(Database.DB.GetSong(SongNum).Type, Calculator.BoostType.visual, Unit).ToString();
+                })
+                .ToProperty(this, x => x.Appeal);
         }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Calculate { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> GetAppeal { get; }
     }
 }

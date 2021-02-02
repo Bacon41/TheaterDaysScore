@@ -35,9 +35,6 @@ namespace TheaterDaysScore {
         public int GetAppeal(Types songType, BoostType eventType, Unit unit) {
             // https://megmeg.work/basic_information/formula/appealvalue/
 
-            Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, unit);
-            Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, unit);
-
             // Support
             Vector3 supportStatus = new Vector3(0);
             Vector3 supportType = new Vector3(0);
@@ -79,7 +76,9 @@ namespace TheaterDaysScore {
                 if (unit.Guest.Type == songType || unit.Guest.Type == Types.EX || songType == Types.All) {
                     guestType += floor(stats * 0.3f);
                 }
-                
+
+                Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, unit.Guest.Type, unit);
+                Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, unit.Guest.Type, unit);
                 guestCenter += floor(stats * (guestCenterEffect + centerCenterEffect));
             }
             float guestAppeal = Vector3.Dot(new Vector3(1), guestStatus + guestType + guestCenter);
@@ -113,6 +112,8 @@ namespace TheaterDaysScore {
                     unitType[cardType] += stats * 0.3f;
                 }
 
+                Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, card.Type, unit);
+                Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, card.Type, unit);
                 unitCenter[cardType] += (guestCenterEffect + centerCenterEffect) * stats;
 
                 switch (eventType) {

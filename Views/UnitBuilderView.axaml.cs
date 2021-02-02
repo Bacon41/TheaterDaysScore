@@ -88,7 +88,8 @@ namespace TheaterDaysScore.Views {
                 }).DisposeWith(disposables);
 
                 // Card selection
-                this.Bind(ViewModel, vm => vm.PlacementIndex, v => v.placementChoice.SelectedIndex)
+                this.WhenAnyValue(x => x.ViewModel.PlacementIndex)
+                    .Subscribe(x => ViewModel.FilterCards())
                     .DisposeWith(disposables);
                 cardChoice.GetObservable(ListBox.SelectedItemProperty)
                     .Subscribe(x => ViewModel.SetCard(x as Card))
