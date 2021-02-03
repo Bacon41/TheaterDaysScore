@@ -144,12 +144,12 @@ namespace TheaterDaysScore {
             return new Vector3((float)Math.Floor(input.X), (float)Math.Floor(input.Y), (float)Math.Floor(input.Z));
         }
 
-        public int GetScore(int songNum, Unit unit) {
+        public int GetScore(int songNum, BoostType boostType, Unit unit) {
             // https://megmeg.work/basic_information/formula/score/
 
             Song song = Database.DB.GetSong(songNum);
 
-            int totalAppeal = GetAppeal(song.Type, BoostType.none, unit);
+            int totalAppeal = GetAppeal(song.Type, boostType, unit);
 
             double baseScore = totalAppeal * (33f + song.Level) / 20;
             double notesAndHolds = song.NoteWeight + 2 * song.HoldLength;
@@ -158,8 +158,8 @@ namespace TheaterDaysScore {
             double comboScale = 0.3 * baseScore / (2 * song.Notes.Count - 66);
 
             List<double> scores = new List<double>();
-            for (int x = 0; x < 1; x++) {
-                Unit.IActivation activations = unit.GetActivations(song, true);
+            for (int x = 0; x < 1000; x++) {
+                Unit.IActivation activations = unit.GetActivations(song);
 
                 double score = 0;
                 int combo = 0;

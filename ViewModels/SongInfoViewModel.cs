@@ -28,6 +28,13 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref songNum, value);
         }
 
+        private Calculator.BoostType boostType;
+        [DataMember]
+        public Calculator.BoostType BoostType {
+            get => boostType;
+            set => this.RaiseAndSetIfChanged(ref boostType, value);
+        }
+
         private string score = "NaN";
         public string Score {
             get => score;
@@ -47,15 +54,15 @@ namespace TheaterDaysScore.ViewModels {
             calc = new Calculator();
 
             Calculate = ReactiveCommand.Create(() => {
-                Score = calc.GetScore(SongNum, Unit).ToString();
+                Score = calc.GetScore(SongNum, BoostType, Unit).ToString();
             });
 
-            appeal = this.WhenAnyValue(x => x.SongNum, x => x.Unit)
+            appeal = this.WhenAnyValue(x => x.SongNum, x => x.Unit, x => x.BoostType)
                 .Select(x => {
                     if (Unit == null) {
                         return "N/A";
                     }
-                    return "Appeal: " + calc.GetAppeal(Database.DB.GetSong(SongNum).Type, Calculator.BoostType.visual, Unit).ToString();
+                    return "Appeal: " + calc.GetAppeal(Database.DB.GetSong(SongNum).Type, BoostType, Unit).ToString();
                 })
                 .ToProperty(this, x => x.Appeal);
         }

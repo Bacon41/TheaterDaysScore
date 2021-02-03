@@ -18,8 +18,9 @@ namespace TheaterDaysScore.Models {
 
         private Random rand;
 
-        public Unit(string guestID, string centerID, string member1ID, string member2ID, string member3ID, string member4ID) {
-            Guest = Database.DB.GetCard(guestID);
+        public Unit(string guestID, int guestRank, string centerID, string member1ID, string member2ID, string member3ID, string member4ID) {
+            Guest = Database.DB.GetCard(guestID).Copy();
+            Guest.MasterRank = guestRank;
             Center = Database.DB.GetCard(centerID);
 
             memberIDs = new string[5] { member1ID, member2ID, centerID, member3ID, member4ID };

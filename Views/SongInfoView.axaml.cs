@@ -18,8 +18,6 @@ using TheaterDaysScore.ViewModels;
 
 namespace TheaterDaysScore.Views {
     public class SongInfoView : ReactiveUserControl<SongInfoViewModel> {
-        private ListBox songSelection;
-
         private DrawCanvas scoreCanvas;
         private DrawIntervals intervalCanvas;
 
@@ -41,7 +39,6 @@ namespace TheaterDaysScore.Views {
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
 
-            songSelection = this.FindControl<ListBox>("songSelection");
             scoreCanvas = this.FindControl<DrawCanvas>("scoreCanvas");
             intervalCanvas = this.FindControl<DrawIntervals>("intervalCanvas");
         }

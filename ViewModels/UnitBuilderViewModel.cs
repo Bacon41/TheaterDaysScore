@@ -46,6 +46,19 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref guest, value);
         }
 
+        private int guestRank = 0;
+        [DataMember]
+        public int GuestRank {
+            get => guestRank;
+            set => this.RaiseAndSetIfChanged(ref guestRank, value);
+        }
+
+        private List<int> guestRanks;
+        public List<int> GuestRanks {
+            get => guestRanks;
+            set => this.RaiseAndSetIfChanged(ref guestRanks, value);
+        }
+
         private string center = "";
         [DataMember]
         public string Center {
@@ -161,7 +174,7 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         public void SetUnit() {
-            Unit = new Unit(Guest, Center, Member1, Member2, Member3, Member4);
+            Unit = new Unit(Guest, GuestRank, Center, Member1, Member2, Member3, Member4);
         }
 
         public ObservableCollection<Card> Items { get; }

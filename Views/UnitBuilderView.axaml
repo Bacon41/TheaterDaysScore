@@ -25,6 +25,7 @@
         <StackPanel>
           <TextBlock>Guest</TextBlock>
           <Image Width="55" Height="55" Source="{Binding Guest, Converter={StaticResource imageLoader}}"></Image>
+          <ComboBox Items="{Binding GuestRanks}" SelectedIndex="{Binding GuestRank}"></ComboBox>
         </StackPanel>
       </ListBoxItem>
       

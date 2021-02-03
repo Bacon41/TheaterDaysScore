@@ -95,6 +95,21 @@ namespace TheaterDaysScore.Views {
                     .Subscribe(x => ViewModel.SetCard(x as Card))
                     .DisposeWith(disposables);
 
+                // Guest rank selection
+                this.WhenAnyValue(x => x.ViewModel.GuestRank)
+                    .Subscribe(x => ViewModel.SetUnit())
+                    .DisposeWith(disposables);
+                this.WhenAnyValue(x => x.ViewModel.Guest)
+                    .Subscribe(x => {
+                        int oldRank = ViewModel.GuestRank;
+                        ViewModel.GuestRanks = Database.DB.GetCard(x).MasterRanks;
+                        if (oldRank >= ViewModel.GuestRanks.Count) {
+                            oldRank = ViewModel.GuestRanks.Count - 1;
+                        }
+                        ViewModel.GuestRank = oldRank;
+                    })
+                    .DisposeWith(disposables);
+
                 ViewModel.FilterCards();
                 ViewModel.SetUnit();
             });

@@ -3,6 +3,7 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,19 @@ namespace TheaterDaysScore {
             if (value is string && targetType == typeof(IImage)) {
                 string cardLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
                 if (File.Exists(cardLoc)) {
-                    return new Bitmap(cardLoc);
+                    // This is really bad and should be way safer and less infinite loop-y
+                    Bitmap b = null;
+                    do {
+                        try {
+                            b = new Bitmap(cardLoc);
+                        } catch (IOException) {
+                            // For now, just assume it's waiting to be written and retry
+                        } catch (ArgumentException) {
+                            return null;
+                        }
+                    } while (b == null);
+
+                    return b;
                 }
                 return null;
             }

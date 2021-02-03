@@ -210,6 +210,10 @@ namespace TheaterDaysScore.Models {
             // https://storage.matsurihi.me/mltd/icon_l/017kth0054_1.png
         }
 
+        public Card Copy() {
+            return new Card(this.data, this.idol, IsHeld, MasterRank, SkillLevel);
+        }
+
         public Vector3 SplitAppeal() {
             return new Vector3(data.vocalMaxAwakened + data.vocalMasterBonus * MasterRank,
                     data.danceMaxAwakened + data.danceMasterBonus * MasterRank,

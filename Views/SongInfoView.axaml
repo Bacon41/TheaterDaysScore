@@ -12,6 +12,41 @@
     
     <TextBlock Name="appealDisplay" FontSize="24" Text="{Binding Appeal}"></TextBlock>
     <TextBlock Name="scoreDisplay" FontSize="24" Text="{Binding Score}"></TextBlock>
+
+    <ListBox SelectedIndex="{Binding BoostType}">
+      <ListBox.ItemsPanel>
+        <ItemsPanelTemplate>
+          <StackPanel Orientation="Horizontal"/>
+        </ItemsPanelTemplate>
+      </ListBox.ItemsPanel>
+
+      <ListBox.Styles>
+        <Style Selector="ListBoxItem">
+          <Setter Property="Template">
+            <Setter.Value>
+              <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                <RadioButton Content="{TemplateBinding Content}"
+                             IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+              </ControlTemplate>
+            </Setter.Value>
+          </Setter>
+        </Style>
+      </ListBox.Styles>
+
+      <ListBoxItem>
+        <TextBlock>None</TextBlock>
+      </ListBoxItem>
+      <ListBoxItem>
+        <TextBlock>Vocal</TextBlock>
+      </ListBoxItem>
+      <ListBoxItem>
+        <TextBlock>Dance</TextBlock>
+      </ListBoxItem>
+      <ListBoxItem>
+        <TextBlock>Visual</TextBlock>
+      </ListBoxItem>
+    </ListBox>
+    
     <ListBox Name="songSelection" SelectedIndex="{Binding SongNum}">
       <ListBox.ItemsPanel>
         <ItemsPanelTemplate>
