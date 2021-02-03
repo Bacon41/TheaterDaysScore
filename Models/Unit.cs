@@ -138,8 +138,8 @@ namespace TheaterDaysScore.Models {
             return unitTypes == 5;
         }
 
-        public List<Card> TopSupport(Types songType) {
-            return Database.DB.TopAppeal(songType, 10, memberIDs);
+        public List<Card> TopSupport(Types songType, Calculator.BoostType eventType) {
+            return Database.DB.TopAppeal(songType, eventType, 10, memberIDs);
         }
     }
 }

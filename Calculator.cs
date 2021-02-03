@@ -21,7 +21,7 @@ namespace TheaterDaysScore {
         EX,
     };
 
-    class Calculator {
+    public class Calculator {
         public enum BoostType {
             none,
             vocal,
@@ -40,7 +40,7 @@ namespace TheaterDaysScore {
             Vector3 supportType = new Vector3(0);
             Vector3 supportEvent = new Vector3(0);
 
-            List<Card> supportCards = unit.TopSupport(songType);
+            List<Card> supportCards = unit.TopSupport(songType, eventType);
             foreach (Card card in supportCards) {
                 Vector3 stats = card.SplitAppeal();
 

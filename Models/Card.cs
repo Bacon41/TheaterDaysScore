@@ -122,17 +122,17 @@ namespace TheaterDaysScore.Models {
                 }
                 switch (data.idolType) {
                     case Types.Princess:
-                        if (cardType != Types.Princess) {
+                        if (cardType != Types.Princess && cardType != Types.EX) {
                             return boost;
                         }
                         break;
                     case Types.Fairy:
-                        if (cardType != Types.Fairy) {
+                        if (cardType != Types.Fairy && cardType != Types.EX) {
                             return boost;
                         }
                         break;
                     case Types.Angel:
-                        if (cardType != Types.Angel) {
+                        if (cardType != Types.Angel && cardType != Types.EX) {
                             return boost;
                         }
                         break;
@@ -216,14 +216,31 @@ namespace TheaterDaysScore.Models {
                     data.visualMaxAwakened + data.visualMasterBonus * MasterRank);
         }
 
-        public int TotalAppeal(Types songType) {
-            Vector3 splitAppeal = SplitAppeal();
-            if (Type == songType || Type == Types.EX || songType == Types.All) {
-                splitAppeal *= 0.3f;
-            } else {
-                splitAppeal = Vector3.Zero;
+        private Vector3 floor(Vector3 input) {
+            return new Vector3((float)Math.Floor(input.X), (float)Math.Floor(input.Y), (float)Math.Floor(input.Z));
+        }
+
+        public float TotalAppeal(Types songType, Calculator.BoostType eventType) {
+            if (Type != songType && Type != Types.EX && songType != Types.All) {
+                return 0;
             }
-            return (int)splitAppeal.X + (int)splitAppeal.Y + (int)splitAppeal.Z;
+            Vector3 eventBoost = Vector3.Zero;
+            switch (eventType) {
+                case Calculator.BoostType.vocal:
+                    eventBoost = new Vector3(1.2f, 0, 0);
+                    break;
+                case Calculator.BoostType.dance:
+                    eventBoost = new Vector3(0, 1.2f, 0);
+                    break;
+                case Calculator.BoostType.visual:
+                    eventBoost = new Vector3(0, 0, 1.2f);
+                    break;
+            }
+
+            Vector3 splitAppeal = SplitAppeal();
+            Vector3 splitAppealType = floor(splitAppeal * 0.3f);
+            Vector3 splitAppealEvent = floor(splitAppeal * eventBoost);
+            return Vector3.Dot(new Vector3(1), floor(splitAppeal / 2) + floor(splitAppealType / 2) + floor(splitAppealEvent / 2));
         }
     }
 }

@@ -114,41 +114,48 @@ namespace TheaterDaysScore.ViewModels {
             if (card == null) {
                 return;
             }
-            string[] usedCards = { Member1, Member2, Center, Member3, Member4 };
-            switch (PlacementIndex) {
-                case 0:
-                    Guest = card.ID;
-                    break;
-                case 1:
-                    if (usedCards.Contains(card.ID)) {
-                        return;
-                    }
-                    Member1 = card.ID;
-                    break;
-                case 2:
-                    if (usedCards.Contains(card.ID)) {
-                        return;
-                    }
-                    Member2 = card.ID;
-                    break;
-                case 3:
-                    if (usedCards.Contains(card.ID)) {
-                        return;
-                    }
-                    Center = card.ID;
-                    break;
-                case 4:
-                    if (usedCards.Contains(card.ID)) {
-                        return;
-                    }
-                    Member3 = card.ID;
-                    break;
-                case 5:
-                    if (usedCards.Contains(card.ID)) {
-                        return;
-                    }
-                    Member4 = card.ID;
-                    break;
+            if (PlacementIndex == 0) {
+                Guest = card.ID;
+            } else {
+                string oldVal = "";
+                
+                switch (PlacementIndex) {
+                    case 1:
+                        oldVal = Member1;
+                        Member1 = card.ID;
+                        break;
+                    case 2:
+                        oldVal = Member2;
+                        Member2 = card.ID;
+                        break;
+                    case 3:
+                        oldVal = Center;
+                        Center = card.ID;
+                        break;
+                    case 4:
+                        oldVal = Member3;
+                        Member3 = card.ID;
+                        break;
+                    case 5:
+                        oldVal = Member4;
+                        Member4 = card.ID;
+                        break;
+                }
+                if (card.ID == Member1 && PlacementIndex != 1) {
+                    Member1 = oldVal;
+                }
+                if (card.ID == Member2 && PlacementIndex != 2) {
+                    Member2 = oldVal;
+                }
+                if (card.ID == Center && PlacementIndex != 3) {
+                    Center = oldVal;
+                }
+                if (card.ID == Member3 && PlacementIndex != 4) {
+                    Member3 = oldVal;
+                }
+                if (card.ID == Member4 && PlacementIndex != 5) {
+                    Member4 = oldVal;
+                }
             }
             SetUnit();
         }

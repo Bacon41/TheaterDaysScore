@@ -168,11 +168,11 @@ namespace TheaterDaysScore.Services {
             return allCards[id];
         }
 
-        public List<Card> TopAppeal(Types songType, int topCount, params string[] skipIds) {
+        public List<Card> TopAppeal(Types songType, Calculator.BoostType eventType, int topCount, params string[] skipIds) {
             return allCards.Select(keyVal => keyVal.Value)
                 .Where(card => card.IsHeld)
                 .Where(card => !skipIds.Contains(card.ID))
-                .OrderByDescending(card => card.TotalAppeal(songType))
+                .OrderByDescending(card => card.TotalAppeal(songType, eventType))
                 .Take(topCount)
                 .ToList();
         }
