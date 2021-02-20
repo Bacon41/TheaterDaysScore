@@ -12,6 +12,16 @@ namespace TheaterDaysScore.Models {
         private CardData data;
         private IdolData idol;
 
+        public enum Categories {
+            PermanentGasha,
+            LimitedGasha,
+            Fes,
+            PST,
+            MiliColle,
+            Anniversary,
+            Other
+        }
+
         public bool IsHeld { get; set; }
 
         public int MasterRank { get; set; }
@@ -23,6 +33,7 @@ namespace TheaterDaysScore.Models {
         public string ID { get; }
         public Types Type { get; }
         public CardData.Rarities Rarity { get; }
+        public Categories Category { get; }
         public Color Color { get; }
         public List<Skill> Skills { get; }
         public CenterEffect Center { get; }
@@ -191,6 +202,46 @@ namespace TheaterDaysScore.Models {
 
             ID = this.data.resourceId;
             Type = this.data.idolType;
+            
+            switch (this.data.category) {
+                case "normal": // Free with account
+                    Category = Categories.Other;
+                    break;
+                case "gasha0": // Perm
+                    Category = Categories.PermanentGasha;
+                    break;
+                case "gasha1": // Lim
+                    Category = Categories.LimitedGasha;
+                    break;
+                case "gasha2": // Fes
+                    Category = Categories.Fes;
+                    break;
+                case "event0": // MiliColle SR
+                    Category = Categories.MiliColle;
+                    break;
+                case "event1": // Theater
+                    Category = Categories.PST;
+                    break;
+                case "event2": // Tour
+                    Category = Categories.PST;
+                    break;
+                case "event3": // Anniversary
+                    Category = Categories.Anniversary;
+                    break;
+                case "event4": // Voting runner-up
+                    Category = Categories.Other;
+                    break;
+                case "event5": // MiliColle R
+                    Category = Categories.MiliColle;
+                    break;
+                case "other": // Idol Heroes, Leon
+                    Category = Categories.Other;
+                    break;
+                default: // Just in case
+                    Category = Categories.Other;
+                    break;
+            }
+
             if (Type != Types.EX) {
                 Color = Color.Parse("#" + this.idol.colour);
             } else {

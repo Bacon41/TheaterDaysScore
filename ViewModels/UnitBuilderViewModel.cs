@@ -32,6 +32,13 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref types, value);
         }
 
+        private HashSet<Card.Categories> categories = new HashSet<Card.Categories>();
+        [DataMember]
+        public HashSet<Card.Categories> Categories {
+            get => categories;
+            set => this.RaiseAndSetIfChanged(ref categories, value);
+        }
+
         // Unit
         private int placementIndex = -1;
         public int PlacementIndex {
@@ -108,8 +115,6 @@ namespace TheaterDaysScore.ViewModels {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Items = new ObservableCollection<Card>();
-            Rarities = new HashSet<CardData.Rarities>();
-            Types = new HashSet<Types>();
         }
 
         public void FilterCards() {
@@ -119,6 +124,7 @@ namespace TheaterDaysScore.ViewModels {
                     .Where(card => PlacementIndex == 0 || card.IsHeld)
                     .Where(card => Rarities.Contains(card.Rarity))
                     .Where(card => Types.Contains(card.Type))
+                    .Where(card => Categories.Contains(card.Category))
                     );
             }
         }

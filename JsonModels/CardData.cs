@@ -63,6 +63,7 @@ namespace TheaterDaysScore.JsonModels {
         public string colour { get; set; }
         public Types idolType { get; set; }
         public Rarities rarity { get; set; }
+        public string category { get; set; }
 
         public int masterRankMax { get; set; }
         public int skillLevelMax { get; set; }

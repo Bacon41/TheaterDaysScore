@@ -21,12 +21,18 @@ namespace TheaterDaysScore.Views {
 #endif
 
             this.WhenActivated(disposables => {
-                ViewModel.UnitBuilder.SetUnit();
-                ViewModel.SongInfo.Unit = ViewModel.UnitBuilder.Unit;
-
+                // Pass the unit from the builder to the song
                 this.WhenAnyValue(x => x.ViewModel.UnitBuilder.Unit)
                     .Subscribe(x => ViewModel.SongInfo.Unit = x)
                     .DisposeWith(disposables);
+
+                // Re-build the unit whenever the page changes, to pick up level increases
+                this.WhenAnyObservable(x => x.ViewModel.Router.NavigationChanged)
+                    .Subscribe(x => ViewModel.UnitBuilder.SetUnit())
+                    .DisposeWith(disposables);
+
+                // Fill in the unit on boot
+                ViewModel.UnitBuilder.SetUnit();
             });
         }
 

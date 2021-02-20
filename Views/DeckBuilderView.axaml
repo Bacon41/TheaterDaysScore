@@ -11,41 +11,62 @@
     <local:ImageConverter x:Key="imageLoader"/>
   </UserControl.Resources>
 
-  <StackPanel Width="400">
-    <Button Command="{Binding Update}">Update</Button>
-    <Button Command="{Binding Save}">Save</Button>
-    <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
+  <StackPanel Orientation="Vertical">
+    <Button Margin="0,0,0,10" Width="800" Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
     
-    <StackPanel Orientation="Horizontal">
-      <CheckBox Name="raritySSR">SSR</CheckBox>
-      <CheckBox Name="raritySR">SR</CheckBox>
-      <CheckBox Name="rarityR">R</CheckBox>
-      <CheckBox Name="rarityN">N</CheckBox>
-    </StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+      <StackPanel Orientation="Vertical">
+        <Button Command="{Binding Update}">Update</Button>
+        <Button Command="{Binding Save}">Save</Button>
+        <Button Command="{Binding Load}">Load</Button>
 
-    <StackPanel Orientation="Horizontal">
-      <CheckBox Name="typePrincess">Princess</CheckBox>
-      <CheckBox Name="typeFairy">Fairy</CheckBox>
-      <CheckBox Name="typeAngel">Angel</CheckBox>
-      <CheckBox Name="typeEX">EX</CheckBox>
-    </StackPanel>
+        <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding MaxRank}">MaxRank</Button>
+          <Button Command="{Binding MaxLevel}">MaxLevel</Button>
+        </StackPanel>
+    
+        <StackPanel Orientation="Horizontal">
+          <CheckBox Name="raritySSR">SSR</CheckBox>
+          <CheckBox Name="raritySR">SR</CheckBox>
+          <CheckBox Name="rarityR">R</CheckBox>
+          <CheckBox Name="rarityN">N</CheckBox>
+        </StackPanel>
 
-    <ScrollViewer Width="400" Height="600">
-      <ItemsRepeater Items="{Binding Items}" Width="380">
-        <ItemsRepeater.Layout>
-          <UniformGridLayout MinColumnSpacing="5" MinRowSpacing="5"/>
-        </ItemsRepeater.Layout>
-        <ItemsRepeater.ItemTemplate>
-          <DataTemplate>
-            <StackPanel Width="50">
-              <Image Width="50" Height="50" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
-              <CheckBox IsChecked="{Binding IsHeld}"></CheckBox>
-              <ComboBox Items="{Binding MasterRanks}" SelectedIndex="{Binding MasterRank}"></ComboBox>
-              <ComboBox Items="{Binding SkillLevels}" SelectedIndex="{Binding SkillLevel}"></ComboBox>
-            </StackPanel>
-          </DataTemplate>
-        </ItemsRepeater.ItemTemplate>
-      </ItemsRepeater>
-    </ScrollViewer>
+        <StackPanel Orientation="Horizontal">
+          <CheckBox Name="typePrincess">Princess</CheckBox>
+          <CheckBox Name="typeFairy">Fairy</CheckBox>
+          <CheckBox Name="typeAngel">Angel</CheckBox>
+          <CheckBox Name="typeEX">EX</CheckBox>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+          <CheckBox Name="categoryPerm">Permanent</CheckBox>
+          <CheckBox Name="categoryLim">Limited</CheckBox>
+          <CheckBox Name="categoryFes">FES</CheckBox>
+          <CheckBox Name="categoryPST">PST</CheckBox>
+          <CheckBox Name="categoryColle">MiliColle</CheckBox>
+          <CheckBox Name="categoryAnn">Anniversary</CheckBox>
+          <CheckBox Name="categoryOther">Other</CheckBox>
+        </StackPanel>
+      </StackPanel>
+
+      <ScrollViewer Width="400" Height="600">
+        <ItemsRepeater Items="{Binding Items}" Width="380">
+          <ItemsRepeater.Layout>
+            <UniformGridLayout MinColumnSpacing="5" MinRowSpacing="5"/>
+          </ItemsRepeater.Layout>
+          <ItemsRepeater.ItemTemplate>
+            <DataTemplate>
+              <StackPanel Width="50">
+                <Image Width="50" Height="50" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+                <CheckBox IsChecked="{Binding IsHeld}"></CheckBox>
+                <ComboBox Items="{Binding MasterRanks}" SelectedIndex="{Binding MasterRank}"></ComboBox>
+                <ComboBox Items="{Binding SkillLevels}" SelectedIndex="{Binding SkillLevel}"></ComboBox>
+              </StackPanel>
+            </DataTemplate>
+          </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+      </ScrollViewer>
+    </StackPanel>
   </StackPanel>
 </UserControl>

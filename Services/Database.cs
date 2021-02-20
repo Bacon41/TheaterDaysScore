@@ -145,6 +145,12 @@ namespace TheaterDaysScore.Services {
             return AllCards();
         }
 
+        public List<Card> LoadHeld() {
+            InitData();
+
+            return AllCards();
+        }
+
         public void SaveHeld() {
             SQLiteConnection conn = new SQLiteConnection(dbLoc, SQLiteOpenFlags.ReadWrite);
 

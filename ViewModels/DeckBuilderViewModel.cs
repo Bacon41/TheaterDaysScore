@@ -31,6 +31,13 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref types, value);
         }
 
+        private HashSet<Card.Categories> categories = new HashSet<Card.Categories>();
+        [DataMember]
+        public HashSet<Card.Categories> Categories {
+            get => categories;
+            set => this.RaiseAndSetIfChanged(ref categories, value);
+        }
+
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "deckbuilder";
@@ -39,15 +46,30 @@ namespace TheaterDaysScore.ViewModels {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Items = new ObservableCollection<Card>();
-            Rarities = new HashSet<CardData.Rarities>();
-            Types = new HashSet<Types>();
 
             Update = ReactiveCommand.Create(() => {
-                Items.Clear();
-                Items.AddRange(Database.DB.UpdateCards());
+                Database.DB.UpdateCards();
+                FilterCards();
             });
             Save = ReactiveCommand.Create(() => {
                 Database.DB.SaveHeld();
+            });
+            Load = ReactiveCommand.Create(() => {
+                Database.DB.LoadHeld();
+                FilterCards();
+            });
+
+            MaxRank = ReactiveCommand.Create(() => {
+                foreach (Card card in Items) {
+                    card.MasterRank = card.MasterRanks.Last();
+                }
+                FilterCards();
+            });
+            MaxLevel = ReactiveCommand.Create(() => {
+                foreach (Card card in Items) {
+                    card.SkillLevel = card.SkillLevels.Last();
+                }
+                FilterCards();
             });
         }
 
@@ -56,6 +78,7 @@ namespace TheaterDaysScore.ViewModels {
             Items.AddRange(Database.DB.AllCards()
                 .Where(card => Rarities.Contains(card.Rarity))
                 .Where(card => Types.Contains(card.Type))
+                .Where(card => Categories.Contains(card.Category))
                 );
         }
 
@@ -63,5 +86,9 @@ namespace TheaterDaysScore.ViewModels {
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Load { get; }
+
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxRank { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxLevel { get; }
     }
 }

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Disposables;
 using TheaterDaysScore.JsonModels;
+using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 
@@ -23,6 +24,14 @@ namespace TheaterDaysScore.Views {
         private CheckBox fairyCheck => this.FindControl<CheckBox>("typeFairy");
         private CheckBox angelCheck => this.FindControl<CheckBox>("typeAngel");
         private CheckBox exCheck => this.FindControl<CheckBox>("typeEX");
+
+        private CheckBox permCheck => this.FindControl<CheckBox>("categoryPerm");
+        private CheckBox limCheck => this.FindControl<CheckBox>("categoryLim");
+        private CheckBox fesCheck => this.FindControl<CheckBox>("categoryFes");
+        private CheckBox pstCheck => this.FindControl<CheckBox>("categoryPST");
+        private CheckBox colleCheck => this.FindControl<CheckBox>("categoryColle");
+        private CheckBox annCheck => this.FindControl<CheckBox>("categoryAnn");
+        private CheckBox otherCheck => this.FindControl<CheckBox>("categoryOther");
 
         public DeckBuilderView() {
             this.InitializeComponent();
@@ -80,6 +89,51 @@ namespace TheaterDaysScore.Views {
                     return ViewModel.Types;
                 }).DisposeWith(disposables);
 
+                // Category filters
+                this.Bind(ViewModel, vm => vm.Categories, v => v.permCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.PermanentGasha);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.PermanentGasha);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.limCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.LimitedGasha);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.LimitedGasha);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.fesCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.Fes);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.Fes);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.pstCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.PST);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.PST);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.colleCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.MiliColle);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.MiliColle);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.annCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.Anniversary);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.Anniversary);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.otherCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.Other);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.Other);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
+
+                // Initial filtering on boot
                 ViewModel.FilterCards();
             });
         }
@@ -98,6 +152,15 @@ namespace TheaterDaysScore.Views {
                 ViewModel.Types.Add(type);
             } else {
                 ViewModel.Types.Remove(type);
+            }
+            ViewModel.FilterCards();
+        }
+
+        private void SetCategory(bool? isChecked, Card.Categories category) {
+            if (isChecked ?? true) {
+                ViewModel.Categories.Add(category);
+            } else {
+                ViewModel.Categories.Remove(category);
             }
             ViewModel.FilterCards();
         }

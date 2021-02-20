@@ -75,6 +75,16 @@
       <CheckBox Name="typeEX">EX</CheckBox>
     </StackPanel>
 
+    <StackPanel Orientation="Horizontal">
+      <CheckBox Name="categoryPerm">Permanent</CheckBox>
+      <CheckBox Name="categoryLim">Limited</CheckBox>
+      <CheckBox Name="categoryFes">FES</CheckBox>
+      <CheckBox Name="categoryPST">PST</CheckBox>
+      <CheckBox Name="categoryColle">MiliColle</CheckBox>
+      <CheckBox Name="categoryAnn">Anniversary</CheckBox>
+      <CheckBox Name="categoryOther">Other</CheckBox>
+    </StackPanel>
+
     <ScrollViewer Width="400" Height="600">
       <ListBox Name="cardChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
         <ListBox.ItemsPanel>
