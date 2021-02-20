@@ -101,6 +101,9 @@ namespace TheaterDaysScore.Views {
                     .DisposeWith(disposables);
                 this.WhenAnyValue(x => x.ViewModel.Guest)
                     .Subscribe(x => {
+                        if (x == "") {
+                            return;
+                        }
                         int oldRank = ViewModel.GuestRank;
                         ViewModel.GuestRanks = Database.DB.GetCard(x).MasterRanks;
                         if (oldRank >= ViewModel.GuestRanks.Count) {

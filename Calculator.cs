@@ -33,6 +33,10 @@ namespace TheaterDaysScore {
         }
 
         public int GetAppeal(Types songType, BoostType eventType, Unit unit) {
+            if (unit == null) {
+                return 0;
+            }
+
             // https://megmeg.work/basic_information/formula/appealvalue/
 
             // Support
@@ -145,6 +149,10 @@ namespace TheaterDaysScore {
         }
 
         public int GetScore(int songNum, BoostType boostType, Unit unit) {
+            if (unit == null) {
+                return 0;
+            }
+
             // https://megmeg.work/basic_information/formula/score/
 
             Song song = Database.DB.GetSong(songNum);

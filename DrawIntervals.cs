@@ -25,6 +25,10 @@ namespace TheaterDaysScore {
         }
 
         public void Draw(int songNum, Unit unit) {
+            if (unit == null) {
+                return;
+            }
+
             Song song = Database.DB.GetSong(songNum);
 
             // Rendering

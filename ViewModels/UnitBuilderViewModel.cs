@@ -174,6 +174,9 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         public void SetUnit() {
+            if (Guest == "" || Center == "" || Member1 == "" || Member2 == "" || Member3 == "" || Member4 == "") {
+                return;
+            }
             Unit = new Unit(Guest, GuestRank, Center, Member1, Member2, Member3, Member4);
         }
 

@@ -5,93 +5,144 @@
              xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TheaterDaysScore.Views.SongInfoView">
+  <UserControl.Resources>
+    <local:ImageConverter x:Key="imageLoader"/>
+  </UserControl.Resources>
   
-  <StackPanel HorizontalAlignment="Center">
-    <Button Command="{Binding $parent[Window].DataContext.EditDeck}">Choose Cards</Button>
-    <Button Command="{Binding $parent[Window].DataContext.EditUnit}">Build Unit</Button>
+  <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+    <StackPanel Orientation="Vertical">
+      <Button Command="{Binding $parent[Window].DataContext.EditDeck}">Choose Cards</Button>
+
+      <Button HorizontalAlignment="Left" Command="{Binding $parent[Window].DataContext.EditUnit}">
+        <StackPanel Orientation="Vertical" Margin="5">
+          <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+            <StackPanel Margin="0,0,30,0">
+              <TextBlock>Guest</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Guest.ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+
+            <StackPanel>
+              <TextBlock>Member</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Members[0].ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+            <StackPanel>
+              <TextBlock>Member</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Members[1].ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+            <StackPanel>
+              <TextBlock>Center</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Members[2].ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+            <StackPanel>
+              <TextBlock>Member</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Members[3].ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+            <StackPanel>
+              <TextBlock>Member</TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Unit.Members[4].ID, Converter={StaticResource imageLoader}}"></Image>
+            </StackPanel>
+          </StackPanel>
+
+          <ItemsControl Items="{Binding Supports}">
+            <ItemsControl.ItemsPanel>
+              <ItemsPanelTemplate>
+                <StackPanel Orientation="Horizontal"/>
+              </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+              <DataTemplate>
+                <Image Width="35" Height="35" Margin="1" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+              </DataTemplate>
+            </ItemsControl.ItemTemplate>
+          </ItemsControl>
+        </StackPanel>
+      </Button>
     
-    <TextBlock Name="appealDisplay" FontSize="24" Text="{Binding Appeal}"></TextBlock>
-    <TextBlock Name="scoreDisplay" FontSize="24" Text="{Binding Score}"></TextBlock>
+      <TextBlock Name="appealDisplay" FontSize="24" Text="{Binding Appeal}"></TextBlock>
+      <TextBlock Name="scoreDisplay" FontSize="24" Text="{Binding Score}"></TextBlock>
 
-    <ListBox SelectedIndex="{Binding BoostType}">
-      <ListBox.ItemsPanel>
-        <ItemsPanelTemplate>
-          <StackPanel Orientation="Horizontal"/>
-        </ItemsPanelTemplate>
-      </ListBox.ItemsPanel>
+      <ListBox SelectedIndex="{Binding BoostType}">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
 
-      <ListBox.Styles>
-        <Style Selector="ListBoxItem">
-          <Setter Property="Template">
-            <Setter.Value>
-              <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                <RadioButton Content="{TemplateBinding Content}"
-                             IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
-              </ControlTemplate>
-            </Setter.Value>
-          </Setter>
-        </Style>
-      </ListBox.Styles>
+        <ListBox.Styles>
+          <Style Selector="ListBoxItem">
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                  <RadioButton Content="{TemplateBinding Content}"
+                               IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ListBox.Styles>
 
-      <ListBoxItem>
-        <TextBlock>None</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Vocal</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Dance</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Visual</TextBlock>
-      </ListBoxItem>
-    </ListBox>
+        <ListBoxItem>
+          <TextBlock>None</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Vocal</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Dance</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Visual</TextBlock>
+        </ListBoxItem>
+      </ListBox>
     
-    <ListBox Name="songSelection" SelectedIndex="{Binding SongNum}">
-      <ListBox.ItemsPanel>
-        <ItemsPanelTemplate>
-          <StackPanel Orientation="Horizontal"/>
-        </ItemsPanelTemplate>
-      </ListBox.ItemsPanel>
+      <ListBox Name="songSelection" SelectedIndex="{Binding SongNum}">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
       
-      <ListBox.Styles>
-        <Style Selector="ListBoxItem">
-          <Setter Property="Template">
-            <Setter.Value>
-              <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                <RadioButton Content="{TemplateBinding Content}"
-                             IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
-              </ControlTemplate>
-            </Setter.Value>
-          </Setter>
-        </Style>
-      </ListBox.Styles>
+        <ListBox.Styles>
+          <Style Selector="ListBoxItem">
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                  <RadioButton Content="{TemplateBinding Content}"
+                               IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ListBox.Styles>
       
-      <ListBoxItem>
-        <TextBlock>Blue Symphony</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Rebellion</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Harmonics</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Oshiete last note...</TextBlock>
-      </ListBoxItem>
-      <ListBoxItem>
-        <TextBlock>Music</TextBlock>
-      </ListBoxItem>
-    </ListBox>
+        <ListBoxItem>
+          <TextBlock>Blue Symphony</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Rebellion</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Harmonics</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Oshiete last note...</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>Music</TextBlock>
+        </ListBoxItem>
+      </ListBox>
     
-    <Button Command="{Binding Calculate}">Calculate</Button>
-    
-    <ScrollViewer Width="400" Height="600">
-      <StackPanel Orientation="Horizontal">
-        <local:DrawCanvas Name="scoreCanvas" Background="LightGray"/>
-        <local:DrawIntervals Name="intervalCanvas"/>
-      </StackPanel>
-    </ScrollViewer>
-    
+      <Button Command="{Binding Calculate}">Calculate</Button>
+    </StackPanel>
+
+    <StackPanel Orientation="Vertical">
+      <ScrollViewer Width="400" Height="600">
+        <StackPanel Orientation="Horizontal">
+          <local:DrawCanvas Name="scoreCanvas" Background="LightGray"/>
+          <local:DrawIntervals Name="intervalCanvas"/>
+        </StackPanel>
+      </ScrollViewer>
+    </StackPanel>
   </StackPanel>
 </UserControl>

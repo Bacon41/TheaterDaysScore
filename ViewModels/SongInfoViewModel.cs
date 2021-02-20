@@ -44,6 +44,9 @@ namespace TheaterDaysScore.ViewModels {
         readonly ObservableAsPropertyHelper<string> appeal;
         public string Appeal => appeal.Value;
 
+        readonly ObservableAsPropertyHelper<List<Card>> supports;
+        public List<Card> Supports => supports.Value;
+
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "songinfo";
@@ -65,6 +68,15 @@ namespace TheaterDaysScore.ViewModels {
                     return "Appeal: " + calc.GetAppeal(Database.DB.GetSong(SongNum).Type, BoostType, Unit).ToString();
                 })
                 .ToProperty(this, x => x.Appeal);
+
+            supports = this.WhenAnyValue(x => x.SongNum, x => x.Unit, x => x.BoostType)
+                .Select(x => {
+                    if (Unit == null) {
+                        return null;
+                    }
+                    return Unit.TopSupport(Database.DB.GetSong(SongNum).Type, BoostType);
+                })
+                .ToProperty(this, x => x.Supports);
         }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Calculate { get; }
