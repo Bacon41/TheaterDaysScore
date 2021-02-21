@@ -21,6 +21,7 @@
         <Button Command="{Binding Load}">Load</Button>
 
         <StackPanel Orientation="Horizontal">
+          <Button Command="{Binding SelectAll}">SelectAll</Button>
           <Button Command="{Binding MaxRank}">MaxRank</Button>
           <Button Command="{Binding MaxLevel}">MaxLevel</Button>
         </StackPanel>

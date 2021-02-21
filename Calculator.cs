@@ -148,9 +148,25 @@ namespace TheaterDaysScore {
             return new Vector3((float)Math.Floor(input.X), (float)Math.Floor(input.Y), (float)Math.Floor(input.Z));
         }
 
-        public int GetScore(int songNum, BoostType boostType, Unit unit) {
+        public class Results {
+            public int Ideal { get; }
+
+            private List<int> scores;
+
+            public Results(int ideal, List<int> scores) {
+                Ideal = ideal;
+                this.scores = scores;
+                this.scores.Sort();
+            }
+
+            public int Percentile(double percent) {
+                return scores[(int)(scores.Count * (1 - percent / 100))];
+            }
+        }
+
+        public Results GetResults(int songNum, BoostType boostType, Unit unit, int numRuns) {
             if (unit == null) {
-                return 0;
+                return null;
             }
 
             // https://megmeg.work/basic_information/formula/score/
@@ -165,43 +181,44 @@ namespace TheaterDaysScore {
             double scoreScale = 0.7 * baseScore / notesAndHolds;
             double comboScale = 0.3 * baseScore / (2 * song.Notes.Count - 66);
 
-            List<double> scores = new List<double>();
-            for (int x = 0; x < 1000; x++) {
-                Unit.IActivation activations = unit.GetActivations(song);
-
-                double score = 0;
-                int combo = 0;
-                foreach (Song.Note note in song.Notes) {
-                    combo++;
-                    double comboMultiplier = 0;
-                    if (combo >= 100) {
-                        comboMultiplier = 2;
-                    } else if (combo >= 70) {
-                        comboMultiplier = 1.8;
-                    } else if (combo >= 50) {
-                        comboMultiplier = 1.6;
-                    } else if (combo >= 30) {
-                        comboMultiplier = 1.3;
-                    } else if (combo >= 10) {
-                        comboMultiplier = 1;
-                    }
-
-                    double accuracyMultiplier = 1.0;
-
-                    double noteTime = song.SecondsSinceFirst(note);
-
-                    score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
-                    if (note.HoldQuarterBeats != 0) {
-                        double holdTime = song.QuarterBeatsToSeconds(note.HoldQuarterBeats);
-                        score += 2 * scoreScale * activations.HoldOver(noteTime, holdTime);
-                    }
-                }
-                scores.Add(score);
+            int ideal = GetScore(unit.GetActivations(song, true), song, scoreScale, comboScale);
+            List<int> scores = new List<int>();
+            for (int x = 0; x < numRuns; x++) {
+                scores.Add(GetScore(unit.GetActivations(song), song, scoreScale, comboScale));
             }
 
-            // 50th percentile
-            scores.Sort();
-            return (int)scores[scores.Count / 2];
+            return new Results(ideal, scores);
+        }
+
+        private int GetScore(Unit.IActivation activations, Song song, double scoreScale, double comboScale) {
+            double score = 0;
+            int combo = 0;
+            foreach (Song.Note note in song.Notes) {
+                combo++;
+                double comboMultiplier = 0;
+                if (combo >= 100) {
+                    comboMultiplier = 2;
+                } else if (combo >= 70) {
+                    comboMultiplier = 1.8;
+                } else if (combo >= 50) {
+                    comboMultiplier = 1.6;
+                } else if (combo >= 30) {
+                    comboMultiplier = 1.3;
+                } else if (combo >= 10) {
+                    comboMultiplier = 1;
+                }
+
+                double accuracyMultiplier = 1.0;
+
+                double noteTime = song.SecondsSinceFirst(note);
+
+                score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
+                if (note.HoldQuarterBeats != 0) {
+                    double holdTime = song.QuarterBeatsToSeconds(note.HoldQuarterBeats);
+                    score += 2 * scoreScale * activations.HoldOver(noteTime, holdTime);
+                }
+            }
+            return (int)score;
         }
     }
 }

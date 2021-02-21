@@ -59,6 +59,12 @@ namespace TheaterDaysScore.ViewModels {
                 FilterCards();
             });
 
+            SelectAll = ReactiveCommand.Create(() => {
+                foreach (Card card in Items) {
+                    card.IsHeld = true;
+                }
+                FilterCards();
+            });
             MaxRank = ReactiveCommand.Create(() => {
                 foreach (Card card in Items) {
                     card.MasterRank = card.MasterRanks.Last();
@@ -88,6 +94,7 @@ namespace TheaterDaysScore.ViewModels {
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Save { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Load { get; }
 
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> SelectAll { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxRank { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxLevel { get; }
     }

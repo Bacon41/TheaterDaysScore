@@ -1,4 +1,5 @@
-﻿using ReactiveUI;
+﻿using Avalonia.Controls;
+using ReactiveUI;
 using Splat;
 using System;
 using System.Collections.Generic;
@@ -35,10 +36,35 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref boostType, value);
         }
 
-        private string score = "NaN";
-        public string Score {
-            get => score;
-            set => this.RaiseAndSetIfChanged(ref score, value);
+        private string scoreIdeal = "NaN";
+        public string ScoreIdeal {
+            get => scoreIdeal;
+            set => this.RaiseAndSetIfChanged(ref scoreIdeal, value);
+        }
+        private string score001 = "NaN";
+        public string Score001 {
+            get => score001;
+            set => this.RaiseAndSetIfChanged(ref score001, value);
+        }
+        private string score01 = "NaN";
+        public string Score01 {
+            get => score01;
+            set => this.RaiseAndSetIfChanged(ref score01, value);
+        }
+        private string score1 = "NaN";
+        public string Score1 {
+            get => score1;
+            set => this.RaiseAndSetIfChanged(ref score1, value);
+        }
+        private string score10 = "NaN";
+        public string Score10 {
+            get => score10;
+            set => this.RaiseAndSetIfChanged(ref score10, value);
+        }
+        private string score50 = "NaN";
+        public string Score50 {
+            get => score50;
+            set => this.RaiseAndSetIfChanged(ref score50, value);
         }
 
         readonly ObservableAsPropertyHelper<string> appeal;
@@ -57,7 +83,15 @@ namespace TheaterDaysScore.ViewModels {
             calc = new Calculator();
 
             Calculate = ReactiveCommand.Create(() => {
-                Score = calc.GetScore(SongNum, BoostType, Unit).ToString();
+                Calculator.Results results = calc.GetResults(SongNum, BoostType, Unit, 10000);
+                if (results != null) {
+                    ScoreIdeal = results.Ideal.ToString();
+                    Score001 = results.Percentile(0.01).ToString();
+                    Score01 = results.Percentile(0.1).ToString();
+                    Score1 = results.Percentile(1).ToString();
+                    Score10 = results.Percentile(10).ToString();
+                    Score50 = results.Percentile(50).ToString();
+                }
             });
 
             appeal = this.WhenAnyValue(x => x.SongNum, x => x.Unit, x => x.BoostType)

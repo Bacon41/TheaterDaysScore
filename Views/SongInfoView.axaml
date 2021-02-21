@@ -60,7 +60,21 @@
       </Button>
     
       <TextBlock Name="appealDisplay" FontSize="24" Text="{Binding Appeal}"></TextBlock>
-      <TextBlock Name="scoreDisplay" FontSize="24" Text="{Binding Score}"></TextBlock>
+      
+      <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0">Ideal</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0" Text="{Binding ScoreIdeal}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1">0.01%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1" Text="{Binding Score001}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="2">0.1%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="2" Text="{Binding Score01}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="3">1%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="3" Text="{Binding Score1}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="4">10%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="4" Text="{Binding Score10}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="5">50%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="5" Text="{Binding Score50}" />
+      </Grid>
 
       <ListBox SelectedIndex="{Binding BoostType}">
         <ListBox.ItemsPanel>
