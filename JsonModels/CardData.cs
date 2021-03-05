@@ -25,6 +25,7 @@ namespace TheaterDaysScore.JsonModels {
             public int level { get; set; }
 
             public enum Type {
+                none,
                 scoreUp = 1,
                 comboBonus,
                 lifeRestore,
@@ -33,7 +34,7 @@ namespace TheaterDaysScore.JsonModels {
                 judgementBoost,
                 doubleBoost,
                 multiUp,
-                overClock,
+                overClock = 10,
                 overRondo,
             };
         }
@@ -48,6 +49,7 @@ namespace TheaterDaysScore.JsonModels {
             public int value2 { get; set; }
 
             public enum Type {
+                none,
                 vocalUp = 1,
                 danceUp,
                 visualUp,

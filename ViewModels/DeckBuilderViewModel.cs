@@ -17,7 +17,7 @@ namespace TheaterDaysScore.ViewModels {
     [DataContract]
     public class DeckBuilderViewModel : ReactiveObject, IRoutableViewModel {
 
-        private HashSet<CardData.Rarities> rarities = new HashSet<CardData.Rarities>();
+        private HashSet<CardData.Rarities> rarities;
         [DataMember]
         public HashSet<CardData.Rarities> Rarities {
             get => rarities;
@@ -38,6 +38,20 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref categories, value);
         }
 
+        private HashSet<CardData.CenterEffect.Type> centerTypes = new HashSet<CardData.CenterEffect.Type>();
+        [DataMember]
+        public HashSet<CardData.CenterEffect.Type> CenterTypes {
+            get => centerTypes;
+            set => this.RaiseAndSetIfChanged(ref centerTypes, value);
+        }
+
+        private HashSet<CardData.Skill.Type> skillTypes = new HashSet<CardData.Skill.Type>();
+        [DataMember]
+        public HashSet<CardData.Skill.Type> SkillTypes {
+            get => skillTypes;
+            set => this.RaiseAndSetIfChanged(ref skillTypes, value);
+        }
+
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "deckbuilder";
@@ -46,6 +60,8 @@ namespace TheaterDaysScore.ViewModels {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Items = new ObservableCollection<Card>();
+
+            Rarities = new HashSet<CardData.Rarities>();
 
             Update = ReactiveCommand.Create(() => {
                 Database.DB.UpdateCards();
@@ -77,6 +93,51 @@ namespace TheaterDaysScore.ViewModels {
                 }
                 FilterCards();
             });
+
+            var allRarities = (CardData.Rarities[])Enum.GetValues(typeof(CardData.Rarities));
+            AllRarities = ReactiveCommand.Create(() => {
+                if (Rarities.Count == allRarities.Length) {
+                    Rarities = new HashSet<CardData.Rarities>();
+                } else {
+                    Rarities = new HashSet<CardData.Rarities>(allRarities);
+                }
+            });
+
+            var allTypes = (Types[])Enum.GetValues(typeof(Types));
+            AllTypes = ReactiveCommand.Create(() => {
+                if (Types.Count == allTypes.Length) {
+                    Types = new HashSet<Types>();
+                } else {
+                    Types = new HashSet<Types>(allTypes);
+                }
+            });
+
+            var allCategories = (Card.Categories[])Enum.GetValues(typeof(Card.Categories));
+            AllCategories = ReactiveCommand.Create(() => {
+                if (Categories.Count == allCategories.Length) {
+                    Categories = new HashSet<Card.Categories>();
+                } else {
+                    Categories = new HashSet<Card.Categories>(allCategories);
+                }
+            });
+
+            var allCenters = (CardData.CenterEffect.Type[])Enum.GetValues(typeof(CardData.CenterEffect.Type));
+            AllCenters = ReactiveCommand.Create(() => {
+                if (CenterTypes.Count == allCenters.Length) {
+                    CenterTypes = new HashSet<CardData.CenterEffect.Type>();
+                } else {
+                    CenterTypes = new HashSet<CardData.CenterEffect.Type>(allCenters);
+                }
+            });
+
+            var allSkills = (CardData.Skill.Type[])Enum.GetValues(typeof(CardData.Skill.Type));
+            AllSkills = ReactiveCommand.Create(() => {
+                if (SkillTypes.Count == allSkills.Length) {
+                    SkillTypes = new HashSet<CardData.Skill.Type>();
+                } else {
+                    SkillTypes = new HashSet<CardData.Skill.Type>(allSkills);
+                }
+            });
         }
 
         public void FilterCards() {
@@ -85,6 +146,8 @@ namespace TheaterDaysScore.ViewModels {
                 .Where(card => Rarities.Contains(card.Rarity))
                 .Where(card => Types.Contains(card.Type))
                 .Where(card => Categories.Contains(card.Category))
+                .Where(card => CenterTypes.Contains(card.CenterType))
+                .Where(card => SkillTypes.Contains(card.SkillType))
                 );
         }
 
@@ -97,5 +160,11 @@ namespace TheaterDaysScore.ViewModels {
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> SelectAll { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxRank { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> MaxLevel { get; }
+
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllRarities { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllTypes { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCategories { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCenters { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllSkills { get; }
     }
 }

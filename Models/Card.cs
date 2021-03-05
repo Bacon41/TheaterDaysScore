@@ -36,7 +36,9 @@ namespace TheaterDaysScore.Models {
         public Categories Category { get; }
         public Color Color { get; }
         public List<Skill> Skills { get; }
+        public CardData.Skill.Type SkillType { get; }
         public CenterEffect Center { get; }
+        public CardData.CenterEffect.Type CenterType { get; }
 
         public class Skill {
             private CardData.Skill data;
@@ -251,10 +253,16 @@ namespace TheaterDaysScore.Models {
             if (this.data.skill != null) {
                 foreach (CardData.Skill skill in this.data.skill) {
                     Skills.Add(new Skill(skill, skillLevel));
+                    SkillType = skill.effectId;
                 }
+            } else {
+                SkillType = CardData.Skill.Type.none;
             }
             if (this.data.centerEffect != null) {
                 Center = new CenterEffect(this.data.centerEffect);
+                CenterType = this.data.centerEffect.attribute;
+            } else {
+                CenterType = CardData.CenterEffect.Type.none;
             }
 
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png
@@ -276,9 +284,6 @@ namespace TheaterDaysScore.Models {
         }
 
         public float TotalAppeal(Types songType, Calculator.BoostType eventType) {
-            if (Type != songType && Type != Types.EX && songType != Types.All) {
-                return 0;
-            }
             Vector3 eventBoost = Vector3.Zero;
             switch (eventType) {
                 case Calculator.BoostType.vocal:
@@ -294,6 +299,9 @@ namespace TheaterDaysScore.Models {
 
             Vector3 splitAppeal = SplitAppeal();
             Vector3 splitAppealType = floor(splitAppeal * 0.3f);
+            if (Type != songType && Type != Types.EX && songType != Types.All) {
+                splitAppealType = Vector3.Zero;
+            }
             Vector3 splitAppealEvent = floor(splitAppeal * eventBoost);
             return Vector3.Dot(new Vector3(1), floor(splitAppeal / 2) + floor(splitAppealType / 2) + floor(splitAppealEvent / 2));
         }
