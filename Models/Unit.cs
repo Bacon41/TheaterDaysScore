@@ -33,14 +33,14 @@ namespace TheaterDaysScore.Models {
         }
 
         private double ActivationOdds(Types cardType, Card.Skill skill) {
-            double activationThreshold = skill.Probability;
+            int extraRate = 0;
             if (Guest.Center != null) {
-                activationThreshold += skill.Probability * Guest.Center.ActivationBoost(cardType);
+                extraRate += Guest.Center.ActivationBoost(cardType, this);
             }
             if (Center.Center != null) {
-                activationThreshold += skill.Probability * Center.Center.ActivationBoost(cardType);
+                extraRate += Center.Center.ActivationBoost(cardType, this);
             }
-            return activationThreshold;
+            return skill.Probability * ((100f + extraRate) / 100);
         }
 
         public IActivation GetActivations(Song song, bool alwaysActivate = false) {

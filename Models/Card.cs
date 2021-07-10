@@ -60,9 +60,11 @@ namespace TheaterDaysScore.Models {
 
                 Interval = this.data.interval;
                 Duration = this.data.duration;
-                Probability = this.data.probability + this.level;
-                if (this.level > 10) {
-                    Probability += (this.level - 10) * 5;
+                Probability = this.data.probability;
+                if (this.level <= 10) {
+                    Probability += this.level;
+                } else {
+                    Probability += 10 + (this.level - 10) * 5;
                 }
 
                 Effect = this.data.effectId;
@@ -101,11 +103,37 @@ namespace TheaterDaysScore.Models {
                 this.data = data;
             }
 
-            public double ActivationBoost(Types cardType) {
+            public int ActivationBoost(Types cardType, Unit unit) {
                 switch (data.attribute) {
                     case CardData.CenterEffect.Type.skillBoost:
                         if (data.idolType == cardType) {
-                            return (double)data.value / 100;
+                            return data.value;
+                        }
+                        break;
+                }
+                switch (data.attribute2) {
+                    case CardData.CenterEffect.Type.skillBoost:
+                        switch (data.specificIdolType) {
+                            case Types.Princess:
+                                if (unit.IsMonocolour(data.specificIdolType)) {
+                                    return data.value2;
+                                }
+                                break;
+                            case Types.Fairy:
+                                if (unit.IsMonocolour(data.specificIdolType)) {
+                                    return data.value2;
+                                }
+                                break;
+                            case Types.Angel:
+                                if (unit.IsMonocolour(data.specificIdolType)) {
+                                    return data.value2;
+                                }
+                                break;
+                            case Types.All:
+                                if (unit.IsTricolour()) {
+                                    return data.value2;
+                                }
+                                break;
                         }
                         break;
                 }
