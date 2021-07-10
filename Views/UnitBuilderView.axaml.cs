@@ -30,31 +30,34 @@ namespace TheaterDaysScore.Views {
 
         private CheckBox permCheck => this.FindControl<CheckBox>("categoryPerm");
         private CheckBox limCheck => this.FindControl<CheckBox>("categoryLim");
+        private CheckBox shsCheck => this.FindControl<CheckBox>("categorySHS");
         private CheckBox fesCheck => this.FindControl<CheckBox>("categoryFes");
         private CheckBox pstCheck => this.FindControl<CheckBox>("categoryPST");
         private CheckBox colleCheck => this.FindControl<CheckBox>("categoryColle");
+        private CheckBox premPickCheck => this.FindControl<CheckBox>("categoryPremPick");
         private CheckBox annCheck => this.FindControl<CheckBox>("categoryAnn");
         private CheckBox otherCheck => this.FindControl<CheckBox>("categoryOther");
 
-        private CheckBox noneCheck => this.FindControl<CheckBox>("centerNone");
         private CheckBox vocalCheck => this.FindControl<CheckBox>("centerVocal");
         private CheckBox danceCheck => this.FindControl<CheckBox>("centerDance");
         private CheckBox visualCheck => this.FindControl<CheckBox>("centerVisual");
         private CheckBox allCheck => this.FindControl<CheckBox>("centerAll");
         private CheckBox lifeCheck => this.FindControl<CheckBox>("centerLife");
         private CheckBox procCheck => this.FindControl<CheckBox>("centerProc");
+        private CheckBox noneCheck => this.FindControl<CheckBox>("centerNone");
 
-        private CheckBox noneSkillCheck => this.FindControl<CheckBox>("skillNone");
         private CheckBox scoreCheck => this.FindControl<CheckBox>("skillScore");
+        private CheckBox overClockCheck => this.FindControl<CheckBox>("skillOverClock");
         private CheckBox comboCheck => this.FindControl<CheckBox>("skillCombo");
+        private CheckBox overRondoCheck => this.FindControl<CheckBox>("skillOverRondo");
+        private CheckBox doubleBoostCheck => this.FindControl<CheckBox>("skillDoubleBoost");
+        private CheckBox doubleEffectCheck => this.FindControl<CheckBox>("skillDoubleEffect");
         private CheckBox lifeSkillCheck => this.FindControl<CheckBox>("skillLife");
         private CheckBox damageGuardCheck => this.FindControl<CheckBox>("skillDamageGuard");
         private CheckBox comboProtectCheck => this.FindControl<CheckBox>("skillComboProtect");
         private CheckBox judgementBoostCheck => this.FindControl<CheckBox>("skillJudgementBoost");
-        private CheckBox doubleBoostCheck => this.FindControl<CheckBox>("skillDoubleBoost");
         private CheckBox multiUpCheck => this.FindControl<CheckBox>("skillMultiUp");
-        private CheckBox overClockCheck => this.FindControl<CheckBox>("skillOverClock");
-        private CheckBox overRondoCheck => this.FindControl<CheckBox>("skillOverRondo");
+        private CheckBox noneSkillCheck => this.FindControl<CheckBox>("skillNone");
 
         private ListBox placementChoice => this.FindControl<ListBox>("placementChoice");
         private ListBox cardChoice => this.FindControl<ListBox>("cardChoice");
@@ -128,6 +131,12 @@ namespace TheaterDaysScore.Views {
                     SetCategory(isChecked, Card.Categories.LimitedGasha);
                     return ViewModel.Categories;
                 }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.shsCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.SHSGasha);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.SHSGasha);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.Categories, v => v.fesCheck.IsChecked, set => {
                     return set.Contains(Card.Categories.Fes);
                 }, isChecked => {
@@ -146,6 +155,12 @@ namespace TheaterDaysScore.Views {
                     SetCategory(isChecked, Card.Categories.MiliColle);
                     return ViewModel.Categories;
                 }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.Categories, v => v.premPickCheck.IsChecked, set => {
+                    return set.Contains(Card.Categories.PremiumPickup);
+                }, isChecked => {
+                    SetCategory(isChecked, Card.Categories.PremiumPickup);
+                    return ViewModel.Categories;
+                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.Categories, v => v.annCheck.IsChecked, set => {
                     return set.Contains(Card.Categories.Anniversary);
                 }, isChecked => {
@@ -160,12 +175,6 @@ namespace TheaterDaysScore.Views {
                 }).DisposeWith(disposables);
 
                 // Center filters
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.noneCheck.IsChecked, set => {
-                    return set.Contains(CardData.CenterEffect.Type.none);
-                }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.none);
-                    return ViewModel.CenterTypes;
-                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.CenterTypes, v => v.vocalCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.vocalUp);
                 }, isChecked => {
@@ -202,24 +211,48 @@ namespace TheaterDaysScore.Views {
                     SetCenter(isChecked, CardData.CenterEffect.Type.skillBoost);
                     return ViewModel.CenterTypes;
                 }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.noneCheck.IsChecked, set => {
+                    return set.Contains(CardData.CenterEffect.Type.none);
+                }, isChecked => {
+                    SetCenter(isChecked, CardData.CenterEffect.Type.none);
+                    return ViewModel.CenterTypes;
+                }).DisposeWith(disposables);
 
                 // Skill filters
-                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.noneSkillCheck.IsChecked, set => {
-                    return set.Contains(CardData.Skill.Type.none);
-                }, isChecked => {
-                    SetSkill(isChecked, CardData.Skill.Type.none);
-                    return ViewModel.SkillTypes;
-                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.scoreCheck.IsChecked, set => {
                     return set.Contains(CardData.Skill.Type.scoreUp);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.scoreUp);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.overClockCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.overClock);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.overClock);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.comboCheck.IsChecked, set => {
                     return set.Contains(CardData.Skill.Type.comboBonus);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.comboBonus);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.overRondoCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.overRondo);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.overRondo);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.doubleBoostCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.doubleBoost);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.doubleBoost);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.doubleEffectCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.doubleEffect);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.doubleEffect);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.lifeSkillCheck.IsChecked, set => {
@@ -246,28 +279,16 @@ namespace TheaterDaysScore.Views {
                     SetSkill(isChecked, CardData.Skill.Type.judgementBoost);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.doubleBoostCheck.IsChecked, set => {
-                    return set.Contains(CardData.Skill.Type.doubleBoost);
-                }, isChecked => {
-                    SetSkill(isChecked, CardData.Skill.Type.doubleBoost);
-                    return ViewModel.SkillTypes;
-                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.multiUpCheck.IsChecked, set => {
                     return set.Contains(CardData.Skill.Type.multiUp);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.multiUp);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.overClockCheck.IsChecked, set => {
-                    return set.Contains(CardData.Skill.Type.overClock);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.noneSkillCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.none);
                 }, isChecked => {
-                    SetSkill(isChecked, CardData.Skill.Type.overClock);
-                    return ViewModel.SkillTypes;
-                }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.overRondoCheck.IsChecked, set => {
-                    return set.Contains(CardData.Skill.Type.overRondo);
-                }, isChecked => {
-                    SetSkill(isChecked, CardData.Skill.Type.overRondo);
+                    SetSkill(isChecked, CardData.Skill.Type.none);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
 

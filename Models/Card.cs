@@ -15,9 +15,11 @@ namespace TheaterDaysScore.Models {
         public enum Categories {
             PermanentGasha,
             LimitedGasha,
+            SHSGasha,
             Fes,
             PST,
             MiliColle,
+            PremiumPickup,
             Anniversary,
             Other
         }
@@ -217,6 +219,12 @@ namespace TheaterDaysScore.Models {
                     break;
                 case "gasha2": // Fes
                     Category = Categories.Fes;
+                    break;
+                case "gasha4": // Premium Pickup SR
+                    Category = Categories.PremiumPickup;
+                    break;
+                case "gasha5": // Second Hairstyle
+                    Category = Categories.SHSGasha;
                     break;
                 case "event0": // MiliColle SR
                     Category = Categories.MiliColle;

@@ -36,6 +36,7 @@ namespace TheaterDaysScore.JsonModels {
                 multiUp,
                 overClock = 10,
                 overRondo,
+                doubleEffect,
             };
         }
 

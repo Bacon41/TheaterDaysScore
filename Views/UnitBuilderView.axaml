@@ -81,37 +81,40 @@
       <Button Command="{Binding AllCategories}">All</Button>
       <CheckBox Name="categoryPerm">Permanent</CheckBox>
       <CheckBox Name="categoryLim">Limited</CheckBox>
+      <CheckBox Name="categorySHS">SecondHairstyle</CheckBox>
       <CheckBox Name="categoryFes">FES</CheckBox>
       <CheckBox Name="categoryPST">PST</CheckBox>
       <CheckBox Name="categoryColle">MiliColle</CheckBox>
+      <CheckBox Name="categoryPremPick">PremiumPickup</CheckBox>
       <CheckBox Name="categoryAnn">Anniversary</CheckBox>
       <CheckBox Name="categoryOther">Other</CheckBox>
     </StackPanel>
 
     <StackPanel Orientation="Horizontal">
       <Button Command="{Binding AllCenters}">All</Button>
-      <CheckBox Name="centerNone">None</CheckBox>
       <CheckBox Name="centerVocal">Vocal</CheckBox>
       <CheckBox Name="centerDance">Dance</CheckBox>
       <CheckBox Name="centerVisual">Visual</CheckBox>
       <CheckBox Name="centerAll">All</CheckBox>
       <CheckBox Name="centerLife">Life</CheckBox>
       <CheckBox Name="centerProc">Proc</CheckBox>
+      <CheckBox Name="centerNone">None</CheckBox>
     </StackPanel>
 
     <StackPanel Orientation="Horizontal">
       <Button Command="{Binding AllSkills}">All</Button>
-      <CheckBox Name="skillNone">None</CheckBox>
       <CheckBox Name="skillScore">Score</CheckBox>
+      <CheckBox Name="skillOverClock">OverClock</CheckBox>
       <CheckBox Name="skillCombo">Combo</CheckBox>
+      <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
+      <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
+      <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
       <CheckBox Name="skillLife">Life</CheckBox>
       <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
       <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
       <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
-      <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
       <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
-      <CheckBox Name="skillOverClock">OverClock</CheckBox>
-      <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
+      <CheckBox Name="skillNone">None</CheckBox>
     </StackPanel>
 
     <ScrollViewer Width="400" Height="600">
