@@ -99,7 +99,7 @@ namespace TheaterDaysScore.ViewModels {
                     if (Unit == null) {
                         return "N/A";
                     }
-                    return "Appeal: " + calc.GetAppeal(Database.DB.GetSong(SongNum).Type, BoostType, Unit).ToString();
+                    return calc.GetAppeal(Database.DB.GetSong(SongNum).Type, BoostType, Unit).ToString();
                 })
                 .ToProperty(this, x => x.Appeal);
 

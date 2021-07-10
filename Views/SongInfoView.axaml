@@ -58,8 +58,11 @@
           </ItemsControl>
         </StackPanel>
       </Button>
-    
-      <TextBlock Name="appealDisplay" FontSize="24" Text="{Binding Appeal}"></TextBlock>
+
+      <StackPanel Orientation="Horizontal">
+        <TextBlock FontSize="24">Appeal:</TextBlock>
+        <TextBox Name="appealDisplay" FontSize="24" BorderThickness="0" CaretBrush="Transparent" IsReadOnly="True" Text="{Binding Appeal}"></TextBox>
+      </StackPanel>
       
       <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
         <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0">Ideal</TextBlock>
