@@ -77,25 +77,37 @@ namespace TheaterDaysScore.Models {
         private class Activation : IActivation {
             private int[] scoreUp;
             private int[] comboUp;
-            private int[] doubleScore;
-            private int[] doubleCombo;
+            private int[] boostScore;
+            private int[] boostCombo;
+            private int[] effectScore;
+            private int[] effectCombo;
 
             public Activation(double songLen) {
                 int numSeconds = (int)Math.Ceiling(songLen) + 1;
                 scoreUp = new int[numSeconds];
                 comboUp = new int[numSeconds];
-                doubleScore = new int[numSeconds];
-                doubleCombo = new int[numSeconds];
+                boostScore = new int[numSeconds];
+                boostCombo = new int[numSeconds];
+                effectScore = new int[numSeconds];
+                effectCombo = new int[numSeconds];
             }
 
             public void AddInterval(int start, Card.Skill skill) {
                 for (int x = start; x < scoreUp.Length && x < start + skill.Duration; x++) {
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
-                        if (skill.ScoreBoost > doubleScore[x]) {
-                            doubleScore[x] = skill.ScoreBoost;
+                        if (skill.ScoreBoost > boostScore[x]) {
+                            boostScore[x] = skill.ScoreBoost;
                         }
-                        if (skill.ComboBoost > doubleCombo[x]) {
-                            doubleCombo[x] = skill.ComboBoost;
+                        if (skill.ComboBoost > boostCombo[x]) {
+                            boostCombo[x] = skill.ComboBoost;
+                        }
+                    }
+                    else if(skill.Effect == CardData.Skill.Type.doubleEffect) {
+                        if (skill.ScoreBoost > effectScore[x]) {
+                            effectScore[x] = skill.ScoreBoost;
+                        }
+                        if (skill.ComboBoost > effectCombo[x]) {
+                            effectCombo[x] = skill.ComboBoost;
                         }
                     } else {
                         if (skill.ScoreBoost > scoreUp[x]) {
@@ -110,12 +122,26 @@ namespace TheaterDaysScore.Models {
 
             public double ScoreBoostAt(double time) {
                 int currentSecond = (int)Math.Floor(time);
-                return (100.0 + scoreUp[currentSecond] + doubleScore[currentSecond]) / 100;
+                int rateUp = 0;
+                if (scoreUp[currentSecond] > 0) {
+                    rateUp += scoreUp[currentSecond] + effectScore[currentSecond];
+                }
+                if (boostScore[currentSecond] > 0) {
+                    rateUp += boostScore[currentSecond] + effectScore[currentSecond];
+                }
+                return (100.0 + rateUp) / 100;
             }
 
             public double ComboBoostAt(double time) {
                 int currentSecond = (int)Math.Floor(time);
-                return (100.0 + 3 * (comboUp[currentSecond] + doubleCombo[currentSecond])) / 100;
+                int rateUp = 0;
+                if (comboUp[currentSecond] > 0) {
+                    rateUp += comboUp[currentSecond] + effectCombo[currentSecond];
+                }
+                if (boostCombo[currentSecond] > 0) {
+                    rateUp += boostCombo[currentSecond] + effectCombo[currentSecond];
+                }
+                return (100.0 + 3 * rateUp) / 100;
             }
 
             public double HoldOver(double startTime, double length) {
