@@ -2,13 +2,9 @@
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class ImageConverter : IValueConverter {
@@ -19,7 +15,7 @@ namespace TheaterDaysScore {
                 return null;
             
             if (value is string && targetType == typeof(IImage)) {
-                string cardLoc = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MirishitaScore", "cards", value + ".png");
+                string cardLoc = Database.DB.CardImagePath(value.ToString());
                 if (File.Exists(cardLoc)) {
                     // This is really bad and should be way safer and less infinite loop-y
                     Bitmap b = null;

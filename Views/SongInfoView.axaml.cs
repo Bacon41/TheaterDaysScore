@@ -1,19 +1,10 @@
-﻿using Avalonia;
-using Avalonia.Controls;
-using Avalonia.Interactivity;
+﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
-using DynamicData;
 using ReactiveUI;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Reactive.Disposables;
 using System.Reactive.Linq;
-using TheaterDaysScore.JsonModels;
-using TheaterDaysScore.Models;
-using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 
 namespace TheaterDaysScore.Views {

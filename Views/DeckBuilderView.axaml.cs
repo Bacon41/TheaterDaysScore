@@ -4,12 +4,9 @@ using Avalonia.Markup.Xaml;
 using Avalonia.ReactiveUI;
 using DynamicData;
 using ReactiveUI;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Disposables;
 using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
-using TheaterDaysScore.Services;
 using TheaterDaysScore.ViewModels;
 
 namespace TheaterDaysScore.Views {

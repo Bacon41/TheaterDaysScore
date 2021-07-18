@@ -1,22 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics;
 using System.IO;
 using SQLite;
 using Avalonia;
 using Avalonia.Platform;
 using System.Text.Json;
-using System.Net.Http;
 using System.Net;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.JsonModels;
 
 namespace TheaterDaysScore.Services {
     public class Database {
-        private const string appName = "MirishitaScore";
+        private const string appName = "TheaterDaysScore";
         private const string settingsFile = "appstate.json";
         private const string dbName = "tdData.db";
         private const string cardDir = "cards";
@@ -37,6 +33,19 @@ namespace TheaterDaysScore.Services {
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
 
+        private Database() {
+            // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
+            appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
+            Directory.CreateDirectory(appDir);
+            settingsLoc = Path.Combine(appDir, settingsFile);
+            dbLoc = Path.Combine(appDir, dbName);
+            cardsDir = Path.Combine(appDir, cardDir);
+            Directory.CreateDirectory(cardsDir);
+            cardsFile = Path.Combine(cardsDir, cardFile);
+
+            InitData();
+        }
+
         private List<CardData> PopulateCards() {
             string cardsFile = Path.Combine(cardsDir, cardFile);
 
@@ -56,7 +65,7 @@ namespace TheaterDaysScore.Services {
 
             foreach (CardData card in cards) {
                 try {
-                    string imageFile = Path.Combine(cardsDir, card.resourceId + ".png");
+                    string imageFile = CardImagePath(card.resourceId);
                     string imageURL = matsuriStorage + card.resourceId + "_1.png";
 
                     if (!File.Exists(imageFile)) {
@@ -71,19 +80,6 @@ namespace TheaterDaysScore.Services {
             }
 
             return cards;
-        }
-
-        private Database() {
-            // https://jimrich.sk/environment-specialfolder-on-windows-linux-and-os-x/
-            appDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), appName);
-            Directory.CreateDirectory(appDir);
-            settingsLoc = Path.Combine(appDir, settingsFile);
-            dbLoc = Path.Combine(appDir, dbName);
-            cardsDir = Path.Combine(appDir, cardDir);
-            Directory.CreateDirectory(cardsDir);
-            cardsFile = Path.Combine(cardsDir, cardFile);
-
-            InitData();
         }
 
         private void InitData() {
@@ -135,6 +131,10 @@ namespace TheaterDaysScore.Services {
             foreach (SongData song in readSongs) {
                 allSongs.Add(new Song(song));
             }
+        }
+
+        public string CardImagePath(string resourceId) {
+            return Path.Combine(cardsDir, resourceId + "_1.png");
         }
 
         public List<Card> UpdateCards() {

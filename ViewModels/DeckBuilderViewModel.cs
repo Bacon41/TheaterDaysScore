@@ -1,5 +1,4 @@
-﻿using Avalonia.Controls;
-using DynamicData;
+﻿using DynamicData;
 using ReactiveUI;
 using Splat;
 using System;
@@ -7,8 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
