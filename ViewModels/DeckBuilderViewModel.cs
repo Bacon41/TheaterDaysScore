@@ -143,7 +143,7 @@ namespace TheaterDaysScore.ViewModels {
                 .Where(card => Rarities.Contains(card.Rarity))
                 .Where(card => Types.Contains(card.Type))
                 .Where(card => Categories.Contains(card.Category))
-                .Where(card => CenterTypes.Contains(card.CenterType))
+                .Where(card => CenterTypes.Contains(card.CenterType) || CenterTypes.Contains(card.CenterType2))
                 .Where(card => SkillTypes.Contains(card.SkillType))
                 );
         }

@@ -11,7 +11,7 @@
     <local:ImageConverter x:Key="imageLoader"/>
   </UserControl.Resources>
 
-  <StackPanel Width="400">
+  <StackPanel Width="400" Orientation="Vertical">
     <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
 
     <ListBox Name="placementChoice" SelectedIndex="{Binding PlacementIndex}">
@@ -60,76 +60,95 @@
         </StackPanel>
       </ListBoxItem>
     </ListBox>
-    
-    <StackPanel Orientation="Horizontal">
-      <Button Command="{Binding AllRarities}">All</Button>
-      <CheckBox Name="raritySSR">SSR</CheckBox>
-      <CheckBox Name="raritySR">SR</CheckBox>
-      <CheckBox Name="rarityR">R</CheckBox>
-      <CheckBox Name="rarityN">N</CheckBox>
-    </StackPanel>
 
-    <StackPanel Orientation="Horizontal">
-      <Button Command="{Binding AllTypes}">All</Button>
-      <CheckBox Name="typePrincess">Princess</CheckBox>
-      <CheckBox Name="typeFairy">Fairy</CheckBox>
-      <CheckBox Name="typeAngel">Angel</CheckBox>
-      <CheckBox Name="typeEX">EX</CheckBox>
-    </StackPanel>
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="800">
+      <StackPanel Orientation="Vertical" Width="400">
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Rarity</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllRarities}">All</Button>
+            <CheckBox Name="raritySSR">SSR</CheckBox>
+            <CheckBox Name="raritySR">SR</CheckBox>
+            <CheckBox Name="rarityR">R</CheckBox>
+            <CheckBox Name="rarityN">N</CheckBox>
+          </WrapPanel>
+        </StackPanel>
 
-    <StackPanel Orientation="Horizontal">
-      <Button Command="{Binding AllCategories}">All</Button>
-      <CheckBox Name="categoryPerm">Permanent</CheckBox>
-      <CheckBox Name="categoryLim">Limited</CheckBox>
-      <CheckBox Name="categorySHS">SecondHairstyle</CheckBox>
-      <CheckBox Name="categoryFes">FES</CheckBox>
-      <CheckBox Name="categoryPST">PST</CheckBox>
-      <CheckBox Name="categoryColle">MiliColle</CheckBox>
-      <CheckBox Name="categoryPremPick">PremiumPickup</CheckBox>
-      <CheckBox Name="categoryAnn">Anniversary</CheckBox>
-      <CheckBox Name="categoryOther">Other</CheckBox>
-    </StackPanel>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Type</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllTypes}">All</Button>
+            <CheckBox Name="typePrincess">Princess</CheckBox>
+            <CheckBox Name="typeFairy">Fairy</CheckBox>
+            <CheckBox Name="typeAngel">Angel</CheckBox>
+            <CheckBox Name="typeEX">EX</CheckBox>
+          </WrapPanel>
+        </StackPanel>
 
-    <StackPanel Orientation="Horizontal">
-      <Button Command="{Binding AllCenters}">All</Button>
-      <CheckBox Name="centerVocal">Vocal</CheckBox>
-      <CheckBox Name="centerDance">Dance</CheckBox>
-      <CheckBox Name="centerVisual">Visual</CheckBox>
-      <CheckBox Name="centerAll">All</CheckBox>
-      <CheckBox Name="centerLife">Life</CheckBox>
-      <CheckBox Name="centerProc">Proc</CheckBox>
-      <CheckBox Name="centerNone">None</CheckBox>
-    </StackPanel>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Acquisition</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllCategories}">All</Button>
+            <CheckBox Name="categoryPerm">Permanent</CheckBox>
+            <CheckBox Name="categoryLim">Limited</CheckBox>
+            <CheckBox Name="categorySHS">Second Hairstyle</CheckBox>
+            <CheckBox Name="categoryFes">FES</CheckBox>
+            <CheckBox Name="categoryPST">PST</CheckBox>
+            <CheckBox Name="categoryColle">MiliColle</CheckBox>
+            <CheckBox Name="categoryPremPick">Premium Pickup</CheckBox>
+            <CheckBox Name="categoryAnn">Anniversary</CheckBox>
+            <CheckBox Name="categoryOther">Other</CheckBox>
+          </WrapPanel>
+        </StackPanel>
 
-    <StackPanel Orientation="Horizontal">
-      <Button Command="{Binding AllSkills}">All</Button>
-      <CheckBox Name="skillScore">Score</CheckBox>
-      <CheckBox Name="skillOverClock">OverClock</CheckBox>
-      <CheckBox Name="skillCombo">Combo</CheckBox>
-      <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
-      <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
-      <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
-      <CheckBox Name="skillLife">Life</CheckBox>
-      <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
-      <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
-      <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
-      <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
-      <CheckBox Name="skillNone">None</CheckBox>
-    </StackPanel>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Center Effect</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllCenters}">All</Button>
+            <CheckBox Name="centerVocal">Vocal Up</CheckBox>
+            <CheckBox Name="centerDance">Dance Up</CheckBox>
+            <CheckBox Name="centerVisual">Visual Up</CheckBox>
+            <CheckBox Name="centerAll">All Up</CheckBox>
+            <CheckBox Name="centerLife">Life Up</CheckBox>
+            <CheckBox Name="centerProc">Proc Up</CheckBox>
+            <CheckBox Name="centerNone">None</CheckBox>
+          </WrapPanel>
+        </StackPanel>
 
-    <ScrollViewer Width="400" Height="600">
-      <ListBox Name="cardChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-        <ListBox.ItemsPanel>
-          <ItemsPanelTemplate>
-            <WrapPanel Orientation="Horizontal" />
-          </ItemsPanelTemplate>
-        </ListBox.ItemsPanel>
-        <ListBox.ItemTemplate>
-          <DataTemplate>
-            <Image Width="55" Height="55" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
-          </DataTemplate>
-        </ListBox.ItemTemplate>
-      </ListBox>
-    </ScrollViewer>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Skill</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllSkills}">All</Button>
+            <CheckBox Name="skillScore">Score</CheckBox>
+            <CheckBox Name="skillOverClock">OverClock</CheckBox>
+            <CheckBox Name="skillCombo">Combo</CheckBox>
+            <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
+            <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
+            <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
+            <CheckBox Name="skillLife">Life</CheckBox>
+            <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
+            <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
+            <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
+            <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
+            <CheckBox Name="skillNone">None</CheckBox>
+          </WrapPanel>
+        </StackPanel>
+      </StackPanel>
+
+      <ScrollViewer Width="400" Height="500">
+        <ListBox Name="cardChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <Image Width="55" Height="55" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </StackPanel>
   </StackPanel>
 </UserControl>

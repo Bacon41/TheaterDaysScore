@@ -15,7 +15,7 @@
     <Button Margin="0,0,0,10" Width="800" Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
     
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-      <StackPanel Orientation="Vertical">
+      <StackPanel Orientation="Vertical" Width="400">
         <Button Command="{Binding Update}">Update</Button>
         <Button Command="{Binding Save}">Save</Button>
         <Button Command="{Binding Load}">Load</Button>
@@ -25,61 +25,76 @@
           <Button Command="{Binding MaxRank}">MaxRank</Button>
           <Button Command="{Binding MaxLevel}">MaxLevel</Button>
         </StackPanel>
-    
-        <StackPanel Orientation="Horizontal">
-          <Button Command="{Binding AllRarities}">All</Button>
-          <CheckBox Name="raritySSR">SSR</CheckBox>
-          <CheckBox Name="raritySR">SR</CheckBox>
-          <CheckBox Name="rarityR">R</CheckBox>
-          <CheckBox Name="rarityN">N</CheckBox>
+
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Rarity</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllRarities}">All</Button>
+            <CheckBox Name="raritySSR">SSR</CheckBox>
+            <CheckBox Name="raritySR">SR</CheckBox>
+            <CheckBox Name="rarityR">R</CheckBox>
+            <CheckBox Name="rarityN">N</CheckBox>
+          </WrapPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-          <Button Command="{Binding AllTypes}">All</Button>
-          <CheckBox Name="typePrincess">Princess</CheckBox>
-          <CheckBox Name="typeFairy">Fairy</CheckBox>
-          <CheckBox Name="typeAngel">Angel</CheckBox>
-          <CheckBox Name="typeEX">EX</CheckBox>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Type</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllTypes}">All</Button>
+            <CheckBox Name="typePrincess">Princess</CheckBox>
+            <CheckBox Name="typeFairy">Fairy</CheckBox>
+            <CheckBox Name="typeAngel">Angel</CheckBox>
+            <CheckBox Name="typeEX">EX</CheckBox>
+          </WrapPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-          <Button Command="{Binding AllCategories}">All</Button>
-          <CheckBox Name="categoryPerm">Permanent</CheckBox>
-          <CheckBox Name="categoryLim">Limited</CheckBox>
-          <CheckBox Name="categorySHS">SecondHairstyle</CheckBox>
-          <CheckBox Name="categoryFes">FES</CheckBox>
-          <CheckBox Name="categoryPST">PST</CheckBox>
-          <CheckBox Name="categoryColle">MiliColle</CheckBox>
-          <CheckBox Name="categoryPremPick">PremiumPickup</CheckBox>
-          <CheckBox Name="categoryAnn">Anniversary</CheckBox>
-          <CheckBox Name="categoryOther">Other</CheckBox>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Acquisition</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllCategories}">All</Button>
+            <CheckBox Name="categoryPerm">Permanent</CheckBox>
+            <CheckBox Name="categoryLim">Limited</CheckBox>
+            <CheckBox Name="categorySHS">Second Hairstyle</CheckBox>
+            <CheckBox Name="categoryFes">FES</CheckBox>
+            <CheckBox Name="categoryPST">PST</CheckBox>
+            <CheckBox Name="categoryColle">MiliColle</CheckBox>
+            <CheckBox Name="categoryPremPick">Premium Pickup</CheckBox>
+            <CheckBox Name="categoryAnn">Anniversary</CheckBox>
+            <CheckBox Name="categoryOther">Other</CheckBox>
+          </WrapPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-          <Button Command="{Binding AllCenters}">All</Button>
-          <CheckBox Name="centerVocal">Vocal</CheckBox>
-          <CheckBox Name="centerDance">Dance</CheckBox>
-          <CheckBox Name="centerVisual">Visual</CheckBox>
-          <CheckBox Name="centerAll">All</CheckBox>
-          <CheckBox Name="centerLife">Life</CheckBox>
-          <CheckBox Name="centerProc">Proc</CheckBox>
-          <CheckBox Name="centerNone">None</CheckBox>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Center Effect</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllCenters}">All</Button>
+            <CheckBox Name="centerVocal">Vocal Up</CheckBox>
+            <CheckBox Name="centerDance">Dance Up</CheckBox>
+            <CheckBox Name="centerVisual">Visual Up</CheckBox>
+            <CheckBox Name="centerAll">All Up</CheckBox>
+            <CheckBox Name="centerLife">Life Up</CheckBox>
+            <CheckBox Name="centerProc">Proc Up</CheckBox>
+            <CheckBox Name="centerNone">None</CheckBox>
+          </WrapPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-          <Button Command="{Binding AllSkills}">All</Button>
-          <CheckBox Name="skillScore">Score</CheckBox>
-          <CheckBox Name="skillOverClock">OverClock</CheckBox>
-          <CheckBox Name="skillCombo">Combo</CheckBox>
-          <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
-          <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
-          <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
-          <CheckBox Name="skillLife">Life</CheckBox>
-          <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
-          <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
-          <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
-          <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
-          <CheckBox Name="skillNone">None</CheckBox>
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Skill</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllSkills}">All</Button>
+            <CheckBox Name="skillScore">Score</CheckBox>
+            <CheckBox Name="skillOverClock">OverClock</CheckBox>
+            <CheckBox Name="skillCombo">Combo</CheckBox>
+            <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
+            <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
+            <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
+            <CheckBox Name="skillLife">Life</CheckBox>
+            <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
+            <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
+            <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
+            <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
+            <CheckBox Name="skillNone">None</CheckBox>
+          </WrapPanel>
         </StackPanel>
       </StackPanel>
 
