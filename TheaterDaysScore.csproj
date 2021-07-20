@@ -31,4 +31,7 @@
       <DependentUpon>DeckBuilderView.axaml</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docs\" />
+  </ItemGroup>
 </Project>
