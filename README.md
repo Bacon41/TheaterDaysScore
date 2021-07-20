@@ -2,9 +2,11 @@
 
 This is a simple desktop app built with [Avalonia](https://www.avaloniaui.net/) and [Reactive UI](https://www.reactiveui.net/), designed to help players of the mobile game [_The iDOLM@STER Million Live! Theater Days_](https://millionlive.idolmaster.jp/theaterdays/). _Theater Days_ is a rhythm game where your score is dependent on what cards you build your unit with when playing songs. Different cards have different strengths and skills, so simulating different combinations of cards can help find the optimal unit.
 
+This was intended to be an offline version of the tools provided at [megmeg.work](https://megmeg.work/mltd/) and [MLTDApp](https://app.i-mas.ml/), and all the math was built based on the formulas provided by megmeg, particularly the [appealvalue](https://megmeg.work/basic_information/formula/appealvalue/) and [score](https://megmeg.work/basic_information/formula/score/) pages.
+
 ### Cards
 
-Card data is retrieved on demand via [matsurihi.me](https://matsurihi.me)'s [Princess API](https://api.matsurihi.me/docs/). Simply go to the [deck building](#deck-bulding-screen) screen and select "Update".
+Card data is retrieved on demand via [matsurihi.me](https://matsurihi.me)'s [Princess API](https://api.matsurihi.me/docs/), and cached. Simply go to the [deck building](#deck-bulding-screen) screen and select "Update" to get the latest.
 
 ### Songs
 
@@ -14,6 +16,8 @@ Song data is currently hard coded to five songs, at least one of each type:
 * Princess: _Rebellion_
 * Fairy: _Blue Symphony_, _Harmonics_
 * Angel: _Oshiete last note..._
+
+The included beatmaps were parsed from [hyrorre](https://million.hyrorre.com/), and reformatted into a structure that seamed easier to work with, as well as manually adjusted to make the scoring work correctly. This process was rather involved, which is why the selection is so small. Ideally, this app would also be integrated with an equivalent to Princess, but for song beatmap data.
 
 ## Preview
 
