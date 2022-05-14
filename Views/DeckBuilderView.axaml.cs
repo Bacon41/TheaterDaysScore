@@ -51,6 +51,7 @@ namespace TheaterDaysScore.Views {
         private CheckBox comboProtectCheck => this.FindControl<CheckBox>("skillComboProtect");
         private CheckBox judgementBoostCheck => this.FindControl<CheckBox>("skillJudgementBoost");
         private CheckBox multiUpCheck => this.FindControl<CheckBox>("skillMultiUp");
+        private CheckBox multiBonusCheck => this.FindControl<CheckBox>("skillMultiBonus");
         private CheckBox noneSkillCheck => this.FindControl<CheckBox>("skillNone");
 
         public DeckBuilderView() {
@@ -274,6 +275,12 @@ namespace TheaterDaysScore.Views {
                     return set.Contains(CardData.Skill.Type.multiUp);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.multiUp);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.multiBonusCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.multiBonus);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.multiBonus);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.noneSkillCheck.IsChecked, set => {

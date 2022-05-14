@@ -130,6 +130,7 @@
             <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>
             <CheckBox Name="skillJudgementBoost">JudgementBoost</CheckBox>
             <CheckBox Name="skillMultiUp">MultiUp</CheckBox>
+            <CheckBox Name="skillMultiBonus">MultiBonus</CheckBox>
             <CheckBox Name="skillNone">None</CheckBox>
           </WrapPanel>
         </StackPanel>

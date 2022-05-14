@@ -87,6 +87,9 @@ namespace TheaterDaysScore.Models {
                     case CardData.Skill.Type.comboBonus:
                         ComboBoost = this.data.value[0];
                         break;
+                    case CardData.Skill.Type.multiBonus:
+                        ComboBoost = this.data.value[0];
+                        break;
                     case CardData.Skill.Type.overRondo:
                         ComboBoost = this.data.value[0];
                         break;

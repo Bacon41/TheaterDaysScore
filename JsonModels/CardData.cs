@@ -27,7 +27,8 @@ namespace TheaterDaysScore.JsonModels {
                 judgementBoost,
                 doubleBoost,
                 multiUp,
-                overClock = 10,
+                multiBonus,
+                overClock,
                 overRondo,
                 doubleEffect,
             };
