@@ -12,6 +12,9 @@ using TheaterDaysScore.ViewModels;
 namespace TheaterDaysScore.Views {
     public class DeckBuilderView : ReactiveUserControl<DeckBuilderViewModel> {
 
+        private CheckBox idolCheck => this.FindControl<CheckBox>("idolFilter");
+        private ComboBox idolChoice => this.FindControl<ComboBox>("idolChoice");
+
         private CheckBox ssrCheck => this.FindControl<CheckBox>("raritySSR");
         private CheckBox srCheck => this.FindControl<CheckBox>("raritySR");
         private CheckBox rCheck => this.FindControl<CheckBox>("rarityR");
@@ -58,6 +61,20 @@ namespace TheaterDaysScore.Views {
             this.InitializeComponent();
 
             this.WhenActivated(disposables => {
+                // Idol filters
+                this.Bind(ViewModel, vm => vm.FilterIdol, v => v.idolCheck.IsChecked, set => {
+                    return set;
+                }, isChecked => {
+                    ViewModel.FilterCards();
+                    return ViewModel.FilterIdol;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SelectedIdol, v => v.idolChoice.SelectedIndex, idx => {
+                    return idx;
+                }, isChecked => {
+                    ViewModel.FilterCards();
+                    return ViewModel.SelectedIdol;
+                }).DisposeWith(disposables);
+
                 // Rarity filters
                 this.Bind(ViewModel, vm => vm.Rarities, v => v.ssrCheck.IsChecked, set => {
                     return set.Contains(CardData.Rarities.SSR);

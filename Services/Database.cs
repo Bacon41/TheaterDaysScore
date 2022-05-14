@@ -5,7 +5,7 @@ using System.IO;
 using SQLite;
 using Avalonia;
 using Avalonia.Platform;
-using System.Text.Json;
+using Newtonsoft.Json;
 using System.Net;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.JsonModels;
@@ -29,6 +29,7 @@ namespace TheaterDaysScore.Services {
 
         private Dictionary<string, Card> allCards;
         private List<Song> allSongs;
+        private List<Idol> allIdols;
 
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
@@ -57,7 +58,7 @@ namespace TheaterDaysScore.Services {
                 string cardInfo = client.DownloadString(matsuriAPI);
 
                 // Validate format and save
-                cards = JsonSerializer.Deserialize<List<CardData>>(cardInfo);
+                cards = JsonConvert.DeserializeObject<List<CardData>>(cardInfo);
                 File.WriteAllText(cardsFile, cardInfo);
             } catch (Exception exception) {
                 Console.WriteLine("Could not get card data: " + exception);
@@ -98,28 +99,32 @@ namespace TheaterDaysScore.Services {
                 allCardData = PopulateCards();
             } else {
                 StreamReader cardReader = new StreamReader(File.OpenRead(cardsFile));
-                allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
+                allCardData = JsonConvert.DeserializeObject<List<CardData>>(cardReader.ReadToEnd());
             }
 
             List<HeldCard> allHeldCards = conn.Table<HeldCard>().ToList();
 
             conn.Close();
 
-            // Idol info
+            // Storing idols
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/idollist.json")));
-            List<IdolData> idols = JsonSerializer.Deserialize<List<IdolData>>(idolReader.ReadToEnd());
+            allIdols = new List<Idol>();
+            List<IdolData> readIdols = JsonConvert.DeserializeObject<List<IdolData>>(idolReader.ReadToEnd());
+            foreach (IdolData idolData in readIdols) {
+                allIdols.Add(new Idol(idolData));
+            }
 
             // Storing cards
             allCards = new Dictionary<string, Card>();
             foreach (CardData cardData in allCardData) {
                 HeldCard heldCard = allHeldCards.Find(card => card.ID == cardData.resourceId);
-                IdolData idolData = idols.Find(idol => idol.id == cardData.idolId);
+                Idol idol = allIdols.Find(idol => idol.ID == cardData.idolId);
                 Card card = null;
                 if (heldCard != null) {
-                    card = new Card(cardData, idolData, true, heldCard.MasterRank, heldCard.SkillLevel);
+                    card = new Card(cardData, idol, true, heldCard.MasterRank, heldCard.SkillLevel);
                 } else {
-                    card = new Card(cardData, idolData, false, 0, 0);
+                    card = new Card(cardData, idol, false, 0, 0);
                 }
                 allCards.Add(card.ID, card);
             }
@@ -127,7 +132,7 @@ namespace TheaterDaysScore.Services {
             // Song info
             allSongs = new List<Song>();
             StreamReader songReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
-            List<SongData> readSongs = JsonSerializer.Deserialize<List<SongData>>(songReader.ReadToEnd());
+            List<SongData> readSongs = JsonConvert.DeserializeObject<List<SongData>>(songReader.ReadToEnd());
             foreach (SongData song in readSongs) {
                 allSongs.Add(new Song(song));
             }
@@ -181,6 +186,10 @@ namespace TheaterDaysScore.Services {
                 .OrderByDescending(card => card.TotalAppeal(songType, eventType))
                 .Take(topCount)
                 .ToList();
+        }
+
+        public List<Idol> GetIdols() {
+            return allIdols;
         }
 
         public Song GetSong(int num) {

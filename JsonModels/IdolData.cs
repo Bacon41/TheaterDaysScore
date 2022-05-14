@@ -1,13 +1,14 @@
-﻿namespace TheaterDaysScore.JsonModels {
+﻿using Newtonsoft.Json;
+
+namespace TheaterDaysScore.JsonModels {
+
+    // http://mirishitadb.php.xdomain.jp/db/#profile (id modified)
     public class IdolData {
         public int id { get; set; }
+        public string name { get; set; }
+
+        [JsonProperty(PropertyName = "class")]
+        public string classField { get; set; }
         public string colour { get; set; }
-
-        public IdolData(int id, string colour) {
-            this.id = id;
-            this.colour = colour;
-
-            // http://mirishitadb.php.xdomain.jp/db/#profile
-        }
     }
 }

@@ -27,6 +27,24 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Idol</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <CheckBox Name="idolFilter" IsChecked="{Binding FilterIdol}"></CheckBox>
+            <ComboBox Name="idolChoice" Items="{Binding Idols}" SelectedIndex="{Binding SelectedIdol}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <WrapPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <TextBlock Text=" - "></TextBlock>
+                    <TextBlock Text="{Binding Class}"></TextBlock>
+                  </WrapPanel>
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </WrapPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical">
           <TextBlock FontWeight="Bold">Rarity</TextBlock>
           <WrapPanel Orientation="Horizontal">
             <Button Command="{Binding AllRarities}">All</Button>

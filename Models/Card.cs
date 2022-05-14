@@ -7,7 +7,7 @@ using TheaterDaysScore.JsonModels;
 namespace TheaterDaysScore.Models {
     public class Card {
         private CardData data;
-        private IdolData idol;
+        private Idol idol;
 
         public enum Categories {
             PermanentGasha,
@@ -41,6 +41,7 @@ namespace TheaterDaysScore.Models {
         public List<int> SkillLevels { get; set; }
 
         public string ID { get; }
+        public int IdolID { get; }
         public Types Type { get; }
         public CardData.Rarities Rarity { get; }
         public Categories Category { get; }
@@ -233,7 +234,7 @@ namespace TheaterDaysScore.Models {
             }
         }
 
-        public Card(CardData data, IdolData idol, bool isHeld, int masterRank, int skillLevel) {
+        public Card(CardData data, Idol idol, bool isHeld, int masterRank, int skillLevel) {
             this.data = data;
             this.idol = idol;
             IsHeld = isHeld;
@@ -253,6 +254,7 @@ namespace TheaterDaysScore.Models {
 
             ID = this.data.resourceId;
             Type = this.data.idolType;
+            IdolID = this.data.idolId;
             
             switch (this.data.category) {
                 case "normal": // Free with account
@@ -300,7 +302,7 @@ namespace TheaterDaysScore.Models {
             }
 
             if (Type != Types.EX) {
-                Color = Color.Parse("#" + this.idol.colour);
+                Color = Color.Parse(this.idol.Colour);
             } else {
                 Color = Colors.LimeGreen;
             }

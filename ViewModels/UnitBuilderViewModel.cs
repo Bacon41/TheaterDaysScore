@@ -15,6 +15,20 @@ namespace TheaterDaysScore.ViewModels {
     public class UnitBuilderViewModel : ReactiveObject, IRoutableViewModel {
 
         // Filters
+        private bool filterIdol;
+        [DataMember]
+        public bool FilterIdol {
+            get => filterIdol;
+            set => this.RaiseAndSetIfChanged(ref filterIdol, value);
+        }
+
+        private int selectedIdol;
+        [DataMember]
+        public int SelectedIdol {
+            get => selectedIdol;
+            set => this.RaiseAndSetIfChanged(ref selectedIdol, value);
+        }
+
         private HashSet<CardData.Rarities> rarities = new HashSet<CardData.Rarities>();
         [DataMember]
         public HashSet<CardData.Rarities> Rarities {
@@ -126,6 +140,7 @@ namespace TheaterDaysScore.ViewModels {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
             Items = new ObservableCollection<Card>();
+            Idols = Database.DB.GetIdols();
 
             var allRarities = (CardData.Rarities[])Enum.GetValues(typeof(CardData.Rarities));
             AllRarities = ReactiveCommand.Create(() => {
@@ -178,6 +193,7 @@ namespace TheaterDaysScore.ViewModels {
             if (PlacementIndex >= 0) {
                 Items.AddRange(Database.DB.AllCards()
                     .Where(card => PlacementIndex == 0 || card.IsHeld)
+                    .Where(card => !FilterIdol || (SelectedIdol + 1 == card.IdolID))
                     .Where(card => Rarities.Contains(card.Rarity))
                     .Where(card => Types.Contains(card.Type))
                     .Where(card => Categories.Contains(card.Category))
@@ -245,6 +261,8 @@ namespace TheaterDaysScore.ViewModels {
         }
 
         public ObservableCollection<Card> Items { get; }
+
+        public List<Idol> Idols { get; }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllRarities { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllTypes { get; }
