@@ -26,7 +26,18 @@ namespace TheaterDaysScore.Models {
         public int MasterRank { get; set; }
         public List<int> MasterRanks { get; set; }
 
-        public int SkillLevel { get; set; }
+        private int skillLevel;
+        public int SkillLevel {
+            get => skillLevel;
+            set {
+                skillLevel = value;
+                if (Skills != null) {
+                    foreach (Skill s in Skills) {
+                        s.Level = skillLevel;
+                    }
+                }
+            }
+        }
         public List<int> SkillLevels { get; set; }
 
         public string ID { get; }
@@ -42,11 +53,19 @@ namespace TheaterDaysScore.Models {
 
         public class Skill {
             private CardData.Skill data;
-            private int level;
+            public int Level { get; set; }
 
             public int Interval { get; }
             public int Duration { get; }
-            public int Probability { get; }
+
+            private int baseProbability;
+            public int Probability { get {
+                    if (Level <= 10) {
+                        return baseProbability + Level;
+                    }
+                    return baseProbability + 10 + (Level - 10) * 5;
+                }
+            }
 
             public CardData.Skill.Type Effect { get; }
             public int ScoreBoost { get; }
@@ -54,16 +73,11 @@ namespace TheaterDaysScore.Models {
 
             public Skill(CardData.Skill data, int level) {
                 this.data = data;
-                this.level = level;
+                Level = level;
 
                 Interval = this.data.interval;
                 Duration = this.data.duration;
-                Probability = this.data.probability;
-                if (this.level <= 10) {
-                    Probability += this.level;
-                } else {
-                    Probability += 10 + (this.level - 10) * 5;
-                }
+                baseProbability = this.data.probability;
 
                 Effect = this.data.effectId;
                 switch (this.data.effectId) {
