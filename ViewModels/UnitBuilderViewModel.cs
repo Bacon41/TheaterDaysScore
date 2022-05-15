@@ -193,7 +193,7 @@ namespace TheaterDaysScore.ViewModels {
             if (PlacementIndex >= 0) {
                 Items.AddRange(Database.DB.AllCards()
                     .Where(card => PlacementIndex == 0 || card.IsHeld)
-                    .Where(card => !FilterIdol || (SelectedIdol + 1 == card.IdolID))
+                    .Where(card => !FilterIdol || (Database.DB.GetIdols()[SelectedIdol].ID == card.IdolID))
                     .Where(card => Rarities.Contains(card.Rarity))
                     .Where(card => Types.Contains(card.Type))
                     .Where(card => Categories.Contains(card.Category))

@@ -6,15 +6,15 @@ namespace TheaterDaysScore.Models {
 
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Class { get; set; }
+        public string NameKanji { get; set; }
         public string Colour { get; set; }
 
         public Idol(IdolData data) {
             this.data = data;
 
             ID = this.data.id;
-            Name = this.data.name;
-            Class = this.data.classField;
+            Name = this.data.name_eng;
+            NameKanji = this.data.name;
             Colour = "#" + this.data.colour;
         }
     }

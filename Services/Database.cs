@@ -5,8 +5,8 @@ using System.IO;
 using SQLite;
 using Avalonia;
 using Avalonia.Platform;
-using Newtonsoft.Json;
 using System.Net;
+using System.Text.Json;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.JsonModels;
 
@@ -58,7 +58,7 @@ namespace TheaterDaysScore.Services {
                 string cardInfo = client.DownloadString(matsuriAPI);
 
                 // Validate format and save
-                cards = JsonConvert.DeserializeObject<List<CardData>>(cardInfo);
+                cards = JsonSerializer.Deserialize<List<CardData>>(cardInfo);
                 File.WriteAllText(cardsFile, cardInfo);
             } catch (Exception exception) {
                 Console.WriteLine("Could not get card data: " + exception);
@@ -99,7 +99,7 @@ namespace TheaterDaysScore.Services {
                 allCardData = PopulateCards();
             } else {
                 StreamReader cardReader = new StreamReader(File.OpenRead(cardsFile));
-                allCardData = JsonConvert.DeserializeObject<List<CardData>>(cardReader.ReadToEnd());
+                allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
             }
 
             List<HeldCard> allHeldCards = conn.Table<HeldCard>().ToList();
@@ -110,7 +110,7 @@ namespace TheaterDaysScore.Services {
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
             StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/idollist.json")));
             allIdols = new List<Idol>();
-            List<IdolData> readIdols = JsonConvert.DeserializeObject<List<IdolData>>(idolReader.ReadToEnd());
+            List<IdolData> readIdols = JsonSerializer.Deserialize<List<IdolData>>(idolReader.ReadToEnd());
             foreach (IdolData idolData in readIdols) {
                 allIdols.Add(new Idol(idolData));
             }
@@ -132,7 +132,7 @@ namespace TheaterDaysScore.Services {
             // Song info
             allSongs = new List<Song>();
             StreamReader songReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
-            List<SongData> readSongs = JsonConvert.DeserializeObject<List<SongData>>(songReader.ReadToEnd());
+            List<SongData> readSongs = JsonSerializer.Deserialize<List<SongData>>(songReader.ReadToEnd());
             foreach (SongData song in readSongs) {
                 allSongs.Add(new Song(song));
             }

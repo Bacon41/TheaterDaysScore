@@ -74,7 +74,7 @@
                   <WrapPanel Orientation="Horizontal">
                     <TextBlock Text="{Binding Name}"></TextBlock>
                     <TextBlock Text=" - "></TextBlock>
-                    <TextBlock Text="{Binding Class}"></TextBlock>
+                    <TextBlock Text="{Binding NameKanji}"></TextBlock>
                   </WrapPanel>
                 </DataTemplate>
               </ComboBox.ItemTemplate>
