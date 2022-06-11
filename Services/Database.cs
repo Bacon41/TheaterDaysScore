@@ -31,6 +31,8 @@ namespace TheaterDaysScore.Services {
         private List<Song> allSongs;
         private List<Idol> allIdols;
 
+        private Song2 harmonics;
+
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
 
@@ -136,6 +138,10 @@ namespace TheaterDaysScore.Services {
             foreach (SongData song in readSongs) {
                 allSongs.Add(new Song(song));
             }
+
+            StreamReader songReader2 = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/harmon_fumen_sobj.json")));
+            SongData2 readHarmonics = JsonSerializer.Deserialize<SongData2>(songReader2.ReadToEnd());
+            harmonics = new Song2(readHarmonics);
         }
 
         public string CardImagePath(string resourceId) {
@@ -194,6 +200,10 @@ namespace TheaterDaysScore.Services {
 
         public Song GetSong(int num) {
             return allSongs[num];
+        }
+
+        public Song2 GetSong2() {
+            return harmonics;
         }
 
         public string SettingsLoc() {
