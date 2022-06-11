@@ -66,10 +66,10 @@ namespace TheaterDaysScore.Models {
                 if (1 <= Lane && Lane <= 2) { // 2M
                     Lane = data.track - 1;
                     centerLane = 0.5f;
-                } else if(3 <= Lane && Lane <= 4) { // 2M+
+                } else if (3 <= Lane && Lane <= 4) { // 2M+
                     Lane = data.track - 3;
                     centerLane = 0.5f;
-                } else if(9 <= Lane && Lane <= 12) { // 4M
+                } else if (9 <= Lane && Lane <= 12) { // 4M
                     Lane = data.track - 9;
                     centerLane = 1.5f;
                 } else if (25 <= Lane && Lane <= 30) { // 6M
@@ -108,9 +108,10 @@ namespace TheaterDaysScore.Models {
                 }
 
                 // Hold info
-                HoldTicks = data.duration;
                 Waypoints = new List<Waypoint>();
-                if (HoldTicks > 0 && 5 <= data.type && data.type <= 7) {
+                if (5 <= data.type && data.type <= 7) {
+                    HoldTicks = data.duration;
+
                     if (data.poly.Count > 0) {
                         foreach (SongData2.Waypoint w in data.poly) {
                             Waypoints.Add(new Waypoint(w, Tick));
@@ -197,7 +198,7 @@ namespace TheaterDaysScore.Models {
             foreach (SongData2.Event evt in data.evts) {
                 if (evt.track == -1) {
                     Beats.Add(new Beat(evt));
-                } else if(1 <= evt.track && evt.track <= 2) {
+                } else if (1 <= evt.track && evt.track <= 2) {
                     Notes[Difficulty.TwoMix].Add(new Note2(evt));
                 } else if (3 <= evt.track && evt.track <= 4) {
                     Notes[Difficulty.TwoMixPlus].Add(new Note2(evt));
@@ -222,7 +223,7 @@ namespace TheaterDaysScore.Models {
             Beats.RemoveRange(lastBeatIdx, Beats.Count - lastBeatIdx);
 
             //TotalTicks = lastNote.tick + TimeSignatures[TimeSignatures.Count - 1].TicksPerBeat;
-            TotalTicks = Beats[Beats.Count-1].Tick;
+            TotalTicks = Beats[Beats.Count - 1].Tick;
         }
 
         public TimeSignature TimeSignatureAtSecond(double second) {
@@ -241,6 +242,21 @@ namespace TheaterDaysScore.Models {
         public double TickToTime(int tick) {
             TimeSignature currentSig = TimeSignatureAtTick(tick);
             return currentSig.StartTime + (int)((tick - currentSig.StartTick) * currentSig.SecondsPerTick);
+        }
+
+        public bool IsDuringAppeal(double second) {
+            List<Note2> notes = Notes[Difficulty.TwoMix];
+            int firstAppealIdx = notes.FindIndex(n => n.PointsValue == 10);
+            if (notes[firstAppealIdx].Second <= second && (firstAppealIdx == notes.Count || second <= notes[firstAppealIdx + 1].Second)) {
+                return true;
+            }
+            int secondAppealIdx = notes.FindLastIndex(n => n.PointsValue == 10);
+            if (firstAppealIdx != secondAppealIdx) {
+                if (notes[secondAppealIdx].Second <= second && (firstAppealIdx == notes.Count || second <= notes[secondAppealIdx + 1].Second)) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

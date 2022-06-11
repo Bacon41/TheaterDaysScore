@@ -24,6 +24,7 @@ namespace TheaterDaysScore {
         private Pen borderPen;
         private Pen beatPen;
         private Pen halfBeatPen;
+        private Pen quarterBeatPen;
         private Pen holdPen;
         private Bitmap tapImg;
         private Bitmap leftImg;
@@ -35,6 +36,7 @@ namespace TheaterDaysScore {
             borderPen = new Pen(Colors.Black.ToUint32(), 8);
             beatPen = new Pen(Colors.Black.ToUint32(), 3);
             halfBeatPen = new Pen(Colors.Black.ToUint32(), 1);
+            quarterBeatPen = new Pen(Colors.DarkGray.ToUint32(), 1);
             holdPen = new Pen(Colors.Red.ToUint32(), Math.Log(5) * noteSize);
 
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
@@ -80,6 +82,27 @@ namespace TheaterDaysScore {
                     Song2.TimeSignature ts = song.TimeSignatureAtTick(beat.Tick);
                     RenderMeasure(ctx, beat, ts);
                 }
+
+                ctx.DrawRectangle(null, borderPen, new Rect(0, 0, drawWidth, drawHeight));
+
+                foreach (Song2.Note2 note in notes) {
+                    Song2.Note2 concurrentTapNote = notes.Find(n => n.Tick == note.Tick || n.Tick + n.HoldTicks == note.Tick);
+                    if (concurrentTapNote != null) {
+                        Point start = GetCenter(note.Lane + laneOffset, note.Tick);
+                        float lane = (note.Tick == concurrentTapNote.Tick) ? concurrentTapNote.Lane : concurrentTapNote.EndLane;
+                        Point end = GetCenter(lane + laneOffset, note.Tick);
+                        ctx.DrawLine(borderPen, start, end);
+                    }
+                    if (note.HoldTicks > 0) {
+                        Song2.Note2 concurrentReleaseNote = notes.Find(n => n.Tick == note.Tick + note.HoldTicks || n.Tick + n.HoldTicks == note.Tick + note.HoldTicks);
+                        if (concurrentReleaseNote != null) {
+                            Point start = GetCenter(note.EndLane + laneOffset, note.Tick + note.HoldTicks);
+                            float lane = (note.Tick + note.HoldTicks == concurrentReleaseNote.Tick) ? concurrentReleaseNote.Lane : concurrentReleaseNote.EndLane;
+                            Point end = GetCenter(lane + laneOffset, note.Tick + note.HoldTicks);
+                            ctx.DrawLine(borderPen, start, end);
+                        }
+                    }
+                }
                 foreach (Song2.Note2 note in notes) {
                     RenderNote(ctx, note, laneOffset);
                 }
@@ -87,17 +110,21 @@ namespace TheaterDaysScore {
         }
 
         private void RenderMeasure(IDrawingContextImpl ctx, Song2.Beat beat, Song2.TimeSignature ts) {
-            // Horizontal
             double height = drawHeight - (beat.Tick / tickScale);
+            double tall = ts.TicksPerBeat / tickScale;
+
+            // Vertical
+            for (int x = 1; x < 7; x++) {
+                ctx.DrawLine(quarterBeatPen, new Point(laneWidth * x, height), new Point(laneWidth * x, height - tall));
+            }
+            // Horizontal
+            if (ts.Denominator == 4) {
+                ctx.DrawLine(quarterBeatPen, new Point(0, height + tall / 2), new Point(measureWidth, height + tall / 2));
+            }
             if (beat.MeasureStart) {
                 ctx.DrawLine(beatPen, new Point(0, height), new Point(measureWidth, height));
             } else {
                 ctx.DrawLine(halfBeatPen, new Point(0, height), new Point(measureWidth, height));
-            }
-            // Vertical
-            double tall = ts.TicksPerBeat / tickScale;
-            for (int x = 1; x < 7; x++) {
-                ctx.DrawLine(halfBeatPen, new Point(laneWidth * x, height), new Point(laneWidth * x, height - tall));
             }
         }
 
@@ -148,7 +175,7 @@ namespace TheaterDaysScore {
                 }
                 ctx.DrawGeometry(null, holdPen, holdLine.PlatformImpl);
 
-                RenderTap(ctx, note.EndLane + laneOffset, note.Tick + note.HoldTicks, note.Type, note.PointsValue);
+                RenderTap(ctx, note.EndLane + laneOffset, note.Tick + note.HoldTicks, note.EndType, note.PointsValue);
             }
 
             RenderTap(ctx, note.Lane + laneOffset, note.Tick, note.Type, note.PointsValue);
