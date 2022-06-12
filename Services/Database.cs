@@ -9,6 +9,11 @@ using System.Net;
 using System.Text.Json;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.JsonModels;
+using AssetStudio;
+using MessagePack;
+using System.Text;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 namespace TheaterDaysScore.Services {
     public class Database {
@@ -107,7 +112,8 @@ namespace TheaterDaysScore.Services {
 
                 // Validate format and save
                 songs = JsonSerializer.Deserialize<List<SongList>>(songInfo);
-                File.WriteAllText(songsFilePath, songInfo);
+                string jsonOutput = JsonSerializer.Serialize(songs, new JsonSerializerOptions { WriteIndented = true, Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
+                File.WriteAllText(songsFilePath, jsonOutput);
             } catch (Exception exception) {
                 Console.WriteLine("Could not get song data: " + exception);
             }
@@ -120,6 +126,7 @@ namespace TheaterDaysScore.Services {
             if (File.Exists(versionFilePath)) {
                 StreamReader versionReader = new StreamReader(File.OpenRead(versionFilePath));
                 currentVersion = JsonSerializer.Deserialize<VersionInfo>(versionReader.ReadToEnd());
+                versionReader.Close();
             }
             VersionInfo latestVersion;
             try {
@@ -149,6 +156,72 @@ namespace TheaterDaysScore.Services {
                     }
                 }
                 currentVersion = latestVersion;
+
+                // https://github.com/OpenMLTD/MLTDTools/blob/master/src/MiriTore.Database/AssetInfoList.Parsing.cs
+
+                byte[] data = File.ReadAllBytes(versionIndexFile);
+                object[] deserialized = MessagePackSerializer.Deserialize<object[]>(data);
+
+                var dict = deserialized[0] as IDictionary<object, object>;
+
+                var assetList = new List<Asset>();
+                foreach (var kv in dict) {
+                    string resourceName = kv.Key as string;
+                    object[] arr = kv.Value as object[];
+
+                    string contentHash = arr[0] as string;
+                    string remoteName = arr[1] as string;
+
+                    // Limit to just beatmaps
+                    if (resourceName.Contains("scrobj")) {
+                        var assetInfo = new Asset(resourceName, contentHash, remoteName);
+                        assetList.Add(assetInfo);
+                    }
+                }
+
+                // Download encoded data
+                foreach (Asset asset in assetList) {
+                    string assetPath = Path.Combine(songsDirPath, asset.Name);
+                    if (!File.Exists(assetPath)) {
+                        Uri versionAssetURL = new Uri(bn765API + "/" + latestVersion.res.version.ToString() + bn765AssetPath + asset.Hash);
+                        client.DownloadFile(versionAssetURL, assetPath);
+                    }
+                }
+
+                // https://github.com/OpenMLTD/MLTDTools/blob/master/src/ExtractAcb/Program.cs
+
+                // Decode downloaded file and save info as json
+                var manager = new AssetsManager();
+                foreach (Asset asset in assetList) {
+                    manager.Clear();
+
+                    string assetPath = Path.Combine(songsDirPath, asset.Name);
+                    manager.LoadFiles(assetPath);
+                    foreach (var assetFile in manager.assetsFileList) {
+                        foreach (var obj in assetFile.Objects) {
+                            if (obj.type != ClassIDType.MonoBehaviour) {
+                                continue;
+                            }
+                            MonoBehaviour behaviourObj = (MonoBehaviour)obj;
+
+                            // This one contains the beatmap, skip the others
+                            if (!behaviourObj.m_Name.Contains("fumen")) {
+                                continue;
+                            }
+
+                            string songFileName = behaviourObj.m_Name + ".json";
+                            string songFilePath = Path.Combine(songsDirPath, songFileName);
+
+                            if (!File.Exists(songFilePath)) {
+                                // https://github.com/Perfare/AssetStudio/blob/master/AssetStudioGUI/Exporter.cs
+
+                                var fullObjectData = behaviourObj.ToType();
+                                string jsonOutput = JsonSerializer.Serialize(fullObjectData, new JsonSerializerOptions { WriteIndented = true });
+                                File.WriteAllText(songFilePath, jsonOutput);
+                            }
+                        }
+                    }
+                }
             } catch (Exception exception) {
                 Console.WriteLine("Could not get index info: " + exception);
             }
@@ -173,6 +246,7 @@ namespace TheaterDaysScore.Services {
             } else {
                 StreamReader cardReader = new StreamReader(File.OpenRead(cardsFilePath));
                 allCardData = JsonSerializer.Deserialize<List<CardData>>(cardReader.ReadToEnd());
+                cardReader.Close();
             }
 
             List<HeldCard> allHeldCards = conn.Table<HeldCard>().ToList();
@@ -184,6 +258,7 @@ namespace TheaterDaysScore.Services {
             StreamReader idolReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/idollist.json")));
             allIdols = new List<Idol>();
             List<IdolData> readIdols = JsonSerializer.Deserialize<List<IdolData>>(idolReader.ReadToEnd());
+            idolReader.Close();
             foreach (IdolData idolData in readIdols) {
                 allIdols.Add(new Idol(idolData));
             }
@@ -206,12 +281,16 @@ namespace TheaterDaysScore.Services {
             allSongs = new List<Song>();
             StreamReader songReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
             List<SongData> readSongs = JsonSerializer.Deserialize<List<SongData>>(songReader.ReadToEnd());
+            songReader.Close();
             foreach (SongData song in readSongs) {
                 allSongs.Add(new Song(song));
             }
 
-            StreamReader songReader2 = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/harmon_fumen_sobj.json")));
+            PopulateAssets();
+
+            StreamReader songReader2 = new StreamReader(File.OpenRead(Path.Combine(songsDirPath, "harmon_fumen_sobj.json")));
             SongData2 readHarmonics = JsonSerializer.Deserialize<SongData2>(songReader2.ReadToEnd());
+            songReader2.Close();
             harmonics = new Song2(readHarmonics);
 
             List<SongList> allSongData = new List<SongList>();
@@ -220,9 +299,8 @@ namespace TheaterDaysScore.Services {
             } else {
                 StreamReader songsReader = new StreamReader(File.OpenRead(songsFilePath));
                 allSongData = JsonSerializer.Deserialize<List<SongList>>(songsReader.ReadToEnd());
+                songsReader.Close();
             }
-
-            PopulateAssets();
         }
 
         public string CardImagePath(string resourceId) {
