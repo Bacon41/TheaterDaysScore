@@ -1,0 +1,42 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:TheaterDaysScore;assembly=TheaterDaysScore"
+             xmlns:models="clr-namespace:TheaterDaysScore.Models"
+             xmlns:views="clr-namespace:TheaterDaysScore.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="TheaterDaysScore.Views.SongPickerView">
+
+  <StackPanel Width="400" Orientation="Vertical">
+    <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
+
+    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="800">
+      <StackPanel Orientation="Vertical">
+        <TextBlock FontWeight="Bold">Type</TextBlock>
+        <WrapPanel Orientation="Horizontal">
+          <Button Command="{Binding AllTypes}">All</Button>
+          <CheckBox Name="typePrincess">Princess</CheckBox>
+          <CheckBox Name="typeFairy">Fairy</CheckBox>
+          <CheckBox Name="typeAngel">Angel</CheckBox>
+          <CheckBox Name="typeAll">All</CheckBox>
+        </WrapPanel>
+      </StackPanel>
+
+      <ScrollViewer Width="400" Height="500">
+        <ListBox Name="songChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+          <ListBox.ItemsPanel>
+            <ItemsPanelTemplate>
+              <WrapPanel Orientation="Horizontal" />
+            </ItemsPanelTemplate>
+          </ListBox.ItemsPanel>
+          <ListBox.ItemTemplate>
+            <DataTemplate>
+              <TextBlock Text="{Binding Name}"></TextBlock>
+            </DataTemplate>
+          </ListBox.ItemTemplate>
+        </ListBox>
+      </ScrollViewer>
+    </StackPanel>
+  </StackPanel>
+</UserControl>

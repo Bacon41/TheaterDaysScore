@@ -28,6 +28,19 @@ namespace TheaterDaysScore.Views {
 
                 // Fill in the unit on boot
                 ViewModel.UnitBuilder.SetUnit();
+
+                // Pass the unit from the builder to the song
+                this.WhenAnyValue(x => x.ViewModel.SongPicker.Song)
+                    .Subscribe(x => ViewModel.SongInfo.Song = x)
+                    .DisposeWith(disposables);
+
+                // Re-build the song whenever the page changes, to pick up level increases
+                this.WhenAnyObservable(x => x.ViewModel.Router.NavigationChanged)
+                    .Subscribe(x => ViewModel.SongPicker.SetSong())
+                    .DisposeWith(disposables);
+
+                // Fill in the song on boot
+                ViewModel.SongPicker.SetSong();
             });
         }
 

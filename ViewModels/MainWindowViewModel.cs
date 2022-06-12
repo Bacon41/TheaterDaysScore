@@ -20,6 +20,13 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref deckBuilder, value);
         }
 
+        private SongPickerViewModel songPicker = new SongPickerViewModel();
+        [DataMember]
+        public SongPickerViewModel SongPicker {
+            get => songPicker;
+            set => this.RaiseAndSetIfChanged(ref songPicker, value);
+        }
+
         private UnitBuilderViewModel unitBuilder = new UnitBuilderViewModel();
         [DataMember]
         public UnitBuilderViewModel UnitBuilder {
@@ -29,11 +36,14 @@ namespace TheaterDaysScore.ViewModels {
 
         public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> EditDeck { get; }
 
+        public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> PickSong { get; }
+
         public ReactiveCommand<System.Reactive.Unit, IRoutableViewModel> EditUnit { get; }
 
         public MainWindowViewModel() {
             Router.Navigate.Execute(SongInfo);
             EditDeck = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(DeckBuilder));
+            PickSong = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(SongPicker));
             EditUnit = ReactiveCommand.CreateFromObservable(() => Router.Navigate.Execute(UnitBuilder));
         }
 

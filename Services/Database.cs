@@ -44,9 +44,8 @@ namespace TheaterDaysScore.Services {
 
         private Dictionary<string, Card> allCards;
         private List<Song> allSongs;
+        private Dictionary<string, Song2> allSongs2;
         private List<Idol> allIdols;
-
-        private Song2 harmonics;
 
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
         public static Database DB { get => _db.Value; }
@@ -288,11 +287,6 @@ namespace TheaterDaysScore.Services {
 
             PopulateAssets();
 
-            StreamReader songReader2 = new StreamReader(File.OpenRead(Path.Combine(songsDirPath, "harmon_fumen_sobj.json")));
-            SongData2 readHarmonics = JsonSerializer.Deserialize<SongData2>(songReader2.ReadToEnd());
-            songReader2.Close();
-            harmonics = new Song2(readHarmonics);
-
             List<SongList> allSongData = new List<SongList>();
             if (!File.Exists(songsFilePath)) {
                 allSongData = PopulateSongs();
@@ -300,6 +294,15 @@ namespace TheaterDaysScore.Services {
                 StreamReader songsReader = new StreamReader(File.OpenRead(songsFilePath));
                 allSongData = JsonSerializer.Deserialize<List<SongList>>(songsReader.ReadToEnd());
                 songsReader.Close();
+            }
+
+            allSongs2 = new Dictionary<string, Song2>();
+            foreach(SongList songData in allSongData) {
+                StreamReader songReader2 = new StreamReader(File.OpenRead(Path.Combine(songsDirPath, songData.asset + "_fumen_sobj.json")));
+                SongData2 data = JsonSerializer.Deserialize<SongData2>(songReader2.ReadToEnd());
+                songReader2.Close();
+                Song2 song = new Song2(songData, data);
+                allSongs2.Add(songData.asset, song);
             }
         }
 
@@ -361,8 +364,12 @@ namespace TheaterDaysScore.Services {
             return allSongs[num];
         }
 
-        public Song2 GetSong2() {
-            return harmonics;
+        public Song2 GetSong2(string id) {
+            return allSongs2[id];
+        }
+
+        public List<Song2> AllSongs2() {
+            return allSongs2.Select(keyVal => keyVal.Value).ToList();
         }
 
         public string SettingsLoc() {

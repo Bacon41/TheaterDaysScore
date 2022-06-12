@@ -10,8 +10,6 @@ using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class DrawIntervals2 : Canvas {
-        private int measureHeight = 200;
-
         private int tickScale = 10;
 
         private int drawWidth;
@@ -22,15 +20,13 @@ namespace TheaterDaysScore {
         public DrawIntervals2() {
         }
 
-        public void Draw(int songNum, Unit unit) {
-            if (unit == null) {
+        public void Draw(Song2 song, Song2.Difficulty difficulty, Unit unit) {
+            if (song == null || unit == null) {
                 return;
             }
-
-            Song2 song = Database.DB.GetSong2();
-            Song2.Difficulty difficulty = Song2.Difficulty.MillionMix;
-
-            var notes = song.Notes[difficulty];
+            if (song.Notes[difficulty].Count == 0) {
+                return;
+            }
 
             // Rendering
             drawWidth = 10 * 5;
@@ -38,8 +34,8 @@ namespace TheaterDaysScore {
 
             // This is close to accurate much of the time, but I can't figure out how to get the real value
             double skillStartAdjustment = 2;
-            double startTime = notes[0].Second - skillStartAdjustment;
-            int endTicks = notes[notes.Count - 1].Tick + notes[notes.Count - 1].HoldTicks;
+            double startTime = song.TickToTime(song.FirstNoteTick) - skillStartAdjustment;
+            int endTicks = song.LastNoteTick;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {

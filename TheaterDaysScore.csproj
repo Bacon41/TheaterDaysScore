@@ -27,6 +27,9 @@
     <None Remove="Assets\up.png" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Views\SongPickerView.axaml.cs">
+      <DependentUpon>SongPickerView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UnitBuilderView.axaml.cs">
       <DependentUpon>UnitBuilderView.axaml</DependentUpon>
     </Compile>

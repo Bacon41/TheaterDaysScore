@@ -18,6 +18,19 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref unit, value);
         }
 
+        private Song2 song;
+        public Song2 Song {
+            get => song;
+            set => this.RaiseAndSetIfChanged(ref song, value);
+        }
+
+        private Song2.Difficulty difficulty;
+        [DataMember]
+        public Song2.Difficulty Difficulty {
+            get => difficulty;
+            set => this.RaiseAndSetIfChanged(ref difficulty, value);
+        }
+
         private int songNum = 0;
         [DataMember]
         public int SongNum {

@@ -17,10 +17,17 @@ namespace TheaterDaysScore.Models {
         // Divide this by the time signature denominator to get ticks per beat
         private const int tickAdjustment = 1920;
 
+        public string Name { get; }
+        public string Asset { get; }
+        public Types Type { get; }
+        public Dictionary<Difficulty, int> Level { get; }
+
         public List<Beat> Beats { get; }
         public Dictionary<Difficulty, List<Note2>> Notes { get; }
         public List<TimeSignature> TimeSignatures { get; }
 
+        public int FirstNoteTick { get; }
+        public int LastNoteTick { get; }
         public int TotalTicks { get; }
 
         public class Note2 {
@@ -183,7 +190,20 @@ namespace TheaterDaysScore.Models {
             }
         }
 
-        public Song2(SongData2 data) {
+        public Song2(SongList songData, SongData2 beatmapData) {
+            Name = songData.song_name;
+            Asset = songData.asset;
+            Type = (Types)songData.song_type;
+
+            Level = new Dictionary<Difficulty, int>();
+            Level[Difficulty.TwoMix] = songData.two_mix_lv;
+            Level[Difficulty.TwoMixPlus] = songData.two_mixplus_lv;
+            Level[Difficulty.FourMix] = songData.four_mix_lv;
+            Level[Difficulty.SixMix] = songData.six_mix_lv;
+            Level[Difficulty.MillionMix] = songData.million_mix_lv;
+            Level[Difficulty.OverMix] = songData.over_mix_lv;
+
+            // Beatmap info
             Beats = new List<Beat>();
             Notes = new Dictionary<Difficulty, List<Note2>>();
             foreach (Difficulty d in Enum.GetValues(typeof(Difficulty))) {
@@ -191,11 +211,11 @@ namespace TheaterDaysScore.Models {
             }
             TimeSignatures = new List<TimeSignature>();
 
-            foreach (SongData2.Conductor cond in data.ct) {
+            foreach (SongData2.Conductor cond in beatmapData.ct) {
                 TimeSignatures.Add(new TimeSignature(cond));
             }
 
-            foreach (SongData2.Event evt in data.evts) {
+            foreach (SongData2.Event evt in beatmapData.evts) {
                 if (evt.track == -1) {
                     Beats.Add(new Beat(evt));
                 } else if (1 <= evt.track && evt.track <= 2) {
@@ -217,12 +237,13 @@ namespace TheaterDaysScore.Models {
                 Notes[Difficulty.OverMix].Clear();
             }
             // There are 5 minutes of beats, but ~2:20 of actual song usually, so throw out the excess
-            var lastNote = data.evts.FindLast(x => x.track != -1);
+            var lastNote = beatmapData.evts.FindLast(x => x.track != -1);
             int lastBeatIdx = Beats.FindIndex(x => x.Tick > lastNote.tick + lastNote.duration && x.MeasureStart) + 1;
             TimeSignature lastTS = TimeSignatureAtTick(Beats[lastBeatIdx].BeatNum);
             Beats.RemoveRange(lastBeatIdx, Beats.Count - lastBeatIdx);
 
-            //TotalTicks = lastNote.tick + TimeSignatures[TimeSignatures.Count - 1].TicksPerBeat;
+            FirstNoteTick = Notes[Difficulty.TwoMix][0].Tick;
+            LastNoteTick = Notes[Difficulty.TwoMix][Notes[Difficulty.TwoMix].Count - 1].Tick + Notes[Difficulty.TwoMix][Notes[Difficulty.TwoMix].Count - 1].HoldTicks;
             TotalTicks = Beats[Beats.Count - 1].Tick;
         }
 
@@ -247,12 +268,12 @@ namespace TheaterDaysScore.Models {
         public bool IsDuringAppeal(double second) {
             List<Note2> notes = Notes[Difficulty.TwoMix];
             int firstAppealIdx = notes.FindIndex(n => n.PointsValue == 10);
-            if (notes[firstAppealIdx].Second <= second && (firstAppealIdx == notes.Count || second <= notes[firstAppealIdx + 1].Second)) {
+            if (notes[firstAppealIdx].Second <= second && (firstAppealIdx == notes.Count - 1 || second <= notes[firstAppealIdx + 1].Second)) {
                 return true;
             }
             int secondAppealIdx = notes.FindLastIndex(n => n.PointsValue == 10);
             if (firstAppealIdx != secondAppealIdx) {
-                if (notes[secondAppealIdx].Second <= second && (firstAppealIdx == notes.Count || second <= notes[secondAppealIdx + 1].Second)) {
+                if (notes[secondAppealIdx].Second <= second && (firstAppealIdx == notes.Count - 1 || second <= notes[secondAppealIdx + 1].Second)) {
                     return true;
                 }
             }

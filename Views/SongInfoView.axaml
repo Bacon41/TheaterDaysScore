@@ -13,6 +13,13 @@
     <StackPanel Orientation="Vertical">
       <Button Command="{Binding $parent[Window].DataContext.EditDeck}">Choose Cards</Button>
 
+      <Button Command="{Binding $parent[Window].DataContext.PickSong}">
+        <StackPanel Orientation="Vertical">
+          <TextBlock>Pick Song</TextBlock>
+          <TextBlock Text="{Binding Song.Name}"></TextBlock>
+        </StackPanel>
+      </Button>
+
       <Button HorizontalAlignment="Left" Command="{Binding $parent[Window].DataContext.EditUnit}">
         <StackPanel Orientation="Vertical" Margin="5">
           <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
@@ -59,25 +66,45 @@
         </StackPanel>
       </Button>
 
-      <StackPanel Orientation="Horizontal">
-        <TextBlock FontSize="24">Appeal:</TextBlock>
-        <TextBox Name="appealDisplay" FontSize="24" BorderThickness="0" CaretBrush="Transparent" IsReadOnly="True" Text="{Binding Appeal}"></TextBox>
-      </StackPanel>
-      
-      <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0">Ideal</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0" Text="{Binding ScoreIdeal}" />
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1">0.01%</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1" Text="{Binding Score001}" />
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="2">0.1%</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="2" Text="{Binding Score01}" />
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="3">1%</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="3" Text="{Binding Score1}" />
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="4">10%</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="4" Text="{Binding Score10}" />
-        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="5">50%</TextBlock>
-        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="5" Text="{Binding Score50}" />
-      </Grid>
+      <ListBox Name="difficultySelection" SelectedIndex="{Binding Difficulty}">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <StackPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+
+        <ListBox.Styles>
+          <Style Selector="ListBoxItem">
+            <Setter Property="Template">
+              <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                  <RadioButton Content="{TemplateBinding Content}"
+                               IsChecked="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsSelected}"/>
+                </ControlTemplate>
+              </Setter.Value>
+            </Setter>
+          </Style>
+        </ListBox.Styles>
+
+        <ListBoxItem>
+          <TextBlock>2M</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>2M+</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>4M</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>6M</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>MM</TextBlock>
+        </ListBoxItem>
+        <ListBoxItem>
+          <TextBlock>OM</TextBlock>
+        </ListBoxItem>
+      </ListBox>
 
       <ListBox SelectedIndex="{Binding BoostType}">
         <ListBox.ItemsPanel>
@@ -151,6 +178,26 @@
       </ListBox>
     
       <Button Command="{Binding Calculate}">Calculate</Button>
+
+      <StackPanel Orientation="Horizontal">
+        <TextBlock FontSize="24">Appeal:</TextBlock>
+        <TextBox Name="appealDisplay" FontSize="24" BorderThickness="0" CaretBrush="Transparent" IsReadOnly="True" Text="{Binding Appeal}"></TextBox>
+      </StackPanel>
+
+      <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0">Ideal</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0" Text="{Binding ScoreIdeal}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1">0.01%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="1" Text="{Binding Score001}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="2">0.1%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="2" Text="{Binding Score01}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="3">1%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="3" Text="{Binding Score1}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="4">10%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="4" Text="{Binding Score10}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="5">50%</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="5" Text="{Binding Score50}" />
+      </Grid>
     </StackPanel>
 
     <StackPanel Orientation="Vertical">
@@ -158,6 +205,14 @@
         <StackPanel Orientation="Horizontal">
           <local:DrawCanvas Name="scoreCanvas" Background="LightGray"/>
           <local:DrawIntervals Name="intervalCanvas"/>
+        </StackPanel>
+      </ScrollViewer>
+    </StackPanel>
+    <StackPanel Orientation="Vertical">
+      <ScrollViewer Width="400" Height="600">
+        <StackPanel Orientation="Horizontal">
+          <local:DrawCanvas2 Name="scoreCanvas2" Background="LightGray"/>
+          <local:DrawIntervals2 Name="intervalCanvas2"/>
         </StackPanel>
       </ScrollViewer>
     </StackPanel>
