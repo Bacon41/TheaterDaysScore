@@ -7,6 +7,9 @@
              xmlns:views="clr-namespace:TheaterDaysScore.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="TheaterDaysScore.Views.SongPickerView">
+  <UserControl.Resources>
+    <local:ImageConverter x:Key="imageLoader"/>
+  </UserControl.Resources>
 
   <StackPanel Width="400" Orientation="Vertical">
     <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
@@ -32,7 +35,7 @@
           </ListBox.ItemsPanel>
           <ListBox.ItemTemplate>
             <DataTemplate>
-              <TextBlock Text="{Binding Name}"></TextBlock>
+              <Image Width="55" Height="55" Source="{Binding Asset, Converter={StaticResource imageLoader}}" ToolTip.Tip="{Binding Name}"></Image>
             </DataTemplate>
           </ListBox.ItemTemplate>
         </ListBox>

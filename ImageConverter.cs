@@ -15,23 +15,27 @@ namespace TheaterDaysScore {
                 return null;
             
             if (value is string && targetType == typeof(IImage)) {
-                string cardLoc = Database.DB.CardImagePath(value.ToString());
-                if (File.Exists(cardLoc)) {
-                    // This is really bad and should be way safer and less infinite loop-y
-                    Bitmap b = null;
-                    do {
-                        try {
-                            b = new Bitmap(cardLoc);
-                        } catch (IOException) {
-                            // For now, just assume it's waiting to be written and retry
-                        } catch (ArgumentException) {
-                            return null;
-                        }
-                    } while (b == null);
-
-                    return b;
+                string imagePath = Database.DB.CardImagePath(value.ToString());
+                if (!File.Exists(imagePath)) {
+                    imagePath = Database.DB.SongImagePath(value.ToString());
+                    if (!File.Exists(imagePath)) {
+                        return null;
+                    }
                 }
-                return null;
+
+                // This is really bad and should be way safer and less infinite loop-y
+                Bitmap b = null;
+                do {
+                    try {
+                        b = new Bitmap(imagePath);
+                    } catch (IOException) {
+                        // For now, just assume it's waiting to be written and retry
+                    } catch (ArgumentException) {
+                        return null;
+                    }
+                } while (b == null);
+
+                return b;
             }
 
             throw new NotSupportedException();

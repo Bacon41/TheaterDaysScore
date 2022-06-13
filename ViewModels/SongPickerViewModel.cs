@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
-using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 

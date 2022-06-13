@@ -39,6 +39,7 @@ namespace TheaterDaysScore.Services {
         private const string matsuriAPI = "https://api.matsurihi.me/mltd/v1/cards/";
         private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
         private const string m_ltdAPI = "https://api.39m.ltd/api/fetch/all_song_info";
+        private const string m_ltdImage = "https://storage.39m.ltd/img/";
         private const string matsuriVerionAPI = "https://api.matsurihi.me/mltd/v1/version/latest";
         private const string bn765API = "https://td-assets.bn765.com";
 
@@ -115,6 +116,22 @@ namespace TheaterDaysScore.Services {
                 File.WriteAllText(songsFilePath, jsonOutput);
             } catch (Exception exception) {
                 Console.WriteLine("Could not get song data: " + exception);
+            }
+
+            foreach (SongList song in songs) {
+                try {
+                    string imageFile = SongImagePath(song.asset);
+                    string imageURL = m_ltdImage + "jacket_" + song.asset + ".png";
+
+                    if (!File.Exists(imageFile)) {
+                        using WebClient client = new WebClient {
+                            Proxy = null
+                        };
+                        client.DownloadFileAsync(new Uri(imageURL), imageFile);
+                    }
+                } catch (Exception exception) {
+                    Console.WriteLine("Could not get song image: " + exception);
+                }
             }
 
             return songs;
@@ -308,6 +325,10 @@ namespace TheaterDaysScore.Services {
 
         public string CardImagePath(string resourceId) {
             return Path.Combine(cardsDirPath, resourceId + "_1.png");
+        }
+
+        public string SongImagePath(string resourceId) {
+            return Path.Combine(songsDirPath, "jacket_" + resourceId + ".png");
         }
 
         public List<Card> UpdateCards() {
