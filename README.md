@@ -2,22 +2,21 @@
 
 This is a simple desktop app built with [Avalonia](https://www.avaloniaui.net/) and [Reactive UI](https://www.reactiveui.net/), designed to help players of the mobile game [_The iDOLM@STER Million Live! Theater Days_](https://millionlive.idolmaster.jp/theaterdays/). _Theater Days_ is a rhythm game where your score is dependent on what cards you build your unit with when playing songs. Different cards have different strengths and skills, so simulating different combinations of cards can help find the optimal unit.
 
-This was intended to be an offline version of the tools provided at [megmeg.work](https://megmeg.work/mltd/) and [MLTDApp](https://app.i-mas.ml/), and all the math was built based on the formulas provided by megmeg, particularly the [appealvalue](https://megmeg.work/basic_information/formula/appealvalue/) and [score](https://megmeg.work/basic_information/formula/score/) pages.
+This was intended to be a mostly offline version of the tools provided at [megmeg.work](https://megmeg.work/mltd/) and [MLTDApp](https://app.39m.ltd/), and all the math was built based on the formulas provided by megmeg, particularly the [appealvalue](https://megmeg.work/basic_information/formula/appealvalue/) and [score](https://megmeg.work/basic_information/formula/score/) pages.
+
+An online connection is required to collect card and song data, at least once. Large sections of the data gathering logic are built from the pioneering work done by [OpenMLTD](https://github.com/OpenMLTD/MLTDTools), and [AssetStudio](https://github.com/Perfare/AssetStudio) is used directly as a library.
+
+When cloning this repo, ensure that you initialize the submodules via `git submodule init`.
 
 ### Cards
 
-Card data is retrieved on demand via [matsurihi.me](https://matsurihi.me)'s [Princess API](https://api.matsurihi.me/docs/), and cached. Simply go to the [deck building](#deck-bulding-screen) screen and select "Update" to get the latest.
+Card data is retrieved on demand via [matsurihi.me](https://matsurihi.me)'s Princess [cards API](https://api.matsurihi.me/docs/#mltd-v1-cards), and cached. Simply go to the [deck building](#deck-bulding-screen) screen and select "Update" to get the latest.
 
 ### Songs
 
-Song data is currently hard coded to five songs, at least one of each type:
+Song data is retrieved on demand via [MLTDApp](https://api.39m.ltd/api/fetch/all_song_info). The beatmaps for each song are then collected via [matsurihi.me](https://matsurihi.me)'s Princess [version API](https://api.matsurihi.me/docs/#mltd-v1-version) to build calls to the game's [asset server](https://td-assets.bn765.com), and cached. The beatmap files are identified (`scrobj_{name}.unity3d`) and data extracted (`{name}_fumen_sobj.json`).
 
-* All: _MUSIC♪_
-* Princess: _Rebellion_
-* Fairy: _Blue Symphony_, _Harmonics_
-* Angel: _Oshiete last note..._
-
-The included beatmaps were parsed from [hyrorre](https://million.hyrorre.com/), and reformatted into a structure that seamed easier to work with, as well as manually adjusted to make the scoring work correctly. This process was rather involved, which is why the selection is so small. Ideally, this app would also be integrated with an equivalent to Princess, but for song beatmap data.
+The beatmaps visible at [hyrorre](https://million.hyrorre.com/) were used as reference to determine how to parse the info available. Currently, there is a lack of accuracy around when the countdown to the initial activation for each skills will be. The code will assume 2 seconds before the first note, which is close for most songs, but not quite right for any of them, leading to slightly miscalculated scores.
 
 ## Preview
 

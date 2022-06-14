@@ -1,0 +1,3 @@
+[submodule "Lib/AssetStudio"]
+	path = Lib/AssetStudio
+	url = https://github.com/Bacon41/AssetStudio.git
