@@ -52,7 +52,7 @@ namespace TheaterDaysScore.Views {
 
                 // Card selection
                 songChoice.GetObservable(ListBox.SelectedItemProperty)
-                    .Subscribe(x => ViewModel.SetSongID(x as Song2))
+                    .Subscribe(x => ViewModel.SetSongID(x as Song))
                     .DisposeWith(disposables);
 
                 ViewModel.FilterSongs();

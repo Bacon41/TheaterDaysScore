@@ -10,7 +10,7 @@ using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class DrawIntervals : Canvas {
-        private int measureHeight = 200;
+        private int tickScale = 10;
 
         private int drawWidth;
         private int drawHeight;
@@ -20,51 +20,64 @@ namespace TheaterDaysScore {
         public DrawIntervals() {
         }
 
-        public void Draw(int songNum, Unit unit) {
-            if (unit == null) {
+        public void Draw(Song song, Song.Difficulty difficulty, Unit unit) {
+            if (song == null || unit == null) {
+                return;
+            }
+            if (song.Notes[difficulty].Count == 0) {
                 return;
             }
 
-            Song song = Database.DB.GetSong(songNum);
-
             // Rendering
             drawWidth = 10 * 5;
-            drawHeight = song.DisplayMeasures * measureHeight;
+            drawHeight = song.TotalTicks / tickScale;
+
+            double startTime = song.SkillStartTime;
+            int endTicks = song.LastNoteTick;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
                 // Skill interval
                 int offset = 0;
                 foreach (Card card in unit.Members) {
-                    RenderCard(ctx, card, song, offset);
+                    RenderCard(ctx, card, song, offset, startTime, endTicks);
                     offset += 10;
                 }
 
-                // Second bar
-                for (int x = 0; x < song.Length; x++) {
+                // Seconds bars
+                int currentTicks = song.TimeToTick(startTime);
+                for (int x = 0; currentTicks < endTicks; x++) {
                     Pen writePen = new Pen(Colors.Black.ToUint32(), 3);
-                    double pixelsPerSecond = measureHeight * (double)song.BPM / 60 / 4;
-                    double height = measureHeight * (song.DisplayMeasures - song.MeasuresForSkillStart + ((song.SkillStartOffset - song.Notes[0].QuarterBeat) / 16)) - x * pixelsPerSecond;
+                    double height = drawHeight - (currentTicks / tickScale);
                     ctx.DrawLine(writePen, new Point(0, height), new Point(45, height));
+
+                    currentTicks = song.TimeToTick(startTime + x);
                 }
             }
         }
 
-        private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset) {
+        private void RenderCard(IDrawingContextImpl ctx, Card card, Song song, int offset, double startTime, int endTicks) {
             // Timing
-            double pixelsPerSecond = measureHeight * (double)song.BPM / 60 / 4;
             if (card.Skills != null) {
                 foreach (Card.Skill skill in card.Skills) {
-                    double startPos = measureHeight * (song.DisplayMeasures - song.MeasuresForSkillStart + ((song.SkillStartOffset - song.Notes[0].QuarterBeat) / 16)) - skill.Interval * pixelsPerSecond;
+                    double currentTime = startTime + skill.Interval;
+                    int currentTicks = song.TimeToTick(currentTime);
+                    double currentHeight = drawHeight - (currentTicks / tickScale);
+                    double endHeight = drawHeight - (endTicks / tickScale);
+
                     int weight = 5;
                     if (offset == 0) {
                         weight *= 2;
                     }
                     Pen writePen = new Pen(card.Color.ToUint32(), weight);
-                    double lastPos = measureHeight * (double)(16 - song.Notes.Last().QuarterBeat) / 16;
-                    while (startPos > lastPos) {
-                        ctx.DrawLine(writePen, new Point(offset, startPos), new Point(offset, Math.Max(lastPos, startPos - skill.Duration * pixelsPerSecond)));
-                        startPos -= skill.Interval * pixelsPerSecond;
+                    while (currentTicks < endTicks) {
+                        if (!song.IsDuringAppeal(currentTime)) {
+                            double expireHeight = drawHeight - (song.TimeToTick(currentTime + skill.Duration) / tickScale);
+                            ctx.DrawLine(writePen, new Point(offset, currentHeight), new Point(offset, Math.Max(expireHeight, endHeight)));
+                        }
+                        currentTime += skill.Interval;
+                        currentTicks = song.TimeToTick(currentTime);
+                        currentHeight = drawHeight - (currentTicks / tickScale);
                     }
                 }
             }

@@ -22,7 +22,6 @@
     <None Remove="Assets\idollist.json" />
     <None Remove="Assets\left.png" />
     <None Remove="Assets\right.png" />
-    <None Remove="Assets\songlist.json" />
     <None Remove="Assets\tap.png" />
     <None Remove="Assets\up.png" />
   </ItemGroup>

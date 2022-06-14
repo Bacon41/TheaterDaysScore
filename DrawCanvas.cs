@@ -4,24 +4,27 @@ using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using TheaterDaysScore.JsonModels;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
 namespace TheaterDaysScore {
     class DrawCanvas : Canvas {
-        private int measureHeight = 200;
         private int measureWidth = 175;
         private double noteSize = 10;
         private double laneWidth;
-        private double quarterBeatHeight;
+
+        private int tickScale = 10;
 
         private int drawWidth;
         private int drawHeight;
 
+        private int laneOffset;
+        private int laneScale;
+
         private Pen borderPen;
         private Pen beatPen;
         private Pen halfBeatPen;
+        private Pen quarterBeatPen;
         private Pen holdPen;
         private Bitmap tapImg;
         private Bitmap leftImg;
@@ -33,6 +36,7 @@ namespace TheaterDaysScore {
             borderPen = new Pen(Colors.Black.ToUint32(), 8);
             beatPen = new Pen(Colors.Black.ToUint32(), 3);
             halfBeatPen = new Pen(Colors.Black.ToUint32(), 1);
+            quarterBeatPen = new Pen(Colors.DarkGray.ToUint32(), 1);
             holdPen = new Pen(Colors.Red.ToUint32(), Math.Log(5) * noteSize);
 
             var assets = AvaloniaLocator.Current.GetService<IAssetLoader>();
@@ -42,83 +46,107 @@ namespace TheaterDaysScore {
             upImg = new Bitmap(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/up.png")));
         }
 
-        public void Draw(int songNum) {
-            Song song = Database.DB.GetSong(songNum);
+        public void Draw(Song song, Song.Difficulty difficulty) {
+            if (song == null) {
+                return;
+            }
+
+            switch (difficulty) {
+                case Song.Difficulty.TwoMix:
+                case Song.Difficulty.TwoMixPlus:
+                    laneOffset = 2;
+                    laneScale = 3;
+                    break;
+                case Song.Difficulty.FourMix:
+                    laneOffset = 2;
+                    laneScale = 1;
+                    break;
+                case Song.Difficulty.SixMix:
+                case Song.Difficulty.MillionMix:
+                case Song.Difficulty.OverMix:
+                    laneOffset = 1;
+                    laneScale = 1;
+                    break;
+            }
+
+            var beats = song.Beats;
+            var notes = song.Notes[difficulty];
 
             // Rendering
             drawWidth = measureWidth;
-            drawHeight = song.DisplayMeasures * measureHeight;
+            drawHeight = song.TotalTicks / tickScale;
             laneWidth = (double)measureWidth / 7;
-            quarterBeatHeight = (double)measureHeight / 16;
 
             score = new RenderTargetBitmap(new PixelSize(drawWidth, drawHeight));
             using (IDrawingContextImpl ctx = score.CreateDrawingContext(null)) {
-                for (int x = 0; x < song.DisplayMeasures; x++) {
-                    RenderMeasure(ctx, x);
+                foreach (Song.Beat beat in beats) {
+                    Song.TimeSignature ts = song.TimeSignatureAtTick(beat.Tick);
+                    RenderMeasure(ctx, beat, ts);
                 }
-                foreach (Song.Note note in song.Notes) {
-                    RenderNote(ctx, note, song.MeasuresForSkillStart);
+
+                ctx.DrawRectangle(null, borderPen, new Rect(0, 0, drawWidth, drawHeight));
+
+                // List is sorted, so no need to search
+                for (int x = 0; x < notes.Count - 1; x++) {
+                    if (notes[x].Tick == notes[x + 1].Tick) {
+                        Point start = GetCenter(LaneShift(notes[x].Lane), notes[x].Tick);
+                        Point end = GetCenter(LaneShift(notes[x + 1].Lane), notes[x + 1].Tick);
+                        ctx.DrawLine(borderPen, start, end);
+
+                        // No need to check the next, since only two can be at the same time
+                        x++;
+                    }
+                }
+                foreach (Song.Note note in notes) {
+                    RenderNote(ctx, note);
                 }
             }
         }
 
-        private void RenderMeasure(IDrawingContextImpl ctx, int num) {
-            // Border
-            ctx.DrawRectangle(null, borderPen, new Rect(0, num * measureHeight, measureWidth, measureHeight));
-            // Horizontal
-            ctx.DrawLine(halfBeatPen, new Point(0, num * measureHeight + quarterBeatHeight * 2), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 2));
-            ctx.DrawLine(beatPen, new Point(0, num * measureHeight + quarterBeatHeight * 4), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 4));
-            ctx.DrawLine(halfBeatPen, new Point(0, num * measureHeight + quarterBeatHeight * 6), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 6));
-            ctx.DrawLine(beatPen, new Point(0, num * measureHeight + quarterBeatHeight * 8), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 8));
-            ctx.DrawLine(halfBeatPen, new Point(0, num * measureHeight + quarterBeatHeight * 10), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 10));
-            ctx.DrawLine(beatPen, new Point(0, num * measureHeight + quarterBeatHeight * 12), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 12));
-            ctx.DrawLine(halfBeatPen, new Point(0, num * measureHeight + quarterBeatHeight * 14), new Point(measureWidth, num * measureHeight + quarterBeatHeight * 14));
+        private float LaneShift(float lane) {
+            return lane * laneScale + laneOffset;
+        }
+
+        private void RenderMeasure(IDrawingContextImpl ctx, Song.Beat beat, Song.TimeSignature ts) {
+            double height = drawHeight - (beat.Tick / tickScale);
+            double tall = ts.TicksPerBeat / tickScale;
+
             // Vertical
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth, num * measureHeight), new Point(laneWidth, (num + 1) * measureHeight));
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth * 2, num * measureHeight), new Point(laneWidth * 2, (num + 1) * measureHeight));
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth * 3, num * measureHeight), new Point(laneWidth * 3, (num + 1) * measureHeight));
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth * 4, num * measureHeight), new Point(laneWidth * 4, (num + 1) * measureHeight));
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth * 5, num * measureHeight), new Point(laneWidth * 5, (num + 1) * measureHeight));
-            ctx.DrawLine(halfBeatPen, new Point(laneWidth * 6, num * measureHeight), new Point(laneWidth * 6, (num + 1) * measureHeight));
+            for (int x = 1; x < 7; x++) {
+                ctx.DrawLine(quarterBeatPen, new Point(laneWidth * x, height), new Point(laneWidth * x, height - tall));
+            }
+            // Horizontal
+            if (ts.Denominator == 4) {
+                ctx.DrawLine(quarterBeatPen, new Point(0, height + tall / 2), new Point(measureWidth, height + tall / 2));
+            }
+            if (beat.MeasureStart) {
+                ctx.DrawLine(beatPen, new Point(0, height), new Point(measureWidth, height));
+            } else {
+                ctx.DrawLine(halfBeatPen, new Point(0, height), new Point(measureWidth, height));
+            }
         }
 
-        private Point GetCenter(Song.Note note, int startMeasureOffset) {
-            double xPos = laneWidth * note.Lane;
-            if (xPos == 0) {
-                xPos = measureWidth / 2;
-            }
-            return new Point(xPos, drawHeight - measureHeight * startMeasureOffset - quarterBeatHeight * (note.Measure * 16 + note.QuarterBeat));
+        private Point GetCenter(float lane, int tick) {
+            return new Point(laneWidth * lane, drawHeight - (tick / tickScale));
         }
 
-        private void RenderNote(IDrawingContextImpl ctx, Song.Note note, int startMeasureOffset) {
-            Point center = GetCenter(note, startMeasureOffset);
-            if (note.Waypoints != null) {
-                PathGeometry holdLine = new PathGeometry();
-                StreamGeometryContext holdCtx = holdLine.Open();
-                holdCtx.BeginFigure(new Point(center.X, center.Y), false);
-                foreach (Song.Note point in note.Waypoints) {
-                    Point pointCenter = GetCenter(point, startMeasureOffset);
-                    holdCtx.LineTo(new Point(pointCenter.X, pointCenter.Y));
-                }
-                ctx.DrawGeometry(null, holdPen, holdLine.PlatformImpl);
-            }
-            
+        private void RenderTap(IDrawingContextImpl ctx, float lane, int tick, Song.Note.InteractType type, int score) {
             Bitmap noteImg = tapImg;
-            switch (note.Type) {
-                case SongData.Note.Type.tap:
+            switch (type) {
+                case Song.Note.InteractType.tap:
                     noteImg = tapImg;
                     break;
-                case SongData.Note.Type.leftFlick:
+                case Song.Note.InteractType.leftFlick:
                     noteImg = leftImg;
                     break;
-                case SongData.Note.Type.rightFlick:
+                case Song.Note.InteractType.rightFlick:
                     noteImg = rightImg;
                     break;
-                case SongData.Note.Type.upFlick:
+                case Song.Note.InteractType.upFlick:
                     noteImg = upImg;
                     break;
             }
-            double noteScale = Math.Log(note.Size * 5) * noteSize;
+            double noteScale = Math.Log(score * 5) * noteSize;
             double heightScale;
             double widthScale;
             if (noteImg.Size.Width > noteImg.Size.Height) {
@@ -128,8 +156,25 @@ namespace TheaterDaysScore {
                 widthScale = noteScale;
                 heightScale = widthScale * noteImg.Size.Height / noteImg.Size.Width;
             }
+            Point center = GetCenter(lane, tick);
             ctx.DrawBitmap(noteImg.PlatformImpl, 1, new Rect(0, 0, noteImg.Size.Width, noteImg.Size.Height),
                 new Rect(center.X - widthScale / 2, center.Y - heightScale / 2, widthScale, heightScale));
+        }
+
+        private void RenderNote(IDrawingContextImpl ctx, Song.Note note) {
+            Point center = GetCenter(LaneShift(note.Lane), note.Tick);
+            if (note.Waypoints != null && note.Waypoints.Count > 0) {
+                PathGeometry holdLine = new PathGeometry();
+                StreamGeometryContext holdCtx = holdLine.Open();
+                holdCtx.BeginFigure(center, false);
+                foreach (Song.Note.Waypoint point in note.Waypoints) {
+                    Point pointCenter = GetCenter(LaneShift(point.Lane), point.Tick);
+                    holdCtx.LineTo(new Point(pointCenter.X, pointCenter.Y));
+                }
+                ctx.DrawGeometry(null, holdPen, holdLine.PlatformImpl);
+            }
+
+            RenderTap(ctx, LaneShift(note.Lane), note.Tick, note.Type, note.Size);
         }
 
         public override void Render(DrawingContext context) {

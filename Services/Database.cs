@@ -44,8 +44,7 @@ namespace TheaterDaysScore.Services {
         private const string bn765API = "https://td-assets.bn765.com";
 
         private Dictionary<string, Card> allCards;
-        private List<Song> allSongs;
-        private Dictionary<string, Song2> allSongs2;
+        private Dictionary<string, Song> allSongs2;
         private List<Idol> allIdols;
 
         private static readonly Lazy<Database> _db = new Lazy<Database>(() => new Database());
@@ -294,14 +293,6 @@ namespace TheaterDaysScore.Services {
             }
 
             // Song info
-            allSongs = new List<Song>();
-            StreamReader songReader = new StreamReader(assets.Open(new Uri($"avares://TheaterDaysScore/Assets/songlist.json")));
-            List<SongData> readSongs = JsonSerializer.Deserialize<List<SongData>>(songReader.ReadToEnd());
-            songReader.Close();
-            foreach (SongData song in readSongs) {
-                allSongs.Add(new Song(song));
-            }
-
             PopulateAssets();
 
             List<SongList> allSongData = new List<SongList>();
@@ -313,12 +304,12 @@ namespace TheaterDaysScore.Services {
                 songsReader.Close();
             }
 
-            allSongs2 = new Dictionary<string, Song2>();
+            allSongs2 = new Dictionary<string, Song>();
             foreach(SongList songData in allSongData) {
                 StreamReader songReader2 = new StreamReader(File.OpenRead(Path.Combine(songsDirPath, songData.asset + "_fumen_sobj.json")));
-                SongData2 data = JsonSerializer.Deserialize<SongData2>(songReader2.ReadToEnd());
+                SongData data = JsonSerializer.Deserialize<SongData>(songReader2.ReadToEnd());
                 songReader2.Close();
-                Song2 song = new Song2(songData, data);
+                Song song = new Song(songData, data);
                 allSongs2.Add(songData.asset, song);
             }
         }
@@ -381,15 +372,11 @@ namespace TheaterDaysScore.Services {
             return allIdols;
         }
 
-        public Song GetSong(int num) {
-            return allSongs[num];
-        }
-
-        public Song2 GetSong2(string id) {
+        public Song GetSong2(string id) {
             return allSongs2[id];
         }
 
-        public List<Song2> AllSongs2() {
+        public List<Song> AllSongs2() {
             return allSongs2.Select(keyVal => keyVal.Value).ToList();
         }
 

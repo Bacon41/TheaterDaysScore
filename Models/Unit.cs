@@ -40,7 +40,8 @@ namespace TheaterDaysScore.Models {
         }
 
         public IActivation GetActivations(Song song, bool alwaysActivate = false) {
-            Activation activation = new Activation(song.Length);
+            double length = song.TickToTime(song.LastNoteTick) - song.SkillStartTime;
+            Activation activation = new Activation(length);
 
             foreach (Card card in Members) {
                 foreach (Card.Skill skill in card.Skills) {
@@ -50,7 +51,7 @@ namespace TheaterDaysScore.Models {
                     }
 
                     int start = skill.Interval;
-                    while (start < song.Length) {
+                    while (start < length) {
                         if (!song.IsDuringAppeal(start)) {
                             if (rand.NextDouble() * 100 < activationThreshold) {
                                 activation.AddInterval(start, skill);

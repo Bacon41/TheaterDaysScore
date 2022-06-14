@@ -18,24 +18,17 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref unit, value);
         }
 
-        private Song2 song;
-        public Song2 Song {
+        private Song song;
+        public Song Song {
             get => song;
             set => this.RaiseAndSetIfChanged(ref song, value);
         }
 
-        private Song2.Difficulty difficulty;
+        private Song.Difficulty difficulty;
         [DataMember]
-        public Song2.Difficulty Difficulty {
+        public Song.Difficulty Difficulty {
             get => difficulty;
             set => this.RaiseAndSetIfChanged(ref difficulty, value);
-        }
-
-        private int songNum = 0;
-        [DataMember]
-        public int SongNum {
-            get => songNum;
-            set => this.RaiseAndSetIfChanged(ref songNum, value);
         }
 
         private Calculator.BoostType boostType;
@@ -92,7 +85,7 @@ namespace TheaterDaysScore.ViewModels {
             calc = new Calculator();
 
             Calculate = ReactiveCommand.Create(() => {
-                Calculator.Results results = calc.GetResults(SongNum, BoostType, Unit, 10000);
+                Calculator.Results results = calc.GetResults(Song, Difficulty, BoostType, Unit, 10000);
                 if (results != null) {
                     ScoreIdeal = results.Ideal.ToString();
                     Score001 = results.Percentile(0.01).ToString();
@@ -103,21 +96,21 @@ namespace TheaterDaysScore.ViewModels {
                 }
             });
 
-            appeal = this.WhenAnyValue(x => x.SongNum, x => x.Unit, x => x.BoostType)
+            appeal = this.WhenAnyValue(x => x.Song, x => x.Unit, x => x.BoostType)
                 .Select(x => {
-                    if (Unit == null) {
+                    if (Unit == null || Song == null) {
                         return "N/A";
                     }
-                    return calc.GetAppeal(Database.DB.GetSong(SongNum).Type, BoostType, Unit).ToString();
+                    return calc.GetAppeal(Song.Type, BoostType, Unit).ToString();
                 })
                 .ToProperty(this, x => x.Appeal);
 
-            supports = this.WhenAnyValue(x => x.SongNum, x => x.Unit, x => x.BoostType)
+            supports = this.WhenAnyValue(x => x.Song, x => x.Unit, x => x.BoostType)
                 .Select(x => {
-                    if (Unit == null) {
+                    if (Unit == null || Song == null) {
                         return null;
                     }
-                    return Unit.TopSupport(Database.DB.GetSong(SongNum).Type, BoostType);
+                    return Unit.TopSupport(Song.Type, BoostType);
                 })
                 .ToProperty(this, x => x.Supports);
         }

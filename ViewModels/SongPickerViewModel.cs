@@ -29,8 +29,8 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref songID, value);
         }
 
-        private Song2 song = null;
-        public Song2 Song {
+        private Song song = null;
+        public Song Song {
             get => song;
             set => this.RaiseAndSetIfChanged(ref song, value);
         }
@@ -42,7 +42,7 @@ namespace TheaterDaysScore.ViewModels {
         public SongPickerViewModel(IScreen screen = null) {
             HostScreen = screen ?? Locator.Current.GetService<IScreen>();
 
-            Items = new ObservableCollection<Song2>();
+            Items = new ObservableCollection<Song>();
 
             var allTypes = (Types[])Enum.GetValues(typeof(Types));
             AllTypes = ReactiveCommand.Create(() => {
@@ -61,7 +61,7 @@ namespace TheaterDaysScore.ViewModels {
                 );
         }
 
-        public void SetSongID(Song2 song) {
+        public void SetSongID(Song song) {
             if (song == null) {
                 return;
             }
@@ -76,7 +76,7 @@ namespace TheaterDaysScore.ViewModels {
             Song = Database.DB.GetSong2(SongID);
         }
 
-        public ObservableCollection<Song2> Items { get; }
+        public ObservableCollection<Song> Items { get; }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllTypes { get; }
     }

@@ -157,36 +157,37 @@ namespace TheaterDaysScore {
             }
         }
 
-        public Results GetResults(int songNum, BoostType boostType, Unit unit, int numRuns) {
+        public Results GetResults(Song song, Song.Difficulty difficulty, BoostType boostType, Unit unit, int numRuns) {
             if (unit == null) {
+                return null;
+            }
+            if (song.Level[difficulty] == 0) {
                 return null;
             }
 
             // https://megmeg.work/basic_information/formula/score/
 
-            Song song = Database.DB.GetSong(songNum);
-
             int totalAppeal = GetAppeal(song.Type, boostType, unit);
 
-            double baseScore = totalAppeal * (33f + song.Level) / 20;
-            double notesAndHolds = song.NoteWeight + 2 * song.HoldLength;
+            double baseScore = totalAppeal * (33f + song.Level[difficulty]) / 20;
+            double notesAndHolds = song.TotalNoteScore[difficulty] + 2 * song.TotalHoldSeconds[difficulty];
 
             double scoreScale = 0.7 * baseScore / notesAndHolds;
-            double comboScale = 0.3 * baseScore / (2 * song.Notes.Count - 66);
+            double comboScale = 0.3 * baseScore / (2 * song.Notes[difficulty].Count - 66);
 
-            int ideal = GetScore(unit.GetActivations(song, true), song, scoreScale, comboScale);
+            int ideal = GetScore(unit.GetActivations(song, true), song, difficulty, scoreScale, comboScale);
             List<int> scores = new List<int>();
             for (int x = 0; x < numRuns; x++) {
-                scores.Add(GetScore(unit.GetActivations(song), song, scoreScale, comboScale));
+                scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
             }
 
             return new Results(ideal, scores);
         }
 
-        private int GetScore(Unit.IActivation activations, Song song, double scoreScale, double comboScale) {
+        private int GetScore(Unit.IActivation activations, Song song, Song.Difficulty difficulty, double scoreScale, double comboScale) {
             double score = 0;
             int combo = 0;
-            foreach (Song.Note note in song.Notes) {
+            foreach (Song.Note note in song.Notes[difficulty]) {
                 combo++;
                 double comboMultiplier = 0;
                 if (combo >= 100) {
@@ -203,11 +204,11 @@ namespace TheaterDaysScore {
 
                 double accuracyMultiplier = 1.0;
 
-                double noteTime = song.SecondsSinceFirst(note);
+                double noteTime = song.TickToTime(note.Tick) - song.SkillStartTime;
 
                 score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
-                if (note.HoldQuarterBeats != 0) {
-                    double holdTime = song.QuarterBeatsToSeconds(note.HoldQuarterBeats);
+                if (note.HoldTicks != 0) {
+                    double holdTime = song.TickToTime(note.Tick + note.HoldTicks) - song.TickToTime(note.Tick);
                     score += 2 * scoreScale * activations.HoldOver(noteTime, holdTime);
                 }
             }
