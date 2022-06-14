@@ -15,7 +15,9 @@
     <Button Command="{Binding $parent[Window].DataContext.Router.NavigateBack}">Close</Button>
 
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Width="800">
-      <StackPanel Orientation="Vertical">
+      <StackPanel Orientation="Vertical" Width="400">
+        <Button Command="{Binding Update}">Update</Button>
+        
         <TextBlock FontWeight="Bold">Type</TextBlock>
         <WrapPanel Orientation="Horizontal">
           <Button Command="{Binding AllTypes}">All</Button>

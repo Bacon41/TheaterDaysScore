@@ -44,6 +44,11 @@ namespace TheaterDaysScore.ViewModels {
 
             Items = new ObservableCollection<Song>();
 
+            Update = ReactiveCommand.Create(() => {
+                Database.DB.UpdateSongs();
+                FilterSongs();
+            });
+
             var allTypes = (Types[])Enum.GetValues(typeof(Types));
             AllTypes = ReactiveCommand.Create(() => {
                 if (Types.Count == allTypes.Length) {
@@ -56,7 +61,7 @@ namespace TheaterDaysScore.ViewModels {
 
         public void FilterSongs() {
             Items.Clear();
-            Items.AddRange(Database.DB.AllSongs2()
+            Items.AddRange(Database.DB.AllSongs()
                 .Where(card => Types.Contains(card.Type))
                 );
         }
@@ -73,10 +78,12 @@ namespace TheaterDaysScore.ViewModels {
             if (SongID == "") {
                 return;
             }
-            Song = Database.DB.GetSong2(SongID);
+            Song = Database.DB.GetSong(SongID);
         }
 
         public ObservableCollection<Song> Items { get; }
+
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Update { get; }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllTypes { get; }
     }
