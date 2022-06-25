@@ -143,11 +143,13 @@ namespace TheaterDaysScore {
 
         public class Results {
             public int Ideal { get; }
+            public int Base { get; }
 
             private List<int> scores;
 
-            public Results(int ideal, List<int> scores) {
+            public Results(int ideal, int baseScore, List<int> scores) {
                 Ideal = ideal;
+                Base = baseScore;
                 this.scores = scores;
                 this.scores.Sort();
             }
@@ -181,7 +183,7 @@ namespace TheaterDaysScore {
                 scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
             }
 
-            return new Results(ideal, scores);
+            return new Results(ideal, (int)baseScore, scores);
         }
 
         private int GetScore(Unit.IActivation activations, Song song, Song.Difficulty difficulty, double scoreScale, double comboScale) {

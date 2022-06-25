@@ -149,7 +149,7 @@
         <TextBox Name="appealDisplay" FontSize="24" BorderThickness="0" CaretBrush="Transparent" IsReadOnly="True" Text="{Binding Appeal}"></TextBox>
       </StackPanel>
 
-      <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+      <Grid Name="scoreDisplay" ColumnDefinitions="Auto,Auto" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
         <TextBlock FontSize="18" Grid.Column="0" Grid.Row="0">Ideal</TextBlock>
         <TextBlock FontSize="18" Grid.Column="1" Grid.Row="0" Text="{Binding ScoreIdeal}" />
         <TextBlock FontSize="18" Grid.Column="0" Grid.Row="1">0.01%</TextBlock>
@@ -162,6 +162,8 @@
         <TextBlock FontSize="18" Grid.Column="1" Grid.Row="4" Text="{Binding Score10}" />
         <TextBlock FontSize="18" Grid.Column="0" Grid.Row="5">50%</TextBlock>
         <TextBlock FontSize="18" Grid.Column="1" Grid.Row="5" Text="{Binding Score50}" />
+        <TextBlock FontSize="18" Grid.Column="0" Grid.Row="6">Base</TextBlock>
+        <TextBlock FontSize="18" Grid.Column="1" Grid.Row="6" Text="{Binding ScoreBase}" />
       </Grid>
     </StackPanel>
 

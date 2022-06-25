@@ -155,7 +155,7 @@ namespace TheaterDaysScore.Models {
                 Type = startNote.EndType;
                 Size = startNote.Size;
             }
-            
+
             public int CompareTo(Note otherNote) {
                 if (Tick == otherNote.Tick) {
                     if (Lane == otherNote.Lane) {
@@ -174,7 +174,7 @@ namespace TheaterDaysScore.Models {
         private List<Note> GetNotes(SongData.Event data) {
             List<Note> notes = new List<Note>();
             notes.Add(new Note(data));
-            
+
 
             // Hold info
             if (notes[0].HoldTicks != 0) {
@@ -289,7 +289,7 @@ namespace TheaterDaysScore.Models {
             LastNoteTick = Notes[Difficulty.TwoMix][Notes[Difficulty.TwoMix].Count - 1].Tick + Notes[Difficulty.TwoMix][Notes[Difficulty.TwoMix].Count - 1].HoldTicks;
             TotalTicks = Beats[Beats.Count - 1].Tick;
             // Many songs seem to be at roughly 2 seconds before the notes, but not sure how to get the real value
-            SkillStartTime = TickToTime(Notes[Difficulty.TwoMix][0].Tick) - 2;
+            SkillStartTime = Math.Max(0, TickToTime(Notes[Difficulty.TwoMix][0].Tick) - 2);
 
             TotalNoteScore = new Dictionary<Difficulty, int>();
             TotalNoteScore[Difficulty.TwoMix] = Notes[Difficulty.TwoMix].Sum(n => n.Size);
@@ -309,10 +309,16 @@ namespace TheaterDaysScore.Models {
         }
 
         public TimeSignature TimeSignatureAtSecond(double second) {
+            if (second < 0) {
+                return TimeSignatures[0];
+            }
             return TimeSignatures.FindLast(x => x.StartTime <= second);
         }
 
         public TimeSignature TimeSignatureAtTick(int tick) {
+            if (tick < 0) {
+                return TimeSignatures[0];
+            }
             return TimeSignatures.FindLast(x => x.StartTick <= tick);
         }
 

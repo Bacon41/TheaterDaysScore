@@ -68,6 +68,11 @@ namespace TheaterDaysScore.ViewModels {
             get => score50;
             set => this.RaiseAndSetIfChanged(ref score50, value);
         }
+        private string scoreBase = "NaN";
+        public string ScoreBase {
+            get => scoreBase;
+            set => this.RaiseAndSetIfChanged(ref scoreBase, value);
+        }
 
         readonly ObservableAsPropertyHelper<string> appeal;
         public string Appeal => appeal.Value;
@@ -93,6 +98,7 @@ namespace TheaterDaysScore.ViewModels {
                     Score1 = results.Percentile(1).ToString();
                     Score10 = results.Percentile(10).ToString();
                     Score50 = results.Percentile(50).ToString();
+                    ScoreBase = results.Base.ToString();
                 }
             });
 
