@@ -145,21 +145,40 @@ namespace TheaterDaysScore {
             public int Ideal { get; }
             public int Base { get; }
 
+            private Song song;
+            private Song.Difficulty difficulty;
+            private Unit unit;
+            private double scoreScale;
+            private double comboScale;
+
             private List<int> scores;
 
-            public Results(int ideal, int baseScore, List<int> scores) {
-                Ideal = ideal;
+            public Results(int baseScore, Song song, Song.Difficulty difficulty, Unit unit, double scoreScale, double comboScale) {
                 Base = baseScore;
-                this.scores = scores;
-                this.scores.Sort();
+                this.song = song;
+                this.difficulty = difficulty;
+                this.unit = unit;
+                this.scoreScale = scoreScale;
+                this.comboScale = comboScale;
+
+                Ideal = GetScore(unit.GetActivations(song, true), song, difficulty, scoreScale, comboScale);
+                scores = new List<int>();
             }
 
             public int Percentile(double percent) {
+                if (scores.Count == 0) {
+                    return 0;
+                }
+                scores.Sort();
                 return scores[(int)(scores.Count * (1 - percent / 100))];
+            }
+
+            public void AddRun() {
+                scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
             }
         }
 
-        public Results GetResults(Song song, Song.Difficulty difficulty, BoostType boostType, Unit unit, int numRuns) {
+        public Results GetResults(Song song, Song.Difficulty difficulty, BoostType boostType, Unit unit) {
             if (unit == null) {
                 return null;
             }
@@ -177,16 +196,10 @@ namespace TheaterDaysScore {
             double scoreScale = 0.7 * baseScore / notesAndHolds;
             double comboScale = 0.3 * baseScore / (2 * song.Notes[difficulty].Count - 66);
 
-            int ideal = GetScore(unit.GetActivations(song, true), song, difficulty, scoreScale, comboScale);
-            List<int> scores = new List<int>();
-            for (int x = 0; x < numRuns; x++) {
-                scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
-            }
-
-            return new Results(ideal, (int)baseScore, scores);
+            return new Results((int)baseScore, song, difficulty, unit, scoreScale, comboScale);
         }
 
-        private int GetScore(Unit.IActivation activations, Song song, Song.Difficulty difficulty, double scoreScale, double comboScale) {
+        private static int GetScore(Unit.IActivation activations, Song song, Song.Difficulty difficulty, double scoreScale, double comboScale) {
             double score = 0;
             int combo = 0;
             foreach (Song.Note note in song.Notes[difficulty]) {

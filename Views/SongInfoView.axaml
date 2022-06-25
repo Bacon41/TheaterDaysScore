@@ -141,8 +141,15 @@
           <TextBlock>Visual</TextBlock>
         </ListBoxItem>
       </ListBox>
-    
-      <Button Command="{Binding Calculate}">Calculate</Button>
+
+      <StackPanel Orientation="Horizontal">
+        <Button Command="{Binding Calculate}">
+          <Grid ColumnDefinitions="Auto" RowDefinitions="Auto">
+            <ProgressBar Grid.Column="0" Grid.Row="0" Minimum="0" Maximum="100" Value="{Binding CalculateProgress}"></ProgressBar>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding CalculateText}" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"></TextBlock>
+          </Grid>
+        </Button>
+      </StackPanel>
 
       <StackPanel Orientation="Horizontal">
         <TextBlock FontSize="24">Appeal:</TextBlock>

@@ -1,9 +1,11 @@
 ﻿using ReactiveUI;
 using Splat;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 using TheaterDaysScore.Models;
 using TheaterDaysScore.Services;
 
@@ -80,6 +82,20 @@ namespace TheaterDaysScore.ViewModels {
         readonly ObservableAsPropertyHelper<List<Card>> supports;
         public List<Card> Supports => supports.Value;
 
+        // Calculate button info
+        private string calculateText = "Calculate";
+        public string CalculateText {
+            get => calculateText;
+            set => this.RaiseAndSetIfChanged(ref calculateText, value);
+        }
+        private int calculateProgress = 0;
+        public int CalculateProgress {
+            get => calculateProgress;
+            set => this.RaiseAndSetIfChanged(ref calculateProgress, value);
+        }
+        private BackgroundWorker calculatorWorker;
+
+        // IScreen / routing info
         public IScreen HostScreen { get; }
 
         public string UrlPathSegment => "songinfo";
@@ -89,16 +105,11 @@ namespace TheaterDaysScore.ViewModels {
 
             calc = new Calculator();
 
+            calculatorWorker = new BackgroundWorker();
+            calculatorWorker.DoWork += CalculatorWorker_DoWork;
             Calculate = ReactiveCommand.Create(() => {
-                Calculator.Results results = calc.GetResults(Song, Difficulty, BoostType, Unit, 10000);
-                if (results != null) {
-                    ScoreIdeal = results.Ideal.ToString();
-                    Score001 = results.Percentile(0.01).ToString();
-                    Score01 = results.Percentile(0.1).ToString();
-                    Score1 = results.Percentile(1).ToString();
-                    Score10 = results.Percentile(10).ToString();
-                    Score50 = results.Percentile(50).ToString();
-                    ScoreBase = results.Base.ToString();
+                if (!calculatorWorker.IsBusy) {
+                    calculatorWorker.RunWorkerAsync();
                 }
             });
 
@@ -119,6 +130,34 @@ namespace TheaterDaysScore.ViewModels {
                     return Unit.TopSupport(Song.Type, BoostType);
                 })
                 .ToProperty(this, x => x.Supports);
+        }
+
+        private void CalculatorWorker_DoWork(object sender, DoWorkEventArgs e) {
+            CalculateProgress = 0;
+            CalculateText = "Calculating...";
+
+            Calculator.Results results = calc.GetResults(Song, Difficulty, BoostType, Unit);
+            if (results != null) {
+                int totalRuns = 10000;
+                int runPercent = totalRuns / 100;
+                for (int x = 0; x < totalRuns; x++) {
+                    results.AddRun();
+                    if (x % runPercent == 0) {
+                        CalculateProgress = x / runPercent;
+                    }
+                }
+            
+                ScoreIdeal = results.Ideal.ToString();
+                Score001 = results.Percentile(0.01).ToString();
+                Score01 = results.Percentile(0.1).ToString();
+                Score1 = results.Percentile(1).ToString();
+                Score10 = results.Percentile(10).ToString();
+                Score50 = results.Percentile(50).ToString();
+                ScoreBase = results.Base.ToString();
+            }
+
+            CalculateProgress = 0;
+            CalculateText = "Calculate";
         }
 
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> Calculate { get; }

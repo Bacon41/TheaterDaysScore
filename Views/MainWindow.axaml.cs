@@ -16,7 +16,7 @@ namespace TheaterDaysScore.Views {
 #endif
 
             this.WhenActivated(disposables => {
-                // Pass the unit from the builder to the song
+                // Pass the unit from the builder to the info
                 this.WhenAnyValue(x => x.ViewModel.UnitBuilder.Unit)
                     .Subscribe(x => ViewModel.SongInfo.Unit = x)
                     .DisposeWith(disposables);
@@ -29,12 +29,12 @@ namespace TheaterDaysScore.Views {
                 // Fill in the unit on boot
                 ViewModel.UnitBuilder.SetUnit();
 
-                // Pass the unit from the builder to the song
+                // Pass the song from the picker to the info
                 this.WhenAnyValue(x => x.ViewModel.SongPicker.Song)
                     .Subscribe(x => ViewModel.SongInfo.Song = x)
                     .DisposeWith(disposables);
 
-                // Re-build the song whenever the page changes, to pick up level increases
+                // Re-set the song whenever the page changes
                 this.WhenAnyObservable(x => x.ViewModel.Router.NavigationChanged)
                     .Subscribe(x => ViewModel.SongPicker.SetSong())
                     .DisposeWith(disposables);
