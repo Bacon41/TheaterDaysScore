@@ -45,8 +45,10 @@ namespace TheaterDaysScore.Views {
 
         private CheckBox scoreCheck => this.FindControl<CheckBox>("skillScore");
         private CheckBox overClockCheck => this.FindControl<CheckBox>("skillOverClock");
+        private CheckBox fusionScoreCheck => this.FindControl<CheckBox>("skillFusionScore");
         private CheckBox comboCheck => this.FindControl<CheckBox>("skillCombo");
         private CheckBox overRondoCheck => this.FindControl<CheckBox>("skillOverRondo");
+        private CheckBox fusionComboCheck => this.FindControl<CheckBox>("skillFusionCombo");
         private CheckBox doubleBoostCheck => this.FindControl<CheckBox>("skillDoubleBoost");
         private CheckBox doubleEffectCheck => this.FindControl<CheckBox>("skillDoubleEffect");
         private CheckBox lifeSkillCheck => this.FindControl<CheckBox>("skillLife");
@@ -240,6 +242,12 @@ namespace TheaterDaysScore.Views {
                     SetSkill(isChecked, CardData.Skill.Type.overClock);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.fusionScoreCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.fusionScore);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.fusionScore);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.comboCheck.IsChecked, set => {
                     return set.Contains(CardData.Skill.Type.comboBonus);
                 }, isChecked => {
@@ -250,6 +258,12 @@ namespace TheaterDaysScore.Views {
                     return set.Contains(CardData.Skill.Type.overRondo);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.overRondo);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.fusionComboCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.fusionCombo);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.fusionCombo);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.doubleBoostCheck.IsChecked, set => {

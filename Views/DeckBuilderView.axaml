@@ -102,8 +102,10 @@
             <Button Command="{Binding AllSkills}">All</Button>
             <CheckBox Name="skillScore">Score</CheckBox>
             <CheckBox Name="skillOverClock">OverClock</CheckBox>
+            <CheckBox Name="skillFusionScore">FusionScore</CheckBox>
             <CheckBox Name="skillCombo">Combo</CheckBox>
             <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
+            <CheckBox Name="skillFusionCombo">FusionCombo</CheckBox>
             <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
             <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
             <CheckBox Name="skillLife">Life</CheckBox>

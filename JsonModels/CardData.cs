@@ -31,6 +31,8 @@ namespace TheaterDaysScore.JsonModels {
                 overClock,
                 overRondo,
                 doubleEffect,
+                fusionScore = 17,
+                fusionCombo,
             };
         }
 

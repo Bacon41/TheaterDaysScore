@@ -36,6 +36,9 @@ namespace TheaterDaysScore.Models {
             if (Center.Center != null) {
                 extraRate += Center.Center.ActivationBoost(cardType, this);
             }
+            if (ComboUpCount() >= 2) {
+                extraRate += skill.FusionComboRate;
+            }
             return skill.Probability * ((100f + extraRate) / 100);
         }
 
@@ -54,7 +57,7 @@ namespace TheaterDaysScore.Models {
                     while (start < length) {
                         if (!song.IsDuringAppeal(start)) {
                             if (rand.NextDouble() * 100 < activationThreshold) {
-                                activation.AddInterval(start, skill);
+                                activation.AddInterval(start, skill, this);
                             }
                         }
                         start += skill.Interval;
@@ -89,7 +92,7 @@ namespace TheaterDaysScore.Models {
                 effectCombo = new int[numSeconds];
             }
 
-            public void AddInterval(int start, Card.Skill skill) {
+            public void AddInterval(int start, Card.Skill skill, Unit unit) {
                 for (int x = start; x < scoreUp.Length && x < start + skill.Duration; x++) {
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
                         if (skill.ScoreBoost > boostScore[x]) {
@@ -98,13 +101,20 @@ namespace TheaterDaysScore.Models {
                         if (skill.ComboBoost > boostCombo[x]) {
                             boostCombo[x] = skill.ComboBoost;
                         }
-                    }
-                    else if(skill.Effect == CardData.Skill.Type.doubleEffect) {
+                    } else if (skill.Effect == CardData.Skill.Type.doubleEffect) {
                         if (skill.ScoreBoost > effectScore[x]) {
                             effectScore[x] = skill.ScoreBoost;
                         }
                         if (skill.ComboBoost > effectCombo[x]) {
                             effectCombo[x] = skill.ComboBoost;
+                        }
+                    } else if (skill.Effect == CardData.Skill.Type.fusionScore) {
+                        int scoreBoost = skill.ScoreBoost;
+                        if (unit.ScoreUpCount() >= 2) {
+                            scoreBoost = skill.FusionScoreBoost;
+                        }
+                        if (scoreBoost > scoreUp[x]) {
+                            scoreUp[x] = scoreBoost;
                         }
                     } else {
                         if (skill.ScoreBoost > scoreUp[x]) {
@@ -160,6 +170,32 @@ namespace TheaterDaysScore.Models {
         public bool IsMonocolour(Types matchType) {
             int unitTypes = Members.Where(card => card.Type == matchType).Count();
             return unitTypes == 5;
+        }
+
+        public int ScoreUpCount() {
+            int scoreCards = Members.Where(card =>
+                card.SkillType == CardData.Skill.Type.scoreUp ||
+                card.SkillType == CardData.Skill.Type.multiUp ||
+                card.SkillType == CardData.Skill.Type.overClock ||
+                card.SkillType == CardData.Skill.Type.fusionScore ||
+                card.SkillType == CardData.Skill.Type.doubleBoost).Count();
+            return scoreCards;
+        }
+
+        public int ComboUpCount() {
+            int comboCards = Members.Where(card =>
+                card.SkillType == CardData.Skill.Type.comboBonus ||
+                card.SkillType == CardData.Skill.Type.multiUp ||
+                card.SkillType == CardData.Skill.Type.overRondo ||
+                card.SkillType == CardData.Skill.Type.fusionCombo ||
+                card.SkillType == CardData.Skill.Type.doubleBoost).Count();
+            return comboCards;
+        }
+
+        public bool IsFused() {
+            int fusionScores = Members.Where(card => card.SkillType == CardData.Skill.Type.fusionScore).Count();
+            int fusionCombos = Members.Where(card => card.SkillType == CardData.Skill.Type.fusionCombo).Count();
+            return fusionScores >= 1 && fusionCombos >= 1;
         }
 
         public List<Card> TopSupport(Types songType, Calculator.BoostType eventType) {

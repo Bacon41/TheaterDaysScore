@@ -70,7 +70,9 @@ namespace TheaterDaysScore.Models {
 
             public CardData.Skill.Type Effect { get; }
             public int ScoreBoost { get; }
+            public int FusionScoreBoost { get; }
             public int ComboBoost { get; }
+            public int FusionComboRate { get; }
 
             public Skill(CardData.Skill data, int level) {
                 this.data = data;
@@ -91,13 +93,9 @@ namespace TheaterDaysScore.Models {
                     case CardData.Skill.Type.overClock:
                         ScoreBoost = this.data.value[0];
                         break;
-                    case CardData.Skill.Type.doubleBoost:
+                    case CardData.Skill.Type.fusionScore:
                         ScoreBoost = this.data.value[0];
-                        ComboBoost = this.data.value[1];
-                        break;
-                    case CardData.Skill.Type.doubleEffect:
-                        ScoreBoost = this.data.value[0];
-                        ComboBoost = this.data.value[0];
+                        FusionScoreBoost = this.data.value[1];
                         break;
                     case CardData.Skill.Type.comboBonus:
                         ComboBoost = this.data.value[0];
@@ -106,6 +104,18 @@ namespace TheaterDaysScore.Models {
                         ComboBoost = this.data.value[0];
                         break;
                     case CardData.Skill.Type.overRondo:
+                        ComboBoost = this.data.value[0];
+                        break;
+                    case CardData.Skill.Type.fusionCombo:
+                        ComboBoost = this.data.value[0];
+                        FusionComboRate = this.data.value[1];
+                        break;
+                    case CardData.Skill.Type.doubleBoost:
+                        ScoreBoost = this.data.value[0];
+                        ComboBoost = this.data.value[1];
+                        break;
+                    case CardData.Skill.Type.doubleEffect:
+                        ScoreBoost = this.data.value[0];
                         ComboBoost = this.data.value[0];
                         break;
                 }
