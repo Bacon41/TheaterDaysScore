@@ -83,16 +83,28 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical">
-          <TextBlock FontWeight="Bold">Center Effect</TextBlock>
+          <TextBlock FontWeight="Bold">Center Effect Boost</TextBlock>
           <WrapPanel Orientation="Horizontal">
-            <Button Command="{Binding AllCenters}">All</Button>
-            <CheckBox Name="centerVocal">Vocal Up</CheckBox>
-            <CheckBox Name="centerDance">Dance Up</CheckBox>
-            <CheckBox Name="centerVisual">Visual Up</CheckBox>
-            <CheckBox Name="centerAll">All Up</CheckBox>
-            <CheckBox Name="centerLife">Life Up</CheckBox>
-            <CheckBox Name="centerProc">Proc Up</CheckBox>
-            <CheckBox Name="centerNone">None</CheckBox>
+            <Button Command="{Binding AllCenterBoosts}">All</Button>
+            <CheckBox Name="centerBoostVocal">Vocal Up</CheckBox>
+            <CheckBox Name="centerBoostDance">Dance Up</CheckBox>
+            <CheckBox Name="centerBoostVisual">Visual Up</CheckBox>
+            <CheckBox Name="centerBoostAll">All Up</CheckBox>
+            <CheckBox Name="centerBoostLife">Life Up</CheckBox>
+            <CheckBox Name="centerBoostProc">Proc Up</CheckBox>
+            <CheckBox Name="centerBoostNone">None</CheckBox>
+          </WrapPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical">
+          <TextBlock FontWeight="Bold">Center Effect Requirements</TextBlock>
+          <WrapPanel Orientation="Horizontal">
+            <Button Command="{Binding AllCenterReqs}">All</Button>
+            <CheckBox Name="centerReqPrincess">Princess</CheckBox>
+            <CheckBox Name="centerReqFairy">Fairy</CheckBox>
+            <CheckBox Name="centerReqAngel">Angel</CheckBox>
+            <CheckBox Name="centerReqAll">All</CheckBox>
+            <CheckBox Name="centerReqNone">None</CheckBox>
           </WrapPanel>
         </StackPanel>
 

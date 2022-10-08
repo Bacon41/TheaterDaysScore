@@ -38,13 +38,19 @@ namespace TheaterDaysScore.Views {
         private CheckBox annCheck => this.FindControl<CheckBox>("categoryAnn");
         private CheckBox otherCheck => this.FindControl<CheckBox>("categoryOther");
 
-        private CheckBox vocalCheck => this.FindControl<CheckBox>("centerVocal");
-        private CheckBox danceCheck => this.FindControl<CheckBox>("centerDance");
-        private CheckBox visualCheck => this.FindControl<CheckBox>("centerVisual");
-        private CheckBox allCheck => this.FindControl<CheckBox>("centerAll");
-        private CheckBox lifeCheck => this.FindControl<CheckBox>("centerLife");
-        private CheckBox procCheck => this.FindControl<CheckBox>("centerProc");
-        private CheckBox noneCheck => this.FindControl<CheckBox>("centerNone");
+        private CheckBox centerBoostVocalCheck => this.FindControl<CheckBox>("centerBoostVocal");
+        private CheckBox centerBoostDanceCheck => this.FindControl<CheckBox>("centerBoostDance");
+        private CheckBox centerBoostVisualCheck => this.FindControl<CheckBox>("centerBoostVisual");
+        private CheckBox centerBoostAllCheck => this.FindControl<CheckBox>("centerBoostAll");
+        private CheckBox centerBoostLifeCheck => this.FindControl<CheckBox>("centerBoostLife");
+        private CheckBox centerBoostProcCheck => this.FindControl<CheckBox>("centerBoostProc");
+        private CheckBox centerBoostNoneCheck => this.FindControl<CheckBox>("centerBoostNone");
+
+        private CheckBox centerReqPrincessCheck => this.FindControl<CheckBox>("centerReqPrincess");
+        private CheckBox centerReqFairyCheck => this.FindControl<CheckBox>("centerReqFairy");
+        private CheckBox centerReqAngelCheck => this.FindControl<CheckBox>("centerReqAngel");
+        private CheckBox centerReqAllCheck => this.FindControl<CheckBox>("centerReqAll");
+        private CheckBox centerReqNoneCheck => this.FindControl<CheckBox>("centerReqNone");
 
         private CheckBox scoreCheck => this.FindControl<CheckBox>("skillScore");
         private CheckBox overClockCheck => this.FindControl<CheckBox>("skillOverClock");
@@ -191,48 +197,80 @@ namespace TheaterDaysScore.Views {
                     return ViewModel.Categories;
                 }).DisposeWith(disposables);
 
-                // Center filters
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.vocalCheck.IsChecked, set => {
+                // Center boost filters
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostVocalCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.vocalUp);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.vocalUp);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.vocalUp);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.danceCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostDanceCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.danceUp);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.danceUp);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.danceUp);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.visualCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostVisualCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.visualUp);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.visualUp);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.visualUp);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.allCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostAllCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.allUp);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.allUp);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.allUp);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.lifeCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostLifeCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.lifeUp);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.lifeUp);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.lifeUp);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.procCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostProcCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.skillBoost);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.skillBoost);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.skillBoost);
+                    return ViewModel.CenterBoostTypes;
                 }).DisposeWith(disposables);
-                this.Bind(ViewModel, vm => vm.CenterTypes, v => v.noneCheck.IsChecked, set => {
+                this.Bind(ViewModel, vm => vm.CenterBoostTypes, v => v.centerBoostNoneCheck.IsChecked, set => {
                     return set.Contains(CardData.CenterEffect.Type.none);
                 }, isChecked => {
-                    SetCenter(isChecked, CardData.CenterEffect.Type.none);
-                    return ViewModel.CenterTypes;
+                    SetCenterBoost(isChecked, CardData.CenterEffect.Type.none);
+                    return ViewModel.CenterBoostTypes;
+                }).DisposeWith(disposables);
+
+                // Center requirement filters
+                this.Bind(ViewModel, vm => vm.CenterReqTypes, v => v.centerReqPrincessCheck.IsChecked, set => {
+                    return set.Contains(Types.Princess);
+                }, isChecked => {
+                    SetCenterReq(isChecked, Types.Princess);
+                    return ViewModel.CenterReqTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CenterReqTypes, v => v.centerReqFairyCheck.IsChecked, set => {
+                    return set.Contains(Types.Fairy);
+                }, isChecked => {
+                    SetCenterReq(isChecked, Types.Fairy);
+                    return ViewModel.CenterReqTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CenterReqTypes, v => v.centerReqAngelCheck.IsChecked, set => {
+                    return set.Contains(Types.Angel);
+                }, isChecked => {
+                    SetCenterReq(isChecked, Types.Angel);
+                    return ViewModel.CenterReqTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CenterReqTypes, v => v.centerReqAllCheck.IsChecked, set => {
+                    return set.Contains(Types.All);
+                }, isChecked => {
+                    SetCenterReq(isChecked, Types.All);
+                    return ViewModel.CenterReqTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.CenterReqTypes, v => v.centerReqNoneCheck.IsChecked, set => {
+                    return set.Contains(Types.None);
+                }, isChecked => {
+                    SetCenterReq(isChecked, Types.None);
+                    return ViewModel.CenterReqTypes;
                 }).DisposeWith(disposables);
 
                 // Skill filters
@@ -385,11 +423,20 @@ namespace TheaterDaysScore.Views {
             ViewModel.FilterCards();
         }
 
-        private void SetCenter(bool? isChecked, CardData.CenterEffect.Type center) {
+        private void SetCenterBoost(bool? isChecked, CardData.CenterEffect.Type center) {
             if (isChecked ?? true) {
-                ViewModel.CenterTypes.Add(center);
+                ViewModel.CenterBoostTypes.Add(center);
             } else {
-                ViewModel.CenterTypes.Remove(center);
+                ViewModel.CenterBoostTypes.Remove(center);
+            }
+            ViewModel.FilterCards();
+        }
+
+        private void SetCenterReq(bool? isChecked, Types center) {
+            if (isChecked ?? true) {
+                ViewModel.CenterReqTypes.Add(center);
+            } else {
+                ViewModel.CenterReqTypes.Remove(center);
             }
             ViewModel.FilterCards();
         }

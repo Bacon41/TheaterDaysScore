@@ -49,8 +49,9 @@ namespace TheaterDaysScore.Models {
         public List<Skill> Skills { get; }
         public CardData.Skill.Type SkillType { get; }
         public CenterEffect Center { get; }
-        public CardData.CenterEffect.Type CenterType { get; }
-        public CardData.CenterEffect.Type CenterType2 { get; }
+        public CardData.CenterEffect.Type CenterBoostType { get; }
+        public CardData.CenterEffect.Type CenterBoostType2 { get; }
+        public Types CenterReqType { get; }
 
         public class Skill {
             private CardData.Skill data;
@@ -327,11 +328,13 @@ namespace TheaterDaysScore.Models {
             }
             if (this.data.centerEffect != null) {
                 Center = new CenterEffect(this.data.centerEffect);
-                CenterType = this.data.centerEffect.attribute;
-                CenterType2 = this.data.centerEffect.attribute2;
+                CenterBoostType = this.data.centerEffect.attribute;
+                CenterBoostType2 = this.data.centerEffect.attribute2;
+                CenterReqType = this.data.centerEffect.specificIdolType;
             } else {
-                CenterType = CardData.CenterEffect.Type.none;
-                CenterType2 = CardData.CenterEffect.Type.none;
+                CenterBoostType = CardData.CenterEffect.Type.none;
+                CenterBoostType2 = CardData.CenterEffect.Type.none;
+                CenterReqType = Types.None;
             }
 
             // https://storage.matsurihi.me/mltd/card/017kth0054_0_a.png

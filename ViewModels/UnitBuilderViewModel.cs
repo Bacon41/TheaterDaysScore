@@ -50,11 +50,18 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref categories, value);
         }
 
-        private HashSet<CardData.CenterEffect.Type> centerTypes = new HashSet<CardData.CenterEffect.Type>();
+        private HashSet<CardData.CenterEffect.Type> centerBoostTypes = new HashSet<CardData.CenterEffect.Type>();
         [DataMember]
-        public HashSet<CardData.CenterEffect.Type> CenterTypes {
-            get => centerTypes;
-            set => this.RaiseAndSetIfChanged(ref centerTypes, value);
+        public HashSet<CardData.CenterEffect.Type> CenterBoostTypes {
+            get => centerBoostTypes;
+            set => this.RaiseAndSetIfChanged(ref centerBoostTypes, value);
+        }
+
+        private HashSet<Types> centerReqTypes = new HashSet<Types>();
+        [DataMember]
+        public HashSet<Types> CenterReqTypes {
+            get => centerReqTypes;
+            set => this.RaiseAndSetIfChanged(ref centerReqTypes, value);
         }
 
         private HashSet<CardData.Skill.Type> skillTypes = new HashSet<CardData.Skill.Type>();
@@ -169,12 +176,21 @@ namespace TheaterDaysScore.ViewModels {
                 }
             });
 
-            var allCenters = (CardData.CenterEffect.Type[])Enum.GetValues(typeof(CardData.CenterEffect.Type));
-            AllCenters = ReactiveCommand.Create(() => {
-                if (CenterTypes.Count == allCenters.Length) {
-                    CenterTypes = new HashSet<CardData.CenterEffect.Type>();
+            var allCenterBoosts = (CardData.CenterEffect.Type[])Enum.GetValues(typeof(CardData.CenterEffect.Type));
+            AllCenterBoosts = ReactiveCommand.Create(() => {
+                if (CenterBoostTypes.Count == allCenterBoosts.Length) {
+                    CenterBoostTypes = new HashSet<CardData.CenterEffect.Type>();
                 } else {
-                    CenterTypes = new HashSet<CardData.CenterEffect.Type>(allCenters);
+                    CenterBoostTypes = new HashSet<CardData.CenterEffect.Type>(allCenterBoosts);
+                }
+            });
+
+            var allCenterReqs = (Types[])Enum.GetValues(typeof(Types));
+            AllCenterReqs = ReactiveCommand.Create(() => {
+                if (CenterReqTypes.Count == allCenterReqs.Length) {
+                    CenterReqTypes = new HashSet<Types>();
+                } else {
+                    CenterReqTypes = new HashSet<Types>(allCenterReqs);
                 }
             });
 
@@ -197,7 +213,9 @@ namespace TheaterDaysScore.ViewModels {
                     .Where(card => Rarities.Contains(card.Rarity))
                     .Where(card => Types.Contains(card.Type))
                     .Where(card => Categories.Contains(card.Category))
-                    .Where(card => CenterTypes.Contains(card.CenterType) || CenterTypes.Contains(card.CenterType2))
+                    .Where(card => CenterBoostTypes.Contains(card.CenterBoostType)
+                        || (CenterBoostTypes.Contains(card.CenterBoostType2) && card.CenterBoostType2 != CardData.CenterEffect.Type.none))
+                    .Where(card => CenterReqTypes.Contains(card.CenterReqType))
                     .Where(card => SkillTypes.Contains(card.SkillType))
                     );
             }
@@ -267,7 +285,8 @@ namespace TheaterDaysScore.ViewModels {
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllRarities { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllTypes { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCategories { get; }
-        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCenters { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCenterBoosts { get; }
+        public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllCenterReqs { get; }
         public ReactiveCommand<System.Reactive.Unit, System.Reactive.Unit> AllSkills { get; }
     }
 }

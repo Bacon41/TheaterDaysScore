@@ -7,6 +7,7 @@ using TheaterDaysScore.Services;
 namespace TheaterDaysScore {
 
     public enum Types {
+        None,
         Princess = 1,
         Fairy,
         Angel,
