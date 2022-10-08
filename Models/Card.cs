@@ -71,9 +71,13 @@ namespace TheaterDaysScore.Models {
 
             public CardData.Skill.Type Effect { get; }
             public int ScoreBoost { get; }
+            public Song.Note.Accuracy LowestScoreBoostJudgement { get; }
             public int FusionScoreBoost { get; }
+            public Song.Note.Accuracy LowestFusionScoreBoostJudgement { get; }
             public int ComboBoost { get; }
             public int FusionComboRate { get; }
+            public Song.Note.Accuracy LowestJudgementBoost { get; }
+            public Song.Note.Accuracy LowestComboProtect { get; }
 
             public Skill(CardData.Skill data, int level) {
                 this.data = data;
@@ -83,10 +87,14 @@ namespace TheaterDaysScore.Models {
                 Duration = this.data.duration;
                 baseProbability = this.data.probability;
 
+                LowestJudgementBoost = Song.Note.Accuracy.perfect;
+                LowestComboProtect = Song.Note.Accuracy.good;
+
                 Effect = this.data.effectId;
                 switch (this.data.effectId) {
                     case CardData.Skill.Type.scoreUp:
                         ScoreBoost = this.data.value[0];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation);
                         break;
                     case CardData.Skill.Type.multiUp:
                         ScoreBoost = this.data.value[0];
@@ -96,7 +104,10 @@ namespace TheaterDaysScore.Models {
                         break;
                     case CardData.Skill.Type.fusionScore:
                         ScoreBoost = this.data.value[0];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation);
                         FusionScoreBoost = this.data.value[1];
+                        LowestFusionScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation2);
+                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation3);
                         break;
                     case CardData.Skill.Type.comboBonus:
                         ComboBoost = this.data.value[0];
@@ -110,6 +121,7 @@ namespace TheaterDaysScore.Models {
                     case CardData.Skill.Type.fusionCombo:
                         ComboBoost = this.data.value[0];
                         FusionComboRate = this.data.value[1];
+                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation3);
                         break;
                     case CardData.Skill.Type.doubleBoost:
                         ScoreBoost = this.data.value[0];
@@ -119,6 +131,33 @@ namespace TheaterDaysScore.Models {
                         ScoreBoost = this.data.value[0];
                         ComboBoost = this.data.value[0];
                         break;
+                    case CardData.Skill.Type.judgementBoost:
+                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation);
+                        break;
+                    case CardData.Skill.Type.comboProtect:
+                        LowestComboProtect = LowestJudgementInRange(this.data.evaluation);
+                        break;
+                }
+            }
+
+            private Song.Note.Accuracy LowestJudgementInRange(CardData.Skill.Evaluations evalRange) {
+                switch (evalRange) {
+                    case CardData.Skill.Evaluations.perfect:
+                        return Song.Note.Accuracy.perfect;
+                    case CardData.Skill.Evaluations.perfectGreat:
+                        return Song.Note.Accuracy.great;
+                    case CardData.Skill.Evaluations.great:
+                        return Song.Note.Accuracy.great;
+                    case CardData.Skill.Evaluations.perfectGreatGood:
+                        return Song.Note.Accuracy.good;
+                    case CardData.Skill.Evaluations.greatGood:
+                        return Song.Note.Accuracy.good;
+                    case CardData.Skill.Evaluations.perfectGreatGoodFastSlow:
+                        return Song.Note.Accuracy.fastSlow;
+                    case CardData.Skill.Evaluations.greatGoodFastSlow:
+                        return Song.Note.Accuracy.fastSlow;
+                    default:
+                        return Song.Note.Accuracy.miss;
                 }
             }
         }

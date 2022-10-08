@@ -72,6 +72,8 @@ namespace TheaterDaysScore.Models {
             public double ScoreBoostAt(double time);
             public double ComboBoostAt(double time);
             public double HoldOver(double startTime, double length);
+            public Song.Note.Accuracy AccuracyAt(double time, Song.Note.Accuracy tapJudgement);
+            public bool ComboProtectedAt(double time, Song.Note.Accuracy tapJudgement);
         }
 
         private class Activation : IActivation {
@@ -81,6 +83,8 @@ namespace TheaterDaysScore.Models {
             private int[] boostCombo;
             private int[] effectScore;
             private int[] effectCombo;
+            private Song.Note.Accuracy[] lowestJudgementBoosted;
+            private Song.Note.Accuracy[] lowestComboProtection;
 
             public Activation(double songLen) {
                 int numSeconds = (int)Math.Ceiling(songLen) + 1;
@@ -90,10 +94,17 @@ namespace TheaterDaysScore.Models {
                 boostCombo = new int[numSeconds];
                 effectScore = new int[numSeconds];
                 effectCombo = new int[numSeconds];
+                lowestJudgementBoosted = new Song.Note.Accuracy[numSeconds];
+                lowestComboProtection = new Song.Note.Accuracy[numSeconds];
+                for (int x = 0; x < numSeconds; x++) {
+                    // Good is the lowest score to not break combo by default
+                    lowestComboProtection[x] = Song.Note.Accuracy.good;
+                }
             }
 
             public void AddInterval(int start, Card.Skill skill, Unit unit) {
                 for (int x = start; x < scoreUp.Length && x < start + skill.Duration; x++) {
+                    // Score/Combo
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
                         if (skill.ScoreBoost > boostScore[x]) {
                             boostScore[x] = skill.ScoreBoost;
@@ -122,6 +133,30 @@ namespace TheaterDaysScore.Models {
                         }
                         if (skill.ComboBoost > comboUp[x]) {
                             comboUp[x] = skill.ComboBoost;
+                        }
+                    }
+                    // Judgement
+                    if (skill.Effect == CardData.Skill.Type.judgementBoost) {
+                        if (skill.LowestJudgementBoost > lowestJudgementBoosted[x]) {
+                            lowestJudgementBoosted[x] = skill.LowestJudgementBoost;
+                        }
+                    } else if (skill.Effect == CardData.Skill.Type.fusionScore) {
+                        if (unit.IsFused()) {
+                            if (skill.LowestJudgementBoost > lowestJudgementBoosted[x]) {
+                                lowestJudgementBoosted[x] = skill.LowestJudgementBoost;
+                            }
+                        }
+                    } else if (skill.Effect == CardData.Skill.Type.fusionCombo) {
+                        if (unit.IsFused()) {
+                            if (skill.LowestJudgementBoost > lowestJudgementBoosted[x]) {
+                                lowestJudgementBoosted[x] = skill.LowestJudgementBoost;
+                            }
+                        }
+                    }
+                    // Combo protection
+                    if (skill.Effect == CardData.Skill.Type.comboProtect) {
+                        if (skill.LowestComboProtect > lowestComboProtection[x]) {
+                            lowestComboProtection[x] = skill.LowestComboProtect;
                         }
                     }
                 }
@@ -159,6 +194,22 @@ namespace TheaterDaysScore.Models {
                     holdScore += ScoreBoostAt(x) * (Math.Min(startTime + length, x + 1) - Math.Max(startTime, x));
                 }
                 return holdScore;
+            }
+
+            public Song.Note.Accuracy AccuracyAt(double time, Song.Note.Accuracy tapJudgement) {
+                int currentSecond = (int)Math.Floor(time);
+                if (lowestJudgementBoosted[currentSecond] >= tapJudgement) {
+                    return Song.Note.Accuracy.perfect;
+                }
+                return tapJudgement;
+            }
+
+            public bool ComboProtectedAt(double time, Song.Note.Accuracy tapJudgement) {
+                int currentSecond = (int)Math.Floor(time);
+                if (lowestComboProtection[currentSecond] >= tapJudgement) {
+                    return true;
+                }
+                return false;
             }
         }
 

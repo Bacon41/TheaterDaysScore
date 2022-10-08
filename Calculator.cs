@@ -188,6 +188,7 @@ namespace TheaterDaysScore {
             }
 
             // https://megmeg.work/basic_information/formula/score/
+            // https://imasml-theater-wiki.gamerch.com/%E3%82%B9%E3%82%B3%E3%82%A2%E8%A8%88%E7%AE%97
 
             int totalAppeal = GetAppeal(song.Type, boostType, unit);
 
@@ -204,6 +205,33 @@ namespace TheaterDaysScore {
             double score = 0;
             int combo = 0;
             foreach (Song.Note note in song.Notes[difficulty]) {
+                double noteTime = song.TickToTime(note.Tick) - song.SkillStartTime;
+
+                // Accuracy multiplier
+                Song.Note.Accuracy accuracy = activations.AccuracyAt(noteTime, Song.Note.Accuracy.perfect);
+                double accuracyMultiplier = 1.0;
+                switch (accuracy) {
+                    case Song.Note.Accuracy.perfect:
+                        accuracyMultiplier = 1.0;
+                        break;
+                    case Song.Note.Accuracy.great:
+                        accuracyMultiplier = 0.8;
+                        break;
+                    case Song.Note.Accuracy.good:
+                        accuracyMultiplier = 0.5;
+                        break;
+                    case Song.Note.Accuracy.fastSlow:
+                        accuracyMultiplier = 0.2;
+                        break;
+                    case Song.Note.Accuracy.miss:
+                        accuracyMultiplier = 0;
+                        break;
+                }
+
+                // Combo multiplier
+                if (!activations.ComboProtectedAt(noteTime, accuracy)) {
+                    combo = 0;
+                }
                 combo++;
                 double comboMultiplier = 0;
                 if (combo >= 100) {
@@ -218,11 +246,10 @@ namespace TheaterDaysScore {
                     comboMultiplier = 1;
                 }
 
-                double accuracyMultiplier = 1.0;
-
-                double noteTime = song.TickToTime(note.Tick) - song.SkillStartTime;
-
+                // Tap score
                 score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
+
+                // Hold score
                 if (note.HoldTicks != 0) {
                     double holdTime = song.TickToTime(note.Tick + note.HoldTicks) - song.TickToTime(note.Tick);
                     score += 2 * scoreScale * activations.HoldOver(noteTime, holdTime);

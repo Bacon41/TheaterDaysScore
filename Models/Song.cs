@@ -52,6 +52,14 @@ namespace TheaterDaysScore.Models {
                 rightFlick,
             }
 
+            public enum Accuracy {
+                perfect,
+                great,
+                good,
+                fastSlow,
+                miss,
+            }
+
             public class Waypoint {
                 public int Tick;
                 public float Lane;

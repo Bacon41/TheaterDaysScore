@@ -11,6 +11,9 @@ namespace TheaterDaysScore.JsonModels {
 
         public class Skill {
             public Type effectId { get; set; }
+            public Evaluations evaluation { get; set; }
+            public Evaluations evaluation2 { get; set; }
+            public Evaluations evaluation3 { get; set; }
             public int duration { get; set; }
             public int interval { get; set; }
             public int probability { get; set; }
@@ -33,6 +36,17 @@ namespace TheaterDaysScore.JsonModels {
                 doubleEffect,
                 fusionScore = 17,
                 fusionCombo,
+            };
+
+            public enum Evaluations {
+                all,
+                perfect,
+                perfectGreat,
+                great,
+                greatGoodFastSlow,
+                perfectGreatGood,
+                perfectGreatGoodFastSlow,
+                greatGood,
             };
         }
 
