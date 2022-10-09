@@ -229,10 +229,10 @@ namespace TheaterDaysScore {
                 }
 
                 // Combo multiplier
+                combo++;
                 if (!activations.ComboProtectedAt(noteTime, accuracy)) {
                     combo = 0;
                 }
-                combo++;
                 double comboMultiplier = 0;
                 if (combo >= 100) {
                     comboMultiplier = 2;
@@ -247,7 +247,7 @@ namespace TheaterDaysScore {
                 }
 
                 // Tap score
-                score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
+                score += scoreScale * note.Size * accuracyMultiplier * activations.ScoreBoostAt(noteTime, accuracy) + comboScale * comboMultiplier * activations.ComboBoostAt(noteTime);
 
                 // Hold score
                 if (note.HoldTicks != 0) {

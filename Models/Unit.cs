@@ -69,7 +69,7 @@ namespace TheaterDaysScore.Models {
         }
 
         public interface IActivation {
-            public double ScoreBoostAt(double time);
+            public double ScoreBoostAt(double time, Song.Note.Accuracy tapJudgement);
             public double ComboBoostAt(double time);
             public double HoldOver(double startTime, double length);
             public Song.Note.Accuracy AccuracyAt(double time, Song.Note.Accuracy tapJudgement);
@@ -77,9 +77,13 @@ namespace TheaterDaysScore.Models {
         }
 
         private class Activation : IActivation {
-            private int[] scoreUp;
+            private int[] scoreUpPerfect;
+            private int[] scoreUpGreat;
+            private int[] scoreUpGood;
             private int[] comboUp;
-            private int[] boostScore;
+            private int[] boostScorePerfect;
+            private int[] boostScoreGreat;
+            private int[] boostScoreGood;
             private int[] boostCombo;
             private int[] effectScore;
             private int[] effectCombo;
@@ -88,9 +92,13 @@ namespace TheaterDaysScore.Models {
 
             public Activation(double songLen) {
                 int numSeconds = (int)Math.Ceiling(songLen) + 1;
-                scoreUp = new int[numSeconds];
+                scoreUpPerfect = new int[numSeconds];
+                scoreUpGreat = new int[numSeconds];
+                scoreUpGood = new int[numSeconds];
                 comboUp = new int[numSeconds];
-                boostScore = new int[numSeconds];
+                boostScorePerfect = new int[numSeconds];
+                boostScoreGreat = new int[numSeconds];
+                boostScoreGood = new int[numSeconds];
                 boostCombo = new int[numSeconds];
                 effectScore = new int[numSeconds];
                 effectCombo = new int[numSeconds];
@@ -103,11 +111,23 @@ namespace TheaterDaysScore.Models {
             }
 
             public void AddInterval(int start, Card.Skill skill, Unit unit) {
-                for (int x = start; x < scoreUp.Length && x < start + skill.Duration; x++) {
+                for (int x = start; x < scoreUpPerfect.Length && x < start + skill.Duration; x++) {
                     // Score/Combo
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
-                        if (skill.ScoreBoost > boostScore[x]) {
-                            boostScore[x] = skill.ScoreBoost;
+                        if (skill.ScoreBoost > boostScorePerfect[x]) {
+                            if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.perfect) {
+                                boostScorePerfect[x] = skill.ScoreBoost;
+                            }
+                        }
+                        if (skill.ScoreBoost > boostScoreGreat[x]) {
+                            if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.great) {
+                                boostScoreGreat[x] = skill.ScoreBoost;
+                            }
+                        }
+                        if (skill.ScoreBoost > boostScoreGood[x]) {
+                            if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.good) {
+                                boostScoreGood[x] = skill.ScoreBoost;
+                            }
                         }
                         if (skill.ComboBoost > boostCombo[x]) {
                             boostCombo[x] = skill.ComboBoost;
@@ -121,15 +141,41 @@ namespace TheaterDaysScore.Models {
                         }
                     } else if (skill.Effect == CardData.Skill.Type.fusionScore) {
                         int scoreBoost = skill.ScoreBoost;
+                        Song.Note.Accuracy lowestJudgement = skill.LowestScoreBoostJudgement;
                         if (unit.ScoreUpCount() >= 2) {
                             scoreBoost = skill.FusionScoreBoost;
+                            lowestJudgement = skill.LowestFusionScoreBoostJudgement;
                         }
-                        if (scoreBoost > scoreUp[x]) {
-                            scoreUp[x] = scoreBoost;
+                        if (lowestJudgement >= Song.Note.Accuracy.perfect) {
+                            if (scoreBoost > scoreUpPerfect[x]) {
+                                scoreUpPerfect[x] = scoreBoost;
+                            }
+                        }
+                        if (lowestJudgement >= Song.Note.Accuracy.great) {
+                            if (scoreBoost > scoreUpGreat[x]) {
+                                scoreUpGreat[x] = scoreBoost;
+                            }
+                        }
+                        if (lowestJudgement >= Song.Note.Accuracy.good) {
+                            if (scoreBoost > scoreUpGood[x]) {
+                                scoreUpGood[x] = scoreBoost;
+                            }
                         }
                     } else {
-                        if (skill.ScoreBoost > scoreUp[x]) {
-                            scoreUp[x] = skill.ScoreBoost;
+                        if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.perfect) {
+                            if (skill.ScoreBoost > scoreUpPerfect[x]) {
+                                scoreUpPerfect[x] = skill.ScoreBoost;
+                            }
+                        }
+                        if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.great) {
+                            if (skill.ScoreBoost > scoreUpGreat[x]) {
+                                scoreUpGreat[x] = skill.ScoreBoost;
+                            }
+                        }
+                        if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.good) {
+                            if (skill.ScoreBoost > scoreUpGood[x]) {
+                                scoreUpGood[x] = skill.ScoreBoost;
+                            }
                         }
                         if (skill.ComboBoost > comboUp[x]) {
                             comboUp[x] = skill.ComboBoost;
@@ -162,14 +208,30 @@ namespace TheaterDaysScore.Models {
                 }
             }
 
-            public double ScoreBoostAt(double time) {
+            public double ScoreBoostAt(double time, Song.Note.Accuracy tapJudgement) {
                 int currentSecond = (int)Math.Floor(time);
                 int rateUp = 0;
-                if (scoreUp[currentSecond] > 0) {
-                    rateUp += scoreUp[currentSecond] + effectScore[currentSecond];
-                }
-                if (boostScore[currentSecond] > 0) {
-                    rateUp += boostScore[currentSecond] + effectScore[currentSecond];
+                if (tapJudgement == Song.Note.Accuracy.perfect) {
+                    if (scoreUpPerfect[currentSecond] > 0) {
+                        rateUp += scoreUpPerfect[currentSecond] + effectScore[currentSecond];
+                    }
+                    if (boostScorePerfect[currentSecond] > 0) {
+                        rateUp += boostScorePerfect[currentSecond] + effectScore[currentSecond];
+                    }
+                } else if (tapJudgement == Song.Note.Accuracy.great) {
+                    if (scoreUpGreat[currentSecond] > 0) {
+                        rateUp += scoreUpGreat[currentSecond] + effectScore[currentSecond];
+                    }
+                    if (boostScoreGreat[currentSecond] > 0) {
+                        rateUp += boostScoreGreat[currentSecond] + effectScore[currentSecond];
+                    }
+                } else if (tapJudgement == Song.Note.Accuracy.good) {
+                    if (scoreUpGood[currentSecond] > 0) {
+                        rateUp += scoreUpGood[currentSecond] + effectScore[currentSecond];
+                    }
+                    if (boostScoreGood[currentSecond] > 0) {
+                        rateUp += boostScoreGood[currentSecond] + effectScore[currentSecond];
+                    }
                 }
                 return (100.0 + rateUp) / 100;
             }
@@ -191,7 +253,7 @@ namespace TheaterDaysScore.Models {
                 int endScore = (int)Math.Ceiling(startTime + length);
                 double holdScore = 0;
                 for (int x = startScore; x < endScore; x++) {
-                    holdScore += ScoreBoostAt(x) * (Math.Min(startTime + length, x + 1) - Math.Max(startTime, x));
+                    holdScore += ScoreBoostAt(x, Song.Note.Accuracy.perfect) * (Math.Min(startTime + length, x + 1) - Math.Max(startTime, x));
                 }
                 return holdScore;
             }
