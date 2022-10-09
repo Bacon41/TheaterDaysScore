@@ -162,6 +162,7 @@ namespace TheaterDaysScore {
                 this.scoreScale = scoreScale;
                 this.comboScale = comboScale;
 
+                song.ResetAccuracies();
                 Ideal = GetScore(unit.GetActivations(song, true), song, difficulty, scoreScale, comboScale);
                 scores = new List<int>();
             }
@@ -175,6 +176,8 @@ namespace TheaterDaysScore {
             }
 
             public void AddRun() {
+                song.RandomizeAccuraciesPercent(difficulty, 5, 0, 0, 0);
+                //song.RandomizeAccuraciesCount(difficulty, 0, 0, 0, 1);
                 scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
             }
         }
@@ -206,9 +209,9 @@ namespace TheaterDaysScore {
             int combo = 0;
             foreach (Song.Note note in song.Notes[difficulty]) {
                 double noteTime = song.TickToTime(note.Tick) - song.SkillStartTime;
-
+                
                 // Accuracy multiplier
-                Song.Note.Accuracy accuracy = activations.AccuracyAt(noteTime, Song.Note.Accuracy.perfect);
+                Song.Note.Accuracy accuracy = activations.AccuracyAt(noteTime, note.TapAccuracy);
                 double accuracyMultiplier = 1.0;
                 switch (accuracy) {
                     case Song.Note.Accuracy.perfect:

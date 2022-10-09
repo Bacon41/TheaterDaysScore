@@ -42,6 +42,7 @@ namespace TheaterDaysScore.Models {
             public int HoldTicks;
             public InteractType EndType;
             public float EndLane;
+            public Accuracy TapAccuracy;
 
             public List<Waypoint> Waypoints;
 
@@ -77,6 +78,8 @@ namespace TheaterDaysScore.Models {
 
             public Note(SongData.Event data) {
                 Tick = data.tick;
+
+                TapAccuracy = Accuracy.perfect;
 
                 float centerLane = 0f;
                 Lane = data.track;
@@ -353,6 +356,44 @@ namespace TheaterDaysScore.Models {
                 }
             }
             return false;
+        }
+
+        public void RandomizeAccuraciesPercent(Difficulty difficulty, double greatPercet, double goodPercent, double fastSlowPercent, double missPercent) {
+            List<Note> notes = Notes[difficulty];
+            int greatCount = (int)(notes.Count * greatPercet / 100);
+            int goodCount = (int)(notes.Count * goodPercent / 100);
+            int fastSlowCount = (int)(notes.Count * fastSlowPercent / 100);
+            int missCount = (int)(notes.Count * missPercent / 100);
+
+            RandomizeAccuraciesCount(difficulty, greatCount, goodCount, fastSlowCount, missCount);
+        }
+
+        public void RandomizeAccuraciesCount(Difficulty difficulty, int greatCount, int goodCount, int fastSlowCount, int missCount) {
+            List<Note> notes = Notes[difficulty];
+
+            Random randomizer = new Random();
+            List<Note> randomizedNotes = notes.OrderBy(note => randomizer.Next()).ToList();
+            for (int x = 0; x < randomizedNotes.Count; x++) {
+                if (x < missCount) {
+                    randomizedNotes[x].TapAccuracy = Note.Accuracy.miss;
+                } else if (x < fastSlowCount) {
+                    randomizedNotes[x].TapAccuracy = Note.Accuracy.fastSlow;
+                } else if (x < goodCount) {
+                    randomizedNotes[x].TapAccuracy = Note.Accuracy.good;
+                } else if (x < greatCount) {
+                    randomizedNotes[x].TapAccuracy = Note.Accuracy.great;
+                } else {
+                    randomizedNotes[x].TapAccuracy = Note.Accuracy.perfect;
+                }
+            }
+        }
+
+        public void ResetAccuracies() {
+            foreach (var item in Notes) {
+                foreach (Note note in item.Value) {
+                    note.TapAccuracy = Note.Accuracy.perfect;
+                }
+            }
         }
     }
 }
