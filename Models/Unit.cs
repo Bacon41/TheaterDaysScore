@@ -182,7 +182,7 @@ namespace TheaterDaysScore.Models {
                         }
                     }
                     // Judgement
-                    if (skill.Effect == CardData.Skill.Type.judgementBoost) {
+                    if (skill.Effect == CardData.Skill.Type.perfectLock) {
                         if (skill.LowestJudgementBoost > lowestJudgementBoosted[x]) {
                             lowestJudgementBoosted[x] = skill.LowestJudgementBoost;
                         }
@@ -200,7 +200,7 @@ namespace TheaterDaysScore.Models {
                         }
                     }
                     // Combo protection
-                    if (skill.Effect == CardData.Skill.Type.comboProtect) {
+                    if (skill.Effect == CardData.Skill.Type.comboGuard) {
                         if (skill.LowestComboProtect > lowestComboProtection[x]) {
                             lowestComboProtection[x] = skill.LowestComboProtect;
                         }
@@ -287,7 +287,7 @@ namespace TheaterDaysScore.Models {
 
         public int ScoreUpCount() {
             int scoreCards = Members.Where(card =>
-                card.SkillType == CardData.Skill.Type.scoreUp ||
+                card.SkillType == CardData.Skill.Type.scoreBonus ||
                 card.SkillType == CardData.Skill.Type.multiUp ||
                 card.SkillType == CardData.Skill.Type.overClock ||
                 card.SkillType == CardData.Skill.Type.fusionScore ||

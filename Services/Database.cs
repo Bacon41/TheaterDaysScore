@@ -35,7 +35,7 @@ namespace TheaterDaysScore.Services {
         private string songsFilePath;
         private string versionFilePath;
 
-        private const string matsuriAPI = "https://api.matsurihi.me/mltd/v1/cards/";
+        private const string matsuriAPI = "https://api.matsurihi.me/api/mltd/v2/cards/?includeParameters=true&includeSkills=true";
         private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
         private const string m_ltdSongAPI = "https://api.39m.ltd/api/fetch/all_song_info";
         private const string m_ltdImage = "https://storage.39m.ltd/img/";

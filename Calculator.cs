@@ -176,7 +176,8 @@ namespace TheaterDaysScore {
             }
 
             public void AddRun() {
-                song.RandomizeAccuraciesPercent(difficulty, 5, 0, 0, 0);
+                // TODO: Add UI for non-perfect runs setup
+                //song.RandomizeAccuraciesPercent(difficulty, 5, 0, 0, 0);
                 //song.RandomizeAccuraciesCount(difficulty, 0, 0, 0, 1);
                 scores.Add(GetScore(unit.GetActivations(song), song, difficulty, scoreScale, comboScale));
             }

@@ -10,14 +10,16 @@ namespace TheaterDaysScore.Models {
         private Idol idol;
 
         public enum Categories {
-            PermanentGasha,
-            LimitedGasha,
+            PermanentGacha,
+            LimitedGacha,
             SHSGasha,
             Fes,
+            Linkage,
             PST,
             MiliColle,
             PremiumPickup,
             Anniversary,
+            PR,
             Other
         }
 
@@ -92,50 +94,49 @@ namespace TheaterDaysScore.Models {
 
                 Effect = this.data.effectId;
                 switch (this.data.effectId) {
-                    case CardData.Skill.Type.scoreUp:
-                        ScoreBoost = this.data.value[0];
-                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation);
+                    case CardData.Skill.Type.scoreBonus:
+                        ScoreBoost = this.data.values[0];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluationTypes[0]);
                         break;
                     case CardData.Skill.Type.multiUp:
-                        ScoreBoost = this.data.value[0];
+                        ScoreBoost = this.data.values[0];
                         break;
                     case CardData.Skill.Type.overClock:
-                        ScoreBoost = this.data.value[0];
+                        ScoreBoost = this.data.values[0];
                         break;
                     case CardData.Skill.Type.fusionScore:
-                        ScoreBoost = this.data.value[0];
-                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation);
-                        FusionScoreBoost = this.data.value[1];
-                        LowestFusionScoreBoostJudgement = LowestJudgementInRange(this.data.evaluation2);
-                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation3);
+                        ScoreBoost = this.data.values[0];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluationTypes[0]);
+                        FusionScoreBoost = this.data.values[1];
+                        LowestFusionScoreBoostJudgement = LowestJudgementInRange(this.data.evaluationTypes[1]);
+                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluationTypes[2]);
                         break;
                     case CardData.Skill.Type.comboBonus:
-                        ComboBoost = this.data.value[0];
+                        ComboBoost = this.data.values[0];
                         break;
                     case CardData.Skill.Type.multiBonus:
-                        ComboBoost = this.data.value[0];
+                        ComboBoost = this.data.values[0];
                         break;
                     case CardData.Skill.Type.overRondo:
-                        ComboBoost = this.data.value[0];
+                        ComboBoost = this.data.values[0];
                         break;
                     case CardData.Skill.Type.fusionCombo:
-                        ComboBoost = this.data.value[0];
-                        FusionComboRate = this.data.value[1];
-                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation3);
+                        ComboBoost = this.data.values[0];
+                        FusionComboRate = this.data.values[1];
                         break;
                     case CardData.Skill.Type.doubleBoost:
-                        ScoreBoost = this.data.value[0];
-                        ComboBoost = this.data.value[1];
+                        ScoreBoost = this.data.values[0];
+                        ComboBoost = this.data.values[1];
                         break;
                     case CardData.Skill.Type.doubleEffect:
-                        ScoreBoost = this.data.value[0];
-                        ComboBoost = this.data.value[0];
+                        ScoreBoost = this.data.values[0];
+                        ComboBoost = this.data.values[0];
                         break;
-                    case CardData.Skill.Type.judgementBoost:
-                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluation);
+                    case CardData.Skill.Type.perfectLock:
+                        LowestJudgementBoost = LowestJudgementInRange(this.data.evaluationTypes[0]);
                         break;
-                    case CardData.Skill.Type.comboProtect:
-                        LowestComboProtect = LowestJudgementInRange(this.data.evaluation);
+                    case CardData.Skill.Type.comboGuard:
+                        LowestComboProtect = LowestJudgementInRange(this.data.evaluationTypes[0]);
                         break;
                 }
             }
@@ -170,38 +171,42 @@ namespace TheaterDaysScore.Models {
             }
 
             public int ActivationBoost(Types cardType, Unit unit) {
-                switch (data.attribute) {
-                    case CardData.CenterEffect.Type.skillBoost:
-                        if (data.idolType == cardType) {
-                            return data.value;
-                        }
-                        break;
+                if (data.attributes != null && data.attributes.Length > 0) {
+                    switch (data.attributes[0]) {
+                        case CardData.CenterEffect.Type.skillActivationUp:
+                            if (data.idolType == cardType) {
+                                return data.values[0];
+                            }
+                            break;
+                    }
                 }
-                switch (data.attribute2) {
-                    case CardData.CenterEffect.Type.skillBoost:
-                        switch (data.specificIdolType) {
-                            case Types.Princess:
-                                if (unit.IsMonocolour(data.specificIdolType)) {
-                                    return data.value2;
-                                }
-                                break;
-                            case Types.Fairy:
-                                if (unit.IsMonocolour(data.specificIdolType)) {
-                                    return data.value2;
-                                }
-                                break;
-                            case Types.Angel:
-                                if (unit.IsMonocolour(data.specificIdolType)) {
-                                    return data.value2;
-                                }
-                                break;
-                            case Types.All:
-                                if (unit.IsTricolour()) {
-                                    return data.value2;
-                                }
-                                break;
-                        }
-                        break;
+                if (data.attributes != null && data.attributes.Length > 1) {
+                    switch (data.attributes[1]) {
+                        case CardData.CenterEffect.Type.skillActivationUp:
+                            switch (data.specificIdolType) {
+                                case Types.Princess:
+                                    if (unit.IsMonocolour(data.specificIdolType)) {
+                                        return data.values[1];
+                                    }
+                                    break;
+                                case Types.Fairy:
+                                    if (unit.IsMonocolour(data.specificIdolType)) {
+                                        return data.values[1];
+                                    }
+                                    break;
+                                case Types.Angel:
+                                    if (unit.IsMonocolour(data.specificIdolType)) {
+                                        return data.values[1];
+                                    }
+                                    break;
+                                case Types.All:
+                                    if (unit.IsTricolour()) {
+                                        return data.values[1];
+                                    }
+                                    break;
+                            }
+                            break;
+                    }
                 }
                 return 0;
             }
@@ -250,34 +255,38 @@ namespace TheaterDaysScore.Models {
                         }
                         break;
                 }
-                switch (data.attribute) {
-                    case CardData.CenterEffect.Type.vocalUp:
-                        boost += new Vector3((float)data.value / 100, 0, 0);
-                        break;
-                    case CardData.CenterEffect.Type.danceUp:
-                        boost += new Vector3(0, (float)data.value / 100, 0);
-                        break;
-                    case CardData.CenterEffect.Type.visualUp:
-                        boost += new Vector3(0, 0, (float)data.value / 100);
-                        break;
-                    case CardData.CenterEffect.Type.allUp:
-                        boost += new Vector3((float)data.value / 100);
-                        break;
-                }
-                if (data.songType == songType || data.songType == Types.All) {
-                    switch (data.attribute2) {
+                if (data.attributes != null && data.attributes.Length > 0) {
+                    switch (data.attributes[0]) {
                         case CardData.CenterEffect.Type.vocalUp:
-                            boost += new Vector3((float)data.value2 / 100, 0, 0);
+                            boost += new Vector3((float)data.values[0] / 100, 0, 0);
                             break;
                         case CardData.CenterEffect.Type.danceUp:
-                            boost += new Vector3(0, (float)data.value2 / 100, 0);
+                            boost += new Vector3(0, (float)data.values[0] / 100, 0);
                             break;
                         case CardData.CenterEffect.Type.visualUp:
-                            boost += new Vector3(0, 0, (float)data.value2 / 100);
+                            boost += new Vector3(0, 0, (float)data.values[0] / 100);
                             break;
                         case CardData.CenterEffect.Type.allUp:
-                            boost += new Vector3((float)data.value2 / 100);
+                            boost += new Vector3((float)data.values[0] / 100);
                             break;
+                    }
+                }
+                if (data.attributes != null && data.attributes.Length > 1) {
+                    if (data.songType == songType || data.songType == Types.All) {
+                        switch (data.attributes[1]) {
+                            case CardData.CenterEffect.Type.vocalUp:
+                                boost += new Vector3((float)data.values[1] / 100, 0, 0);
+                                break;
+                            case CardData.CenterEffect.Type.danceUp:
+                                boost += new Vector3(0, (float)data.values[1] / 100, 0);
+                                break;
+                            case CardData.CenterEffect.Type.visualUp:
+                                boost += new Vector3(0, 0, (float)data.values[1] / 100);
+                                break;
+                            case CardData.CenterEffect.Type.allUp:
+                                boost += new Vector3((float)data.values[1] / 100);
+                                break;
+                        }
                     }
                 }
                 return boost;
@@ -298,7 +307,7 @@ namespace TheaterDaysScore.Models {
             }
             SkillLevel = skillLevel;
             SkillLevels = new List<int>();
-            for (int x = 0; x <= this.data.skillLevelMax; x++) {
+            for (int x = 0; x <= this.data.skillLvMax; x++) {
                 SkillLevels.Add(x);
             }
 
@@ -307,43 +316,61 @@ namespace TheaterDaysScore.Models {
             IdolID = this.data.idolId;
             
             switch (this.data.category) {
-                case "normal": // Free with account
+                case CardData.Categories.normal: // Free with account
                     Category = Categories.Other;
                     break;
-                case "gasha0": // Perm
-                    Category = Categories.PermanentGasha;
+                case CardData.Categories.perminantGacha:
+                    Category = Categories.PermanentGacha;
                     break;
-                case "gasha1": // Lim
-                    Category = Categories.LimitedGasha;
+                case CardData.Categories.limitedGacha:
+                    Category = Categories.LimitedGacha;
                     break;
-                case "gasha2": // Fes
+                case CardData.Categories.fesGacha:
                     Category = Categories.Fes;
                     break;
-                case "gasha4": // Premium Pickup SR
+                case CardData.Categories.linkageGacha:
+                    Category = Categories.Linkage;
+                    break;
+                case CardData.Categories.premiumPickupGacha:
                     Category = Categories.PremiumPickup;
                     break;
-                case "gasha5": // Second Hairstyle
+                case CardData.Categories.secondHairstyleGacha:
                     Category = Categories.SHSGasha;
                     break;
-                case "event0": // MiliColle SR
+                case CardData.Categories.millicolleSR:
                     Category = Categories.MiliColle;
                     break;
-                case "event1": // Theater
+                case CardData.Categories.millicolleR:
+                    Category = Categories.MiliColle;
+                    break;
+                case CardData.Categories.eventReward: // Theater
                     Category = Categories.PST;
                     break;
-                case "event2": // Tour
+                case CardData.Categories.eventReward2: // Tour
                     Category = Categories.PST;
                     break;
-                case "event3": // Anniversary
+                case CardData.Categories.anniversaryEvent:
                     Category = Categories.Anniversary;
                     break;
-                case "event4": // Voting runner-up
+                case CardData.Categories.franchiseAnniversaryEvent: // 10th Crossing
+                    Category = Categories.Anniversary;
+                    break;
+                case CardData.Categories.pr: // Promotion with company
+                    Category = Categories.PR;
+                    break;
+                case CardData.Categories.theaterBoostExtra: // Voting runner-up
                     Category = Categories.Other;
                     break;
-                case "event5": // MiliColle R
-                    Category = Categories.MiliColle;
+                case CardData.Categories.theaterChallengeExtra: // Voting runner-up
+                    Category = Categories.Other;
                     break;
-                case "other": // Idol Heroes, Leon
+                case CardData.Categories.extraIdol: // Idol Heroes, Leon
+                    Category = Categories.Other;
+                    break;
+                case CardData.Categories.extraIdolShop: // Idol Heroes, Leon
+                    Category = Categories.Other;
+                    break;
+                case CardData.Categories.importedFromKRTW: // Chihaya, Miki, Kotoha
                     Category = Categories.Other;
                     break;
                 default: // Just in case
@@ -357,18 +384,19 @@ namespace TheaterDaysScore.Models {
                 Color = Colors.LimeGreen;
             }
             Skills = new List<Skill>();
-            if (this.data.skill != null) {
-                foreach (CardData.Skill skill in this.data.skill) {
+            if (this.data.skills != null) {
+                foreach (CardData.Skill skill in this.data.skills) {
                     Skills.Add(new Skill(skill, skillLevel));
                     SkillType = skill.effectId;
                 }
             } else {
                 SkillType = CardData.Skill.Type.none;
             }
-            if (this.data.centerEffect != null) {
+            if (this.data.centerEffect != null && this.data.centerEffect.id != 0) {
                 Center = new CenterEffect(this.data.centerEffect);
-                CenterBoostType = this.data.centerEffect.attribute;
-                CenterBoostType2 = this.data.centerEffect.attribute2;
+                CenterBoostType = this.data.centerEffect.attributes[0];
+                if (this.data.centerEffect.attributes.Length > 1)
+                    CenterBoostType2 = this.data.centerEffect.attributes[1];
                 CenterReqType = this.data.centerEffect.specificIdolType;
             } else {
                 CenterBoostType = CardData.CenterEffect.Type.none;
@@ -385,9 +413,9 @@ namespace TheaterDaysScore.Models {
         }
 
         public Vector3 SplitAppeal() {
-            return new Vector3(data.vocalMaxAwakened + data.vocalMasterBonus * MasterRank,
-                    data.danceMaxAwakened + data.danceMasterBonus * MasterRank,
-                    data.visualMaxAwakened + data.visualMasterBonus * MasterRank);
+            return new Vector3(data.parameters.vocal.afterAwakened.max + data.parameters.vocal.masterBonus * MasterRank,
+                    data.parameters.dance.afterAwakened.max + data.parameters.dance.masterBonus * MasterRank,
+                    data.parameters.visual.afterAwakened.max + data.parameters.visual.masterBonus * MasterRank);
         }
 
         private Vector3 floor(Vector3 input) {

@@ -74,10 +74,12 @@
             <CheckBox Name="categoryLim">Limited</CheckBox>
             <CheckBox Name="categorySHS">Second Hairstyle</CheckBox>
             <CheckBox Name="categoryFes">FES</CheckBox>
+            <CheckBox Name="categoryLnk">LNK</CheckBox>
             <CheckBox Name="categoryPST">PST</CheckBox>
             <CheckBox Name="categoryColle">MiliColle</CheckBox>
             <CheckBox Name="categoryPremPick">Premium Pickup</CheckBox>
             <CheckBox Name="categoryAnn">Anniversary</CheckBox>
+            <CheckBox Name="categoryPR">PR</CheckBox>
             <CheckBox Name="categoryOther">Other</CheckBox>
           </WrapPanel>
         </StackPanel>

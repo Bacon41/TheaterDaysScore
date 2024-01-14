@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace TheaterDaysScore.JsonModels {
     public class CardData {
@@ -11,23 +12,20 @@ namespace TheaterDaysScore.JsonModels {
 
         public class Skill {
             public Type effectId { get; set; }
-            public Evaluations evaluation { get; set; }
-            public Evaluations evaluation2 { get; set; }
-            public Evaluations evaluation3 { get; set; }
             public int duration { get; set; }
             public int interval { get; set; }
             public int probability { get; set; }
-            public int[] value { get; set; }
-            public int level { get; set; }
+            public Evaluations[] evaluationTypes { get; set; }
+            public int[] values { get; set; }
 
             public enum Type {
                 none,
-                scoreUp = 1,
+                scoreBonus = 1,
                 comboBonus,
-                lifeRestore,
-                damageGuard,
-                comboProtect,
-                judgementBoost,
+                healer,
+                lifeGuard,
+                comboGuard,
+                perfectLock,
                 doubleBoost,
                 multiUp,
                 multiBonus,
@@ -51,13 +49,12 @@ namespace TheaterDaysScore.JsonModels {
         }
 
         public class CenterEffect {
-            public Type attribute { get; set; }
+            public int id { get; set; }
             public Types idolType { get; set; }
             public Types specificIdolType { get; set; }
             public Types songType { get; set; }
-            public int value { get; set; }
-            public Type attribute2 { get; set; }
-            public int value2 { get; set; }
+            public Type[] attributes { get; set; }
+            public int[] values { get; set; }
 
             public enum Type {
                 none,
@@ -66,29 +63,91 @@ namespace TheaterDaysScore.JsonModels {
                 visualUp,
                 allUp,
                 lifeUp,
-                skillBoost,
+                skillActivationUp,
             };
         }
-
-        public string resourceId { get; set; }
+        
         public int id { get; set; }
         public int idolId { get; set; }
-        public string colour { get; set; }
         public Types idolType { get; set; }
         public Rarities rarity { get; set; }
-        public string category { get; set; }
+        public string resourceId { get; set; }
+
+        public enum ExTypes {
+            none = 0,
+            eventRanking = 2,
+            eventPoints,
+            fes,
+            firstAnniversary,
+            extra,
+            secondAnniversary,
+            eventRankingExtra,
+            eventPointsExtra,
+            thirdAnniversary,
+            eventRankingExtra2,
+            eventPointsExtra2,
+            fourthAnniversary,
+            secondHairstyle,
+            specialEventSale,
+            fifthAnniversary,
+            pr,
+            tenthFranchiseAnniversary,
+            sixthAnniversary,
+            linkage
+        };
+        public ExTypes exType { get; set; }
+        public enum Categories {
+            unknown = 0,
+            normal = 10,
+            perminantGacha = 20,
+            limitedGacha,
+            fesGacha,
+            premiumPickupGacha = 24,
+            secondHairstyleGacha,
+            linkageGacha,
+            millicolleSR = 30,
+            eventReward,
+            eventReward2,
+            anniversaryEvent,
+            theaterBoostExtra,
+            millicolleR,
+            franchiseAnniversaryEvent,
+            theaterChallengeExtra,
+            extraIdol = 41,
+            extraIdolShop,
+            importedFromKRTW,
+            pr,
+            other = 99
+        };
+        public Categories category { get; set; }
 
         public int masterRankMax { get; set; }
-        public int skillLevelMax { get; set; }
-
-        public int vocalMaxAwakened { get; set; }
-        public int vocalMasterBonus { get; set; }
-        public int danceMaxAwakened { get; set; }
-        public int danceMasterBonus { get; set; }
-        public int visualMaxAwakened { get; set; }
-        public int visualMasterBonus { get; set; }
+        public int skillLvMax { get; set; }
+        public class Parameter {
+            public class StatInfo {
+                [JsonPropertyName("base")]
+                public int baseNum { get; set; }
+                public class AwakeningStats {
+                    public float diff { get; set; }
+                    public int max { get; set; }
+                }
+                public AwakeningStats beforeAwakened { get; set; }
+                public AwakeningStats afterAwakened { get; set; }
+                public int masterBonus { get; set; }
+            }
+            public StatInfo vocal { get; set; }
+            public StatInfo dance { get; set; }
+            public StatInfo visual { get; set; }
+            public class AwakeningDiff {
+                public int beforeAwakened { get; set; }
+                public int afterAwakened { get; set; }
+            }
+            public AwakeningDiff lvMax { get; set; }
+            public AwakeningDiff life { get; set; }
+        }
+        public Parameter parameters { get; set; }
 
         public CenterEffect centerEffect { get; set; }
-        public List<Skill> skill { get; set; }
+        public List<Skill> skills { get; set; }
     }
 }
