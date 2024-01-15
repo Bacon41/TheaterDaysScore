@@ -50,10 +50,10 @@ namespace TheaterDaysScore.JsonModels {
 
         public class CenterEffect {
             public int id { get; set; }
-            public Types idolType { get; set; }
-            public Types specificIdolType { get; set; }
-            public Types songType { get; set; }
-            public Type[] attributes { get; set; }
+            public Types idolType { get; set; } // To apply effect to
+            public Types specificIdolType { get; set; } // Requirement for application
+            public Types songType { get; set; } // Requirement for application
+            public Type[] attributes { get; set; } // To apply effect to
             public int[] values { get; set; }
 
             public enum Type {

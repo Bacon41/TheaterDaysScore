@@ -170,126 +170,108 @@ namespace TheaterDaysScore.Models {
                 this.data = data;
             }
 
-            public int ActivationBoost(Types cardType, Unit unit) {
-                if (data.attributes != null && data.attributes.Length > 0) {
-                    switch (data.attributes[0]) {
-                        case CardData.CenterEffect.Type.skillActivationUp:
-                            if (data.idolType == cardType) {
-                                return data.values[0];
-                            }
-                            break;
-                    }
+            // Percentage increase of given card's skill activation increase
+            public int GetActivationIncrease(Types songType, Types cardType, Unit unit) {
+                // Ensure unit conditions are met
+                if (data.specificIdolType != Types.None && !unit.IsMonocolour(data.specificIdolType)) {
+                    return 0;
                 }
-                if (data.attributes != null && data.attributes.Length > 1) {
-                    switch (data.attributes[1]) {
-                        case CardData.CenterEffect.Type.skillActivationUp:
-                            switch (data.specificIdolType) {
-                                case Types.Princess:
-                                    if (unit.IsMonocolour(data.specificIdolType)) {
-                                        return data.values[1];
-                                    }
-                                    break;
-                                case Types.Fairy:
-                                    if (unit.IsMonocolour(data.specificIdolType)) {
-                                        return data.values[1];
-                                    }
-                                    break;
-                                case Types.Angel:
-                                    if (unit.IsMonocolour(data.specificIdolType)) {
-                                        return data.values[1];
-                                    }
-                                    break;
-                                case Types.All:
-                                    if (unit.IsTricolour()) {
-                                        return data.values[1];
-                                    }
-                                    break;
-                            }
-                            break;
+                // Ensure boost applies to given card
+                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                    return 0;
+                }
+                // Ensure song condition is met
+                if (data.songType != Types.None && data.songType != songType) {
+                    return 0;
+                }
+                // Search for an activation boost effect
+                if (data.attributes != null) {
+                    for (int x = 0; x < data.attributes.Length; x++) {
+                        if (data.attributes[x] == CardData.CenterEffect.Type.skillActivationUp) {
+                            return data.values[x];
+                        }
                     }
                 }
                 return 0;
             }
 
-            public Vector3 GetBoost(Types songType, Types cardType, Unit unit) {
-                Vector3 boost = new Vector3(0);
+            // Percentage to increase each stat of given card
+            public Vector3 GetStatIncrease(Types songType, Types cardType, Unit unit) {
+                Vector3 boost = Vector3.Zero;
                 if (data == null) {
                     return boost;
                 }
-                switch (data.specificIdolType) {
-                    case Types.Princess:
-                        if (!unit.IsMonocolour(data.specificIdolType)) {
-                            return boost;
-                        }
-                        break;
-                    case Types.Fairy:
-                        if (!unit.IsMonocolour(data.specificIdolType)) {
-                            return boost;
-                        }
-                        break;
-                    case Types.Angel:
-                        if (!unit.IsMonocolour(data.specificIdolType)) {
-                            return boost;
-                        }
-                        break;
-                    case Types.All:
-                        if (!unit.IsTricolour()) {
-                            return boost;
-                        }
-                        break;
+                // Ensure unit conditions are met
+                if (data.specificIdolType != Types.None && !unit.IsMonocolour(data.specificIdolType)) {
+                    return boost;
                 }
-                switch (data.idolType) {
-                    case Types.Princess:
-                        if (cardType != Types.Princess && cardType != Types.EX) {
-                            return boost;
-                        }
-                        break;
-                    case Types.Fairy:
-                        if (cardType != Types.Fairy && cardType != Types.EX) {
-                            return boost;
-                        }
-                        break;
-                    case Types.Angel:
-                        if (cardType != Types.Angel && cardType != Types.EX) {
-                            return boost;
-                        }
-                        break;
+                // Ensure boost applies to given card
+                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                    return boost;
                 }
+                // Add in base effect
                 if (data.attributes != null && data.attributes.Length > 0) {
-                    switch (data.attributes[0]) {
-                        case CardData.CenterEffect.Type.vocalUp:
-                            boost += new Vector3((float)data.values[0] / 100, 0, 0);
-                            break;
-                        case CardData.CenterEffect.Type.danceUp:
-                            boost += new Vector3(0, (float)data.values[0] / 100, 0);
-                            break;
-                        case CardData.CenterEffect.Type.visualUp:
-                            boost += new Vector3(0, 0, (float)data.values[0] / 100);
-                            break;
-                        case CardData.CenterEffect.Type.allUp:
-                            boost += new Vector3((float)data.values[0] / 100);
-                            break;
-                    }
+                    boost += AttributeVector(data.attributes[0], data.values[0]);
                 }
+                // Add in secondary effect (with additional restrictions)
                 if (data.attributes != null && data.attributes.Length > 1) {
                     if (data.songType == songType || data.songType == Types.All) {
-                        switch (data.attributes[1]) {
-                            case CardData.CenterEffect.Type.vocalUp:
-                                boost += new Vector3((float)data.values[1] / 100, 0, 0);
-                                break;
-                            case CardData.CenterEffect.Type.danceUp:
-                                boost += new Vector3(0, (float)data.values[1] / 100, 0);
-                                break;
-                            case CardData.CenterEffect.Type.visualUp:
-                                boost += new Vector3(0, 0, (float)data.values[1] / 100);
-                                break;
-                            case CardData.CenterEffect.Type.allUp:
-                                boost += new Vector3((float)data.values[1] / 100);
-                                break;
-                        }
+                        boost += AttributeVector(data.attributes[1], data.values[1]);
                     }
                 }
                 return boost;
+            }
+
+            // Percentage increase of given card's double boost strength
+            public int GetDoubleBoostIncrease(Types songType, Types cardType, Unit unit) {
+                // Ensure unit conditions are met
+                if (data.specificIdolType != Types.None && !unit.IsMonocolour(data.specificIdolType)) {
+                    return 0;
+                }
+                // Ensure boost applies to given card
+                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                    return 0;
+                }
+                // Ensure song condition is met
+                if (data.songType != Types.None && data.songType != songType) {
+                    return 0;
+                }
+                // TODO: Remove blind return of 2% once Matsuri support is added
+                return 2;
+            }
+
+            // Percentage increase of given card's double effect strength
+            public int GetDoubleEffectIncrease(Types songType, Types cardType, Unit unit) {
+                // Ensure unit conditions are met
+                if (data.specificIdolType != Types.None && !unit.IsMonocolour(data.specificIdolType)) {
+                    return 0;
+                }
+                // Ensure boost applies to given card
+                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                    return 0;
+                }
+                // Ensure song condition is met
+                if (data.songType != Types.None && data.songType != songType) {
+                    return 0;
+                }
+                // TODO: Remove blind return of 1% once Matsuri support is added
+                return 1;
+            }
+
+            // Convert given number to a percentage vector of each stat to increase
+            private Vector3 AttributeVector(CardData.CenterEffect.Type type, float value) {
+                switch (type) {
+                    case CardData.CenterEffect.Type.vocalUp:
+                        return new Vector3(value / 100, 0, 0);
+                    case CardData.CenterEffect.Type.danceUp:
+                        return new Vector3(0, value / 100, 0);
+                    case CardData.CenterEffect.Type.visualUp:
+                        return new Vector3(0, 0, value / 100);
+                    case CardData.CenterEffect.Type.allUp:
+                        return new Vector3(value / 100);
+                    default: // Shouldn't happen
+                        return Vector3.Zero;
+                }
             }
         }
 

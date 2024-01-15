@@ -28,13 +28,13 @@ namespace TheaterDaysScore.Models {
             rand = new Random();
         }
 
-        private double ActivationOdds(Types cardType, Card.Skill skill) {
+        private double ActivationOdds(Types songType, Types cardType, Card.Skill skill) {
             int extraRate = 0;
             if (Guest.Center != null) {
-                extraRate += Guest.Center.ActivationBoost(cardType, this);
+                extraRate += Guest.Center.GetActivationIncrease(songType, cardType, this);
             }
             if (Center.Center != null) {
-                extraRate += Center.Center.ActivationBoost(cardType, this);
+                extraRate += Center.Center.GetActivationIncrease(songType, cardType, this);
             }
             if (ComboUpCount() >= 2) {
                 extraRate += skill.FusionComboRate;
@@ -48,7 +48,7 @@ namespace TheaterDaysScore.Models {
 
             foreach (Card card in Members) {
                 foreach (Card.Skill skill in card.Skills) {
-                    double activationThreshold = ActivationOdds(card.Type, skill);
+                    double activationThreshold = ActivationOdds(song.Type, card.Type, skill);
                     if (alwaysActivate) {
                         activationThreshold = 100;
                     }
@@ -57,7 +57,7 @@ namespace TheaterDaysScore.Models {
                     while (start < length) {
                         if (!song.IsDuringAppeal(start)) {
                             if (rand.NextDouble() * 100 < activationThreshold) {
-                                activation.AddInterval(start, skill, this);
+                                activation.AddInterval(start, song.Type, card.Type, skill, this);
                             }
                         }
                         start += skill.Interval;
@@ -110,34 +110,34 @@ namespace TheaterDaysScore.Models {
                 }
             }
 
-            public void AddInterval(int start, Card.Skill skill, Unit unit) {
+            public void AddInterval(int start, Types songType, Types cardType, Card.Skill skill, Unit unit) {
                 for (int x = start; x < scoreUpPerfect.Length && x < start + skill.Duration; x++) {
                     // Score/Combo
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
                         if (skill.ScoreBoost > boostScorePerfect[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.perfect) {
-                                boostScorePerfect[x] = skill.ScoreBoost;
+                                boostScorePerfect[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
                             }
                         }
                         if (skill.ScoreBoost > boostScoreGreat[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.great) {
-                                boostScoreGreat[x] = skill.ScoreBoost;
+                                boostScoreGreat[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
                             }
                         }
                         if (skill.ScoreBoost > boostScoreGood[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.good) {
-                                boostScoreGood[x] = skill.ScoreBoost;
+                                boostScoreGood[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
                             }
                         }
                         if (skill.ComboBoost > boostCombo[x]) {
-                            boostCombo[x] = skill.ComboBoost;
+                            boostCombo[x] = skill.ComboBoost + unit.GetCenterDoubleBoost(songType, cardType);
                         }
                     } else if (skill.Effect == CardData.Skill.Type.doubleEffect) {
                         if (skill.ScoreBoost > effectScore[x]) {
-                            effectScore[x] = skill.ScoreBoost;
+                            effectScore[x] = skill.ScoreBoost + unit.GetCenterDoubleEffect(songType, cardType);
                         }
                         if (skill.ComboBoost > effectCombo[x]) {
-                            effectCombo[x] = skill.ComboBoost;
+                            effectCombo[x] = skill.ComboBoost + unit.GetCenterDoubleEffect(songType, cardType);
                         }
                     } else if (skill.Effect == CardData.Skill.Type.fusionScore) {
                         int scoreBoost = skill.ScoreBoost;
@@ -275,12 +275,39 @@ namespace TheaterDaysScore.Models {
             }
         }
 
+        public int GetCenterDoubleBoost(Types songType, Types cardType) {
+            int boost = 0;
+            // TODO: Remove hack around current lack of Matsuri support
+            if (Center.Category == Card.Categories.Linkage) {
+                boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
+            }
+            if (Guest.Category == Card.Categories.Linkage) {
+                boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
+            }
+            return boost;
+        }
+
+        public int GetCenterDoubleEffect(Types songType, Types cardType) {
+            int boost = 0;
+            // TODO: Remove hack around current lack of Matsuri support
+            if (Center.Category == Card.Categories.Linkage) {
+                boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
+            }
+            if (Guest.Category == Card.Categories.Linkage) {
+                boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
+            }
+            return boost;
+        }
+
         public bool IsTricolour() {
             int unitTypes = Members.Select(card => card.Type).Distinct().Count();
             return unitTypes >= 3;
         }
 
         public bool IsMonocolour(Types matchType) {
+            if (matchType == Types.All)
+                return IsTricolour();
+
             int unitTypes = Members.Where(card => card.Type == matchType).Count();
             return unitTypes == 5;
         }

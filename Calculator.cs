@@ -75,8 +75,8 @@ namespace TheaterDaysScore {
                     guestType += floor(stats * 0.3f);
                 }
 
-                Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, unit.Guest.Type, unit);
-                Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, unit.Guest.Type, unit);
+                Vector3 guestCenterEffect = unit.Guest.Center.GetStatIncrease(songType, unit.Guest.Type, unit);
+                Vector3 centerCenterEffect = unit.Center.Center.GetStatIncrease(songType, unit.Guest.Type, unit);
                 guestCenter += floor(stats * (guestCenterEffect + centerCenterEffect));
             }
             float guestAppeal = Vector3.Dot(new Vector3(1), guestStatus + guestType + guestCenter);
@@ -110,8 +110,8 @@ namespace TheaterDaysScore {
                     unitType[cardType] += stats * 0.3f;
                 }
 
-                Vector3 guestCenterEffect = unit.Guest.Center.GetBoost(songType, card.Type, unit);
-                Vector3 centerCenterEffect = unit.Center.Center.GetBoost(songType, card.Type, unit);
+                Vector3 guestCenterEffect = unit.Guest.Center.GetStatIncrease(songType, card.Type, unit);
+                Vector3 centerCenterEffect = unit.Center.Center.GetStatIncrease(songType, card.Type, unit);
                 unitCenter[cardType] += (guestCenterEffect + centerCenterEffect) * stats;
 
                 switch (eventType) {
