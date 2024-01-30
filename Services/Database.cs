@@ -39,7 +39,7 @@ namespace TheaterDaysScore.Services {
         private const string matsuriStorage = "https://storage.matsurihi.me/mltd/icon_l/";
         private const string m_ltdSongAPI = "https://api.39m.ltd/api/fetch/all_song_info";
         private const string m_ltdImage = "https://storage.39m.ltd/img/";
-        private const string matsuriVerionAPI = "https://api.matsurihi.me/mltd/v1/version/latest";
+        private const string matsuriVerionAPI = "https://api.matsurihi.me/api/mltd/v2/version/latest";
         private const string bn765API = "https://td-assets.bn765.com";
 
         private Dictionary<string, Card> allCards;
@@ -148,12 +148,12 @@ namespace TheaterDaysScore.Services {
 
                 // Validate format and save
                 VersionInfo latestVersion = JsonSerializer.Deserialize<VersionInfo>(indexInfo);
-                assetBaseURL = bn765API + "/" + latestVersion.res.version.ToString() + bn765AssetPath;
-                versionIndexFile = Path.Combine(appDir, latestVersion.res.indexName);
+                assetBaseURL = bn765API + "/" + latestVersion.asset.version.ToString() + bn765AssetPath;
+                versionIndexFile = Path.Combine(appDir, latestVersion.asset.indexName);
 
                 // If the newest is not downloaded, fetch it
                 if (!File.Exists(versionIndexFile)) {
-                    Uri versionIndexURL = new Uri(assetBaseURL + latestVersion.res.indexName);
+                    Uri versionIndexURL = new Uri(assetBaseURL + latestVersion.asset.indexName);
                     client.DownloadFile(versionIndexURL, versionIndexFile);
 
                     // Clean up the old version index
@@ -162,7 +162,7 @@ namespace TheaterDaysScore.Services {
                         VersionInfo currentVersion = JsonSerializer.Deserialize<VersionInfo>(versionReader.ReadToEnd());
                         versionReader.Close();
 
-                        string prevVersionIndexFile = Path.Combine(appDir, currentVersion.res.indexName);
+                        string prevVersionIndexFile = Path.Combine(appDir, currentVersion.asset.indexName);
                         if (File.Exists(prevVersionIndexFile)) {
                             File.Delete(prevVersionIndexFile);
                         }
