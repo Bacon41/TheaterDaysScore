@@ -277,25 +277,15 @@ namespace TheaterDaysScore.Models {
 
         public int GetCenterDoubleBoost(Types songType, Types cardType) {
             int boost = 0;
-            // TODO: Remove hack around current lack of Matsuri support
-            if (Center.Category == Card.Categories.Linkage) {
-                boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
-            }
-            if (Guest.Category == Card.Categories.Linkage) {
-                boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
-            }
+            boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
+            boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
             return boost;
         }
 
         public int GetCenterDoubleEffect(Types songType, Types cardType) {
             int boost = 0;
-            // TODO: Remove hack around current lack of Matsuri support
-            if (Center.Category == Card.Categories.Linkage) {
-                boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
-            }
-            if (Guest.Category == Card.Categories.Linkage) {
-                boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
-            }
+            boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
+            boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
             return boost;
         }
 

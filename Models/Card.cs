@@ -236,8 +236,15 @@ namespace TheaterDaysScore.Models {
                 if (data.songType != Types.None && data.songType != songType) {
                     return 0;
                 }
-                // TODO: Remove blind return of 2% once Matsuri support is added
-                return 2;
+                // Search for a double boost increase effect
+                if (data.attributes != null) {
+                    for (int x = 0; x < data.attributes.Length; x++) {
+                        if (data.attributes[x] == CardData.CenterEffect.Type.doubleBoostUp) {
+                            return data.values[x];
+                        }
+                    }
+                }
+                return 0;
             }
 
             // Percentage increase of given card's double effect strength
@@ -254,8 +261,15 @@ namespace TheaterDaysScore.Models {
                 if (data.songType != Types.None && data.songType != songType) {
                     return 0;
                 }
-                // TODO: Remove blind return of 1% once Matsuri support is added
-                return 1;
+                // Search for a double effect increase effect
+                if (data.attributes != null) {
+                    for (int x = 0; x < data.attributes.Length; x++) {
+                        if (data.attributes[x] == CardData.CenterEffect.Type.doubleEffectUp) {
+                            return data.values[x];
+                        }
+                    }
+                }
+                return 0;
             }
 
             // Convert given number to a percentage vector of each stat to increase

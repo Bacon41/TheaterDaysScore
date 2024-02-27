@@ -64,6 +64,9 @@ namespace TheaterDaysScore.JsonModels {
                 allUp,
                 lifeUp,
                 skillActivationUp,
+                doubleBoostUp,
+                doubleEffectUp,
+                affectionPointsUp,
             };
         }
         

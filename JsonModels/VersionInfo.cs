@@ -6,7 +6,7 @@
         public class App {
             public string version { get; set; }
             public string updatedAt { get; set; }
-            public int revision { get; set; }
+            public int? revision { get; set; }
         }
         public class Asset {
             public int version { get; set; }
