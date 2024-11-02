@@ -59,6 +59,7 @@ namespace TheaterDaysScore.Views {
         private CheckBox fusionComboCheck => this.FindControl<CheckBox>("skillFusionCombo");
         private CheckBox doubleBoostCheck => this.FindControl<CheckBox>("skillDoubleBoost");
         private CheckBox doubleEffectCheck => this.FindControl<CheckBox>("skillDoubleEffect");
+        private CheckBox overEffectCheck => this.FindControl<CheckBox>("skillOverEffect");
         private CheckBox lifeSkillCheck => this.FindControl<CheckBox>("skillLife");
         private CheckBox damageGuardCheck => this.FindControl<CheckBox>("skillDamageGuard");
         private CheckBox comboProtectCheck => this.FindControl<CheckBox>("skillComboProtect");
@@ -151,9 +152,9 @@ namespace TheaterDaysScore.Views {
                     return ViewModel.Categories;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.Categories, v => v.shsCheck.IsChecked, set => {
-                    return set.Contains(Card.Categories.SHSGasha);
+                    return set.Contains(Card.Categories.SHSGacha);
                 }, isChecked => {
-                    SetCategory(isChecked, Card.Categories.SHSGasha);
+                    SetCategory(isChecked, Card.Categories.SHSGacha);
                     return ViewModel.Categories;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.Categories, v => v.fesCheck.IsChecked, set => {
@@ -328,6 +329,12 @@ namespace TheaterDaysScore.Views {
                     return set.Contains(CardData.Skill.Type.doubleEffect);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.doubleEffect);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.overEffectCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.overEffect);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.overEffect);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.lifeSkillCheck.IsChecked, set => {

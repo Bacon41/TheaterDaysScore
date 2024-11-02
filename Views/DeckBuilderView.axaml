@@ -122,6 +122,7 @@
             <CheckBox Name="skillFusionCombo">FusionCombo</CheckBox>
             <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
             <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
+            <CheckBox Name="skillOverEffect">OverEffect</CheckBox>
             <CheckBox Name="skillLife">Life</CheckBox>
             <CheckBox Name="skillDamageGuard">DamageGuard</CheckBox>
             <CheckBox Name="skillComboProtect">ComboProtect</CheckBox>

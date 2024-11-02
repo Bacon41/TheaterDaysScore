@@ -12,7 +12,7 @@ namespace TheaterDaysScore.Models {
         public enum Categories {
             PermanentGacha,
             LimitedGacha,
-            SHSGasha,
+            SHSGacha,
             Fes,
             Linkage,
             PST,
@@ -132,6 +132,10 @@ namespace TheaterDaysScore.Models {
                         ScoreBoost = this.data.values[0];
                         ComboBoost = this.data.values[0];
                         break;
+                    case CardData.Skill.Type.overEffect:
+                        ScoreBoost = this.data.values[0];
+                        ComboBoost = this.data.values[0];
+                        break;
                     case CardData.Skill.Type.perfectLock:
                         LowestJudgementBoost = LowestJudgementInRange(this.data.evaluationTypes[0]);
                         break;
@@ -239,7 +243,7 @@ namespace TheaterDaysScore.Models {
                 // Search for a double boost increase effect
                 if (data.attributes != null) {
                     for (int x = 0; x < data.attributes.Length; x++) {
-                        if (data.attributes[x] == CardData.CenterEffect.Type.doubleBoostUp) {
+                        if (data.attributes[x] == CardData.CenterEffect.Type.boostSkillUp) {
                             return data.values[x];
                         }
                     }
@@ -264,7 +268,7 @@ namespace TheaterDaysScore.Models {
                 // Search for a double effect increase effect
                 if (data.attributes != null) {
                     for (int x = 0; x < data.attributes.Length; x++) {
-                        if (data.attributes[x] == CardData.CenterEffect.Type.doubleEffectUp) {
+                        if (data.attributes[x] == CardData.CenterEffect.Type.effectSkillUp) {
                             return data.values[x];
                         }
                     }
@@ -331,7 +335,7 @@ namespace TheaterDaysScore.Models {
                     Category = Categories.PremiumPickup;
                     break;
                 case CardData.Categories.secondHairstyleGacha:
-                    Category = Categories.SHSGasha;
+                    Category = Categories.SHSGacha;
                     break;
                 case CardData.Categories.millicolleSR:
                     Category = Categories.MiliColle;

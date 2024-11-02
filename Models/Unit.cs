@@ -116,28 +116,28 @@ namespace TheaterDaysScore.Models {
                     if (skill.Effect == CardData.Skill.Type.doubleBoost) {
                         if (skill.ScoreBoost > boostScorePerfect[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.perfect) {
-                                boostScorePerfect[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
+                                boostScorePerfect[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
                         if (skill.ScoreBoost > boostScoreGreat[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.great) {
-                                boostScoreGreat[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
+                                boostScoreGreat[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
                         if (skill.ScoreBoost > boostScoreGood[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.good) {
-                                boostScoreGood[x] = skill.ScoreBoost + unit.GetCenterDoubleBoost(songType, cardType);
+                                boostScoreGood[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
                         if (skill.ComboBoost > boostCombo[x]) {
-                            boostCombo[x] = skill.ComboBoost + unit.GetCenterDoubleBoost(songType, cardType);
+                            boostCombo[x] = skill.ComboBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                         }
-                    } else if (skill.Effect == CardData.Skill.Type.doubleEffect) {
+                    } else if (skill.Effect == CardData.Skill.Type.doubleEffect || skill.Effect == CardData.Skill.Type.overEffect) {
                         if (skill.ScoreBoost > effectScore[x]) {
-                            effectScore[x] = skill.ScoreBoost + unit.GetCenterDoubleEffect(songType, cardType);
+                            effectScore[x] = skill.ScoreBoost + unit.GetCenterEffectSkillUp(songType, cardType);
                         }
                         if (skill.ComboBoost > effectCombo[x]) {
-                            effectCombo[x] = skill.ComboBoost + unit.GetCenterDoubleEffect(songType, cardType);
+                            effectCombo[x] = skill.ComboBoost + unit.GetCenterEffectSkillUp(songType, cardType);
                         }
                     } else if (skill.Effect == CardData.Skill.Type.fusionScore) {
                         int scoreBoost = skill.ScoreBoost;
@@ -275,14 +275,14 @@ namespace TheaterDaysScore.Models {
             }
         }
 
-        public int GetCenterDoubleBoost(Types songType, Types cardType) {
+        public int GetCenterBoostSkillUp(Types songType, Types cardType) {
             int boost = 0;
             boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
             boost += Center.Center.GetDoubleBoostIncrease(songType, cardType, this);
             return boost;
         }
 
-        public int GetCenterDoubleEffect(Types songType, Types cardType) {
+        public int GetCenterEffectSkillUp(Types songType, Types cardType) {
             int boost = 0;
             boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
             boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);

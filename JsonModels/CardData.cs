@@ -34,6 +34,7 @@ namespace TheaterDaysScore.JsonModels {
                 doubleEffect,
                 fusionScore = 17,
                 fusionCombo,
+                overEffect,
             };
 
             public enum Evaluations {
@@ -64,8 +65,8 @@ namespace TheaterDaysScore.JsonModels {
                 allUp,
                 lifeUp,
                 skillActivationUp,
-                doubleBoostUp,
-                doubleEffectUp,
+                boostSkillUp,
+                effectSkillUp,
                 affectionPointsUp,
             };
         }
