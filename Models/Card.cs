@@ -80,6 +80,7 @@ namespace TheaterDaysScore.Models {
             public int FusionComboRate { get; }
             public Song.Note.Accuracy LowestJudgementBoost { get; }
             public Song.Note.Accuracy LowestComboProtect { get; }
+            public int TypeBonus { get; }
 
             public Skill(CardData.Skill data, int level) {
                 this.data = data;
@@ -127,6 +128,13 @@ namespace TheaterDaysScore.Models {
                     case CardData.Skill.Type.doubleBoost:
                         ScoreBoost = this.data.values[0];
                         ComboBoost = this.data.values[1];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluationTypes[0]);
+                        break;
+                    case CardData.Skill.Type.pureBoost:
+                        ScoreBoost = this.data.values[0];
+                        ComboBoost = this.data.values[1];
+                        TypeBonus = this.data.values[2];
+                        LowestScoreBoostJudgement = LowestJudgementInRange(this.data.evaluationTypes[0]);
                         break;
                     case CardData.Skill.Type.doubleEffect:
                         ScoreBoost = this.data.values[0];

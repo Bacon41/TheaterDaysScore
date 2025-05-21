@@ -121,6 +121,7 @@
             <CheckBox Name="skillOverRondo">OverRondo</CheckBox>
             <CheckBox Name="skillFusionCombo">FusionCombo</CheckBox>
             <CheckBox Name="skillDoubleBoost">DoubleBoost</CheckBox>
+            <CheckBox Name="skillPureBoost">PureBoost</CheckBox>
             <CheckBox Name="skillDoubleEffect">DoubleEffect</CheckBox>
             <CheckBox Name="skillOverEffect">OverEffect</CheckBox>
             <CheckBox Name="skillLife">Life</CheckBox>

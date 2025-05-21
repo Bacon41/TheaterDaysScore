@@ -113,24 +113,26 @@ namespace TheaterDaysScore.Models {
             public void AddInterval(int start, Types songType, Types cardType, Card.Skill skill, Unit unit) {
                 for (int x = start; x < scoreUpPerfect.Length && x < start + skill.Duration; x++) {
                     // Score/Combo
-                    if (skill.Effect == CardData.Skill.Type.doubleBoost) {
-                        if (skill.ScoreBoost > boostScorePerfect[x]) {
+                    if (skill.Effect == CardData.Skill.Type.doubleBoost || skill.Effect == CardData.Skill.Type.pureBoost) {
+                        int scoreBoost = skill.ScoreBoost + skill.TypeBonus * (unit.CountOfType(cardType) - 1); // Exclude self
+                        int comboBoost = skill.ComboBoost + skill.TypeBonus * (unit.CountOfType(cardType) - 1); // Exclude self
+                        if (scoreBoost > boostScorePerfect[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.perfect) {
-                                boostScorePerfect[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
+                                boostScorePerfect[x] = scoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
-                        if (skill.ScoreBoost > boostScoreGreat[x]) {
+                        if (scoreBoost > boostScoreGreat[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.great) {
-                                boostScoreGreat[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
+                                boostScoreGreat[x] = scoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
-                        if (skill.ScoreBoost > boostScoreGood[x]) {
+                        if (scoreBoost > boostScoreGood[x]) {
                             if (skill.LowestScoreBoostJudgement >= Song.Note.Accuracy.good) {
-                                boostScoreGood[x] = skill.ScoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
+                                boostScoreGood[x] = scoreBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                             }
                         }
-                        if (skill.ComboBoost > boostCombo[x]) {
-                            boostCombo[x] = skill.ComboBoost + unit.GetCenterBoostSkillUp(songType, cardType);
+                        if (comboBoost > boostCombo[x]) {
+                            boostCombo[x] = comboBoost + unit.GetCenterBoostSkillUp(songType, cardType);
                         }
                     } else if (skill.Effect == CardData.Skill.Type.doubleEffect || skill.Effect == CardData.Skill.Type.overEffect) {
                         if (skill.ScoreBoost > effectScore[x]) {
@@ -287,6 +289,11 @@ namespace TheaterDaysScore.Models {
             boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
             boost += Center.Center.GetDoubleEffectIncrease(songType, cardType, this);
             return boost;
+        }
+
+        public int CountOfType(Types cardType) {
+            int typeMatches = Members.Where(card => card.Type == cardType).Count();
+            return typeMatches;
         }
 
         public bool IsTricolour() {

@@ -58,6 +58,7 @@ namespace TheaterDaysScore.Views {
         private CheckBox overRondoCheck => this.FindControl<CheckBox>("skillOverRondo");
         private CheckBox fusionComboCheck => this.FindControl<CheckBox>("skillFusionCombo");
         private CheckBox doubleBoostCheck => this.FindControl<CheckBox>("skillDoubleBoost");
+        private CheckBox pureBoostCheck => this.FindControl<CheckBox>("skillPureBoost");
         private CheckBox doubleEffectCheck => this.FindControl<CheckBox>("skillDoubleEffect");
         private CheckBox overEffectCheck => this.FindControl<CheckBox>("skillOverEffect");
         private CheckBox lifeSkillCheck => this.FindControl<CheckBox>("skillLife");
@@ -323,6 +324,12 @@ namespace TheaterDaysScore.Views {
                     return set.Contains(CardData.Skill.Type.doubleBoost);
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.doubleBoost);
+                    return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+                this.Bind(ViewModel, vm => vm.SkillTypes, v => v.pureBoostCheck.IsChecked, set => {
+                    return set.Contains(CardData.Skill.Type.pureBoost);
+                }, isChecked => {
+                    SetSkill(isChecked, CardData.Skill.Type.pureBoost);
                     return ViewModel.SkillTypes;
                 }).DisposeWith(disposables);
                 this.Bind(ViewModel, vm => vm.SkillTypes, v => v.doubleEffectCheck.IsChecked, set => {

@@ -35,6 +35,7 @@ namespace TheaterDaysScore.JsonModels {
                 fusionScore = 17,
                 fusionCombo,
                 overEffect,
+                pureBoost,
             };
 
             public enum Evaluations {
