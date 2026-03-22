@@ -189,11 +189,11 @@ namespace TheaterDaysScore.Models {
                     return 0;
                 }
                 // Ensure boost applies to given card
-                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                if (!Calculator.CompareType(data.idolType, cardType)) {
                     return 0;
                 }
                 // Ensure song condition is met
-                if (data.songType != Types.None && data.songType != songType) {
+                if (!Calculator.CompareType(data.songType, songType)) {
                     return 0;
                 }
                 // Search for an activation boost effect
@@ -218,7 +218,7 @@ namespace TheaterDaysScore.Models {
                     return boost;
                 }
                 // Ensure boost applies to given card
-                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                if (!Calculator.CompareType(data.idolType, cardType)) {
                     return boost;
                 }
                 // Add in base effect
@@ -227,7 +227,7 @@ namespace TheaterDaysScore.Models {
                 }
                 // Add in secondary effect (with additional restrictions)
                 if (data.attributes != null && data.attributes.Length > 1) {
-                    if (data.songType == songType || data.songType == Types.All) {
+                    if (Calculator.CompareType(data.songType, songType)) {
                         boost += AttributeVector(data.attributes[1], data.values[1]);
                     }
                 }
@@ -241,11 +241,11 @@ namespace TheaterDaysScore.Models {
                     return 0;
                 }
                 // Ensure boost applies to given card
-                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                if (!Calculator.CompareType(data.idolType, cardType)) {
                     return 0;
                 }
                 // Ensure song condition is met
-                if (data.songType != Types.None && data.songType != songType) {
+                if (!Calculator.CompareType(data.songType, songType)) {
                     return 0;
                 }
                 // Search for a double boost increase effect
@@ -266,11 +266,11 @@ namespace TheaterDaysScore.Models {
                     return 0;
                 }
                 // Ensure boost applies to given card
-                if (data.idolType != Types.All && cardType != data.idolType && cardType != Types.EX) {
+                if (!Calculator.CompareType(data.idolType, cardType)) {
                     return 0;
                 }
                 // Ensure song condition is met
-                if (data.songType != Types.None && data.songType != songType) {
+                if (!Calculator.CompareType(data.songType, songType)) {
                     return 0;
                 }
                 // Search for a double effect increase effect
@@ -446,7 +446,7 @@ namespace TheaterDaysScore.Models {
 
             Vector3 splitAppeal = SplitAppeal();
             Vector3 splitAppealType = floor(splitAppeal * 0.3f);
-            if (Type != songType && Type != Types.EX && songType != Types.All) {
+            if (!Calculator.CompareType(Type, songType)) {
                 splitAppealType = Vector3.Zero;
             }
             Vector3 splitAppealEvent = floor(splitAppeal * eventBoost);

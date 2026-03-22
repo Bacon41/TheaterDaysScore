@@ -13,9 +13,41 @@ namespace TheaterDaysScore {
         Angel,
         All,
         EX,
+        PrincessFairy = 12,
+        FairyAngel = 23,
+        AngelPrincess = 31,
     };
 
     public class Calculator {
+        private enum MatchType {
+            None = 0,
+            Princess = 1 << 0,
+            Fairy = 1 << 1,
+            Angel = 1 << 2,
+        }
+
+        private static MatchType ConvertTypeToMatch(Types type) {
+            MatchType matchingType = MatchType.None;
+            if (type == Types.Princess || type == Types.PrincessFairy || type == Types.AngelPrincess) {
+                matchingType |= MatchType.Princess;
+            }
+            if (type == Types.Fairy || type == Types.PrincessFairy || type == Types.FairyAngel) {
+                matchingType |= MatchType.Fairy;
+            }
+            if (type == Types.Angel || type == Types.FairyAngel || type == Types.AngelPrincess) {
+                matchingType |= MatchType.Angel;
+            }
+            // None means "no requirements" in terms of skills
+            if (type == Types.All || type == Types.EX || type == Types.None) {
+                matchingType |= MatchType.Princess | MatchType.Fairy | MatchType.Angel;
+            }
+            return matchingType;
+        }
+
+        public static bool CompareType(Types type1, Types type2) {
+            return (ConvertTypeToMatch(type1) & ConvertTypeToMatch(type2)) != MatchType.None;
+        }
+
         public enum BoostType {
             none,
             vocal,
@@ -44,7 +76,7 @@ namespace TheaterDaysScore {
 
                 supportStatus += stats;
 
-                if (card.Type == songType || card.Type == Types.EX || songType == Types.All) {
+                if (CompareType(card.Type, songType)) {
                     supportType += floor(stats * 0.3f);
                 }
 
@@ -71,7 +103,7 @@ namespace TheaterDaysScore {
 
                 guestStatus = stats;
 
-                if (unit.Guest.Type == songType || unit.Guest.Type == Types.EX || songType == Types.All) {
+                if (CompareType(unit.Guest.Type, songType)) {
                     guestType += floor(stats * 0.3f);
                 }
 
@@ -106,7 +138,7 @@ namespace TheaterDaysScore {
 
                 unitStatus[cardType] += stats;
 
-                if (card.Type == songType || card.Type == Types.EX || songType == Types.All) {
+                if (CompareType(card.Type, songType)) {
                     unitType[cardType] += stats * 0.3f;
                 }
 

@@ -24,6 +24,9 @@
           <CheckBox Name="typePrincess">Princess</CheckBox>
           <CheckBox Name="typeFairy">Fairy</CheckBox>
           <CheckBox Name="typeAngel">Angel</CheckBox>
+          <CheckBox Name="typePrincessFairy">PrincessFairy</CheckBox>
+          <CheckBox Name="typeFairyAngel">FairyAngel</CheckBox>
+          <CheckBox Name="typeAngelPrincess">AngelPrincess</CheckBox>
           <CheckBox Name="typeAll">All</CheckBox>
         </WrapPanel>
       </StackPanel>

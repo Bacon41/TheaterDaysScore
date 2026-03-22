@@ -240,6 +240,7 @@ namespace TheaterDaysScore.Models {
         public Song(SongList songData, SongData beatmapData) {
             Name = songData.song_name;
             Asset = songData.asset;
+
             Type = (Types)songData.song_type;
 
             Level = new Dictionary<Difficulty, int>();
