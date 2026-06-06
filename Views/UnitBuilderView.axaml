@@ -171,7 +171,14 @@
             <CheckBox Name="skillNone">None</CheckBox>
           </WrapPanel>
         </StackPanel>
+
+      <StackPanel Orientation="Vertical">
+        <TextBlock FontWeight="Bold">Sort</TextBlock>
+        <WrapPanel Orientation="Horizontal">
+          <ComboBox Name="sortPicker" Items="{Binding SortOptions}" SelectedIndex="{Binding SortOption}"></ComboBox>
+        </WrapPanel>
       </StackPanel>
+    </StackPanel>
 
       <ScrollViewer Width="400" Height="500">
         <ListBox Name="cardChoice" Width="380" Items="{Binding Items}" VirtualizationMode="Simple" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
@@ -182,7 +189,19 @@
           </ListBox.ItemsPanel>
           <ListBox.ItemTemplate>
             <DataTemplate>
-              <Image Width="55" Height="55" Source="{Binding ID, Converter={StaticResource imageLoader}}"></Image>
+              <WrapPanel Orientation="Vertical" Width="60" Height="90">
+                <Panel Width="55" Height="55">
+                  <Image Width="55" Height="55" Source="{Binding ID, Converter={StaticResource imageLoader}}" />
+                  <Image Width="16" Height="16" HorizontalAlignment="Left" VerticalAlignment="Bottom" Source="{Binding TypeImage}" />
+                </Panel>
+                <WrapPanel Orientation="Horizontal" Width="60">
+                  <TextBlock Text="{Binding SkillTypeShort}"></TextBlock>
+                  <TextBlock Text=" - "></TextBlock>
+                  <TextBlock Text="{Binding Skills[0].Interval}"></TextBlock>
+                  <TextBlock Text="/"></TextBlock>
+                  <TextBlock Text="{Binding Skills[0].Duration}"></TextBlock>
+                </WrapPanel>
+              </WrapPanel>
             </DataTemplate>
           </ListBox.ItemTemplate>
         </ListBox>

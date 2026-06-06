@@ -72,7 +72,7 @@ namespace TheaterDaysScore {
 
             List<Card> supportCards = unit.TopSupport(songType, eventType);
             foreach (Card card in supportCards) {
-                Vector3 stats = card.SplitAppeal();
+                Vector3 stats = card.SplitAppeal(false);
 
                 supportStatus += stats;
 
@@ -99,7 +99,7 @@ namespace TheaterDaysScore {
             Vector3 guestType = new Vector3(0);
             Vector3 guestCenter = new Vector3(0);
             {
-                Vector3 stats = unit.Guest.SplitAppeal();
+                Vector3 stats = unit.Guest.SplitAppeal(false);
 
                 guestStatus = stats;
 
@@ -119,7 +119,7 @@ namespace TheaterDaysScore {
             Vector3[] unitCenter = new Vector3[4] { new Vector3(), new Vector3(), new Vector3(), new Vector3() };
             Vector3[] unitEvent = new Vector3[4] { new Vector3(), new Vector3(), new Vector3(), new Vector3() };
             foreach (Card card in unit.Members) {
-                Vector3 stats = card.SplitAppeal();
+                Vector3 stats = card.SplitAppeal(false);
                 int cardType = -1;
                 switch (card.Type) {
                     case Types.Princess:

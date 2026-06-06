@@ -19,8 +19,11 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Assets\angel.png" />
+    <None Remove="Assets\fairy.png" />
     <None Remove="Assets\idollist.json" />
     <None Remove="Assets\left.png" />
+    <None Remove="Assets\princess.png" />
     <None Remove="Assets\right.png" />
     <None Remove="Assets\tap.png" />
     <None Remove="Assets\up.png" />

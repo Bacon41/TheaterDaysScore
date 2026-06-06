@@ -72,6 +72,8 @@ namespace TheaterDaysScore.Views {
         private CheckBox multiBonusCheck => this.FindControl<CheckBox>("skillMultiBonus");
         private CheckBox noneSkillCheck => this.FindControl<CheckBox>("skillNone");
 
+        private ComboBox sortPicker => this.FindControl<ComboBox>("sortPicker");
+
         private ListBox placementChoice => this.FindControl<ListBox>("placementChoice");
         private ListBox cardChoice => this.FindControl<ListBox>("cardChoice");
 
@@ -391,6 +393,14 @@ namespace TheaterDaysScore.Views {
                 }, isChecked => {
                     SetSkill(isChecked, CardData.Skill.Type.none);
                     return ViewModel.SkillTypes;
+                }).DisposeWith(disposables);
+
+                // Sort
+                this.Bind(ViewModel, vm => vm.SortOption, v => v.sortPicker.SelectedIndex, set => {
+                    return set;
+                }, isChecked => {
+                    ViewModel.FilterCards();
+                    return ViewModel.SortOption;
                 }).DisposeWith(disposables);
 
                 // Card selection

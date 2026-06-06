@@ -1,4 +1,7 @@
 ﻿using Avalonia.Media;
+using Avalonia;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -43,6 +46,7 @@ namespace TheaterDaysScore.Models {
         public List<int> SkillLevels { get; set; }
 
         public string ID { get; }
+        public int SortOrder { get; }
         public int IdolID { get; }
         public Types Type { get; }
         public CardData.Rarities Rarity { get; }
@@ -54,6 +58,48 @@ namespace TheaterDaysScore.Models {
         public CardData.CenterEffect.Type CenterBoostType { get; }
         public CardData.CenterEffect.Type CenterBoostType2 { get; }
         public Types CenterReqType { get; }
+
+        public Bitmap? TypeImage { get; }
+        public string SkillTypeShort { get {
+                switch (SkillType) {
+                    case CardData.Skill.Type.none:
+                        return "";
+                    case CardData.Skill.Type.scoreBonus:
+                        return "SB";
+                    case CardData.Skill.Type.comboBonus:
+                        return "CB";
+                    case CardData.Skill.Type.healer:
+                        return "LI";
+                    case CardData.Skill.Type.lifeGuard:
+                        return "LG";
+                    case CardData.Skill.Type.comboGuard:
+                        return "CG";
+                    case CardData.Skill.Type.perfectLock:
+                        return "JB";
+                    case CardData.Skill.Type.doubleBoost:
+                        return "DB";
+                    case CardData.Skill.Type.multiUp:
+                        return "MU";
+                    case CardData.Skill.Type.multiBonus:
+                        return "MB";
+                    case CardData.Skill.Type.overClock:
+                        return "OC";
+                    case CardData.Skill.Type.overRondo:
+                        return "OR";
+                    case CardData.Skill.Type.doubleEffect:
+                        return "DE";
+                    case CardData.Skill.Type.fusionScore:
+                        return "FS";
+                    case CardData.Skill.Type.fusionCombo:
+                        return "FC";
+                    case CardData.Skill.Type.overEffect:
+                        return "OE";
+                    case CardData.Skill.Type.pureBoost:
+                        return "PB";
+                    default:
+                        return "";
+                }
+            } }
 
         public class Skill {
             private CardData.Skill data;
@@ -320,8 +366,21 @@ namespace TheaterDaysScore.Models {
             }
 
             ID = this.data.resourceId;
+            SortOrder = this.data.id;
             Type = this.data.idolType;
             IdolID = this.data.idolId;
+
+            switch (this.data.idolType) {
+                case Types.Princess:
+                    TypeImage = new Bitmap(AvaloniaLocator.Current.GetService<IAssetLoader>().Open(new Uri($"avares://TheaterDaysScore/Assets/princess.png")));
+                    break;
+                case Types.Fairy:
+                    TypeImage = new Bitmap(AvaloniaLocator.Current.GetService<IAssetLoader>().Open(new Uri($"avares://TheaterDaysScore/Assets/fairy.png")));
+                    break;
+                case Types.Angel:
+                    TypeImage = new Bitmap(AvaloniaLocator.Current.GetService<IAssetLoader>().Open(new Uri($"avares://TheaterDaysScore/Assets/angel.png")));
+                    break;
+            }
             
             switch (this.data.category) {
                 case CardData.Categories.normal: // Free with account
@@ -420,10 +479,14 @@ namespace TheaterDaysScore.Models {
             return new Card(this.data, this.idol, IsHeld, MasterRank, SkillLevel);
         }
 
-        public Vector3 SplitAppeal() {
-            return new Vector3(data.parameters.vocal.afterAwakened.max + data.parameters.vocal.masterBonus * MasterRank,
-                    data.parameters.dance.afterAwakened.max + data.parameters.dance.masterBonus * MasterRank,
-                    data.parameters.visual.afterAwakened.max + data.parameters.visual.masterBonus * MasterRank);
+        public Vector3 SplitAppeal(bool forceMax) {
+            int masterRank = MasterRank;
+            if (forceMax) {
+                masterRank = data.masterRankMax;
+            }
+            return new Vector3(data.parameters.vocal.afterAwakened.max + data.parameters.vocal.masterBonus * masterRank,
+                    data.parameters.dance.afterAwakened.max + data.parameters.dance.masterBonus * masterRank,
+                    data.parameters.visual.afterAwakened.max + data.parameters.visual.masterBonus * masterRank);
         }
 
         private Vector3 floor(Vector3 input) {
@@ -444,7 +507,7 @@ namespace TheaterDaysScore.Models {
                     break;
             }
 
-            Vector3 splitAppeal = SplitAppeal();
+            Vector3 splitAppeal = SplitAppeal(false);
             Vector3 splitAppealType = floor(splitAppeal * 0.3f);
             if (!Calculator.CompareType(Type, songType)) {
                 splitAppealType = Vector3.Zero;

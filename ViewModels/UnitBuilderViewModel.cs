@@ -71,6 +71,14 @@ namespace TheaterDaysScore.ViewModels {
             set => this.RaiseAndSetIfChanged(ref skillTypes, value);
         }
 
+        [DataMember]
+        public int SortOption { get; set; }
+        private List<string> sortOptions = new List<string>{ "Release", "Vocal", "Dance", "Visual" };
+        public List<string> SortOptions {
+            get => sortOptions;
+            set => this.RaiseAndSetIfChanged(ref sortOptions, value);
+        }
+
         // Unit
         private int placementIndex = -1;
         public int PlacementIndex {
@@ -217,8 +225,24 @@ namespace TheaterDaysScore.ViewModels {
                         || (CenterBoostTypes.Contains(card.CenterBoostType2) && card.CenterBoostType2 != CardData.CenterEffect.Type.none))
                     .Where(card => CenterReqTypes.Contains(card.CenterReqType))
                     .Where(card => SkillTypes.Contains(card.SkillType))
+                    .OrderByDescending(SortKey)
                     );
             }
+        }
+
+        private int SortKey(Card card) {
+            bool getMax = PlacementIndex == 0;
+            switch (SortOptions[SortOption]) {
+                case "Release":
+                    return card.SortOrder;
+                case "Vocal":
+                    return (int)card.SplitAppeal(getMax).X;
+                case "Dance":
+                    return (int)card.SplitAppeal(getMax).Y;
+                case "Visual":
+                    return (int)card.SplitAppeal(getMax).Z;
+            }
+            return card.SortOrder;
         }
 
         public void SetCard(Card card) {
